@@ -13,3 +13,11 @@ These scrips will ultimately provide a full repo of everything required on the E
 
 ATM VERY MUCH WIP since there will be scripts from multiple contributors (heggink being full 3 phase battery, gizmocuz being 1 phase, ..) that may not be completely in sync. 
 Hopefully, that will happen soon.
+
+Key actions:
+1) parameterise instead of hard code the number of phases
+2) paramererise the time to fully load (hardcoded 3 hrs)
+3) parameterise all access variables (domoticz IP and security, ess IP and security, mqtt ip and security, topics) from all ends
+4) sync up scripts between multiple sub repos (giz, myself)
+5) switch from domo variables to timers for (the setpoints and) battmodes in the lua scripts
+6)  ...
