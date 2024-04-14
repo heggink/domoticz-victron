@@ -11,6 +11,7 @@
 -- 	for today, this may be the second cycle but, if not optimal, it will get resolved during optimisation
 -- 
 return {
+	active=true,
 	on = {
 		devices = {'BattScheduleRefresh'},
 		timer = { 'at 15:05', 'at 00:05' }, -- Timer to set charge and discharge schedule for the battery
@@ -59,7 +60,7 @@ return {
 				end
 			elseif item.isDevice then -- button
 				dz.data.hasrun = false -- always run when rates are updated
-                                ridx=rates2_idx -- default to Enever on button or timer
+                                ridx=rates_idx -- default to Enever on button or timer
                         end
 			if dz.data.hasrun == false then
 				dz.openURL({
@@ -204,7 +205,7 @@ return {
 				t_size = 4
 				print("Pre-sort")
 				for i,v in ipairs(t) do
-					print("date "..v.ds.." mode "..v.mode.." rate "..v.rate)
+					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..v.rate)
 				end
 
 				-- remove unprofitable discharge entries in the current schedule (if any)
@@ -219,7 +220,7 @@ return {
 				table.sort(t, function (k1, k2) return k1.dn < k2.dn end )
 				print("Post-sort")
 				for i,v in ipairs(t) do
-					print("date "..v.ds.." mode "..v.mode.." rate "..v.rate)
+					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..v.rate)
 				end
 				-- now we have a table with sorted charge/discharge times for the next 34 hours, Let's make sense of it
 				-- we can support 2 charge/discharge cycles if need be
@@ -290,7 +291,7 @@ return {
 
 				print("Post-optimise")
 				for i,v in ipairs(t) do
-					print("date "..v.ds.." mode "..v.mode.." rate "..v.rate.." use: "..tostring(v.use) )
+					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..v.rate.." use: "..tostring(v.use) )
 				end
 
 				-- now de/refine the charge strategy
@@ -306,6 +307,7 @@ return {
 				-- 	if 3 then check from one state to the other
 				for i,v in ipairs(t) do
 					if v.use == false then
+						print("Remove entry "..i.." from the table")
 						table.remove(t, i)
 						break
 					end
@@ -314,11 +316,11 @@ return {
 				num_states=0
 				print("Post-rationalise")
 				for i,v in ipairs(t) do
-					print("date "..v.ds.." mode "..v.mode.." rate "..v.rate.." use: "..tostring(v.use) )
+					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..v.rate.." use: "..tostring(v.use) )
 					num_states = num_states+1
 				end
 
-				--print("I have "..num_states.." states so check profitable charges")
+				print("I have "..num_states.." states so check profitable charges")
 
 				if num_states == 4 then -- check 2 cycles
 					if t[1].mode == 'C' then
@@ -394,31 +396,46 @@ return {
 
 				--print("Post-everything: set all variables: hour, soc and kwh price")
 				for i,v in ipairs(t) do
-					--print("date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
-					if v.td == 'Today' then
+					print("date "..v.ds.." when "..v.td.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+					local hr = string.sub(v.ds,1,2)
+					if v.td == 'today' then
 						if v.mode == 'C' then
-							--print("CT, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+							print("CT, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+							url="127.0.0.1:8080/json.htm?type=command&param=addtimer&idx=9531&active=true&persistent=true&timertype=5&hour="..hr.."&min=0&date="..y_n.."-"..m_n.."-"..d_n.."&randomness=false&command=0&level=20&days=1234567"
+							print("URL is: "..url)
+							dz.openURL(url)
 							ChargeToday.set(v.ds)
 							today_charge_kwh.set(v.rate)
 							today_soc_target.set(v.soc)
 						else
-							--print("DT, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+							print("DT, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+							url="127.0.0.1:8080/json.htm?type=command&param=addtimer&idx=9531&active=true&persistent=true&timertype=5&hour="..hr.."&min=0&date="..y_n.."-"..m_n.."-"..d_n.."&randomness=false&command=0&level=30&days=1234567"
+							print("URL is: "..url)
+							dz.openURL(url)
 							DischargeToday.set(v.ds)
 							today_discharge_kwh.set(v.rate)
 						end
 					else -- tomorrow
 						if v.mode == 'C' then
-							--print("CM, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+							print("CM, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+							url="127.0.0.1:8080/json.htm?type=command&param=addtimer&idx=9531&active=true&persistent=true&timertype=5&hour="..hr.."&min=0&date="..y_t.."-"..m_t.."-"..d_t.."&randomness=false&command=0&level=20&days=1234567"
+							print("URL is: "..url)
+							dz.openURL(url)
 							ChargeTomorrow.set(v.ds)
 							tomorrow_charge_kwh.set(v.rate)
 							tomorrow_soc_target.set(v.soc)
 						else
-							--print("DM, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+							print("DM, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
 							if discharge then
 								DischargeTomorrow.set(v.ds)
+								min_t="00"
 							else
 								DischargeTomorrow.set(string.sub(v.ds, 1, 3).."30")
+								min_t="30"
 							end
+							url="127.0.0.1:8080/json.htm?type=command&param=addtimer&idx=9531&active=true&persistent=true&timertype=5&hour="..hr.."&min="..min_t.."&date="..y_t.."-"..m_t.."-"..d_t.."&randomness=false&command=0&level=30&days=1234567"
+							print("URL is: "..url)
+							-- dz.openURL(url)
 							tomorrow_discharge_kwh.set(v.rate)
 						end
 					end
