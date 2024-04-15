@@ -22,6 +22,10 @@ return {
 	logging = { level = domoticz.LOG_DEBUG, marker = 'BATTSCHEDULE', },
 	execute = function(dz, item)
 		
+		local charge_today = "00:30"
+		local discharge_today = "00:30"
+		local charge_tomorrow = "00:30"
+		local discharge_tomorrow = "00:30"
 		local discharge = true
 		local today = os.date('%Y-%m-%d')
 		local LowRateThreshold = dz.variables('LowRateThreshold').value
@@ -125,19 +129,16 @@ return {
 						print("found lower 3hr slot a with rate "..low_rate.." at "..low_hr)
 					end
 				end
-				datestr=string.sub(low_hr,1,10)
+				--datestr=string.sub(low_hr,1,10)
 				low_hr=string.sub(low_hr,12,13)
 				high_hr=string.sub(high_hr,12,13)
-				--
-				-- now we have 2 (maybe new) slots for today, save these in the variables
-				--
 				print('Found today low of '..low_hr..' and high '..high_hr)
 				if (low_rate < (high_rate * BattEfficiency) and (tonumber(low_hr) < tonumber(high_hr))) then 
 					-- profitable slot for a Charge - discharge
-					ChargeToday.set(low_hr..":00")
-					DischargeToday.set(high_hr..":00")
-					today_charge_kwh.set(low_rate)
-					today_discharge_kwh.set(high_rate)
+					charge_today = low_hr..":00"
+					discharge_today = high_hr..":00"
+					ctdr = low_rate
+					dtdr = high_rate
 				else
 					print('No profitable set of charge/discharge so exclude these')
 				end
@@ -165,24 +166,28 @@ return {
 					end
 				end
 
-				print('Found tomorrow low of '..low_hr..' and high '..high_hr)
-				--dz.notify('INFO', 'Opladen thuisbatterij gepland voor '..low_hr, dz.PRIORITY_NORMAL)
-				high_hr=string.sub(high_hr, 12,13)
 				low_hr=string.sub(low_hr, 12,13)
-				datestr=string.sub(high_hr, 1,10)
-				new_charge_kwh = tonumber(string.format("%.4f", low_rate))
-				new_discharge_kwh = tonumber(string.format("%.4f", high_rate))
+				high_hr=string.sub(high_hr, 12,13)
+				print('Found tomorrow low of '..low_hr..' and high '..high_hr)
+				if (low_rate < (high_rate * BattEfficiency) and (tonumber(low_hr) < tonumber(high_hr))) then 
+					-- profitable slot for a Charge - discharge
+					charge_tomorrow=low_hr..":00"
+					discharge_tomorrow=high_hr..":00"
+				else
+					print('No profitable set of charge/discharge so exclude these')
+				end
 
-				ctdr = today_charge_kwh.value
-				dtdr = today_discharge_kwh.value
-				ctmr = new_charge_kwh
-				dtmr = new_discharge_kwh
+				--dz.notify('INFO', 'Opladen thuisbatterij gepland voor '..low_hr, dz.PRIORITY_NORMAL)
+				--datestr=string.sub(high_hr, 1,10)
 
-				h=string.sub(ChargeToday.value,1,2)
+				ctmr = tonumber(string.format("%.4f", low_rate))
+				dtmr = tonumber(string.format("%.4f", high_rate))
+
+				h=tonumber(string.sub(charge_today,1,2))
 				dt = {year=y_n, month=m_n, day=d_n, hour=h, min=0, sec=0 }
 				d1=os.time(dt)
 
-				h=string.sub(DischargeToday.value,1,2)
+				h=tonumber(string.sub(discharge_today,1,2))
 				dt = {year=y_n, month=m_n, day=d_n, hour=h, min=0, sec=0 }
 				d2=os.time(dt)
 
@@ -196,10 +201,10 @@ return {
 
 
 				t = {
-				   { soc = 0, td = "today", ds = ChargeToday.value, dn = d1, mode = "C", rate = ctdr, use = true },
-				   { soc = 0, td = "today", ds = DischargeToday.value, dn = d2, mode = "D", rate = dtdr, use = true },
-				   { soc = 0, td = "tomorrow", ds = low_hr..":00", dn = d3, mode = "C", rate = ctmr, use = true },
-				   { soc = 0, td = "tomorrow", ds = high_hr..":00", dn = d4, mode = "D", rate = dtmr, use = true }
+				   { soc = 0, td = "today",    ds = charge_today,        dn = d1, mode = "C", rate = ctdr, use = true },
+				   { soc = 0, td = "today",    ds = discharge_today,     dn = d2, mode = "D", rate = dtdr, use = true },
+				   { soc = 0, td = "tomorrow", ds = charge_tomorrow,     dn = d3, mode = "C", rate = ctmr, use = true },
+				   { soc = 0, td = "tomorrow", ds = discharge_tomorrow,  dn = d4, mode = "D", rate = dtmr, use = true }
 				}
 
 				t_size = 4
@@ -402,7 +407,7 @@ return {
 						if v.mode == 'C' then
 							print("CT, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
 							url="127.0.0.1:8080/json.htm?type=command&param=addtimer&idx=9531&active=true&persistent=true&timertype=5&hour="..hr.."&min=0&date="..y_n.."-"..m_n.."-"..d_n.."&randomness=false&command=0&level=20&days=1234567"
-							print("URL is: "..url)
+							--print("URL is: "..url)
 							dz.openURL(url)
 							ChargeToday.set(v.ds)
 							today_charge_kwh.set(v.rate)
@@ -410,7 +415,7 @@ return {
 						else
 							print("DT, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
 							url="127.0.0.1:8080/json.htm?type=command&param=addtimer&idx=9531&active=true&persistent=true&timertype=5&hour="..hr.."&min=0&date="..y_n.."-"..m_n.."-"..d_n.."&randomness=false&command=0&level=30&days=1234567"
-							print("URL is: "..url)
+							--print("URL is: "..url)
 							dz.openURL(url)
 							DischargeToday.set(v.ds)
 							today_discharge_kwh.set(v.rate)
@@ -419,13 +424,13 @@ return {
 						if v.mode == 'C' then
 							print("CM, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
 							url="127.0.0.1:8080/json.htm?type=command&param=addtimer&idx=9531&active=true&persistent=true&timertype=5&hour="..hr.."&min=0&date="..y_t.."-"..m_t.."-"..d_t.."&randomness=false&command=0&level=20&days=1234567"
-							print("URL is: "..url)
+							--print("URL is: "..url)
 							dz.openURL(url)
 							ChargeTomorrow.set(v.ds)
 							tomorrow_charge_kwh.set(v.rate)
 							tomorrow_soc_target.set(v.soc)
 						else
-							print("DM, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
+							--print("DM, date "..v.ds.." mode "..v.mode.." rate "..v.rate.." soc target: "..v.soc )
 							if discharge then
 								DischargeTomorrow.set(v.ds)
 								min_t="00"
@@ -435,7 +440,7 @@ return {
 							end
 							url="127.0.0.1:8080/json.htm?type=command&param=addtimer&idx=9531&active=true&persistent=true&timertype=5&hour="..hr.."&min="..min_t.."&date="..y_t.."-"..m_t.."-"..d_t.."&randomness=false&command=0&level=30&days=1234567"
 							print("URL is: "..url)
-							-- dz.openURL(url)
+							dz.openURL(url)
 							tomorrow_discharge_kwh.set(v.rate)
 						end
 					end
