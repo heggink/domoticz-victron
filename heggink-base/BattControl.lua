@@ -19,12 +19,10 @@ return {
 
 		local bat_sp = dz.devices('ESS Setpoint')
 		local tbm = dz.devices('Battery Mode')
-		local crs = dz.variables('ChargeRateStart').value
-		local cr = dz.variables('ChargeRate').value
-		local drs = dz.variables('DischargeRateStart').value
-		local dr = dz.variables('DischargeRate').value
-		local ir = dz.variables('IdleRate')
-		local DischargePerc = dz.variables('DischargePerc').value
+		local cr = dz.variables('batt_charge_rate').value
+		local dr = dz.variables('batt_discharge_rate').value
+		local ir = dz.variables('batt_idle_rate')
+		local batt_min_soc = dz.variables('batt_min_soc').value
 		local DischargeToday = dz.variables('DischargeToday').value
 		local ChargeToday = dz.variables('ChargeToday').value
 		local soc_target = dz.variables('today_soc_target').value
@@ -64,10 +62,12 @@ return {
 			-- manage situations on SOC change:
 			--   1) below 10% up the net power to ensure it stays at 10% (Inverter should handle but still)
 			--   2) when charging and reaching soc target, stop
-			--   3) when going below DischargePerc stop discharging
-			if (dev.percentage <= DischargePerc and tbm.state == 'Discharge') then
-				-- reserve DischargePerc% of the charge for home use (states Idle, Balance but ensure charging happens under DischargePerc% as well)
+			--   3) when going below batt_min_soc stop discharging
+			if (dev.percentage <= batt_min_soc and tbm.state == 'Discharge') then
+				-- reserve batt_min_soc% of the charge for home use (states Idle, Balance but ensure charging happens under batt_min_soc% as well)
 				tbm.switchSelector('Idle')
+				tbm.switchSelector('Off').afterMin(10)
+				tbm.switchOff().aftermin(10)
 			elseif (dev.percentage <= 10 and tbm.state ~= 'Idle') then
 				print('Battery at minimum level, stopping further discharge by forcing idle @ 750W')
 				ir.set(750)
@@ -91,8 +91,7 @@ return {
 				if (batt_soc < soc_target) then
 					-- start the charging because the batt_soc is lower than the soc_target
 					print('Charge setting ESS Setpoint to: '..cr)
-					bat_sp.updateSetPoint(crs)
-					bat_sp.updateSetPoint(cr).afterMin(5)
+					bat_sp.updateSetPoint(cr)
 					new_batt_kwh = ((batt_soc/100) * batt_kwh) + ((soc_target - batt_soc) / 100) * charge_kwh
 					print('Recalculated batt_kwh to: '..new_batt_kwh)
 					dz.variables('batt_kwh').set(tonumber(string.format("%.4f", new_batt_kwh)))
@@ -103,7 +102,7 @@ return {
 			elseif (dev.state == 'Discharge') then 
 				-- Mode Discharge switched on
 				bat_sp.cancelQueuedCommands()
-				if (batt_soc > DischargePerc) then
+				if (batt_soc > batt_min_soc) then
 					print('Discharge setting ESS Setpoint to: '..ir.value)
 					bat_sp.updateSetPoint(drs)
 					bat_sp.updateSetPoint(dr).afterMin(5)

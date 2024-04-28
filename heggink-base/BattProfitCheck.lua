@@ -15,8 +15,8 @@ return {
 		if tbm.state == 'Discharge' then 
 			local bat_sp = dz.devices('ESS Setpoint')
 			local price = dz.devices('Daily Electricity Price').counter
-			local ir = dz.variables('IdleRate').value
-			local eff = dz.variables('BattEfficiency').value
+			local ir = dz.variables('batt_idle_rate').value
+			local eff = dz.variables('batt_efficiency').value
 			local dc_hr = dz.variables('DischargeToday')
 			local batt_kwh = dz.variables('batt_kwh').value
 			local hr = dz.time.hour
