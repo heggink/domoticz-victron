@@ -14,9 +14,11 @@ return {
 	active=true,
 	on = {
 		devices = {'BattScheduleRefresh'},
-		timer = { 'at 15:05', 'at 00:05' }, -- Timer to set charge and discharge schedule for the battery
+		--timer = { 'at 15:05', 'at 00:05' }, -- Timer to set charge and discharge schedule for the battery
+		timer = { 'at 15:05' }, -- Timer to set charge and discharge schedule for the battery
 		httpResponses = { 'domo_sched', },
-		customEvents = { 'TibberRatesUpdated', 'EnergyRatesUpdated' },
+		customEvents = { 'TibberRatesUpdated' },
+		--customEvents = { 'TibberRatesUpdated', 'EnergyRatesUpdated' },
 	},
 	data = { hasrun = { initial = false } },
 	logging = { level = domoticz.LOG_DEBUG, marker = 'BATTSCHEDULE', },
@@ -29,9 +31,9 @@ return {
 		local discharge = true
 		local today = os.date('%Y-%m-%d')
 		local LowRateThreshold = dz.variables('LowRateThreshold').value
-		local BattEfficiency = dz.variables('BattEfficiency').value
+		local batt_efficiency = dz.variables('batt_efficiency').value
 		local DischargeToday = dz.variables('DischargeToday')
-		local DischargePerc = dz.variables('DischargePerc').value
+		local batt_min_soc = dz.variables('batt_min_soc').value
 		local DischargeTomorrow = dz.variables('DischargeTomorrow')
 		local ChargeToday = dz.variables('ChargeToday')
 		local ChargeTomorrow = dz.variables('ChargeTomorrow')
@@ -133,7 +135,7 @@ return {
 				low_hr=string.sub(low_hr,12,13)
 				high_hr=string.sub(high_hr,12,13)
 				print('Found today low of '..low_hr..' and high '..high_hr)
-				if (low_rate < (high_rate * BattEfficiency) and (tonumber(low_hr) < tonumber(high_hr))) then 
+				if (low_rate < (high_rate * batt_efficiency) and (tonumber(low_hr) < tonumber(high_hr))) then 
 					-- profitable slot for a Charge - discharge
 					charge_today = low_hr..":00"
 					discharge_today = high_hr..":00"
@@ -141,6 +143,8 @@ return {
 					dtdr = high_rate
 				else
 					print('No profitable set of charge/discharge so exclude these')
+					ctdr=1000
+					dtdr=1
 				end
 
 				--
@@ -169,7 +173,7 @@ return {
 				low_hr=string.sub(low_hr, 12,13)
 				high_hr=string.sub(high_hr, 12,13)
 				print('Found tomorrow low of '..low_hr..' and high '..high_hr)
-				if (low_rate < (high_rate * BattEfficiency) and (tonumber(low_hr) < tonumber(high_hr))) then 
+				if (low_rate < (high_rate * batt_efficiency) and (tonumber(low_hr) < tonumber(high_hr))) then 
 					-- profitable slot for a Charge - discharge
 					charge_tomorrow=low_hr..":00"
 					discharge_tomorrow=high_hr..":00"
@@ -210,7 +214,7 @@ return {
 				t_size = 4
 				print("Pre-sort")
 				for i,v in ipairs(t) do
-					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..v.rate)
+					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..tostring(v.rate))
 				end
 
 				-- remove unprofitable discharge entries in the current schedule (if any)
@@ -225,7 +229,7 @@ return {
 				table.sort(t, function (k1, k2) return k1.dn < k2.dn end )
 				print("Post-sort")
 				for i,v in ipairs(t) do
-					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..v.rate)
+					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..tostring(v.rate))
 				end
 				-- now we have a table with sorted charge/discharge times for the next 34 hours, Let's make sense of it
 				-- we can support 2 charge/discharge cycles if need be
@@ -300,7 +304,7 @@ return {
 				end
 
 				-- now de/refine the charge strategy
-				-- determine the SOC goal for the a charge: Keep at DischargePerc% (unprofitable cycle) or go for 100% because it's profitable
+				-- determine the SOC goal for the a charge: Keep at batt_min_soc (unprofitable cycle) or go for 100% because it's profitable
 				-- since we removed doubles, we can now only have the following types of cycles:
 				-- C-D-C
 				-- D-C-D
@@ -321,7 +325,7 @@ return {
 				num_states=0
 				print("Post-rationalise")
 				for i,v in ipairs(t) do
-					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..v.rate.." use: "..tostring(v.use) )
+					print("date "..v.ds.." when: "..v.td.." mode "..v.mode.." rate "..tostring(v.rate).." use: "..tostring(v.use) )
 					num_states = num_states+1
 				end
 
@@ -329,14 +333,14 @@ return {
 
 				if num_states == 4 then -- check 2 cycles
 					if t[1].mode == 'C' then
-						if t[1].rate < t[2].rate * BattEfficiency then -- cycle 1
+						if t[1].rate < t[2].rate * batt_efficiency then -- cycle 1
 							--print("profitable charge so soc is 100%")
 							t[1].soc=100
 						else
-							--print("unprofitable charge so soc is DischargePerc%")
-							t[1].soc=DischargePerc
+							--print("unprofitable charge so soc is batt_min_soc")
+							t[1].soc=batt_min_soc
 						end
-						if t[3].rate < t[4].rate * BattEfficiency then -- cycle 2
+						if t[3].rate < t[4].rate * batt_efficiency then -- cycle 2
 							--print("profitable charge so soc is 100%")
 							t[3].soc=100
 						else
@@ -344,12 +348,12 @@ return {
 								t[3].soc=100
 								discharge = false
 							else
-								--print("unprofitable charge so soc is DischargePerc%")
-								t[3].soc=DischargePerc
+								--print("unprofitable charge so soc is batt_min_soc")
+								t[3].soc=batt_min_soc
 							end
 						end
 					else -- we start with a discharge so check the next one to be profitable
-						if t[2].rate < t[3].rate * BattEfficiency then
+						if t[2].rate < t[3].rate * batt_efficiency then
 							--print("profitable charge so soc is 100%")
 							t[2].soc=100
 						else
@@ -357,14 +361,14 @@ return {
 								t[2].soc=100
 								discharge = false
 							else
-								--print("unprofitable charge so soc is DischargePerc%")
-								t[2].soc=DischargePerc
+								--print("unprofitable charge so soc is batt_min_soc")
+								t[2].soc=batt_min_soc
 							end
 						end
 					end
 				else -- 1 full cycle (2 or 3 states) so check the charge bit
 					if t[1].mode == 'C' then
-						if t[1].rate < t[2].rate * BattEfficiency then
+						if t[1].rate < t[2].rate * batt_efficiency then
 							--print("profitable charge so soc is 100%")
 							t[1].soc=100
 						else
@@ -372,8 +376,8 @@ return {
 								t[1].soc=100
 								discharge = false
 							else
-								--print("unprofitable charge so soc is DischargePerc%")
-								t[1].soc=DischargePerc
+								--print("unprofitable charge so soc is batt_min_soc")
+								t[1].soc=batt_min_soc
 							end
 						end
 						if num_states == 3 then -- CDC
@@ -381,7 +385,7 @@ return {
 						end
 					else -- we start with a discharge so check the next one to be profitable
 						if num_states == 3 then -- DCD
-							if t[2].rate < t[3].rate * BattEfficiency then
+							if t[2].rate < t[3].rate * batt_efficiency then
 								--print("profitable charge so soc is 100%")
 								t[2].soc=100
 							else
@@ -389,8 +393,8 @@ return {
 									t[2].soc=100
 									discharge = false
 								else
-									--print("unprofitable charge so soc is DischargePerc%")
-									t[2].soc=DischargePerc
+									--print("unprofitable charge so soc is batt_min_soc")
+									t[2].soc=batt_min_soc
 								end
 							end
 						else -- DC

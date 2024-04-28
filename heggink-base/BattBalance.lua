@@ -26,7 +26,7 @@ return {
 				local sp = dz.devices('ESS Setpoint').setPoint
 				local bat_sp = dz.devices('ESS Setpoint')
 				local batt_soc = dz.devices('Battery SOC').percentage
-				local idle_rate = dz.variables('IdleRate').value
+				local idle_rate = dz.variables('batt_idle_rate').value
 
 				if power > 0 then
 					new_sp = sp - power/3

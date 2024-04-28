@@ -22,8 +22,8 @@ return {
 		local d1 = dz.devices('Delivery L1').actualWatt
 		local d2 = dz.devices('Delivery L2').actualWatt
 		local d3 = dz.devices('Delivery L3').actualWatt
-		local cr = dz.variables('ChargeRate').value
-		local dr = dz.variables('DischargeRate').value
+		local cr = dz.variables('batt_charge_rate').value
+		local dr = dz.variables('batt_discharge_rate').value
 
 		local ess_sp = dz.devices('ESS Setpoint')
 		local state = dz.devices('Battery Mode').state
