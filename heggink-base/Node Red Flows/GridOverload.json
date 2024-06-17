@@ -1,0 +1,229 @@
+[
+    {
+        "id": "05bc2ab263663dde",
+        "type": "group",
+        "z": "8d3b29f48feb985c",
+        "name": "GridOverloadMonitor",
+        "style": {
+            "label": true,
+            "color": "#000000",
+            "fill": "#c8e7a7"
+        },
+        "nodes": [
+            "7fd426c7ab23f005",
+            "5c2e7043235b2a67",
+            "51c59a043f433e82",
+            "aacbe0c5d5d3ed9d",
+            "fd34985efaf8b35c",
+            "e114752a621e3913",
+            "5b32a479be5a725e",
+            "cc6d46e29053cd76",
+            "0460462083e78ff0"
+        ],
+        "x": 14,
+        "y": 1379,
+        "w": 872,
+        "h": 222
+    },
+    {
+        "id": "7fd426c7ab23f005",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "Power Monitor",
+        "func": "let data = context.flow.data;\nlet sp = data[\"ess_setpoint\"] || 0;\nlet original_sp = data[\"original_setpoint\"];\nlet max = context.flow.max_charge_setpoint;\nlet max_phase = context.flow.max_phase_power;\nlet min = -context.flow.max_discharge_setpoint;\nlet idle_rate = context.flow.idle_rate;\nlet adjusted = context.flow.setpoint_adjusted || false;\nlet p1 = data[\"grid_l1_w\"] || 0;\nlet p2 = data[\"grid_l2_w\"] || 0;\nlet p3 = data[\"grid_l3_w\"] || 0;\nlet new_sp = sp;\nlet num_multi = context.flow.number_of_multiplus;\nnode.warn(\"P1, P2, P3 \" + p1 + \" \" + p2 + \" \" + p3)\n//node.warn(\"sp \" + sp)\nnode.warn(\"In Power Monitor, adjusted is \"+adjusted)\n\nif (((p1 > max_phase) || (p2 > max_phase) || (p3 > max_phase)) && (sp > idle_rate))\n{\n    // charge\n    node.warn(\"Charge overload adjust\");\n\tlet highest_phase_power = Math.max(p1,p2,p3);           // phase with the highest load\n\tlet delta = highest_phase_power - max_phase;            // how much over the max for the phase\n\tnew_sp = Math.ceil(sp - (delta * num_multi));           // lower for each inverter as one setpoint for all\n\tnode.warn(\"Diff is \"+delta+\" for a new setpoint of \"+new_sp);\n\tif (new_sp < 0)                                         // lets not switch to a discharge state\n\t{\n\t    new_sp = 1;\n\t}\n\tnode.warn(\"Setting new setpoint now to \"+new_sp);\n\tcontext.flow.setpoint_adjusted = true;\n}\nelse if (((p1 < -max_phase) || (p2 < -max_phase) ||  (p3 < -max_phase)) && (sp < 0)) \n{ \n    // discharge\n    node.warn(\"Discharge overload adjust\");\n\tlet highest_phase_power = Math.min(p1,p2,p3);           // phase with the highest load\n\tlet delta = highest_phase_power + max_phase;            // how much over the max for the phase\n\tnew_sp = Math.floor(sp - (delta * num_multi));          // increase for each inverter as one setpoint for all\n\tif (new_sp > 0)                                         // lets not switch to a charge state\n\t{\n\t    new_sp = -1;\n\t}\n\tnode.warn(\"Setting new setpoint now to \"+new_sp);\n\tcontext.flow.setpoint_adjusted = true;\n}\nelse if (adjusted == true)                                  // the setpoint was adjusted \n{ \n\tif (sp > idle_rate)                                     // charging in an adjusted state\n\t{\n        node.warn(\"In Charge re-adjust\");\n\t\tlet highest_phase_power = Math.max(p1, p2, p3);     // find the phase with the highest power\n\t\tlet delta = max_phase - highest_phase_power;        // see if there is room to adjust\n\t\tnode.warn(\"Delta \"+delta);\n\t \tif (delta > 150)                                    // only adjust if the diff is > 150W\n\t \t{\n\t\t\tnew_sp = Math.ceil(Math.min((sp + (delta * num_multi)), original_sp)); // add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP from \"+sp+\" to \"+new_sp+ \" original was \"+original_sp);\n\t\t\tif (new_sp == original_sp)\n\t\t\t{\n\t\t\t\tcontext.flow.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\tnode.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n\telse if (sp < 0)                                        // discharging in an adjusted stage\n\t{\n        node.warn(\"Discharge re-adjust\")\n\t\tlet highest_phase_power = Math.min(p1, p2, p3);     // find the phase with the highest (negative) power\n\t\tlet delta = -max_phase - highest_phase_power;       // see if there is room to adjust\n\t\tnode.warn(\"Delta \"+delta);\n\t \tif (delta < -150)                                   // only adjust of diff > 150W\n\t \t{\n\t\t\tnew_sp = Math.floor(Math.max((sp - (delta * num_multi)), original_sp)); //add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP to \"+new_sp);\n\t\t\tif (new_sp == original_sp)\n\t\t\t{\n\t\t\t\tcontext.flow.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\tnode.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n}\nnode.warn(\"The end, sp: \"+sp+\" new: \"+new_sp);\n\nif (new_sp != sp)                                           // only adjust of the setpoint has changed\n{\n\tmsg.payload = new_sp;\n\tdata[\"ess_setpoint\"] = new_sp; // this would be handled with the next victron setpoint update but for debugging\n\tnode.warn(\"Setting new setpoint now to \"+new_sp)\n\tcontext.flow.data = data;\n\treturn msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1460,
+        "wires": [
+            [
+                "51c59a043f433e82",
+                "5c2e7043235b2a67",
+                "0460462083e78ff0"
+            ]
+        ]
+    },
+    {
+        "id": "5c2e7043235b2a67",
+        "type": "victron-output-ess",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "service": "com.victronenergy.settings",
+        "path": "/Settings/CGwacs/AcPowerSetPoint",
+        "serviceObj": {
+            "service": "com.victronenergy.settings",
+            "name": "Venus settings"
+        },
+        "pathObj": {
+            "path": "/Settings/CGwacs/AcPowerSetPoint",
+            "type": "integer",
+            "name": "Grid set-point (W)",
+            "writable": true
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 600,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "51c59a043f433e82",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "Grid Overload Adjust",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "aacbe0c5d5d3ed9d",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "Every 10 secs",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1460,
+        "wires": [
+            [
+                "7fd426c7ab23f005"
+            ]
+        ]
+    },
+    {
+        "id": "fd34985efaf8b35c",
+        "type": "victron-input-custom",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "service": "com.victronenergy.settings",
+        "path": "/Settings/CGwacs/AcPowerSetPoint",
+        "serviceObj": {
+            "service": "com.victronenergy.settings",
+            "name": "com.victronenergy.settings"
+        },
+        "pathObj": {
+            "path": "/Settings/CGwacs/AcPowerSetPoint",
+            "name": "/Settings/CGwacs/AcPowerSetPoint",
+            "type": "number"
+        },
+        "name": "Victron Setpoint",
+        "onlyChanges": false,
+        "x": 120,
+        "y": 1560,
+        "wires": [
+            [
+                "5b32a479be5a725e"
+            ]
+        ]
+    },
+    {
+        "id": "e114752a621e3913",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "Victron Setpoint HE",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "5b32a479be5a725e",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "Save original SP",
+        "func": "let data = context.flow.data || {};\nlet adjusted = context.flow.setpoint_adjusted || false;\nlet ess_setpoint = msg.payload\n//node.warn(\"I have \"+data[\"original_setpoint\"])\n\nif (data[\"original_setpoint\"] === undefined)\n{\n    data[\"original_setpoint\"] = ess_setpoint // if original_setpoint is not set then \n                                             //we haven't received one yet so save the current\n    context.flow.data = data\n    node.warn(\"saving original setpoint: \"+ ess_setpoint)\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 1560,
+        "wires": [
+            [
+                "e114752a621e3913"
+            ]
+        ]
+    },
+    {
+        "id": "cc6d46e29053cd76",
+        "type": "http request",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 790,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0460462083e78ff0",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "Log SP adjust to domo log",
+        "func": "let sp = msg.payload;\nlet alert = encodeURIComponent(\"Victron overload adjust to \"+sp)\nmsg.url = \"http://freenas.ubnt:18081/json.htm?type=command&param=addlogmessage&message=\"+alert+\"&level=1\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 1420,
+        "wires": [
+            [
+                "cc6d46e29053cd76"
+            ]
+        ]
+    }
+]

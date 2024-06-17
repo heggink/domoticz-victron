@@ -11,7 +11,7 @@
 -- 	for today, this may be the second cycle but, if not optimal, it will get resolved during optimisation
 -- 
 return {
-	active=true,
+	active=false,
 	on = {
 		devices = {'BattScheduleRefresh'},
 		--timer = { 'at 15:05', 'at 00:05' }, -- Timer to set charge and discharge schedule for the battery
