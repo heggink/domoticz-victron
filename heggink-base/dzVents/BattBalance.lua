@@ -16,11 +16,11 @@ return {
 
 		local bms = dz.devices('Battery Mode').state
 
-		if (bms == 'Balance') then
+		if (bms == 'Grid Balance') then
 			power=dz.devices('Power').usage - dz.devices('Power').usageDelivered
 			if (math.abs(power) > 250) then 
 				-- check if we need to adjust power
-				--print('Power is '..power)
+				dz.log('Power is '..power, dz.LOG_DEBUG)
 				local bm = dz.devices('Battery Mode')
 				local ess_sp = dz.devices('ESS Setpoint')
 				local sp = dz.devices('ESS Setpoint').setPoint
@@ -30,7 +30,7 @@ return {
 
 				if power > 0 then
 					new_sp = sp - power/3
-					--print('ESS Setpoint needs adjusting, power: '..power..' from: '..sp..' to '..new_sp)
+					dz.log('ESS Setpoint needs adjusting, power: '..power..' from: '..sp..' to '..new_sp, dz.LOG_DEBUG)
 					ess_sp.updateSetPoint(new_sp)
 					if (batt_soc <= 10) then -- stop compensating if we are approaching the last 10% SOC
 						bm.switchSelector('Idle')
@@ -38,13 +38,13 @@ return {
 				else
 					if sp < 0 then -- batt is returning power but we are also returning to the net so reduce batt return
 						new_sp = sp - power/3
-						--print('ESS Setpoint needs adjusting, power: '..power..' from: '..sp..' to '..new_sp)
+						dz.log('ESS Setpoint needs adjusting, power: '..power..' from: '..sp..' to '..new_sp, dz.LOG_DEBUG)
 						ess_sp.updateSetPoint(new_sp)
 					else
 						-- this is where we keep the net close to 0 to redirect solar energy into the batt if there is capacity left
 						if batt_soc < 100 then
 							new_sp = sp + math.abs(power)/3
-							--print('ESS Setpoint needs adjusting, power: '..power..' from: '..sp..' to '..new_sp)
+							dz.log('ESS Setpoint needs adjusting, power: '..power..' from: '..sp..' to '..new_sp, dz.LOG_DEBUG)
 							ess_sp.updateSetPoint(new_sp)
 						else
 							-- battery is full then switch to idle_rate

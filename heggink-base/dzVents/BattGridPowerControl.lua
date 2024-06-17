@@ -4,11 +4,11 @@
 -- assumes a 3 phase setup to prevent single phase overload
 --
 return {
-	active = true,
+	active = false,
 	logging = { level = domoticz.LOG_NORMAL, marker = "POWCONTROL" },
 	on = {
 		timer = { 'every minute' },
-		devices = { 'Battery Mode', 'Battery SOC' },
+		devices = { 'Battery State', 'Battery SOC' },
 	},
 	data = {
 	    adjusted = { initial = 0 }
@@ -26,21 +26,21 @@ return {
 		local dr = dz.variables('batt_discharge_rate').value
 
 		local ess_sp = dz.devices('ESS Setpoint')
-		local state = dz.devices('Battery Mode').state
+		local state = dz.devices('Battery State').state
 
 		if (dev.isDevice) then
-			if (dev.name == 'Battery Mode' and (dev.state == 'Charge' or dev.state == 'Discharge')) then
+			if (dev.name == 'Battery State' and (dev.state == 'Charging' or dev.state == 'Discharging')) then
 				-- we just started a (dis)charge cycle so reset the adjusted flag
 				dz.data.adjusted = 0
 				print('Power control: set adjusted to 0 as per Batt Mode')
 			else -- SOC
-				if (dev.name == 'Battery SOC' and dev.percentage > 97.4 and state == 'Charge' and dz.data.adjusted ~= 0) then
+				if (dev.name == 'Battery SOC' and dev.percentage > 97.4 and state == 'Charging' and dz.data.adjusted ~= 0) then
 					-- we are at the end of a charge cycle so power will be managed externally. Let's not interfere
 					dz.data.adjusted = 0
 					print('Power control: set adjusted to 0 as we reached 90% SOC')
 				end
 			end
-		elseif (state == 'Charge') then
+		elseif (state == 'Charging') then
 			if (u1 > 5500 or u2 > 5500 or u3 > 5500) then 
 				-- charging but power too high, let's reduce our setpoint
 				dz.data.adjusted = 1
@@ -65,7 +65,7 @@ return {
 					print('Grid load within acceptable parameters '..u1..' , '..u2..' , '..u3)
 				end
 			end
-		elseif (state == 'Discharge') then
+		elseif (state == 'Discharging') then
 			if (d1 > 5500 or d2 > 5500 or d3 > 5500) then 
 				-- discharging but power too high, let's reduce our setpoint
 				dz.data.adjusted = 1
