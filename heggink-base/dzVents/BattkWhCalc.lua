@@ -32,8 +32,8 @@ return {
 				dz.data.bsl = batt_soc_now
 				batt_kwh.set(new_batt_kwh)
 			end
-			dz.data.lp = price
 		end
+		dz.data.lp = price
 	end
 }
 
