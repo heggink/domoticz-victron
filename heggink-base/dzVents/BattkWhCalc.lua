@@ -29,10 +29,10 @@ return {
 				new_batt_kwh = (batt_kwh_value * batt_soc_last + last_price * delta) / batt_soc_now
 				new_batt_kwh = math.floor(new_batt_kwh*10000)/10000
 				dz.log("new_batt_kwh: "..new_batt_kwh)
-				dz.data.bsl = batt_soc_now
 				batt_kwh.set(new_batt_kwh)
 			end
 		end
+		dz.data.bsl = batt_soc_now
 		dz.data.lp = price
 	end
 }
