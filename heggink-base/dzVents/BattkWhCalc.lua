@@ -2,7 +2,7 @@ return {
 	active = true,
 	on = {
 		devices = { 'testknop' },
-		timer = { 'every hour'  }, -- every hour
+		timer = { 'at *:01'  }, -- every hour
 	},
 	logging = { level = domoticz.LOG_DEBUG, marker = 'BATTKWH', },
 	data = { 
