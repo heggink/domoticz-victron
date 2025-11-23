@@ -60,12 +60,15 @@
             "9110010eb1c02a9a",
             "8737b4838e1bb454",
             "2dfd1c28c2ca0ebc",
-            "59ae98953f9b69cd"
+            "59ae98953f9b69cd",
+            "710801df7a9dc15f",
+            "8973442a5c9052aa",
+            "f8de4ba8bb88da0f"
         ],
         "x": 14,
-        "y": 179,
+        "y": 159,
         "w": 752,
-        "h": 882
+        "h": 902
     },
     {
         "id": "9e46f3329af496ae",
@@ -125,12 +128,14 @@
         "nodes": [
             "b970c5ce031efaf2",
             "f7961f09c8a35b9c",
-            "0ab475386efa005d"
+            "0ab475386efa005d",
+            "20679d9650260f27",
+            "3391833f0a3beec6"
         ],
         "x": 814,
         "y": 19,
-        "w": 452,
-        "h": 82
+        "w": 652,
+        "h": 122
     },
     {
         "id": "cf8892e230473d3f",
@@ -222,7 +227,7 @@
             "4770b54da60b48b5"
         ],
         "x": 814,
-        "y": 119,
+        "y": 199,
         "w": 532,
         "h": 182
     },
@@ -496,8 +501,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 495.7142791748047,
-        "y": 125.71427345275879,
+        "x": 520,
+        "y": 120,
         "wires": [
             [
                 "f5afc04bb91610ad"
@@ -528,7 +533,8 @@
             [
                 "adaadd6d82d8cc31",
                 "204606df936ba45a",
-                "7e3ce011ce905df4"
+                "7e3ce011ce905df4",
+                "f8de4ba8bb88da0f"
             ]
         ]
     },
@@ -603,7 +609,7 @@
         "finalize": "",
         "libs": [],
         "x": 1000,
-        "y": 160,
+        "y": 240,
         "wires": [
             [
                 "f456fb721ca671d5"
@@ -653,7 +659,8 @@
         "y": 720,
         "wires": [
             [
-                "2638424905d9e622"
+                "2638424905d9e622",
+                "8973442a5c9052aa"
             ]
         ]
     },
@@ -694,7 +701,7 @@
         "expiry": "",
         "broker": "ee1bb25c871ce5fc",
         "x": 1020,
-        "y": 220,
+        "y": 300,
         "wires": []
     },
     {
@@ -712,7 +719,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1010,
-        "y": 260,
+        "y": 340,
         "wires": []
     },
     {
@@ -798,7 +805,8 @@
         "y": 400,
         "wires": [
             [
-                "534bcc84ed2012b1"
+                "534bcc84ed2012b1",
+                "710801df7a9dc15f"
             ]
         ]
     },
@@ -891,11 +899,11 @@
         "type": "victron-input-temperature",
         "z": "8d3b29f48feb985c",
         "g": "b699493a4e613ac0",
-        "service": "com.victronenergy.temperature/24",
+        "service": "com.victronenergy.temperature/26",
         "path": "/Temperature",
         "serviceObj": {
-            "service": "com.victronenergy.temperature/24",
-            "name": "Temp_1"
+            "service": "com.victronenergy.temperature/26",
+            "name": "TEMP CEIL"
         },
         "pathObj": {
             "path": "/Temperature",
@@ -918,11 +926,11 @@
         "type": "victron-input-temperature",
         "z": "8d3b29f48feb985c",
         "g": "b699493a4e613ac0",
-        "service": "com.victronenergy.temperature/24",
+        "service": "com.victronenergy.temperature/25",
         "path": "/Temperature",
         "serviceObj": {
-            "service": "com.victronenergy.temperature/24",
-            "name": "Temp_1"
+            "service": "com.victronenergy.temperature/25",
+            "name": "TEMP LYNX"
         },
         "pathObj": {
             "path": "/Temperature",
@@ -949,7 +957,7 @@
         "path": "/Temperature",
         "serviceObj": {
             "service": "com.victronenergy.temperature/24",
-            "name": "Temp_1"
+            "name": "TEMP SHUNT"
         },
         "pathObj": {
             "path": "/Temperature",
@@ -1044,14 +1052,14 @@
         "z": "8d3b29f48feb985c",
         "g": "b362b271c03a0415",
         "name": "Startup Function",
-        "func": "let discovery_topic = \"victron\";\nlet root_topic = \"my_victron\";\ncontext.flow.batt_capacity = 60000; //Wh\ncontext.flow.max_charge_setpoint = 10000; //3000=90.7% see efficiency chart \ncontext.flow.max_discharge_setpoint = 10000; //4126=90.8, 4750 = 89.6\ncontext.flow.number_of_multiplus = 3;\ncontext.flow.min_soc = 10;\ncontext.flow.max_soc = 100; //Because we use a smartshunt and specified 55.2V as 100% (=90%)\ncontext.flow.idle_rate = 0;\ncontext.flow.setpoint_adjusted = false;\ncontext.flow.max_phase_power = 5550;\n//context.flow.max_phase_power = 4000;\ncontext.flow.data = {};\n\nlet pobject = [\n    //\"name\": [\"object_type\", \"varname\", \"unique_id\", \"payload_on/unit\", \"payload_off\", \"step\"],\n\n    //Setpoint\n    //{ \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-5000|5000\", 100] },\n    { \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-12000|12000\", 100] },\n\n    //Switches\n    { \"ESS Control Mode\": [\"select\", \"ess_mode\", \"0x8000000001\", \"Mode 1|Mode 2\", \"\", 0] },\n    { \"Battery Mode\": [\"select\", \"batt_mode\", \"0x800000000E\", \"Off|Idle|Charge|Discharge|Grid Balance|IQ Smart Mode|Solar Charge|Manual\", \"\", 0] },\n    { \"Battery State\": [\"select\", \"batt_state\", \"0x8000000014\", \"Off|Idle|Charging|Discharging\", \"\", 0] },\n    { \"MP2 On/Off state\": [\"switch\", \"mp2_switch_position\", \"0x800000000F\", \"On\", \"Off\", 0] },\n\n    //Sensors\n    { \"Battery Percentage\": [\"sensor\", \"batt_soc\", \"0x8000000003\", \"%\", \"\", 0] },\n    { \"Battery Voltage\": [\"sensor\", \"batt_voltage\", \"0x8000000004\", \"V\", \"\", 0] },\n    { \"Battery Amps\": [\"sensor\", \"batt_amps\", \"0x8000000005\", \"A\", \"\", 0] },\n    { \"Battery Temperature\": [\"sensor\", \"batt_temp\", \"0x800000000D\", \"\\u00b0c\", \"\", 0] },\n    { \"ET340 L1 Watt\": [\"sensor\", \"grid_l1_w\", \"0x8000000006\", \"W\", \"\", 0] },\n    { \"ET340 L2 Watt\": [\"sensor\", \"grid_l2_w\", \"0x8000000007\", \"W\", \"\", 0] },\n    { \"ET340 L3 Watt\": [\"sensor\", \"grid_l3_w\", \"0x8000000008\", \"W\", \"\", 0] },\n    { \"ET340 Total Watt\": [\"sensor\", \"grid_total_w\", \"0x8000000108\", \"W\", \"\", 0] },\n    { \"Battery Capacity\": [\"sensor\", \"batt_capacity\", \"0x8000000012\", \"W\", \"\", 0] },\n    { \"Battery Charged kWh\": [\"sensor\", \"batt_charged_kwh\", \"0x8000000015_power\", \"kWh\", \"\", 0] },\n    { \"Battery Charged W\": [\"sensor\", \"batt_charged_w\", \"0x8000000015_energy\", \"W\", \"\", 0] },\n    { \"Battery Discharged kWh\": [\"sensor\", \"batt_discharged_kwh\", \"0x8000000016_power\", \"kWh\", \"\", 0] },\n    { \"Battery Discharged W\": [\"sensor\", \"batt_discharged_w\", \"0x8000000016_energy\", \"W\", \"\", 0] },\n    { \"MP2 AC-In kWh\": [\"sensor\", \"inv_acin_kwh\", \"0x8000000017_power\", \"kWh\", \"\", 0] },\n    { \"MP2 AC-In Charged W\": [\"sensor\", \"inv_acin_w\", \"0x8000000017_energy\", \"W\", \"\", 0] },\n\n    //Temperatures\n    { \"Ceil Temp\": [\"sensor\", \"temp_1\", \"0x8000000009\", \"\\u00b0c\", \"\", 0] },\n    { \"Lynx Temp\": [\"sensor\", \"temp_2\", \"0x800000000A\", \"\\u00b0c\", \"\", 0] },\n    { \"Shunt Temp\": [\"sensor\", \"temp_3\", \"0x800000000B\", \"\\u00b0c\", \"\", 0] },\n    \n    //Text\n    { \"ESS Charge State\": [\"sensor\", \"charge_state\", \"0x800000000C\", \"text\", \"\", 0] },\n];\n\nfunction createBinaryObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createLightObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSelectObject(root, name, varname, unique_id, select_options)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n\n    vjson[\"options\"] = [];\n    select_options.split(\"|\").forEach(function (item) {\n        vjson[\"options\"].push(item);\n    });\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createNumberObject(root, name, varname, unique_id, step = 1)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"step\"] = step;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson\n}\n\nfunction createClimateObject(root, name, varname, unique_id, unit_of_measurement, min_value = 6.5, max_value = 35.0, step_size = 1.0)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"temp_stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"temp_unit\"] = unit_of_measurement;\n    vjson[\"temp_cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"temp_stat_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    vjson[\"temp_step\"] = step_size;\n    vjson[\"min_temp\"] = min_value;\n    vjson[\"max_temp\"] = max_value;\n    return vjson\n}\n\nnode.log(\"Flow Initialisation\");\n\npobject.forEach((vvar) => {\n    let name = Object.keys(vvar)[0];\n    let vobj = vvar[Object.keys(vvar)];\n    let object_type = vobj[0]\n    let varname = vobj[1]\n    let unique_id = vobj[2]\n\n    let jobj = null\n    if (object_type == \"light\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"switch\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"binary_sensor\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createBinaryObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"select\") {\n        let soptions = vobj[3]\n        jobj = createSelectObject(root_topic, name, varname, unique_id, soptions);\n    }\n    else if (object_type == \"number\") {\n        let step = vobj[5]\n        jobj = createNumberObject(root_topic, name, varname, unique_id, step);\n    }\n    else if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj[3]\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n    else if (object_type == \"climate\") {\n        let unit_of_measurement = vobj[3]\n        let minmax = vobj[4];\n        let step_size = vobj[5]\n\n        let min_value = 6.5;\n        let max_value = 35;\n        let sresults = minmax.split(\"|\");\n        if (sresults.length == 2) {\n            min_value = parseFloat(sresults[0]);\n            max_value = parseFloat(sresults[1]);\n        }\n\n        jobj = createClimateObject(root_topic, name, varname, unique_id, unit_of_measurement, min_value, max_value, step_size);\n    }\n\n    if (jobj != null) {\n        if (unique_id.indexOf(\"_\") != -1)\n        {\n            unique_id = unique_id.split(\"_\")[0];\n        }\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.log(\"publishing config ->: \" + dtopic);\n\n        msg.payload = jobj;\n        msg.topic = dtopic;\n        msg.retain = true;\n        node.send(msg);\n    }\n});\nreturn null;",
+        "func": "let discovery_topic = \"victron\";\nlet root_topic = \"my_victron\";\ncontext.flow.batt_capacity = 60000; //Wh\ncontext.flow.max_charge_setpoint = 10000; //3000=90.7% see efficiency chart \ncontext.flow.max_discharge_setpoint = 10000; //4126=90.8, 4750 = 89.6\ncontext.flow.number_of_multiplus = 3;\ncontext.flow.min_soc = 10;\ncontext.flow.max_soc = 100; //Because we use a smartshunt and specified 55.2V as 100% (=90%)\ncontext.flow.idle_rate = 110;\ncontext.flow.setpoint_adjusted = false;\ncontext.flow.max_phase_power = 5550;\n//context.flow.max_phase_power = 4000;\ncontext.flow.data = {};\n\nlet pobject = [\n    //\"name\": [\"object_type\", \"varname\", \"unique_id\", \"payload_on/unit\", \"payload_off\", \"step\"],\n\n    //Setpoint\n    //{ \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-5000|5000\", 100] },\n    { \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-12000|12000\", 100] },\n\n    //Switches\n    { \"ESS Control Mode\": [\"select\", \"ess_mode\", \"0x8000000001\", \"Mode 1|Mode 2\", \"\", 0] },\n    { \"Battery Mode\": [\"select\", \"batt_mode\", \"0x800000000E\", \"Off|Idle|Charge|Discharge|Grid Balance|IQ Smart Mode|Solar Charge|Manual\", \"\", 0] },\n    { \"Battery State\": [\"select\", \"batt_state\", \"0x8000000014\", \"Off|Idle|Charging|Discharging\", \"\", 0] },\n    { \"MP2 On/Off state\": [\"switch\", \"mp2_switch_position\", \"0x800000000F\", \"On\", \"Off\", 0] },\n\n    //Sensors\n    { \"Battery Percentage\": [\"sensor\", \"batt_soc\", \"0x8000000003\", \"%\", \"\", 0] },\n    { \"Battery Voltage\": [\"sensor\", \"batt_voltage\", \"0x8000000004\", \"V\", \"\", 0] },\n    { \"Battery Amps\": [\"sensor\", \"batt_amps\", \"0x8000000005\", \"A\", \"\", 0] },\n    { \"Battery Temperature\": [\"sensor\", \"batt_temp\", \"0x800000000D\", \"\\u00b0c\", \"\", 0] },\n    { \"ET340 L1 Watt\": [\"sensor\", \"grid_l1_w\", \"0x8000000006\", \"W\", \"\", 0] },\n    { \"ET340 L2 Watt\": [\"sensor\", \"grid_l2_w\", \"0x8000000007\", \"W\", \"\", 0] },\n    { \"ET340 L3 Watt\": [\"sensor\", \"grid_l3_w\", \"0x8000000008\", \"W\", \"\", 0] },\n    { \"ET340 Total Watt\": [\"sensor\", \"grid_total_w\", \"0x8000000108\", \"W\", \"\", 0] },\n    { \"Battery Capacity\": [\"sensor\", \"batt_capacity\", \"0x8000000012\", \"W\", \"\", 0] },\n    { \"Battery Charged kWh\": [\"sensor\", \"batt_charged_kwh\", \"0x8000000015_power\", \"kWh\", \"\", 0] },\n    { \"Battery Charged W\": [\"sensor\", \"batt_charged_w\", \"0x8000000015_energy\", \"W\", \"\", 0] },\n    { \"Battery Discharged kWh\": [\"sensor\", \"batt_discharged_kwh\", \"0x8000000016_power\", \"kWh\", \"\", 0] },\n    { \"Battery Discharged W\": [\"sensor\", \"batt_discharged_w\", \"0x8000000016_energy\", \"W\", \"\", 0] },\n    { \"MP2 AC-In kWh\": [\"sensor\", \"inv_acin_kwh\", \"0x8000000017_power\", \"kWh\", \"\", 0] },\n    { \"MP2 AC-In Charged W\": [\"sensor\", \"inv_acin_w\", \"0x8000000017_energy\", \"W\", \"\", 0] },\n\n    //Temperatures\n    { \"Ceil Temp\": [\"sensor\", \"temp_1\", \"0x8000000009\", \"\\u00b0c\", \"\", 0] },\n    { \"Lynx Temp\": [\"sensor\", \"temp_2\", \"0x800000000A\", \"\\u00b0c\", \"\", 0] },\n    { \"Shunt Temp\": [\"sensor\", \"temp_3\", \"0x800000000B\", \"\\u00b0c\", \"\", 0] },\n    \n    //Text\n    { \"ESS Charge State\": [\"sensor\", \"charge_state\", \"0x800000000C\", \"text\", \"\", 0] },\n];\n\nfunction createBinaryObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createLightObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSelectObject(root, name, varname, unique_id, select_options)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n\n    vjson[\"options\"] = [];\n    select_options.split(\"|\").forEach(function (item) {\n        vjson[\"options\"].push(item);\n    });\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createNumberObject(root, name, varname, unique_id, step = 1)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"step\"] = step;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson\n}\n\nfunction createClimateObject(root, name, varname, unique_id, unit_of_measurement, min_value = 6.5, max_value = 35.0, step_size = 1.0)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"temp_stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"temp_unit\"] = unit_of_measurement;\n    vjson[\"temp_cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"temp_stat_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    vjson[\"temp_step\"] = step_size;\n    vjson[\"min_temp\"] = min_value;\n    vjson[\"max_temp\"] = max_value;\n    return vjson\n}\n\nnode.log(\"Flow Initialisation\");\n\npobject.forEach((vvar) => {\n    let name = Object.keys(vvar)[0];\n    let vobj = vvar[Object.keys(vvar)];\n    let object_type = vobj[0]\n    let varname = vobj[1]\n    let unique_id = vobj[2]\n\n    let jobj = null\n    if (object_type == \"light\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"switch\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"binary_sensor\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createBinaryObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"select\") {\n        let soptions = vobj[3]\n        jobj = createSelectObject(root_topic, name, varname, unique_id, soptions);\n    }\n    else if (object_type == \"number\") {\n        let step = vobj[5]\n        jobj = createNumberObject(root_topic, name, varname, unique_id, step);\n    }\n    else if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj[3]\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n    else if (object_type == \"climate\") {\n        let unit_of_measurement = vobj[3]\n        let minmax = vobj[4];\n        let step_size = vobj[5]\n\n        let min_value = 6.5;\n        let max_value = 35;\n        let sresults = minmax.split(\"|\");\n        if (sresults.length == 2) {\n            min_value = parseFloat(sresults[0]);\n            max_value = parseFloat(sresults[1]);\n        }\n\n        jobj = createClimateObject(root_topic, name, varname, unique_id, unit_of_measurement, min_value, max_value, step_size);\n    }\n\n    if (jobj != null) {\n        if (unique_id.indexOf(\"_\") != -1)\n        {\n            unique_id = unique_id.split(\"_\")[0];\n        }\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.log(\"publishing config ->: \" + dtopic);\n\n        msg.payload = jobj;\n        msg.topic = dtopic;\n        msg.retain = true;\n        node.send(msg);\n    }\n});\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1100,
+        "x": 1300,
         "y": 60,
         "wires": [
             [
@@ -1118,7 +1126,7 @@
         "g": "b699493a4e613ac0",
         "name": "",
         "group": "482140b3ae8976c9",
-        "order": 6,
+        "order": 8,
         "width": "0",
         "height": "0",
         "label": "Battery Voltage",
@@ -1568,7 +1576,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 1200,
-        "y": 160,
+        "y": 240,
         "wires": [
             [
                 "1bca7eebfc757294"
@@ -1606,7 +1614,7 @@
             "ebe17b0997dc5121"
         ],
         "x": 855,
-        "y": 160,
+        "y": 240,
         "wires": [
             [
                 "ca79c962a3071fd7"
@@ -1638,7 +1646,7 @@
             "171e2947b5815a6e",
             "3d121fa88daf71a5"
         ],
-        "x": 1225,
+        "x": 1425,
         "y": 60,
         "wires": []
     },
@@ -1662,7 +1670,7 @@
             "c07a24ed25d071fe"
         ],
         "x": 855,
-        "y": 220,
+        "y": 300,
         "wires": [
             [
                 "52ee5cac291f0139",
@@ -1682,7 +1690,7 @@
             "3d121fa88daf71a5"
         ],
         "x": 1305,
-        "y": 160,
+        "y": 240,
         "wires": []
     },
     {
@@ -1697,7 +1705,7 @@
             "3d121fa88daf71a5"
         ],
         "x": 1155,
-        "y": 200,
+        "y": 280,
         "wires": []
     },
     {
@@ -1944,7 +1952,7 @@
         "name": "Version 1.07",
         "info": "Last edited: 2024-04-27\n- Fixed Basen Batt Temp",
         "x": 890,
-        "y": 360,
+        "y": 440,
         "wires": []
     },
     {
@@ -2985,7 +2993,7 @@
         "z": "8d3b29f48feb985c",
         "g": "05bc2ab263663dde",
         "name": "Power Monitor",
-        "func": "let data = context.flow.data;\nlet sp = data[\"ess_setpoint\"] || 0;\nlet original_sp = data[\"original_setpoint\"];\nlet max = context.flow.max_charge_setpoint;\nlet max_phase = context.flow.max_phase_power;\nlet min = -context.flow.max_discharge_setpoint;\nlet idle_rate = context.flow.idle_rate;\nlet adjusted = context.flow.setpoint_adjusted || false;\nlet p1 = data[\"grid_l1_w\"] || 0;\nlet p2 = data[\"grid_l2_w\"] || 0;\nlet p3 = data[\"grid_l3_w\"] || 0;\nlet new_sp = sp;\nlet num_multi = context.flow.number_of_multiplus;\nnode.warn(\"P1, P2, P3 \" + p1 + \" \" + p2 + \" \" + p3)\n//node.warn(\"sp \" + sp)\nnode.warn(\"In Power Monitor, adjusted is \"+adjusted)\n\nif (((p1 > max_phase) || (p2 > max_phase) || (p3 > max_phase)) && (sp > idle_rate))\n{\n    // charge\n    node.warn(\"Charge overload adjust\");\n\tlet highest_phase_power = Math.max(p1,p2,p3);           // phase with the highest load\n\tlet delta = highest_phase_power - max_phase;            // how much over the max for the phase\n\tnew_sp = Math.ceil(sp - (delta * num_multi));           // lower for each inverter as one setpoint for all\n\tnode.warn(\"Diff is \"+delta+\" for a new setpoint of \"+new_sp);\n\tif (new_sp < 0)                                         // lets not switch to a discharge state\n\t{\n\t    new_sp = 1;\n\t}\n\tnode.warn(\"Setting new setpoint now to \"+new_sp);\n\tcontext.flow.setpoint_adjusted = true;\n}\nelse if (((p1 < -max_phase) || (p2 < -max_phase) ||  (p3 < -max_phase)) && (sp < 0)) \n{ \n    // discharge\n    node.warn(\"Discharge overload adjust\");\n\tlet highest_phase_power = Math.min(p1,p2,p3);           // phase with the highest load\n\tlet delta = highest_phase_power + max_phase;            // how much over the max for the phase\n\tnew_sp = Math.floor(sp - (delta * num_multi));          // increase for each inverter as one setpoint for all\n\tif (new_sp > 0)                                         // lets not switch to a charge state\n\t{\n\t    new_sp = -1;\n\t}\n\tnode.warn(\"Setting new setpoint now to \"+new_sp);\n\tcontext.flow.setpoint_adjusted = true;\n}\nelse if (adjusted == true)                                  // the setpoint was adjusted \n{ \n\tif (sp > idle_rate)                                     // charging in an adjusted state\n\t{\n        node.warn(\"In Charge re-adjust\");\n\t\tlet highest_phase_power = Math.max(p1, p2, p3);     // find the phase with the highest power\n\t\tlet delta = max_phase - highest_phase_power;        // see if there is room to adjust\n\t\tnode.warn(\"Delta \"+delta);\n\t \tif (delta > 150)                                    // only adjust if the diff is > 150W\n\t \t{\n\t\t\tnew_sp = Math.ceil(Math.min((sp + (delta * num_multi)), original_sp)); // add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP from \"+sp+\" to \"+new_sp+ \" original was \"+original_sp);\n\t\t\tif (new_sp == original_sp)\n\t\t\t{\n\t\t\t\tcontext.flow.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\tnode.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n\telse if (sp < 0)                                        // discharging in an adjusted stage\n\t{\n        node.warn(\"Discharge re-adjust\")\n\t\tlet highest_phase_power = Math.min(p1, p2, p3);     // find the phase with the highest (negative) power\n\t\tlet delta = -max_phase - highest_phase_power;       // see if there is room to adjust\n\t\tnode.warn(\"Delta \"+delta);\n\t \tif (delta < -150)                                   // only adjust of diff > 150W\n\t \t{\n\t\t\tnew_sp = Math.floor(Math.max((sp - (delta * num_multi)), original_sp)); //add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP to \"+new_sp);\n\t\t\tif (new_sp == original_sp)\n\t\t\t{\n\t\t\t\tcontext.flow.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\tnode.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n}\nnode.warn(\"The end, sp: \"+sp+\" new: \"+new_sp);\n\nif (new_sp != sp)                                           // only adjust of the setpoint has changed\n{\n\tmsg.payload = new_sp;\n\tdata[\"ess_setpoint\"] = new_sp; // this would be handled with the next victron setpoint update but for debugging\n\tnode.warn(\"Setting new setpoint now to \"+new_sp)\n\tcontext.flow.data = data;\n\treturn msg;\n}",
+        "func": "let data = context.flow.data;\nlet sp = data[\"ess_setpoint\"] || 0;\nlet original_sp = data[\"original_setpoint\"];\nlet max = context.flow.max_charge_setpoint;\nlet max_phase = context.flow.max_phase_power;\nlet min = -context.flow.max_discharge_setpoint;\nlet idle_rate = context.flow.idle_rate;\nlet adjusted = context.flow.setpoint_adjusted || false;\nlet p1 = data[\"grid_l1_w\"] || 0;\nlet p2 = data[\"grid_l2_w\"] || 0;\nlet p3 = data[\"grid_l3_w\"] || 0;\nlet new_sp = sp;\nlet num_multi = context.flow.number_of_multiplus;\nnode.warn(\"P1, P2, P3 \" + p1 + \" \" + p2 + \" \" + p3)\n//node.warn(\"sp \" + sp)\nnode.warn(\"In Power Monitor, adjusted is \"+adjusted)\n\nif (((p1 > max_phase) || (p2 > max_phase) || (p3 > max_phase)) && (sp > idle_rate))\n{\n    // charge\n    node.warn(\"Charge overload adjust\");\n\tlet highest_phase_power = Math.max(p1,p2,p3);           // phase with the highest load\n\tlet delta = highest_phase_power - max_phase;            // how much over the max for the phase\n\tnew_sp = Math.ceil(sp - (delta * num_multi));           // lower for each inverter as one setpoint for all\n\tnode.warn(\"Diff is \"+delta+\" for a new setpoint of \"+new_sp);\n\tif (new_sp < 0)                                         // lets not switch to a discharge state\n\t{\n\t    new_sp = 1;\n\t}\n\tnode.warn(\"Setting new setpoint now to \"+new_sp);\n\tcontext.flow.setpoint_adjusted = true;\n}\nelse if (((p1 < -max_phase) || (p2 < -max_phase) ||  (p3 < -max_phase)) && (sp < 0)) \n{ \n    // discharge\n    node.warn(\"Discharge overload adjust\");\n\tlet highest_phase_power = Math.min(p1,p2,p3);           // phase with the highest load\n\tlet delta = highest_phase_power + max_phase;            // how much over the max for the phase\n\tnew_sp = Math.floor(sp - (delta * num_multi));          // increase for each inverter as one setpoint for all\n\tif (new_sp > 0)                                         // lets not switch to a charge state\n\t{\n\t    new_sp = -1;\n\t}\n\tnode.warn(\"Setting new setpoint now to \"+new_sp);\n\tcontext.flow.setpoint_adjusted = true;\n}\nelse if (adjusted == true)                                  // the setpoint was adjusted \n{ \n\tif (sp > idle_rate)                                     // charging in an adjusted state\n\t{\n        node.warn(\"In Charge re-adjust\");\n\t\tlet highest_phase_power = Math.max(p1, p2, p3);     // find the phase with the highest power\n\t\tlet delta = max_phase - highest_phase_power;        // see if there is room to adjust\n\t\tnode.warn(\"Delta \"+delta);\n\t \tif (delta > 150)                                    // only adjust if the diff is > 150W\n\t \t{\n\t\t\tnew_sp = Math.ceil(Math.min((sp + (delta * num_multi)), original_sp)); // add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP from \"+sp+\" to \"+new_sp+ \" original was \"+original_sp);\n\t\t\tif (new_sp == original_sp)\n\t\t\t{\n\t\t\t\tcontext.flow.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\tnode.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n\telse if (sp < 0)                                        // discharging in an adjusted stage\n\t{\n        node.warn(\"Discharge re-adjust\")\n\t\tlet highest_phase_power = Math.min(p1, p2, p3);     // find the phase with the highest (negative) power\n\t\tlet delta = -max_phase - highest_phase_power;       // see if there is room to adjust\n\t\tnode.warn(\"Delta \"+delta);\n\t \tif (delta < -150)                                   // only adjust of diff > 150W\n\t \t{\n\t\t\tnew_sp = Math.floor(Math.max((sp + (delta * num_multi)), original_sp)); //add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP to \"+new_sp);\n\t\t\tif (new_sp == original_sp)\n\t\t\t{\n\t\t\t\tcontext.flow.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\tnode.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n}\nnode.warn(\"The end, sp: \"+sp+\" new: \"+new_sp);\n\nif (new_sp != sp)                                           // only adjust of the setpoint has changed\n{\n\tmsg.payload = new_sp;\n\tdata[\"ess_setpoint\"] = new_sp; // this would be handled with the next victron setpoint update but for debugging\n\tnode.warn(\"Setting new setpoint now to \"+new_sp)\n\tcontext.flow.data = data;\n\treturn msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3079,7 +3087,7 @@
         "z": "8d3b29f48feb985c",
         "g": "9e46f3329af496ae",
         "name": "New SP received",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3195,6 +3203,138 @@
         "wires": [
             [
                 "cc6d46e29053cd76"
+            ]
+        ]
+    },
+    {
+        "id": "710801df7a9dc15f",
+        "type": "ui_text",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "482140b3ae8976c9",
+        "order": 6,
+        "width": "6",
+        "height": "1",
+        "name": "Amps",
+        "label": "",
+        "format": "{{msg.payload}} Amps",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Verdana,Verdana,Geneva,sans-serif",
+        "fontSize": 16,
+        "color": "#f34f96",
+        "x": 390,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8973442a5c9052aa",
+        "type": "ui_text",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "482140b3ae8976c9",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "Charger state",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Verdana,Verdana,Geneva,sans-serif",
+        "fontSize": 16,
+        "color": "#eeff00",
+        "x": 420,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "f8de4ba8bb88da0f",
+        "type": "ui_chart",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "Setpoint chart",
+        "group": "482140b3ae8976c9",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "label": "Setpoint",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 420,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20679d9650260f27",
+        "type": "mqtt in",
+        "z": "8d3b29f48feb985c",
+        "g": "b362b271c03a0415",
+        "name": "",
+        "topic": "domoticz/startup",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 940,
+        "y": 100,
+        "wires": [
+            [
+                "3391833f0a3beec6"
+            ]
+        ]
+    },
+    {
+        "id": "3391833f0a3beec6",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "b362b271c03a0415",
+        "name": "true",
+        "func": "if (msg.payload == true)\n    return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1090,
+        "y": 100,
+        "wires": [
+            [
+                "b970c5ce031efaf2"
             ]
         ]
     },
