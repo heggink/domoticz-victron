@@ -1189,7 +1189,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 130,
+        "x": 110,
         "y": 2240,
         "wires": [
             [
@@ -1203,7 +1203,7 @@
         "type": "switch",
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
-        "name": "On or Off",
+        "name": "Switch modes",
         "property": "payload",
         "propertyType": "msg",
         "rules": [
@@ -3518,7 +3518,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 235,
+        "x": 215,
         "y": 2240,
         "wires": [],
         "l": false
