@@ -66,9 +66,9 @@
             "f8de4ba8bb88da0f"
         ],
         "x": 14,
-        "y": 159,
+        "y": 359,
         "w": 752,
-        "h": 902
+        "h": 882
     },
     {
         "id": "9e46f3329af496ae",
@@ -89,31 +89,10 @@
             "442445439b3c1314",
             "d8b87ec184ee0386"
         ],
-        "x": 9.714279174804688,
-        "y": 19,
-        "w": 756.2857208251953,
-        "h": 147.7142734527588
-    },
-    {
-        "id": "4e81c5843dbf8388",
-        "type": "group",
-        "z": "8d3b29f48feb985c",
-        "name": "Adjust charge parameters near the end",
-        "style": {
-            "fill": "#b797cf",
-            "label": true,
-            "color": "#ffffff"
-        },
-        "nodes": [
-            "0ad7778e5245b705",
-            "f5bcbf2f2965ce28",
-            "bb86db4c0ab76465",
-            "708341a448d41921"
-        ],
         "x": 14,
-        "y": 1839,
-        "w": 972,
-        "h": 122
+        "y": 179,
+        "w": 952,
+        "h": 162
     },
     {
         "id": "b362b271c03a0415",
@@ -130,12 +109,13 @@
             "f7961f09c8a35b9c",
             "0ab475386efa005d",
             "20679d9650260f27",
-            "3391833f0a3beec6"
+            "3391833f0a3beec6",
+            "69a2629d096d7a9c"
         ],
-        "x": 814,
+        "x": 14,
         "y": 19,
-        "w": 652,
-        "h": 122
+        "w": 632,
+        "h": 142
     },
     {
         "id": "cf8892e230473d3f",
@@ -154,7 +134,7 @@
             "40bc446b3c9032c2"
         ],
         "x": 14,
-        "y": 1979,
+        "y": 1959,
         "w": 632,
         "h": 122
     },
@@ -174,37 +154,38 @@
             "3ffa4b90340a450b",
             "5b3acf804ca416d1",
             "fb69601b138e6096",
-            "82ca122bcd00fc8d",
             "8aef9f5e27f808a2",
-            "e46b475b851f5a2d",
-            "3a6d82ebae4473fb",
-            "e1bbfe815188d3a6",
-            "d66f631389c24605"
+            "7b32bfae6afab439",
+            "fb1468d9f802e21c",
+            "9e15b637df84d87f",
+            "d14625af14055f20",
+            "031b9cbf3eb7ea67",
+            "3289791d00f40465",
+            "554f27d183597978",
+            "9afbd51431392557",
+            "2f9c61d13cdca117",
+            "f2c94a03e44ac36d",
+            "9f462166733487a1",
+            "e50fcdcc15023c7c",
+            "32350f7f7633fa81",
+            "cb51f6a8d0f024b5",
+            "d6cb2b7bfe2ce086",
+            "465101cecd27549b",
+            "b4d0ec2f6a3fb0ce",
+            "a3169756890e06b6",
+            "2f93a2522ebb4484",
+            "d464f5880be3efb4",
+            "19ae2782076f0991",
+            "e7fd29b09a28654d",
+            "0e0b6e75f6733733",
+            "45627eabcfed0aa4",
+            "02a7858b852d91b0",
+            "91c5833faf99eab3"
         ],
         "x": 14,
-        "y": 2119,
-        "w": 932,
-        "h": 162
-    },
-    {
-        "id": "efda1ceb26b7f577",
-        "type": "group",
-        "z": "8d3b29f48feb985c",
-        "name": "Domoticz MP2 On/Off control",
-        "style": {
-            "fill": "#c8e7a7",
-            "label": true,
-            "color": "#000000"
-        },
-        "nodes": [
-            "4df8920d64378a25",
-            "f1e6df8e4f1a07e2",
-            "328ccfc2286fb9dc"
-        ],
-        "x": 14,
-        "y": 2299,
-        "w": 752,
-        "h": 82
+        "y": 2099,
+        "w": 1172,
+        "h": 502
     },
     {
         "id": "9f7e7bb0a86e90c8",
@@ -226,10 +207,10 @@
             "1bca7eebfc757294",
             "4770b54da60b48b5"
         ],
-        "x": 814,
-        "y": 199,
+        "x": 674,
+        "y": 19,
         "w": 532,
-        "h": 182
+        "h": 142
     },
     {
         "id": "e904e3df5b7461ca",
@@ -256,7 +237,7 @@
             "819b8b5bd25157f3"
         ],
         "x": 14,
-        "y": 1619,
+        "y": 1739,
         "w": 752,
         "h": 202
     },
@@ -264,7 +245,7 @@
         "id": "61da6231d7299de3",
         "type": "group",
         "z": "8d3b29f48feb985c",
-        "name": "Grid load reporting and overload control",
+        "name": "Grid load reporting",
         "style": {
             "fill": "#bfbfbf",
             "label": true
@@ -286,7 +267,7 @@
             "7379c2bee96ee81d"
         ],
         "x": 14,
-        "y": 1079,
+        "y": 1259,
         "w": 892,
         "h": 282
     },
@@ -305,89 +286,65 @@
             "5c2e7043235b2a67",
             "51c59a043f433e82",
             "aacbe0c5d5d3ed9d",
-            "fd34985efaf8b35c",
-            "e114752a621e3913",
-            "5b32a479be5a725e",
-            "cc6d46e29053cd76",
-            "0460462083e78ff0"
+            "0460462083e78ff0",
+            "0b2f6c937ecdd315"
         ],
         "x": 14,
-        "y": 1379,
-        "w": 872,
-        "h": 222
+        "y": 1559,
+        "w": 762,
+        "h": 162
     },
     {
-        "id": "0ad7778e5245b705",
-        "type": "function",
+        "id": "dc7bd95e3d68dfe3",
+        "type": "group",
         "z": "8d3b29f48feb985c",
-        "g": "4e81c5843dbf8388",
-        "name": "IF (SP > 0 && SOC > max_soc) THEN SP = 0W",
-        "func": "let data = context.flow.data || {};\nlet soc = data[\"batt_soc\"];\nlet ess_setpoint = data[\"ess_setpoint\"];\n\nif (ess_setpoint > 0 && soc > context.flow.max_soc) {\n    msg.payload = 0;\n    return msg;\n}\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 460,
-        "y": 1880,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f5bcbf2f2965ce28",
-        "type": "inject",
-        "z": "8d3b29f48feb985c",
-        "g": "4e81c5843dbf8388",
-        "name": "Every 10 secs",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
+        "name": "BattIQMode",
+        "style": {
+            "label": true,
+            "fill": "#b797cf",
+            "color": "#000000"
+        },
+        "nodes": [
+            "b8e9c6b1bc213022",
+            "99a90d423d8cd99b",
+            "59660e1586e1ec48",
+            "232141417a05794e",
+            "a317260c5a3441e9",
+            "2317ba8453921b8c",
+            "63b7eaa456c6f9ab",
+            "d11013ed692bd256",
+            "c5a0d1bb18786068",
+            "bb22a74d34f44c62",
+            "01dbdaf6a544d019",
+            "16da8953d192ab30",
+            "390279dcded85e0f",
+            "78102c3f64e2de32",
+            "656d79841f2b968b",
+            "563c9ef40f7e3e50"
         ],
-        "repeat": "5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "10",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 1880,
-        "wires": [
-            [
-                "0ad7778e5245b705",
-                "708341a448d41921"
-            ]
-        ]
+        "x": 24,
+        "y": 2619,
+        "w": 962,
+        "h": 242
     },
     {
-        "id": "bb86db4c0ab76465",
-        "type": "victron-output-ess",
+        "id": "9bad7daae227974f",
+        "type": "group",
         "z": "8d3b29f48feb985c",
-        "g": "4e81c5843dbf8388",
-        "service": "com.victronenergy.settings",
-        "path": "/Settings/CGwacs/AcPowerSetPoint",
-        "serviceObj": {
-            "service": "com.victronenergy.settings",
-            "name": "Venus settings"
+        "name": "Errors",
+        "style": {
+            "fill": "#ff7f7f",
+            "label": true
         },
-        "pathObj": {
-            "path": "/Settings/CGwacs/AcPowerSetPoint",
-            "type": "integer",
-            "name": "Grid set-point (W)",
-            "writable": true
-        },
-        "name": "",
-        "onlyChanges": false,
-        "x": 820,
-        "y": 1900,
-        "wires": []
+        "nodes": [
+            "454dffade8093f08",
+            "8de232d607ed9dae",
+            "f6df8aab7f837216"
+        ],
+        "x": 14,
+        "y": 2879,
+        "w": 402,
+        "h": 82
     },
     {
         "id": "302c4817a35421ee",
@@ -404,7 +361,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 100,
-        "y": 2020,
+        "y": 2000,
         "wires": [
             [
                 "40bc446b3c9032c2"
@@ -426,7 +383,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 470,
-        "y": 2060,
+        "y": 2040,
         "wires": []
     },
     {
@@ -455,7 +412,7 @@
         "name": "",
         "onlyChanges": false,
         "x": 500,
-        "y": 2020,
+        "y": 2000,
         "wires": []
     },
     {
@@ -472,7 +429,7 @@
         "finalize": "",
         "libs": [],
         "x": 240,
-        "y": 2020,
+        "y": 2000,
         "wires": [
             [
                 "d39b7539103b3513",
@@ -501,8 +458,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 520,
-        "y": 120,
+        "x": 510,
+        "y": 300,
         "wires": [
             [
                 "f5afc04bb91610ad"
@@ -528,7 +485,7 @@
         "name": "Venus | Grid set-point (W)",
         "onlyChanges": true,
         "x": 150,
-        "y": 220,
+        "y": 420,
         "wires": [
             [
                 "adaadd6d82d8cc31",
@@ -559,8 +516,8 @@
         "max": "10000",
         "step": "500",
         "className": "",
-        "x": 115.71427917480469,
-        "y": 125.71427345275879,
+        "x": 120,
+        "y": 300,
         "wires": [
             [
                 "f5afc04bb91610ad"
@@ -587,8 +544,8 @@
         "max": "10000",
         "step": "100",
         "className": "",
-        "x": 315.7142791748047,
-        "y": 125.71427345275879,
+        "x": 320,
+        "y": 300,
         "wires": [
             [
                 "f5afc04bb91610ad"
@@ -601,15 +558,15 @@
         "z": "8d3b29f48feb985c",
         "g": "9f7e7bb0a86e90c8",
         "name": "construct MQTT-AD",
-        "func": "// messages on output 1 will be rate limit\n\nlet final_topic = \"my_victron/\" + msg.topic + \"/state\";\n\nlet data_msg = context.flow.data || {};\nlet data_timestamp = context.flow.timetamp || {};\nlet topic = msg.topic;\n\nlet sendnow = false;\n\nif (typeof msg.sendnow !== 'undefined') {\n    sendnow = (msg.sendnow == true);\n}\n\ndata_msg[topic] = msg.payload;\ndata_timestamp[topic] = Date.now();\ncontext.flow.data = data_msg;\ncontext.flow.timetamp = data_timestamp;\n\nmsg.topic = final_topic;\n\nlet msg2 = null;\n\nif (sendnow == true) {\n    //node.warn('send now: ' + msg.topic);\n    //send directly\n    msg2 = msg;\n    msg = null;\n}\n\nreturn [msg, msg2];\n",
+        "func": "// messages on output 1 will be rate limit\n\nlet final_topic = \"my_victron/\" + msg.topic + \"/state\";\n\nlet data_msg = context.global.data || {};\nlet data_timestamp = context.global.timetamp || {};\nlet topic = msg.topic;\n\nlet sendnow = false;\n\nif (typeof msg.sendnow !== 'undefined') {\n    sendnow = (msg.sendnow == true);\n}\n\ndata_msg[topic] = msg.payload;\ndata_timestamp[topic] = Date.now();\ncontext.global.data = data_msg;\ncontext.global.timetamp = data_timestamp;\n\nmsg.topic = final_topic;\n\nlet msg2 = null;\n\nif (sendnow == true) {\n    //node.warn('send now: ' + msg.topic);\n    //send directly\n    msg2 = msg;\n    msg = null;\n}\n\nreturn [msg, msg2];\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1000,
-        "y": 240,
+        "x": 860,
+        "y": 80,
         "wires": [
             [
                 "f456fb721ca671d5"
@@ -638,8 +595,8 @@
         },
         "name": "",
         "onlyChanges": false,
-        "x": 600,
-        "y": 60,
+        "x": 800,
+        "y": 260,
         "wires": []
     },
     {
@@ -656,7 +613,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 720,
+        "y": 920,
         "wires": [
             [
                 "2638424905d9e622",
@@ -678,7 +635,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 760,
+        "y": 960,
         "wires": [
             [
                 "2638424905d9e622"
@@ -700,8 +657,8 @@
         "correl": "",
         "expiry": "",
         "broker": "ee1bb25c871ce5fc",
-        "x": 1020,
-        "y": 300,
+        "x": 920,
+        "y": 120,
         "wires": []
     },
     {
@@ -718,9 +675,10 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1010,
-        "y": 340,
-        "wires": []
+        "x": 795,
+        "y": 120,
+        "wires": [],
+        "l": false
     },
     {
         "id": "6f90cb5b43297b91",
@@ -742,7 +700,7 @@
         "onlyChanges": true,
         "roundValues": "1",
         "x": 180,
-        "y": 280,
+        "y": 480,
         "wires": [
             [
                 "df5da110e5aa4fcd",
@@ -772,7 +730,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 170,
-        "y": 340,
+        "y": 540,
         "wires": [
             [
                 "6351d4ce197c07b5",
@@ -802,7 +760,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 170,
-        "y": 400,
+        "y": 600,
         "wires": [
             [
                 "534bcc84ed2012b1",
@@ -830,7 +788,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 90,
-        "y": 1120,
+        "y": 1300,
         "wires": [
             [
                 "e4c4f61b74e39169",
@@ -858,7 +816,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 90,
-        "y": 1280,
+        "y": 1460,
         "wires": [
             [
                 "159833534a73765c",
@@ -886,7 +844,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 90,
-        "y": 1200,
+        "y": 1380,
         "wires": [
             [
                 "a654b14df06a9ae9",
@@ -914,7 +872,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 90,
-        "y": 600,
+        "y": 800,
         "wires": [
             [
                 "cada246f092254da"
@@ -941,7 +899,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 90,
-        "y": 640,
+        "y": 840,
         "wires": [
             [
                 "5d7f18d2fe1a1e8e"
@@ -968,7 +926,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 90,
-        "y": 680,
+        "y": 880,
         "wires": [
             [
                 "929b618e5d657887"
@@ -1007,7 +965,7 @@
         "name": "MultiPlus-II 48/5000 | Charge State",
         "onlyChanges": true,
         "x": 180,
-        "y": 720,
+        "y": 920,
         "wires": [
             [
                 "1643bcd645477a2b"
@@ -1039,7 +997,7 @@
         "name": "ESS Mode",
         "onlyChanges": true,
         "x": 100,
-        "y": 760,
+        "y": 960,
         "wires": [
             [
                 "dd509f6cc0ef9064"
@@ -1052,14 +1010,14 @@
         "z": "8d3b29f48feb985c",
         "g": "b362b271c03a0415",
         "name": "Startup Function",
-        "func": "let discovery_topic = \"victron\";\nlet root_topic = \"my_victron\";\ncontext.flow.batt_capacity = 60000; //Wh\ncontext.flow.max_charge_setpoint = 10000; //3000=90.7% see efficiency chart \ncontext.flow.max_discharge_setpoint = 10000; //4126=90.8, 4750 = 89.6\ncontext.flow.number_of_multiplus = 3;\ncontext.flow.min_soc = 10;\ncontext.flow.max_soc = 100; //Because we use a smartshunt and specified 55.2V as 100% (=90%)\ncontext.flow.idle_rate = 110;\ncontext.flow.setpoint_adjusted = false;\ncontext.flow.max_phase_power = 5550;\n//context.flow.max_phase_power = 4000;\ncontext.flow.data = {};\n\nlet pobject = [\n    //\"name\": [\"object_type\", \"varname\", \"unique_id\", \"payload_on/unit\", \"payload_off\", \"step\"],\n\n    //Setpoint\n    //{ \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-5000|5000\", 100] },\n    { \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-12000|12000\", 100] },\n\n    //Switches\n    { \"ESS Control Mode\": [\"select\", \"ess_mode\", \"0x8000000001\", \"Mode 1|Mode 2\", \"\", 0] },\n    { \"Battery Mode\": [\"select\", \"batt_mode\", \"0x800000000E\", \"Off|Idle|Charge|Discharge|Grid Balance|IQ Smart Mode|Solar Charge|Manual\", \"\", 0] },\n    { \"Battery State\": [\"select\", \"batt_state\", \"0x8000000014\", \"Off|Idle|Charging|Discharging\", \"\", 0] },\n    { \"MP2 On/Off state\": [\"switch\", \"mp2_switch_position\", \"0x800000000F\", \"On\", \"Off\", 0] },\n\n    //Sensors\n    { \"Battery Percentage\": [\"sensor\", \"batt_soc\", \"0x8000000003\", \"%\", \"\", 0] },\n    { \"Battery Voltage\": [\"sensor\", \"batt_voltage\", \"0x8000000004\", \"V\", \"\", 0] },\n    { \"Battery Amps\": [\"sensor\", \"batt_amps\", \"0x8000000005\", \"A\", \"\", 0] },\n    { \"Battery Temperature\": [\"sensor\", \"batt_temp\", \"0x800000000D\", \"\\u00b0c\", \"\", 0] },\n    { \"ET340 L1 Watt\": [\"sensor\", \"grid_l1_w\", \"0x8000000006\", \"W\", \"\", 0] },\n    { \"ET340 L2 Watt\": [\"sensor\", \"grid_l2_w\", \"0x8000000007\", \"W\", \"\", 0] },\n    { \"ET340 L3 Watt\": [\"sensor\", \"grid_l3_w\", \"0x8000000008\", \"W\", \"\", 0] },\n    { \"ET340 Total Watt\": [\"sensor\", \"grid_total_w\", \"0x8000000108\", \"W\", \"\", 0] },\n    { \"Battery Capacity\": [\"sensor\", \"batt_capacity\", \"0x8000000012\", \"W\", \"\", 0] },\n    { \"Battery Charged kWh\": [\"sensor\", \"batt_charged_kwh\", \"0x8000000015_power\", \"kWh\", \"\", 0] },\n    { \"Battery Charged W\": [\"sensor\", \"batt_charged_w\", \"0x8000000015_energy\", \"W\", \"\", 0] },\n    { \"Battery Discharged kWh\": [\"sensor\", \"batt_discharged_kwh\", \"0x8000000016_power\", \"kWh\", \"\", 0] },\n    { \"Battery Discharged W\": [\"sensor\", \"batt_discharged_w\", \"0x8000000016_energy\", \"W\", \"\", 0] },\n    { \"MP2 AC-In kWh\": [\"sensor\", \"inv_acin_kwh\", \"0x8000000017_power\", \"kWh\", \"\", 0] },\n    { \"MP2 AC-In Charged W\": [\"sensor\", \"inv_acin_w\", \"0x8000000017_energy\", \"W\", \"\", 0] },\n\n    //Temperatures\n    { \"Ceil Temp\": [\"sensor\", \"temp_1\", \"0x8000000009\", \"\\u00b0c\", \"\", 0] },\n    { \"Lynx Temp\": [\"sensor\", \"temp_2\", \"0x800000000A\", \"\\u00b0c\", \"\", 0] },\n    { \"Shunt Temp\": [\"sensor\", \"temp_3\", \"0x800000000B\", \"\\u00b0c\", \"\", 0] },\n    \n    //Text\n    { \"ESS Charge State\": [\"sensor\", \"charge_state\", \"0x800000000C\", \"text\", \"\", 0] },\n];\n\nfunction createBinaryObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createLightObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSelectObject(root, name, varname, unique_id, select_options)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n\n    vjson[\"options\"] = [];\n    select_options.split(\"|\").forEach(function (item) {\n        vjson[\"options\"].push(item);\n    });\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createNumberObject(root, name, varname, unique_id, step = 1)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"step\"] = step;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson\n}\n\nfunction createClimateObject(root, name, varname, unique_id, unit_of_measurement, min_value = 6.5, max_value = 35.0, step_size = 1.0)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"temp_stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"temp_unit\"] = unit_of_measurement;\n    vjson[\"temp_cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"temp_stat_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    vjson[\"temp_step\"] = step_size;\n    vjson[\"min_temp\"] = min_value;\n    vjson[\"max_temp\"] = max_value;\n    return vjson\n}\n\nnode.log(\"Flow Initialisation\");\n\npobject.forEach((vvar) => {\n    let name = Object.keys(vvar)[0];\n    let vobj = vvar[Object.keys(vvar)];\n    let object_type = vobj[0]\n    let varname = vobj[1]\n    let unique_id = vobj[2]\n\n    let jobj = null\n    if (object_type == \"light\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"switch\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"binary_sensor\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createBinaryObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"select\") {\n        let soptions = vobj[3]\n        jobj = createSelectObject(root_topic, name, varname, unique_id, soptions);\n    }\n    else if (object_type == \"number\") {\n        let step = vobj[5]\n        jobj = createNumberObject(root_topic, name, varname, unique_id, step);\n    }\n    else if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj[3]\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n    else if (object_type == \"climate\") {\n        let unit_of_measurement = vobj[3]\n        let minmax = vobj[4];\n        let step_size = vobj[5]\n\n        let min_value = 6.5;\n        let max_value = 35;\n        let sresults = minmax.split(\"|\");\n        if (sresults.length == 2) {\n            min_value = parseFloat(sresults[0]);\n            max_value = parseFloat(sresults[1]);\n        }\n\n        jobj = createClimateObject(root_topic, name, varname, unique_id, unit_of_measurement, min_value, max_value, step_size);\n    }\n\n    if (jobj != null) {\n        if (unique_id.indexOf(\"_\") != -1)\n        {\n            unique_id = unique_id.split(\"_\")[0];\n        }\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.log(\"publishing config ->: \" + dtopic);\n\n        msg.payload = jobj;\n        msg.topic = dtopic;\n        msg.retain = true;\n        node.send(msg);\n    }\n});\nreturn null;",
+        "func": "let discovery_topic = \"victron\";\nlet root_topic = \"my_victron\";\ncontext.global.batt_capacity = 60000; //Wh\ncontext.global.max_charge_setpoint = 10000; //3000=90.7% see efficiency chart \ncontext.global.max_discharge_setpoint = 10000; //4126=90.8, 4750 = 89.6\ncontext.global.number_of_multiplus = 3;\ncontext.global.min_soc = 30;\ncontext.global.max_soc = 100; //Because we use a smartshunt and specified 55.2V as 100% (=90%)\ncontext.global.idle_rate = 103;\ncontext.global.min_soc_overnight = 10;\ncontext.global.charge_rate = 9000;\ncontext.global.discharge_rate = -10000;\ncontext.global.setpoint_adjusted = false;\ncontext.global.max_phase_power = 5550;\n\n//context.global.max_phase_power = 4000;\ncontext.global.data = context.global.data || {};\n\nlet pobject = [\n    //\"name\": [\"object_type\", \"varname\", \"unique_id\", \"payload_on/unit\", \"payload_off\", \"step\"],\n\n    //Setpoint\n    //{ \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-5000|5000\", 100] },\n    { \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-12000|12000\", 100] },\n\n    //Switches\n    { \"ESS Control Mode\": [\"select\", \"ess_mode\", \"0x8000000001\", \"Mode 1|Mode 2\", \"\", 0] },\n    { \"Battery Mode\": [\"select\", \"batt_mode\", \"0x800000000E\", \"Off|Idle|Charge|Discharge|Grid Balance|IQ Smart Mode|Solar Charge|Manual\", \"\", 0] },\n    { \"Battery State\": [\"select\", \"batt_state\", \"0x8000000014\", \"Off|Idle|Charging|Discharging\", \"\", 0] },\n    { \"MP2 On/Off state\": [\"switch\", \"mp2_switch_position\", \"0x800000000F\", \"On\", \"Off\", 0] },\n\n    //Sensors\n    { \"Battery Percentage\": [\"sensor\", \"batt_soc\", \"0x8000000003\", \"%\", \"\", 0] },\n    { \"Battery Voltage\": [\"sensor\", \"batt_voltage\", \"0x8000000004\", \"V\", \"\", 0] },\n    { \"Battery Amps\": [\"sensor\", \"batt_amps\", \"0x8000000005\", \"A\", \"\", 0] },\n    { \"Battery Temperature\": [\"sensor\", \"batt_temp\", \"0x800000000D\", \"\\u00b0c\", \"\", 0] },\n    { \"ET340 L1 Watt\": [\"sensor\", \"grid_l1_w\", \"0x8000000006\", \"W\", \"\", 0] },\n    { \"ET340 L2 Watt\": [\"sensor\", \"grid_l2_w\", \"0x8000000007\", \"W\", \"\", 0] },\n    { \"ET340 L3 Watt\": [\"sensor\", \"grid_l3_w\", \"0x8000000008\", \"W\", \"\", 0] },\n    { \"ET340 Total Watt\": [\"sensor\", \"grid_total_w\", \"0x8000000108\", \"W\", \"\", 0] },\n    { \"Battery Capacity\": [\"sensor\", \"batt_capacity\", \"0x8000000012\", \"W\", \"\", 0] },\n    { \"Battery Charged kWh\": [\"sensor\", \"batt_charged_kwh\", \"0x8000000015_power\", \"kWh\", \"\", 0] },\n    { \"Battery Charged W\": [\"sensor\", \"batt_charged_w\", \"0x8000000015_energy\", \"W\", \"\", 0] },\n    { \"Battery Discharged kWh\": [\"sensor\", \"batt_discharged_kwh\", \"0x8000000016_power\", \"kWh\", \"\", 0] },\n    { \"Battery Discharged W\": [\"sensor\", \"batt_discharged_w\", \"0x8000000016_energy\", \"W\", \"\", 0] },\n    { \"MP2 AC-In kWh\": [\"sensor\", \"inv_acin_kwh\", \"0x8000000017_power\", \"kWh\", \"\", 0] },\n    { \"MP2 AC-In Charged W\": [\"sensor\", \"inv_acin_w\", \"0x8000000017_energy\", \"W\", \"\", 0] },\n\n    //Temperatures\n    { \"Ceil Temp\": [\"sensor\", \"temp_1\", \"0x8000000009\", \"\\u00b0c\", \"\", 0] },\n    { \"Lynx Temp\": [\"sensor\", \"temp_2\", \"0x800000000A\", \"\\u00b0c\", \"\", 0] },\n    { \"Shunt Temp\": [\"sensor\", \"temp_3\", \"0x800000000B\", \"\\u00b0c\", \"\", 0] },\n    \n    //Text\n    { \"ESS Charge State\": [\"sensor\", \"charge_state\", \"0x800000000C\", \"text\", \"\", 0] },\n];\n\nfunction createBinaryObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createLightObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSelectObject(root, name, varname, unique_id, select_options)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n\n    vjson[\"options\"] = [];\n    select_options.split(\"|\").forEach(function (item) {\n        vjson[\"options\"].push(item);\n    });\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createNumberObject(root, name, varname, unique_id, step = 1)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"step\"] = step;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson\n}\n\nfunction createClimateObject(root, name, varname, unique_id, unit_of_measurement, min_value = 6.5, max_value = 35.0, step_size = 1.0)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"temp_stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"temp_unit\"] = unit_of_measurement;\n    vjson[\"temp_cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"temp_stat_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    vjson[\"temp_step\"] = step_size;\n    vjson[\"min_temp\"] = min_value;\n    vjson[\"max_temp\"] = max_value;\n    return vjson\n}\n\nnode.log(\"Flow Initialisation\");\n\npobject.forEach((vvar) => {\n    let name = Object.keys(vvar)[0];\n    let vobj = vvar[Object.keys(vvar)];\n    let object_type = vobj[0]\n    let varname = vobj[1]\n    let unique_id = vobj[2]\n\n    let jobj = null\n    if (object_type == \"light\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"switch\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"binary_sensor\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createBinaryObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"select\") {\n        let soptions = vobj[3]\n        jobj = createSelectObject(root_topic, name, varname, unique_id, soptions);\n    }\n    else if (object_type == \"number\") {\n        let step = vobj[5]\n        jobj = createNumberObject(root_topic, name, varname, unique_id, step);\n    }\n    else if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj[3]\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n    else if (object_type == \"climate\") {\n        let unit_of_measurement = vobj[3]\n        let minmax = vobj[4];\n        let step_size = vobj[5]\n\n        let min_value = 6.5;\n        let max_value = 35;\n        let sresults = minmax.split(\"|\");\n        if (sresults.length == 2) {\n            min_value = parseFloat(sresults[0]);\n            max_value = parseFloat(sresults[1]);\n        }\n\n        jobj = createClimateObject(root_topic, name, varname, unique_id, unit_of_measurement, min_value, max_value, step_size);\n    }\n\n    if (jobj != null) {\n        if (unique_id.indexOf(\"_\") != -1)\n        {\n            unique_id = unique_id.split(\"_\")[0];\n        }\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.log(\"publishing config ->: \" + dtopic);\n\n        msg.payload = jobj;\n        msg.topic = dtopic;\n        msg.retain = true;\n        node.send(msg);\n    }\n});\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1300,
+        "x": 480,
         "y": 60,
         "wires": [
             [
@@ -1082,7 +1040,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 110,
-        "y": 60,
+        "y": 240,
         "wires": [
             [
                 "442445439b3c1314",
@@ -1116,7 +1074,7 @@
         "diff": false,
         "className": "",
         "x": 405.7142791748047,
-        "y": 245.7142734527588,
+        "y": 445.7142734527588,
         "wires": []
     },
     {
@@ -1159,7 +1117,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 400,
-        "y": 380,
+        "y": 580,
         "wires": [
             []
         ]
@@ -1186,11 +1144,12 @@
         "topic": "online",
         "payload": "true",
         "payloadType": "str",
-        "x": 920,
-        "y": 60,
+        "x": 280,
+        "y": 120,
         "wires": [
             [
-                "b970c5ce031efaf2"
+                "b970c5ce031efaf2",
+                "69a2629d096d7a9c"
             ]
         ]
     },
@@ -1213,7 +1172,7 @@
         "fontSize": 16,
         "color": "#4fb4f3",
         "x": 380,
-        "y": 340,
+        "y": 540,
         "wires": []
     },
     {
@@ -1230,12 +1189,12 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 110,
-        "y": 2160,
+        "x": 130,
+        "y": 2240,
         "wires": [
             [
                 "053fac255b781adb",
-                "82ca122bcd00fc8d"
+                "554f27d183597978"
             ]
         ]
     },
@@ -1254,22 +1213,62 @@
                 "vt": "str"
             },
             {
-                "t": "neq",
-                "v": "Off",
+                "t": "eq",
+                "v": "On",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Charge",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Discharge",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Idle",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "IQ Smart Mode",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Grid Balance",
                 "vt": "str"
             }
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 2,
-        "x": 280,
-        "y": 2200,
+        "outputs": 7,
+        "x": 340,
+        "y": 2240,
         "wires": [
             [
                 "5b3acf804ca416d1"
             ],
             [
                 "8aef9f5e27f808a2"
+            ],
+            [
+                "7b32bfae6afab439"
+            ],
+            [
+                "fb1468d9f802e21c"
+            ],
+            [
+                "9e15b637df84d87f"
+            ],
+            [
+                "02a7858b852d91b0"
+            ],
+            [
+                "19ae2782076f0991"
             ]
         ]
     },
@@ -1300,8 +1299,8 @@
         "initial": "",
         "name": "",
         "onlyChanges": false,
-        "x": 750,
-        "y": 2220,
+        "x": 990,
+        "y": 2180,
         "wires": []
     },
     {
@@ -1317,8 +1316,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 2180,
+        "x": 530,
+        "y": 2140,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -1339,8 +1338,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 2220,
+        "x": 530,
+        "y": 2180,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -1362,8 +1361,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
-        "y": 2180,
+        "x": 920,
+        "y": 2140,
         "wires": []
     },
     {
@@ -1392,7 +1391,7 @@
         "name": "",
         "onlyChanges": true,
         "x": 150,
-        "y": 800,
+        "y": 1000,
         "wires": [
             [
                 "67ea331bffac03a7"
@@ -1413,7 +1412,7 @@
         "finalize": "",
         "libs": [],
         "x": 530,
-        "y": 800,
+        "y": 1000,
         "wires": [
             [
                 "2638424905d9e622"
@@ -1421,118 +1420,23 @@
         ]
     },
     {
-        "id": "4df8920d64378a25",
-        "type": "mqtt in",
-        "z": "8d3b29f48feb985c",
-        "g": "efda1ceb26b7f577",
-        "name": "MP2 Switch Position",
-        "topic": "my_victron/set/mp2_switch_position",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "ee1bb25c871ce5fc",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 130,
-        "y": 2340,
-        "wires": [
-            [
-                "f1e6df8e4f1a07e2"
-            ]
-        ]
-    },
-    {
-        "id": "f1e6df8e4f1a07e2",
-        "type": "function",
-        "z": "8d3b29f48feb985c",
-        "g": "efda1ceb26b7f577",
-        "name": "Translate",
-        "func": "let new_mode = 4;\nif (msg.payload == \"On\")\n    new_mode = 3;\nmsg.payload = new_mode;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 300,
-        "y": 2340,
-        "wires": [
-            [
-                "328ccfc2286fb9dc"
-            ]
-        ]
-    },
-    {
-        "id": "328ccfc2286fb9dc",
-        "type": "victron-output-vebus",
-        "z": "8d3b29f48feb985c",
-        "g": "efda1ceb26b7f577",
-        "service": "com.victronenergy.vebus/276",
-        "path": "/Mode",
-        "serviceObj": {
-            "service": "com.victronenergy.vebus/276",
-            "name": "MultiPlus-II 48/5000/70-50"
-        },
-        "pathObj": {
-            "path": "/Mode",
-            "type": "enum",
-            "name": "Switch Position",
-            "remarks": "<p>Note that <tt>/ModeIsAdjustable</tt> needs to be set to 1.</p> ",
-            "enum": {
-                "1": "Charger Only",
-                "2": "Inverter Only",
-                "3": "On",
-                "4": "Off"
-            },
-            "writable": true
-        },
-        "initial": "",
-        "name": "",
-        "onlyChanges": false,
-        "x": 570,
-        "y": 2340,
-        "wires": []
-    },
-    {
         "id": "442445439b3c1314",
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "9e46f3329af496ae",
         "name": "Limit Setpoint (chrg/dischrg)",
-        "func": "let data = context.flow.data || {};\nlet max_charge_setpoint = data[\"max_charge_setpoint\"];\nlet min_discharge_setpoint = -data[\"max_discharge_setpoint\"];\nlet ess_setpoint = msg.payload\n\nif (msg.payload > max_charge_setpoint)\n    msg.payload = max_charge_setpoint;\nelse if (msg.payload < min_discharge_setpoint)\n    msg.payload = min_discharge_setpoint;\n    \n\ndata[\"original_setpoint\"] = ess_setpoint // save setpoint changes unless they are power adjustments\ncontext.flow.setpoint_adjusted = false\nnode.warn(\"Setting Adjusted to False\")\ndata[\"ess_setpoint\"] = ess_setpoint // save the setpoint we started with so we can re-adjust to it later\ncontext.flow.data = data\nnode.warn(\"saving original setpoint: \"+ ess_setpoint)\n\nreturn msg;",
+        "func": "let data = context.global.data || {};\nlet max_charge_setpoint = context.global.max_charge_setpoint\nlet min_discharge_setpoint = -context.global.max_discharge_setpoint\nlet ess_setpoint = msg.payload\nnode.warn(\"Setpoint says: \"+ess_setpoint)\n\nif (msg.payload > max_charge_setpoint)\n    msg.payload = max_charge_setpoint;\nelse if (msg.payload < min_discharge_setpoint)\n    msg.payload = min_discharge_setpoint;\n    \ndata[\"original_setpoint\"] = ess_setpoint // save setpoint changes unless they are power adjustments\ncontext.global.setpoint_adjusted = false\nnode.warn(\"Setting Adjusted to False\")\ndata[\"ess_setpoint\"] = ess_setpoint // save the setpoint we started with so we can re-adjust to it later\ncontext.global.data = data\nnode.warn(\"saving original setpoint: \"+ ess_setpoint)\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 60,
+        "x": 360,
+        "y": 260,
         "wires": [
             [
                 "f5afc04bb91610ad"
-            ]
-        ]
-    },
-    {
-        "id": "82ca122bcd00fc8d",
-        "type": "function",
-        "z": "8d3b29f48feb985c",
-        "g": "09c2cef9562d2a46",
-        "name": "Battery Mode",
-        "func": "msg.topic = \"batt_mode\";\nmsg.sendnow = true;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 290,
-        "y": 2160,
-        "wires": [
-            [
-                "e46b475b851f5a2d"
             ]
         ]
     },
@@ -1542,7 +1446,7 @@
         "z": "8d3b29f48feb985c",
         "g": "b699493a4e613ac0",
         "name": "Actual Battery Capacity",
-        "func": "let soc = msg.payload;\nmsg.payload = (context.flow.batt_capacity / 100) * soc;\nmsg.topic = \"batt_capacity\";\nreturn msg;",
+        "func": "let data = context.global.data || {};\nlet soc = msg.payload;\ndata[\"batt_soc\"] = soc;\nmsg.payload = (context.global.batt_capacity / 100) * soc;\nmsg.topic = \"batt_capacity\";\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1550,7 +1454,7 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 300,
+        "y": 500,
         "wires": [
             [
                 "2638424905d9e622"
@@ -1575,8 +1479,8 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 1200,
-        "y": 240,
+        "x": 1080,
+        "y": 60,
         "wires": [
             [
                 "1bca7eebfc757294"
@@ -1594,7 +1498,7 @@
             "84f5b9b1e88bca69"
         ],
         "x": 725,
-        "y": 600,
+        "y": 800,
         "wires": []
     },
     {
@@ -1611,29 +1515,18 @@
             "d66f631389c24605",
             "819b8b5bd25157f3",
             "f372c7304a23c6e0",
-            "ebe17b0997dc5121"
+            "ebe17b0997dc5121",
+            "e50fcdcc15023c7c",
+            "ffac4e6f1d514e66",
+            "45627eabcfed0aa4"
         ],
-        "x": 855,
-        "y": 240,
+        "x": 715,
+        "y": 80,
         "wires": [
             [
                 "ca79c962a3071fd7"
             ]
         ]
-    },
-    {
-        "id": "e46b475b851f5a2d",
-        "type": "link out",
-        "z": "8d3b29f48feb985c",
-        "g": "09c2cef9562d2a46",
-        "name": "ToMQTT",
-        "mode": "link",
-        "links": [
-            "84f5b9b1e88bca69"
-        ],
-        "x": 395,
-        "y": 2160,
-        "wires": []
     },
     {
         "id": "0ab475386efa005d",
@@ -1646,8 +1539,8 @@
             "171e2947b5815a6e",
             "3d121fa88daf71a5"
         ],
-        "x": 1425,
-        "y": 60,
+        "x": 605,
+        "y": 80,
         "wires": []
     },
     {
@@ -1669,8 +1562,8 @@
             "94ca4d9426138867",
             "c07a24ed25d071fe"
         ],
-        "x": 855,
-        "y": 300,
+        "x": 715,
+        "y": 120,
         "wires": [
             [
                 "52ee5cac291f0139",
@@ -1689,8 +1582,8 @@
             "171e2947b5815a6e",
             "3d121fa88daf71a5"
         ],
-        "x": 1305,
-        "y": 240,
+        "x": 1165,
+        "y": 80,
         "wires": []
     },
     {
@@ -1704,8 +1597,8 @@
             "171e2947b5815a6e",
             "3d121fa88daf71a5"
         ],
-        "x": 1155,
-        "y": 280,
+        "x": 1065,
+        "y": 120,
         "wires": []
     },
     {
@@ -1714,7 +1607,7 @@
         "z": "8d3b29f48feb985c",
         "g": "b699493a4e613ac0",
         "name": "Send All",
-        "func": "let data_msg = context.flow.data || {};\nlet data_timestamp = context.flow.timetamp || {};\n\nlet atime = Date.now();\n\nfor (var key in data_msg)\n{\n    let timestamp = 0;\n    if (data_timestamp.hasOwnProperty(key)) {\n        timestamp = data_timestamp[key];\n    }\n    if (data_msg.hasOwnProperty(key))\n    {\n        let timediff = (atime - timestamp) / 1000;\n        if (timediff < 60)\n            continue;\n        //node.warn(\"key: \" + key + \", value: \" + data_msg[key] + \", time: \"  + timestamp);\n        msg.topic = key;\n        msg.payload = data_msg[key];\n        msg.sendnow = true;\n        node.send(msg);\n    }\n}\nreturn;",
+        "func": "let data_msg = context.global.data || {};\nlet data_timestamp = context.global.timetamp || {};\n\nlet atime = Date.now();\n\nfor (var key in data_msg)\n{\n    let timestamp = 0;\n    if (data_timestamp.hasOwnProperty(key)) {\n        timestamp = data_timestamp[key];\n    }\n    if (data_msg.hasOwnProperty(key))\n    {\n        let timediff = (atime - timestamp) / 1000;\n        if (timediff < 60)\n            continue;\n        //node.warn(\"key: \" + key + \", value: \" + data_msg[key] + \", time: \"  + timestamp);\n        msg.topic = key;\n        msg.payload = data_msg[key];\n        msg.sendnow = true;\n        node.send(msg);\n    }\n}\nreturn;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1722,7 +1615,7 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 840,
+        "y": 1040,
         "wires": [
             [
                 "2638424905d9e622"
@@ -1752,90 +1645,12 @@
         "payload": "",
         "payloadType": "date",
         "x": 130,
-        "y": 860,
+        "y": 1040,
         "wires": [
             [
                 "8cf8304d70a2e248"
             ]
         ]
-    },
-    {
-        "id": "708341a448d41921",
-        "type": "function",
-        "z": "8d3b29f48feb985c",
-        "g": "4e81c5843dbf8388",
-        "name": "IF ( SP <=0 && SOC < min_soc)  THEN  SP = 150",
-        "func": "let data = context.flow.data || {};\nlet soc = data[\"batt_soc\"];\nlet ess_setpoint = data[\"ess_setpoint\"];\n\nif (ess_setpoint <=0 && soc < context.flow.min_soc){\n    msg.payload = 150;\n    return msg;    \n}\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 470,
-        "y": 1920,
-        "wires": [
-            [
-                "bb86db4c0ab76465"
-            ]
-        ]
-    },
-    {
-        "id": "3a6d82ebae4473fb",
-        "type": "mqtt in",
-        "z": "8d3b29f48feb985c",
-        "g": "09c2cef9562d2a46",
-        "name": "Battery State",
-        "topic": "my_victron/set/batt_state",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "ee1bb25c871ce5fc",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 110,
-        "y": 2240,
-        "wires": [
-            [
-                "e1bbfe815188d3a6"
-            ]
-        ]
-    },
-    {
-        "id": "e1bbfe815188d3a6",
-        "type": "function",
-        "z": "8d3b29f48feb985c",
-        "g": "09c2cef9562d2a46",
-        "name": "Battery State",
-        "func": "msg.topic = \"batt_state\";\nmsg.sendnow = true;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 290,
-        "y": 2240,
-        "wires": [
-            [
-                "d66f631389c24605"
-            ]
-        ]
-    },
-    {
-        "id": "d66f631389c24605",
-        "type": "link out",
-        "z": "8d3b29f48feb985c",
-        "g": "09c2cef9562d2a46",
-        "name": "ToMQTT",
-        "mode": "link",
-        "links": [
-            "84f5b9b1e88bca69"
-        ],
-        "x": 395,
-        "y": 2240,
-        "wires": []
     },
     {
         "id": "97b4e1392e7f4591",
@@ -1858,7 +1673,7 @@
         "onlyChanges": true,
         "roundValues": "3",
         "x": 180,
-        "y": 440,
+        "y": 640,
         "wires": [
             [
                 "dff55a5ecf6fb84d"
@@ -1886,7 +1701,7 @@
         "onlyChanges": true,
         "roundValues": "3",
         "x": 190,
-        "y": 480,
+        "y": 680,
         "wires": [
             [
                 "8779a8fae6cbab1b"
@@ -1914,7 +1729,7 @@
         "onlyChanges": true,
         "roundValues": "2",
         "x": 170,
-        "y": 520,
+        "y": 720,
         "wires": [
             [
                 "c51446dd8f316fdd"
@@ -1935,7 +1750,7 @@
         "finalize": "",
         "libs": [],
         "x": 380,
-        "y": 520,
+        "y": 720,
         "wires": [
             [
                 "c3fa4f117c8d9f91"
@@ -1949,10 +1764,10 @@
         "id": "6d13cac10603fe66",
         "type": "comment",
         "z": "8d3b29f48feb985c",
-        "name": "Version 1.07",
-        "info": "Last edited: 2024-04-27\n- Fixed Basen Batt Temp",
-        "x": 890,
-        "y": 440,
+        "name": "Version 2.2",
+        "info": "Last edited: 2025-12-24\n- Moved Battery control into node red\n- Moved Batt IQ Mode into node red\n- Fixed minor overload node issues forcing idle mode\n\nTodo:\n- add Outstanding modes (Grid Balance, Solar balance )",
+        "x": 1040,
+        "y": 220,
         "wires": []
     },
     {
@@ -1976,7 +1791,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 340,
+        "y": 540,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2004,7 +1819,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 400,
+        "y": 600,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2032,7 +1847,7 @@
         "to": "",
         "reg": false,
         "x": 540,
-        "y": 440,
+        "y": 640,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2060,7 +1875,7 @@
         "to": "",
         "reg": false,
         "x": 530,
-        "y": 480,
+        "y": 680,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2095,7 +1910,7 @@
         "to": "",
         "reg": false,
         "x": 550,
-        "y": 220,
+        "y": 420,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2130,7 +1945,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 260,
+        "y": 460,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2158,7 +1973,7 @@
         "to": "",
         "reg": false,
         "x": 540,
-        "y": 520,
+        "y": 720,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2186,7 +2001,7 @@
         "to": "",
         "reg": false,
         "x": 550,
-        "y": 560,
+        "y": 760,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2214,7 +2029,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 1120,
+        "y": 1300,
         "wires": [
             [
                 "f372c7304a23c6e0"
@@ -2242,7 +2057,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 1200,
+        "y": 1380,
         "wires": [
             [
                 "f372c7304a23c6e0"
@@ -2270,7 +2085,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 1280,
+        "y": 1460,
         "wires": [
             [
                 "f372c7304a23c6e0"
@@ -2298,7 +2113,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 600,
+        "y": 800,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2326,7 +2141,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 640,
+        "y": 840,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2354,7 +2169,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 680,
+        "y": 880,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2381,7 +2196,7 @@
         "onlyChanges": true,
         "roundValues": "3",
         "x": 130,
-        "y": 900,
+        "y": 1080,
         "wires": [
             [
                 "8737b4838e1bb454",
@@ -2409,7 +2224,7 @@
         "onlyChanges": true,
         "roundValues": "3",
         "x": 140,
-        "y": 980,
+        "y": 1180,
         "wires": [
             [
                 "c05936a093f8f874",
@@ -2432,7 +2247,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 420,
-        "y": 1020,
+        "y": 1200,
         "wires": []
     },
     {
@@ -2448,8 +2263,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 980,
+        "x": 420,
+        "y": 1160,
         "wires": [
             [
                 "59ae98953f9b69cd"
@@ -2471,7 +2286,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 410,
-        "y": 940,
+        "y": 1120,
         "wires": []
     },
     {
@@ -2486,8 +2301,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 900,
+        "x": 420,
+        "y": 1080,
         "wires": [
             [
                 "59ae98953f9b69cd"
@@ -2510,7 +2325,7 @@
         "expiry": "",
         "broker": "ee1bb25c871ce5fc",
         "x": 650,
-        "y": 940,
+        "y": 1120,
         "wires": []
     },
     {
@@ -2534,7 +2349,7 @@
         "onlyChanges": true,
         "roundValues": "3",
         "x": 110,
-        "y": 1780,
+        "y": 1900,
         "wires": [
             [
                 "1fbbec3b31fce42a"
@@ -2561,8 +2376,8 @@
         "name": "Input Phase 1 (W)",
         "onlyChanges": true,
         "roundValues": "2",
-        "x": 130,
-        "y": 1660,
+        "x": 120,
+        "y": 1780,
         "wires": [
             [
                 "cab032cb2249b5bb"
@@ -2591,7 +2406,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 450,
-        "y": 1700,
+        "y": 1820,
         "wires": [
             [
                 "d6e4856191966e9e"
@@ -2618,8 +2433,8 @@
         "name": "Input Phase 2 (W)",
         "onlyChanges": true,
         "roundValues": "2",
-        "x": 130,
-        "y": 1700,
+        "x": 120,
+        "y": 1820,
         "wires": [
             [
                 "57ee548438878441"
@@ -2646,8 +2461,8 @@
         "name": "Input Phase 3 (W)",
         "onlyChanges": true,
         "roundValues": "2",
-        "x": 130,
-        "y": 1740,
+        "x": 120,
+        "y": 1860,
         "wires": [
             [
                 "6c95c716e4ab5d1f"
@@ -2675,7 +2490,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1660,
+        "y": 1780,
         "wires": [
             [
                 "65e74659afd2b0bd"
@@ -2703,7 +2518,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1700,
+        "y": 1820,
         "wires": [
             [
                 "65e74659afd2b0bd"
@@ -2731,7 +2546,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1740,
+        "y": 1860,
         "wires": [
             [
                 "65e74659afd2b0bd"
@@ -2752,7 +2567,7 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 1700,
+        "y": 1820,
         "wires": [
             [
                 "819b8b5bd25157f3"
@@ -2780,7 +2595,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 1780,
+        "y": 1900,
         "wires": [
             [
                 "819b8b5bd25157f3"
@@ -2798,7 +2613,7 @@
             "84f5b9b1e88bca69"
         ],
         "x": 725,
-        "y": 1740,
+        "y": 1860,
         "wires": []
     },
     {
@@ -2812,7 +2627,7 @@
             "84f5b9b1e88bca69"
         ],
         "x": 545,
-        "y": 1120,
+        "y": 1300,
         "wires": []
     },
     {
@@ -2836,7 +2651,7 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 1160,
+        "y": 1340,
         "wires": [
             [
                 "48fff1d72fed0b87"
@@ -2864,7 +2679,7 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 1240,
+        "y": 1420,
         "wires": [
             [
                 "48fff1d72fed0b87"
@@ -2892,7 +2707,7 @@
         "to": "",
         "reg": false,
         "x": 260,
-        "y": 1320,
+        "y": 1500,
         "wires": [
             [
                 "48fff1d72fed0b87"
@@ -2921,7 +2736,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 470,
-        "y": 1240,
+        "y": 1420,
         "wires": [
             [
                 "358c46e08f21676c",
@@ -2943,7 +2758,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 1200,
+        "y": 1380,
         "wires": [
             [
                 "f372c7304a23c6e0",
@@ -2966,7 +2781,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 620,
-        "y": 1240,
+        "y": 1420,
         "wires": []
     },
     {
@@ -2984,7 +2799,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 790,
-        "y": 1200,
+        "y": 1380,
         "wires": []
     },
     {
@@ -2993,7 +2808,7 @@
         "z": "8d3b29f48feb985c",
         "g": "05bc2ab263663dde",
         "name": "Power Monitor",
-        "func": "let data = context.flow.data;\nlet sp = data[\"ess_setpoint\"] || 0;\nlet original_sp = data[\"original_setpoint\"];\nlet max = context.flow.max_charge_setpoint;\nlet max_phase = context.flow.max_phase_power;\nlet min = -context.flow.max_discharge_setpoint;\nlet idle_rate = context.flow.idle_rate;\nlet adjusted = context.flow.setpoint_adjusted || false;\nlet p1 = data[\"grid_l1_w\"] || 0;\nlet p2 = data[\"grid_l2_w\"] || 0;\nlet p3 = data[\"grid_l3_w\"] || 0;\nlet new_sp = sp;\nlet num_multi = context.flow.number_of_multiplus;\nnode.warn(\"P1, P2, P3 \" + p1 + \" \" + p2 + \" \" + p3)\n//node.warn(\"sp \" + sp)\nnode.warn(\"In Power Monitor, adjusted is \"+adjusted)\n\nif (((p1 > max_phase) || (p2 > max_phase) || (p3 > max_phase)) && (sp > idle_rate))\n{\n    // charge\n    node.warn(\"Charge overload adjust\");\n\tlet highest_phase_power = Math.max(p1,p2,p3);           // phase with the highest load\n\tlet delta = highest_phase_power - max_phase;            // how much over the max for the phase\n\tnew_sp = Math.ceil(sp - (delta * num_multi));           // lower for each inverter as one setpoint for all\n\tnode.warn(\"Diff is \"+delta+\" for a new setpoint of \"+new_sp);\n\tif (new_sp < 0)                                         // lets not switch to a discharge state\n\t{\n\t    new_sp = 1;\n\t}\n\tnode.warn(\"Setting new setpoint now to \"+new_sp);\n\tcontext.flow.setpoint_adjusted = true;\n}\nelse if (((p1 < -max_phase) || (p2 < -max_phase) ||  (p3 < -max_phase)) && (sp < 0)) \n{ \n    // discharge\n    node.warn(\"Discharge overload adjust\");\n\tlet highest_phase_power = Math.min(p1,p2,p3);           // phase with the highest load\n\tlet delta = highest_phase_power + max_phase;            // how much over the max for the phase\n\tnew_sp = Math.floor(sp - (delta * num_multi));          // increase for each inverter as one setpoint for all\n\tif (new_sp > 0)                                         // lets not switch to a charge state\n\t{\n\t    new_sp = -1;\n\t}\n\tnode.warn(\"Setting new setpoint now to \"+new_sp);\n\tcontext.flow.setpoint_adjusted = true;\n}\nelse if (adjusted == true)                                  // the setpoint was adjusted \n{ \n\tif (sp > idle_rate)                                     // charging in an adjusted state\n\t{\n        node.warn(\"In Charge re-adjust\");\n\t\tlet highest_phase_power = Math.max(p1, p2, p3);     // find the phase with the highest power\n\t\tlet delta = max_phase - highest_phase_power;        // see if there is room to adjust\n\t\tnode.warn(\"Delta \"+delta);\n\t \tif (delta > 150)                                    // only adjust if the diff is > 150W\n\t \t{\n\t\t\tnew_sp = Math.ceil(Math.min((sp + (delta * num_multi)), original_sp)); // add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP from \"+sp+\" to \"+new_sp+ \" original was \"+original_sp);\n\t\t\tif (new_sp == original_sp)\n\t\t\t{\n\t\t\t\tcontext.flow.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\tnode.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n\telse if (sp < 0)                                        // discharging in an adjusted stage\n\t{\n        node.warn(\"Discharge re-adjust\")\n\t\tlet highest_phase_power = Math.min(p1, p2, p3);     // find the phase with the highest (negative) power\n\t\tlet delta = -max_phase - highest_phase_power;       // see if there is room to adjust\n\t\tnode.warn(\"Delta \"+delta);\n\t \tif (delta < -150)                                   // only adjust of diff > 150W\n\t \t{\n\t\t\tnew_sp = Math.floor(Math.max((sp + (delta * num_multi)), original_sp)); //add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP to \"+new_sp);\n\t\t\tif (new_sp == original_sp)\n\t\t\t{\n\t\t\t\tcontext.flow.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\tnode.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n}\nnode.warn(\"The end, sp: \"+sp+\" new: \"+new_sp);\n\nif (new_sp != sp)                                           // only adjust of the setpoint has changed\n{\n\tmsg.payload = new_sp;\n\tdata[\"ess_setpoint\"] = new_sp; // this would be handled with the next victron setpoint update but for debugging\n\tnode.warn(\"Setting new setpoint now to \"+new_sp)\n\tcontext.flow.data = data;\n\treturn msg;\n}",
+        "func": "let data = context.global.data;\nlet sp = data[\"ess_setpoint\"] || 0;\nlet original_sp = data[\"original_setpoint\"];\nlet max = context.global.max_charge_setpoint;\nlet max_phase = context.global.max_phase_power;\nlet min = -context.global.max_discharge_setpoint;\nlet idle_rate = context.global.idle_rate;\nlet adjusted = context.global.setpoint_adjusted || false;\nlet p1 = data[\"grid_l1_w\"] || 0;\nlet p2 = data[\"grid_l2_w\"] || 0;\nlet p3 = data[\"grid_l3_w\"] || 0;\nlet new_sp = sp;\nlet num_multi = context.global.number_of_multiplus;\n//node.warn(\"P1, P2, P3 \" + p1 + \" \" + p2 + \" \" + p3)\n//node.warn(\"sp \" + sp)\n//node.warn(\"In Power Monitor, adjusted is \"+adjusted)\n\nif (adjusted == false) {\n    if (((p1 > max_phase) || (p2 > max_phase) || (p3 > max_phase)) && (sp > idle_rate)) {\n        // charge\n        node.warn(\"Charge overload adjust\");\n\t    let highest_phase_power = Math.max(p1,p2,p3);           // phase with the highest load\n\t    let delta = highest_phase_power - max_phase;            // how much over the max for the phase\n\t    new_sp = Math.ceil(sp - (delta * num_multi));           // lower for each inverter as one setpoint for all\n\t    //node.warn(\"Diff is \"+delta+\" for a new setpoint of \"+new_sp);\n\t    if (new_sp < 0) {                                        // lets not switch to a discharge state\n    \t    // prevent a discharge so go to idle\n\t        new_sp = idle_rate;\n\t    }\n\t    node.warn(\"Setting new setpoint now to \"+new_sp);\n\t    context.global.setpoint_adjusted = true;\n\t    context.global.data[\"original_setpoint\"] = sp;\n    }\n    else if (((p1 < -max_phase) || (p2 < -max_phase) ||  (p3 < -max_phase)) && (sp < 0)) { \n        // discharge\n        node.warn(\"Discharge overload adjust\");\n\t    let highest_phase_power = Math.min(p1,p2,p3);           // phase with the highest load\n\t    let delta = highest_phase_power + max_phase;            // how much over the max for the phase\n\t    new_sp = Math.floor(sp - (delta * num_multi));          // increase for each inverter as one setpoint for all\n\t    if (new_sp > 0) {                                        // lets not switch to a charge state\n    \t    // prevent to adust to charge in a discharge state\n\t        new_sp = -1;\n\t    }\n\t    node.warn(\"Setting new setpoint now to \"+new_sp);\n\t    context.global.setpoint_adjusted = true;\n\t    context.global.data[\"original_setpoint\"] = sp;\n    }\n}\nelse { // the setpoint was adjusted, check if we can re-adjust \n\tif (sp > 0) {                                     // charging in an adjusted state\n        node.warn(\"In Charge re-adjust\");\n\t\tlet highest_phase_power = Math.max(p1, p2, p3);     // find the phase with the highest power\n\t\tlet delta = max_phase - highest_phase_power;        // see if there is room to adjust\n\t\t//node.warn(\"Delta \"+delta);\n\t \tif (delta > 150) {                                   // only adjust if the diff is > 150W\n\t\t\tnew_sp = Math.ceil(Math.min((sp + (delta * num_multi)), original_sp)); // add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP from \"+sp+\" to \"+new_sp+ \" original was \"+original_sp);\n\t\t\tif (new_sp == original_sp) {\n\t\t\t\tcontext.global.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\t//node.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n\telse if (sp < 0) {                                       // discharging in an adjusted stage\n        node.warn(\"Discharge re-adjust\")\n\t\tlet highest_phase_power = Math.min(p1, p2, p3);     // find the phase with the highest (negative) power\n\t\tlet delta = -max_phase - highest_phase_power;       // see if there is room to adjust\n\t\t//node.warn(\"Delta \"+delta);\n\t \tif (delta < -150) {                                   // only adjust of diff > 150W\n\t\t\tnew_sp = Math.floor(Math.max((sp + (delta * num_multi)), original_sp)); //add the delta to the setpoint but do not exceed original_setpoint\n\t\t\tnode.warn(\"Re-adjusting SP to \"+new_sp);\n\t\t\tif (new_sp == original_sp) {\n\t\t\t\tcontext.global.setpoint_adjusted = false;     // we are back at the original setpoint so set adjusted to false\n\t\t\t\t//node.warn(\"adjusted == false \" + new_sp + \" \" + original_sp);\n\t\t\t}\n\t\t}\n\t}\n}\n//node.warn(\"The end, sp: \"+sp+\" new: \"+new_sp);\n\nif (new_sp != sp) {                                          // only adjust of the setpoint has changed\n\tmsg.payload = new_sp;\n\tdata[\"ess_setpoint\"] = new_sp; // this would be handled with the next victron setpoint update but for debugging\n\tnode.warn(\"Setting new setpoint now to \"+new_sp)\n\tcontext.global.data = data;\n\treturn msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3001,7 +2816,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1460,
+        "y": 1640,
         "wires": [
             [
                 "51c59a043f433e82",
@@ -3030,7 +2845,7 @@
         "name": "",
         "onlyChanges": false,
         "x": 600,
-        "y": 1500,
+        "y": 1680,
         "wires": []
     },
     {
@@ -3048,7 +2863,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 560,
-        "y": 1460,
+        "y": 1640,
         "wires": []
     },
     {
@@ -3074,7 +2889,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 1460,
+        "y": 1640,
         "wires": [
             [
                 "7fd426c7ab23f005"
@@ -3095,95 +2910,9 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 290,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "fd34985efaf8b35c",
-        "type": "victron-input-custom",
-        "z": "8d3b29f48feb985c",
-        "g": "05bc2ab263663dde",
-        "service": "com.victronenergy.settings",
-        "path": "/Settings/CGwacs/AcPowerSetPoint",
-        "serviceObj": {
-            "service": "com.victronenergy.settings",
-            "name": "com.victronenergy.settings"
-        },
-        "pathObj": {
-            "path": "/Settings/CGwacs/AcPowerSetPoint",
-            "name": "/Settings/CGwacs/AcPowerSetPoint",
-            "type": "number"
-        },
-        "name": "Victron Setpoint",
-        "onlyChanges": false,
-        "x": 120,
-        "y": 1560,
-        "wires": [
-            [
-                "5b32a479be5a725e"
-            ]
-        ]
-    },
-    {
-        "id": "e114752a621e3913",
-        "type": "debug",
-        "z": "8d3b29f48feb985c",
-        "g": "05bc2ab263663dde",
-        "name": "Victron Setpoint HE",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 530,
-        "y": 1560,
-        "wires": []
-    },
-    {
-        "id": "5b32a479be5a725e",
-        "type": "function",
-        "z": "8d3b29f48feb985c",
-        "g": "05bc2ab263663dde",
-        "name": "Save original SP",
-        "func": "let data = context.flow.data || {};\nlet adjusted = context.flow.setpoint_adjusted || false;\nlet ess_setpoint = msg.payload\n//node.warn(\"I have \"+data[\"original_setpoint\"])\n\nif (data[\"original_setpoint\"] === undefined)\n{\n    data[\"original_setpoint\"] = ess_setpoint // if original_setpoint is not set then \n                                             //we haven't received one yet so save the current\n    context.flow.data = data\n    node.warn(\"saving original setpoint: \"+ ess_setpoint)\n    return msg;\n}",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
         "x": 330,
-        "y": 1560,
-        "wires": [
-            [
-                "e114752a621e3913"
-            ]
-        ]
-    },
-    {
-        "id": "cc6d46e29053cd76",
-        "type": "http request",
-        "z": "8d3b29f48feb985c",
-        "g": "05bc2ab263663dde",
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": false,
-        "url": "",
-        "persist": false,
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 790,
-        "y": 1420,
-        "wires": [
-            []
-        ]
+        "y": 220,
+        "wires": []
     },
     {
         "id": "0460462083e78ff0",
@@ -3191,7 +2920,7 @@
         "z": "8d3b29f48feb985c",
         "g": "05bc2ab263663dde",
         "name": "Log SP adjust to domo log",
-        "func": "let sp = msg.payload;\nlet alert = encodeURIComponent(\"Victron overload adjust to \"+sp)\nmsg.url = \"http://freenas.ubnt:18081/json.htm?type=command&param=addlogmessage&message=\"+alert+\"&level=1\"\nreturn msg;",
+        "func": "let sp = msg.payload;\nlet txt = \"Victron overload adjust to \"+sp;\nmsg.payload = txt\nreturn msg;\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3199,10 +2928,10 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 1420,
+        "y": 1600,
         "wires": [
             [
-                "cc6d46e29053cd76"
+                "0b2f6c937ecdd315"
             ]
         ]
     },
@@ -3225,7 +2954,7 @@
         "fontSize": 16,
         "color": "#f34f96",
         "x": 390,
-        "y": 420,
+        "y": 620,
         "wires": []
     },
     {
@@ -3247,7 +2976,7 @@
         "fontSize": 16,
         "color": "#eeff00",
         "x": 420,
-        "y": 700,
+        "y": 900,
         "wires": []
     },
     {
@@ -3290,7 +3019,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 420,
-        "y": 200,
+        "y": 400,
         "wires": [
             []
         ]
@@ -3309,8 +3038,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 940,
-        "y": 100,
+        "x": 120,
+        "y": 60,
         "wires": [
             [
                 "3391833f0a3beec6"
@@ -3330,13 +3059,1041 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1090,
-        "y": 100,
+        "x": 270,
+        "y": 60,
         "wires": [
             [
                 "b970c5ce031efaf2"
             ]
         ]
+    },
+    {
+        "id": "b8e9c6b1bc213022",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Every 5 minutes",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/5 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 2740,
+        "wires": [
+            [
+                "99a90d423d8cd99b"
+            ]
+        ]
+    },
+    {
+        "id": "99a90d423d8cd99b",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "BattIQMode",
+        "func": "// Globals\n\nlet data = context.global.data;\nmin_soc = context.global.min_soc;\nmax_soc = context.global.max_soc;\n//min_soc_overnight_level = context.global.min_soc_overnight;\nidle_rate = context.global.idle_rate;\ncharge_rate = context.global.charge_rate;\ndischarge_rate = context.global.discharge_rate;\n\n// Locals\nlet new_setpoint = idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nlet batt_soc = data[\"batt_soc\"];\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\n//node.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\n//node.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\n\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\n\nnode.warn(\"victron: IQ Mode says: \"+batt_mode);\n\nif (batt_mode == \"charge\") {\n    new_setpoint = charge_rate;\n}\nelse if (batt_mode == \"discharge\") {\n    new_setpoint = discharge_rate;\n}\nelse if (batt_mode == \"idle\") {\n    new_setpoint = idle_rate;\n}\n\nmsg.payload = new_setpoint;\n\n// switch to idle if at min and discharging\nif ((new_setpoint < 0) && (batt_soc <= min_soc)){\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more discharging needed, battery is at min, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    node.warn(msg.domo_msg);\n    msg.inform_domo = true;\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\n// switch to idle if at max AND charging AND in Float (i.e. enable power during absorption)\nlet charge_state = data[\"charge_state\"]\nif ((new_setpoint > idle_rate) && (batt_soc == max_soc) && (charge_state == \"Float\")) {\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more charging needed, we are full and in float, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    msg.inform_domo = true;\n    node.warn(msg.domo_msg);\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\nif (ess_setpoint != new_setpoint) {\n    msg.payload = new_setpoint;\n    context.global.setpoint_adjusted = false;\n    if (msg.inform_domo == false) {\n        // no plan to report status so inform setpoint change\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: change setpoint, mode is \"+batt_mode + \" setting setpoint to \"+new_setpoint+ \" from \"+ess_setpoint+\" and charge state \"+data[\"charge_state\"];+\"-\"\n        node.warn(msg.domo_msg);\n    }\n}\n\nif ((min == 0) || (min == 15) || (min == 30) || (min == 45)) {\n    if (msg.inform_domo == false) {\n        // no plan to report status so do it now\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: keep setpoint, mode is \"+ batt_mode + \" with setpoint \"+new_setpoint\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 2740,
+        "wires": [
+            [
+                "63b7eaa456c6f9ab",
+                "c5a0d1bb18786068",
+                "bb22a74d34f44c62"
+            ]
+        ]
+    },
+    {
+        "id": "59660e1586e1ec48",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 905,
+        "y": 2700,
+        "wires": []
+    },
+    {
+        "id": "232141417a05794e",
+        "type": "mqtt in",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Tibber charging rates today",
+        "topic": "tibber_data/new_scheme_today/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 2700,
+        "wires": [
+            [
+                "a317260c5a3441e9",
+                "d11013ed692bd256"
+            ]
+        ]
+    },
+    {
+        "id": "a317260c5a3441e9",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Save received rates",
+        "func": "if (msg.topic == \"tibber_data/new_scheme_tomorrow/state\") {\n    context.global.scheme_tomorrow = msg.payload;\n    msg.payload = \"Victron tomorrow rates received\"\n}\nelse {\n    context.global.scheme_today = msg.payload;\n    msg.payload = \"Victron today rates received\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 2700,
+        "wires": [
+            [
+                "2317ba8453921b8c",
+                "59660e1586e1ec48"
+            ]
+        ]
+    },
+    {
+        "id": "2317ba8453921b8c",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Rates received",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 635,
+        "y": 2700,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "63b7eaa456c6f9ab",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 695,
+        "y": 2820,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "d11013ed692bd256",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Tibber rates received",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 2660,
+        "wires": []
+    },
+    {
+        "id": "c5a0d1bb18786068",
+        "type": "victron-output-ess",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "service": "com.victronenergy.settings",
+        "path": "/Settings/CGwacs/AcPowerSetPoint",
+        "serviceObj": {
+            "service": "com.victronenergy.settings",
+            "name": "Venus settings"
+        },
+        "pathObj": {
+            "path": "/Settings/CGwacs/AcPowerSetPoint",
+            "type": "integer",
+            "name": "Grid set-point (W)",
+            "mode": "both"
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 820,
+        "y": 2780,
+        "wires": []
+    },
+    {
+        "id": "bb22a74d34f44c62",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Inform domo",
+        "func": "//node.warn(\"inform says: \"+msg.inform_domo);\nif (msg.inform_domo == true) {\n    msg.payload = msg.domo_msg\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 2740,
+        "wires": [
+            [
+                "59660e1586e1ec48"
+            ]
+        ]
+    },
+    {
+        "id": "01dbdaf6a544d019",
+        "type": "mqtt in",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Tibber charging rates tomorrow",
+        "topic": "tibber_data/new_scheme_tomorrow/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 2660,
+        "wires": [
+            [
+                "a317260c5a3441e9",
+                "d11013ed692bd256"
+            ]
+        ]
+    },
+    {
+        "id": "16da8953d192ab30",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "23:58",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "58 23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2820,
+        "wires": [
+            [
+                "390279dcded85e0f"
+            ]
+        ]
+    },
+    {
+        "id": "390279dcded85e0f",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Scheme cutover",
+        "func": "context.global.scheme_today = context.global.scheme_tomorrow;\nmsg.domo_msg = \"Victron: Switching over day rates\"; \nmsg.inform_domo = true;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 2820,
+        "wires": [
+            [
+                "bb22a74d34f44c62",
+                "63b7eaa456c6f9ab"
+            ]
+        ]
+    },
+    {
+        "id": "69a2629d096d7a9c",
+        "type": "mqtt out",
+        "z": "8d3b29f48feb985c",
+        "g": "b362b271c03a0415",
+        "name": "",
+        "topic": "victron/startup",
+        "qos": "2",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ee1bb25c871ce5fc",
+        "x": 480,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "7b32bfae6afab439",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Charge",
+        "func": "// this node handles a request to charge\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\n\n//Globals\nlet max_soc = context.global.max_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\n\nlet txt=\"\";\n\n// charge is requested, only charge if not at max_soc\nif (batt_soc < max_soc) {\n    msg.payload = charge_rate;\n    txt=\"Victron: Charge starting at \"+charge_rate;\n    node.warn(txt);\n    msg.batt_mode = \"Charge\";\n    context.global.setpoint_adjusted = false;\n}\nelse { \n    // batt == max_soc\n    txt=\"Victron: Battery already full, switching to idle\"\n    node.warn(txt)\n    msg.payload = idle_rate;\n    msg.batt_mode = \"Idle\"\n}\nmsg.inform_domo = true;\nmsg.domo_msg = txt;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 2220,
+        "wires": [
+            [
+                "fb69601b138e6096",
+                "d14625af14055f20",
+                "3289791d00f40465",
+                "32350f7f7633fa81",
+                "f2c94a03e44ac36d"
+            ]
+        ]
+    },
+    {
+        "id": "fb1468d9f802e21c",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Discharge",
+        "func": "// this node handles discharge requests\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet batt_mode = context.global.data[\"batt_mode\"];\n\n//Globals\nlet min_soc = context.global.min_soc;\nlet idle_rate = context.global.idle_rate;\nlet discharge_rate = context.global.discharge_rate;\nlet txt = \"\";\n\n// discharge is requested, only discharge if > min_soc\nif (batt_soc > min_soc){\n    msg.payload = discharge_rate;\n    txt=\"Victron: Discharge starting at \"+discharge_rate\n    node.warn(txt)\n    msg.batt_mode = \"Discharge\";\n    context.global.setpoint_adjusted = false;\n}\nelse {\n    txt=\"Victron: Battery at minimum, switching to idle\"\n    node.warn(txt)\n    msg.payload = idle_rate;\n    msg.batt_mode = \"Idle\"\n}\nmsg.inform_domo = true\nmsg.domo_msg = txt;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 2260,
+        "wires": [
+            [
+                "fb69601b138e6096",
+                "d14625af14055f20",
+                "3289791d00f40465",
+                "32350f7f7633fa81",
+                "f2c94a03e44ac36d"
+            ]
+        ]
+    },
+    {
+        "id": "9e15b637df84d87f",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Idle",
+        "func": "// This node handles idle requests\n\nlet data = context.global.data;\nlet idle_rate = context.global.idle_rate;\nlet batt_mode = data[\"batt_mode\"] = \"Idle\"\nlet ess_setpoint = data[\"ess_setpoint\"];\n\n// idle is requested, only switch to idle if not in idle already\nif (ess_setpoint != idle_rate) {\n    node.warn(\"Victron: Requesting idle at \"+idle_rate)\n    msg.payload = idle_rate;\n    msg.inform_domo = true\n    msg.domo_msg = \"Victron: Idling at \"+idle_rate;\n    msg.batt_mode = \"Idle\"\n    return msg;\n}\nelse {\n    node.warn(\"Already in Idle so nothing to do\")\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 2300,
+        "wires": [
+            [
+                "fb69601b138e6096",
+                "d14625af14055f20",
+                "3289791d00f40465",
+                "32350f7f7633fa81",
+                "f2c94a03e44ac36d"
+            ]
+        ]
+    },
+    {
+        "id": "d14625af14055f20",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Inform domo",
+        "func": "//node.warn(\"inform says: \"+msg.domo_msg);\nif (msg.inform_domo == true) {\n    msg.payload = msg.domo_msg\n    return msg;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 2300,
+        "wires": [
+            [
+                "031b9cbf3eb7ea67"
+            ]
+        ]
+    },
+    {
+        "id": "031b9cbf3eb7ea67",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "link out 4",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 1035,
+        "y": 2300,
+        "wires": []
+    },
+    {
+        "id": "3289791d00f40465",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Battery Mode",
+        "func": "//node.warn(\"battmode is\"+msg.batt_mode +\" and \"+context.global.data[\"batt_mode\"])\nif (msg.batt_mode != context.global.data[\"batt_mode\"]){\n    msg.topic = \"batt_mode\";\n    msg.sendnow = true;\n    msg.payload = msg.batt_mode;\n    return(msg);\n}\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 2260,
+        "wires": [
+            [
+                "e50fcdcc15023c7c"
+            ]
+        ]
+    },
+    {
+        "id": "554f27d183597978",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 235,
+        "y": 2240,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "32350f7f7633fa81",
+        "type": "victron-output-ess",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "service": "com.victronenergy.settings",
+        "path": "/Settings/CGwacs/AcPowerSetPoint",
+        "serviceObj": {
+            "service": "com.victronenergy.settings",
+            "name": "Venus settings"
+        },
+        "pathObj": {
+            "path": "/Settings/CGwacs/AcPowerSetPoint",
+            "type": "integer",
+            "name": "Grid set-point (W)",
+            "mode": "both"
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 960,
+        "y": 2360,
+        "wires": []
+    },
+    {
+        "id": "9afbd51431392557",
+        "type": "victron-input-system",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "service": "com.victronenergy.system/0",
+        "path": "/Dc/Battery/Soc",
+        "serviceObj": {
+            "service": "com.victronenergy.system/0",
+            "name": "Venus system"
+        },
+        "pathObj": {
+            "path": "/Dc/Battery/Soc",
+            "type": "float",
+            "name": "Battery State of Charge (%)"
+        },
+        "name": "Venus Battery | State of Charge (%)",
+        "onlyChanges": true,
+        "roundValues": "1",
+        "x": 200,
+        "y": 2440,
+        "wires": [
+            [
+                "2f9c61d13cdca117"
+            ]
+        ]
+    },
+    {
+        "id": "2f9c61d13cdca117",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Idle near SOC Min/Max",
+        "func": "/*\n  this node gets called with every battery SOC change as well as on chate state change (bulk, float)\n  it checks if near min or max+float and switches to idle if so\n*/\n\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet batt_mode = data[\"batt_mode\"];\nlet charge_state = data[\"charge_state\"];\n\n// Globals\nlet max_soc = context.global.max_soc;\nlet min_soc = context.global.min_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\n\nlet txt=\"\";\n\n// check if SOC is near min or max and adjust of so\n//if ((batt_mode == \"Charge\") && (batt_soc == max_soc)) {\nif ((charge_rate > idle_rate) && (batt_soc == max_soc)) {\n    if (charge_state != \"Float\") {\n        // either in charge or bulk so continue\n        msg.payload = charge_rate;\n        txt=\"Victron: Continue Charge because not in Float, at \"+charge_rate;\n        node.warn(txt);\n        return(msg);\n    }\n    else {\n        // max_soc reached and we are in float\n        msg.payload = idle_rate;\n        context.global.data[\"batt_mode\"] = \"Idle\";\n        txt=\"Victron: End of Charge reached, in float so switching to idle!\";\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return(msg)\n    }\n}\nelse if ((batt_mode == \"Discharge\") && (batt_soc <= min_soc)) {\n    // at the end of discharge so switch to idle\n    msg.payload = idle_rate;\n    context.global.data[\"batt_mode\"] = \"Idle\";\n    txt=\"Victron: End of Discharge reached, switching to idle!\";\n    node.warn(txt);\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return(msg)\n}\n\n/*\n  we should not end up here as:\n    Discharging should not happen below min_soc and\n    max_soc during Charge get's handled above\n*/\n\nif (batt_mode != \"Idle\") {\n    if (((batt_soc < min_soc) && (batt_mode == \"Discharge\")) || ((batt_soc == max_soc) && (charge_state != \"Float\"))) {\n        // Oops... should not be here ...\n        msg.payload = idle_rate;\n        context.global.data[\"batt_mode\"] = \"Idle\";\n        txt=\"Victron: Something weird happened, exception not trapped, switching to idle!\";\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return(msg)\n    }\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 2440,
+        "wires": [
+            [
+                "d14625af14055f20",
+                "32350f7f7633fa81",
+                "3289791d00f40465",
+                "9f462166733487a1"
+            ]
+        ]
+    },
+    {
+        "id": "78102c3f64e2de32",
+        "type": "mqtt in",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "Battery Mode",
+        "topic": "my_victron/set/batt_mode",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 2780,
+        "wires": [
+            [
+                "656d79841f2b968b"
+            ]
+        ]
+    },
+    {
+        "id": "656d79841f2b968b",
+        "type": "switch",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "IQ Smart Mode",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 330,
+        "y": 2780,
+        "wires": [
+            [
+                "99a90d423d8cd99b",
+                "563c9ef40f7e3e50"
+            ]
+        ]
+    },
+    {
+        "id": "563c9ef40f7e3e50",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "dc7bd95e3d68dfe3",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 455,
+        "y": 2780,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "f2c94a03e44ac36d",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 835,
+        "y": 2220,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "9f462166733487a1",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "SOC Monitor",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 835,
+        "y": 2440,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "e50fcdcc15023c7c",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "ToMQTT",
+        "mode": "link",
+        "links": [
+            "84f5b9b1e88bca69"
+        ],
+        "x": 1035,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "0b2f6c937ecdd315",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "link out 5",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 735,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "cb51f6a8d0f024b5",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Update Battery State",
+        "func": "/*\n  this node sets the battery_state and reports to domoticz\n  it get's called on setpoint changes\n*/\n\nmsg.topic = \"batt_state\";\nmsg.sendnow = true;\nlet setpoint = msg.payload;\nlet batt_state = \"\"\n\n// Variables\nlet data = context.global.data;\n\n// Globals\nlet idle_rate = context.global.idle_rate;\n\nif (data[\"batt_mode\"] == \"Off\"){\n    batt_state = \"Off\";\n}\nelse if (setpoint > idle_rate){\n    batt_state = \"Charging\";\n}\nelse if (setpoint < 0){\n    batt_state = \"Discharging\";\n}\nelse {\n    batt_state = \"Idle\";\n}\n\nnode.warn(\"Batt state setpoint \"+setpoint + \" and state \" + batt_state)\nif (batt_state != data[\"batt_state\"]) {\n    context.global.data[\"batt_state\"] = batt_state;\n    msg.payload = batt_state;\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 2480,
+        "wires": [
+            [
+                "e50fcdcc15023c7c",
+                "d6cb2b7bfe2ce086"
+            ]
+        ]
+    },
+    {
+        "id": "d6cb2b7bfe2ce086",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Batt State report",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 835,
+        "y": 2480,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "465101cecd27549b",
+        "type": "victron-input-ess",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "service": "com.victronenergy.settings",
+        "path": "/Settings/CGwacs/AcPowerSetPoint",
+        "serviceObj": {
+            "service": "com.victronenergy.settings",
+            "name": "Venus settings"
+        },
+        "pathObj": {
+            "path": "/Settings/CGwacs/AcPowerSetPoint",
+            "type": "integer",
+            "name": "Grid set-point (W)"
+        },
+        "name": "Venus | Grid set-point (W)",
+        "onlyChanges": true,
+        "x": 170,
+        "y": 2480,
+        "wires": [
+            [
+                "cb51f6a8d0f024b5"
+            ]
+        ]
+    },
+    {
+        "id": "b4d0ec2f6a3fb0ce",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "5 Min ping",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 2520,
+        "wires": [
+            [
+                "a3169756890e06b6"
+            ]
+        ]
+    },
+    {
+        "id": "a3169756890e06b6",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Report progress",
+        "func": "let data = context.global.data;\nlet batt_mode = data[\"batt_mode\"]\n\n//if (batt_mode != \"Idle\") {\n    msg.inform_domo = true;\n    let txt=\"\";\n\n    let sp = data[\"ess_setpoint\"] \n    let batt_state = data[\"batt_state\"]\n    let batt_soc = data[\"batt_soc\"]\n    let charge_state = data[\"charge_state\"]\n\n    txt = \"Victron status: mode=\"+batt_mode+\" state=\"+batt_state+\" soc=\"+batt_soc+\" charge state= \"+charge_state\n    node.warn(txt);\n    msg.domo_msg = txt;\n    return msg;\n//}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2520,
+        "wires": [
+            [
+                "d14625af14055f20"
+            ]
+        ]
+    },
+    {
+        "id": "2f93a2522ebb4484",
+        "type": "victron-input-vebus",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "service": "com.victronenergy.vebus/276",
+        "path": "/VebusChargeState",
+        "serviceObj": {
+            "service": "com.victronenergy.vebus/276",
+            "name": "MultiPlus"
+        },
+        "pathObj": {
+            "path": "/VebusChargeState",
+            "type": "enum",
+            "name": "Charge state",
+            "enum": {
+                "0": "Initialising",
+                "1": "Bulk",
+                "2": "Absorption",
+                "3": "Float",
+                "4": "Storage",
+                "5": "Absorb repeat",
+                "6": "Forced absorb",
+                "7": "Equalise",
+                "8": "Bulk stopped",
+                "9": "Unknown"
+            }
+        },
+        "initial": "",
+        "name": "MultiPlus-II 48/5000 | Charge State",
+        "onlyChanges": true,
+        "x": 200,
+        "y": 2400,
+        "wires": [
+            [
+                "2f9c61d13cdca117"
+            ]
+        ]
+    },
+    {
+        "id": "454dffade8093f08",
+        "type": "catch",
+        "z": "8d3b29f48feb985c",
+        "d": true,
+        "g": "9bad7daae227974f",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 100,
+        "y": 2920,
+        "wires": [
+            [
+                "8de232d607ed9dae"
+            ]
+        ]
+    },
+    {
+        "id": "8de232d607ed9dae",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "9bad7daae227974f",
+        "name": "function 1",
+        "func": "txt=\"Victron ERROR: \"+ msg.error.message + \"node name: \"+msn.error.source.name;\nmsg.payload = txt;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 2920,
+        "wires": [
+            [
+                "f6df8aab7f837216"
+            ]
+        ]
+    },
+    {
+        "id": "f6df8aab7f837216",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "9bad7daae227974f",
+        "name": "link out 6",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 375,
+        "y": 2920,
+        "wires": []
+    },
+    {
+        "id": "d464f5880be3efb4",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Monitor GridBalance",
+        "func": "let data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet power = data[\"grid_total_w\"];\nlet sp = data[\"ess_setpoint\"];\nlet soc = data[\"battery_soc\"];\nlet idle_rate = context.global.idle_rate;\nlet num_mp = context.global.number_of_multiplus;\nlet min_soc = context.global.min_soc\nlet txt = \"\";\nmsg.batt_mode = \"Grid Balance\";\n\nif (batt_mode == \"Grid Balance\") {\n    node.warn(\"In Grid Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (Math.abs(power) > 250) {\n        // adjust power only if over 250W difference\n        node.warn(\"Power needs adjusting: \"+power)\n        new_sp = sp - power;\n        txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n        node.warn(txt)\n        msg.domo_message = txt\n        msg.inform_domo = true\n        msg.payload = new_sp\n\n        if (((soc <= min_soc && batt_state == \"Discharging\")) || ((new_sp > idle_rate) && (charge_state == \"Float\"))) {\n            // discharging whilst at minimim or charging in float\n            new_sp = idle_rate;\n            txt = \"Victron: switching from Grid balance to idle as battery near the end, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n            msg.batt_state = \"idle\";\n        }\n        node.warn(\"Grid balance returning power \"+msg.payload)\n        return msg;\n    }\n}\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 2560,
+        "wires": [
+            [
+                "d14625af14055f20",
+                "0e0b6e75f6733733",
+                "91c5833faf99eab3",
+                "32350f7f7633fa81",
+                "3289791d00f40465"
+            ]
+        ]
+    },
+    {
+        "id": "19ae2782076f0991",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "GridBalance",
+        "func": "// This node handles IQ Smart Mode requests\nmsg.inform_domo = true\nmsg.domo_msg = \"Victron: Grid Balance\";\nmsg.batt_mode = \"Grid Balance\"\nnode.warn(\"Victron: switching to Grid Balance\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 2380,
+        "wires": [
+            [
+                "d14625af14055f20",
+                "d464f5880be3efb4",
+                "3289791d00f40465"
+            ]
+        ]
+    },
+    {
+        "id": "e7fd29b09a28654d",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "1 minute ping",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 2560,
+        "wires": [
+            [
+                "d464f5880be3efb4"
+            ]
+        ]
+    },
+    {
+        "id": "0e0b6e75f6733733",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Battery State",
+        "func": "if (msg.batt_state != context.global.data[\"batt_state\"]){\n    msg.topic = \"batt_state\";\n    msg.sendnow = true;\n    msg.payload = msg.batt_state;\n    return msg;\n}\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 2560,
+        "wires": [
+            [
+                "45627eabcfed0aa4"
+            ]
+        ]
+    },
+    {
+        "id": "45627eabcfed0aa4",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "ToMQTT",
+        "mode": "link",
+        "links": [
+            "84f5b9b1e88bca69"
+        ],
+        "x": 1005,
+        "y": 2560,
+        "wires": []
+    },
+    {
+        "id": "02a7858b852d91b0",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "IQ Smart Mode",
+        "func": "// This node handles IQ Smart Mode requests\nmsg.inform_domo = true\nmsg.domo_msg = \"Victron: IQ Smart Mode\";\nmsg.batt_mode = \"IQ Smart Mode\"\nnode.warn(\"Victron: switching to IQ Smart Mode\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 2340,
+        "wires": [
+            [
+                "d14625af14055f20",
+                "f2c94a03e44ac36d",
+                "3289791d00f40465"
+            ]
+        ]
+    },
+    {
+        "id": "91c5833faf99eab3",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "GridBalance log",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 745,
+        "y": 2560,
+        "wires": [],
+        "l": false
     },
     {
         "id": "ee1bb25c871ce5fc",
