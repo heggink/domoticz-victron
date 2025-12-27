@@ -177,8 +177,6 @@
             "d464f5880be3efb4",
             "19ae2782076f0991",
             "e7fd29b09a28654d",
-            "0e0b6e75f6733733",
-            "45627eabcfed0aa4",
             "02a7858b852d91b0",
             "91c5833faf99eab3"
         ],
@@ -3103,7 +3101,7 @@
         "z": "8d3b29f48feb985c",
         "g": "dc7bd95e3d68dfe3",
         "name": "BattIQMode",
-        "func": "// Globals\n\nlet data = context.global.data;\nmin_soc = context.global.min_soc;\nmax_soc = context.global.max_soc;\n//min_soc_overnight_level = context.global.min_soc_overnight;\nidle_rate = context.global.idle_rate;\ncharge_rate = context.global.charge_rate;\ndischarge_rate = context.global.discharge_rate;\n\n// Locals\nlet new_setpoint = idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nlet batt_soc = data[\"batt_soc\"];\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\n//node.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\n//node.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\n\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\n\nnode.warn(\"victron: IQ Mode says: \"+batt_mode);\n\nif (batt_mode == \"charge\") {\n    new_setpoint = charge_rate;\n}\nelse if (batt_mode == \"discharge\") {\n    new_setpoint = discharge_rate;\n}\nelse if (batt_mode == \"idle\") {\n    new_setpoint = idle_rate;\n}\n\nmsg.payload = new_setpoint;\n\n// switch to idle if at min and discharging\nif ((new_setpoint < 0) && (batt_soc <= min_soc)){\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more discharging needed, battery is at min, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    node.warn(msg.domo_msg);\n    msg.inform_domo = true;\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\n// switch to idle if at max AND charging AND in Float (i.e. enable power during absorption)\nlet charge_state = data[\"charge_state\"]\nif ((new_setpoint > idle_rate) && (batt_soc == max_soc) && (charge_state == \"Float\")) {\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more charging needed, we are full and in float, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    msg.inform_domo = true;\n    node.warn(msg.domo_msg);\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\nif (ess_setpoint != new_setpoint) {\n    msg.payload = new_setpoint;\n    context.global.setpoint_adjusted = false;\n    if (msg.inform_domo == false) {\n        // no plan to report status so inform setpoint change\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: change setpoint, mode is \"+batt_mode + \" setting setpoint to \"+new_setpoint+ \" from \"+ess_setpoint+\" and charge state \"+data[\"charge_state\"];+\"-\"\n        node.warn(msg.domo_msg);\n    }\n}\n\nif ((min == 0) || (min == 15) || (min == 30) || (min == 45)) {\n    if (msg.inform_domo == false) {\n        // no plan to report status so do it now\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: keep setpoint, mode is \"+ batt_mode + \" with setpoint \"+new_setpoint\n    }\n}\n\nreturn msg;",
+        "func": "// Globals\n\nlet data = context.global.data;\nmin_soc = context.global.min_soc;\nmax_soc = context.global.max_soc;\n//min_soc_overnight_level = context.global.min_soc_overnight;\nidle_rate = context.global.idle_rate;\ncharge_rate = context.global.charge_rate;\ndischarge_rate = context.global.discharge_rate;\n\n// Locals\nlet new_setpoint = idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nlet batt_soc = data[\"batt_soc\"];\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\n//node.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\n//node.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\nif (context.global.scheme_today === undefined) {\n    txt = \"Victron has no scheme_today\";\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\n\nnode.warn(\"victron: IQ Mode says: \"+batt_mode);\n\nif (batt_mode == \"charge\") {\n    new_setpoint = charge_rate;\n}\nelse if (batt_mode == \"discharge\") {\n    new_setpoint = discharge_rate;\n}\nelse if (batt_mode == \"idle\") {\n    new_setpoint = idle_rate;\n}\n\nmsg.payload = new_setpoint;\n\n// switch to idle if at min and discharging\nif ((new_setpoint < 0) && (batt_soc <= min_soc)){\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more discharging needed, battery is at min, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    node.warn(msg.domo_msg);\n    msg.inform_domo = true;\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\n// switch to idle if at max AND charging AND in Float (i.e. enable power during absorption)\nlet charge_state = data[\"charge_state\"]\nif ((new_setpoint > idle_rate) && (batt_soc == max_soc) && (charge_state == \"Float\")) {\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more charging needed, we are full and in float, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    msg.inform_domo = true;\n    node.warn(msg.domo_msg);\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\nif (ess_setpoint != new_setpoint) {\n    msg.payload = new_setpoint;\n    context.global.setpoint_adjusted = false;\n    if (msg.inform_domo == false) {\n        // no plan to report status so inform setpoint change\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: change setpoint, mode is \"+batt_mode + \" setting setpoint to \"+new_setpoint+ \" from \"+ess_setpoint+\" and charge state \"+data[\"charge_state\"];+\"-\"\n        node.warn(msg.domo_msg);\n    }\n}\n\nif ((min == 0) || (min == 15) || (min == 30) || (min == 45)) {\n    if (msg.inform_domo == false) {\n        // no plan to report status so do it now\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: keep setpoint, mode is \"+ batt_mode + \" with setpoint \"+new_setpoint\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3946,7 +3944,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Monitor GridBalance",
-        "func": "let data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet power = Math.round(data[\"grid_total_w\"]);\nlet sp = Math.round(data[\"ess_setpoint\"]);\nlet soc = data[\"batt_soc\"];\nlet idle_rate = context.global.idle_rate;\nlet num_mp = context.global.number_of_multiplus;\nlet min_soc = context.global.min_soc\nlet txt = \"\";\nmsg.batt_mode = \"Grid Balance\";\n\nif (batt_mode == \"Grid Balance\") {\n    //node.warn(\"In Grid Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (Math.abs(power) > 250) {\n        // adjust power only if over 250W difference\n        node.warn(\"Power needs adjusting: \"+power)\n        let new_sp = sp - power;\n        txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n        node.warn(txt)\n        msg.domo_message = txt\n        msg.inform_domo = true\n        msg.payload = new_sp\n        if (((soc <= min_soc && batt_state == \"Discharging\")) || ((new_sp > idle_rate) && (charge_state == \"Float\"))) {\n            // discharging whilst at minimim or charging in float\n            new_sp = idle_rate;\n            txt = \"Victron: switching from Grid balance to idle as battery near the end, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n            msg.batt_state = \"idle\";\n        }\n        return msg;\n    }\n}\n\n",
+        "func": "let data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet power = Math.round(data[\"grid_total_w\"]);\nlet sp = Math.round(data[\"ess_setpoint\"]);\nlet soc = data[\"batt_soc\"];\nlet idle_rate = context.global.idle_rate;\nlet num_mp = context.global.number_of_multiplus;\nlet min_soc = context.global.min_soc\nlet txt = \"\";\nmsg.batt_mode = \"Grid Balance\";\n\nif (batt_mode == \"Grid Balance\") {\n    //node.warn(\"In Grid Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (Math.abs(power) > 250) {\n        // adjust power only if over 250W difference\n        node.warn(\"Power needs adjusting: \"+power)\n        let new_sp = sp - power;\n        txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n        node.warn(txt)\n        msg.domo_message = txt\n        msg.inform_domo = true\n        msg.payload = new_sp\n        if (((soc <= min_soc && batt_state == \"Discharging\")) || ((new_sp > idle_rate) && (charge_state == \"Float\"))) {\n            // discharging whilst at minimim or charging in float\n            new_sp = idle_rate;\n            txt = \"Victron: switching from Grid balance to idle as battery near the end, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n        }\n        return msg;\n    }\n}\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3958,10 +3956,9 @@
         "wires": [
             [
                 "d14625af14055f20",
-                "0e0b6e75f6733733",
-                "91c5833faf99eab3",
                 "32350f7f7633fa81",
-                "3289791d00f40465"
+                "3289791d00f40465",
+                "91c5833faf99eab3"
             ]
         ]
     },
@@ -4017,41 +4014,6 @@
                 "d464f5880be3efb4"
             ]
         ]
-    },
-    {
-        "id": "0e0b6e75f6733733",
-        "type": "function",
-        "z": "8d3b29f48feb985c",
-        "g": "09c2cef9562d2a46",
-        "name": "Battery State",
-        "func": "if (msg.batt_state != context.global.data[\"batt_state\"]){\n    msg.topic = \"batt_state\";\n    msg.sendnow = true;\n    msg.payload = msg.batt_state;\n    return msg;\n}\n\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 890,
-        "y": 2560,
-        "wires": [
-            [
-                "45627eabcfed0aa4"
-            ]
-        ]
-    },
-    {
-        "id": "45627eabcfed0aa4",
-        "type": "link out",
-        "z": "8d3b29f48feb985c",
-        "g": "09c2cef9562d2a46",
-        "name": "ToMQTT",
-        "mode": "link",
-        "links": [
-            "84f5b9b1e88bca69"
-        ],
-        "x": 1005,
-        "y": 2560,
-        "wires": []
     },
     {
         "id": "02a7858b852d91b0",
