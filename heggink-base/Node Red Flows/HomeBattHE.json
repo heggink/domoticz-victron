@@ -8,6 +8,22 @@
         "env": []
     },
     {
+        "id": "f288e92fa3b1548c",
+        "type": "tab",
+        "label": "Enphase Virtual PV",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "13fd8d3e42908a31",
+        "type": "tab",
+        "label": "domo_log",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "b699493a4e613ac0",
         "type": "group",
         "z": "8d3b29f48feb985c",
@@ -343,6 +359,155 @@
         "y": 2879,
         "w": 402,
         "h": 82
+    },
+    {
+        "id": "victron-client-id",
+        "type": "victron-client"
+    },
+    {
+        "id": "1c4bcced4bf72c6d",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Home Batt",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ee1bb25c871ce5fc",
+        "type": "mqtt-broker",
+        "name": "freenas",
+        "broker": "192.168.1.109",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "482140b3ae8976c9",
+        "type": "ui_group",
+        "name": "BL109",
+        "tab": "4a6b773847c2eaa7",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4a6b773847c2eaa7",
+        "type": "ui_tab",
+        "name": "BL109",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "302c4817a35421ee",
@@ -3101,7 +3266,7 @@
         "z": "8d3b29f48feb985c",
         "g": "dc7bd95e3d68dfe3",
         "name": "BattIQMode",
-        "func": "// Globals\n\nlet data = context.global.data;\nmin_soc = context.global.min_soc;\nmax_soc = context.global.max_soc;\n//min_soc_overnight_level = context.global.min_soc_overnight;\nidle_rate = context.global.idle_rate;\ncharge_rate = context.global.charge_rate;\ndischarge_rate = context.global.discharge_rate;\n\n// Locals\nlet new_setpoint = idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nlet batt_soc = data[\"batt_soc\"];\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\n//node.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\n//node.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\nif (context.global.scheme_today === undefined) {\n    txt = \"Victron has no scheme_today\";\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\n\nnode.warn(\"victron: IQ Mode says: \"+batt_mode);\n\nif (batt_mode == \"charge\") {\n    new_setpoint = charge_rate;\n}\nelse if (batt_mode == \"discharge\") {\n    new_setpoint = discharge_rate;\n}\nelse if (batt_mode == \"idle\") {\n    new_setpoint = idle_rate;\n}\n\nmsg.payload = new_setpoint;\n\n// switch to idle if at min and discharging\nif ((new_setpoint < 0) && (batt_soc <= min_soc)){\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more discharging needed, battery is at min, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    node.warn(msg.domo_msg);\n    msg.inform_domo = true;\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\n// switch to idle if at max AND charging AND in Float (i.e. enable power during absorption)\nlet charge_state = data[\"charge_state\"]\nif ((new_setpoint > idle_rate) && (batt_soc == max_soc) && (charge_state == \"Float\")) {\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more charging needed, we are full and in float, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    msg.inform_domo = true;\n    node.warn(msg.domo_msg);\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\nif (ess_setpoint != new_setpoint) {\n    msg.payload = new_setpoint;\n    context.global.setpoint_adjusted = false;\n    if (msg.inform_domo == false) {\n        // no plan to report status so inform setpoint change\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: change setpoint, mode is \"+batt_mode + \" setting setpoint to \"+new_setpoint+ \" from \"+ess_setpoint+\" and charge state \"+data[\"charge_state\"];+\"-\"\n        node.warn(msg.domo_msg);\n    }\n}\n\nif ((min == 0) || (min == 15) || (min == 30) || (min == 45)) {\n    if (msg.inform_domo == false) {\n        // no plan to report status so do it now\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: keep setpoint, mode is \"+ batt_mode + \" with setpoint \"+new_setpoint\n    }\n}\n\nreturn msg;",
+        "func": "// Globals\n\nlet data = context.global.data;\nmin_soc = context.global.min_soc;\nmax_soc = context.global.max_soc;\n//min_soc_overnight_level = context.global.min_soc_overnight;\nidle_rate = context.global.idle_rate;\ncharge_rate = context.global.charge_rate;\ndischarge_rate = context.global.discharge_rate;\n\n// Locals\nlet new_setpoint = idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nlet batt_soc = data[\"batt_soc\"];\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\n//node.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\n//node.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\nif (context.global.scheme_today === 'undefined') {\n    txt = \"Victron has no scheme_today\";\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\n\nnode.warn(\"victron: IQ Mode says: \"+batt_mode);\n\nif (batt_mode == \"charge\") {\n    new_setpoint = charge_rate;\n}\nelse if (batt_mode == \"discharge\") {\n    new_setpoint = discharge_rate;\n}\nelse if (batt_mode == \"idle\") {\n    new_setpoint = idle_rate;\n}\n\nmsg.payload = new_setpoint;\n\n// switch to idle if at min and discharging\nif ((new_setpoint < 0) && (batt_soc <= min_soc)){\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more discharging needed, battery is at min, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    node.warn(msg.domo_msg);\n    msg.inform_domo = true;\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\n// switch to idle if at max AND charging AND in Float (i.e. enable power during absorption)\nlet charge_state = data[\"charge_state\"]\nif ((new_setpoint > idle_rate) && (batt_soc == max_soc) && (charge_state == \"Float\")) {\n    msg.payload = idle_rate;\n    msg.domo_msg = \"No more charging needed, we are full and in float, Batt mode is \" + batt_mode + \" setpoint is \" + msg.payload;\n    msg.inform_domo = true;\n    node.warn(msg.domo_msg);\n    new_setpoint = idle_rate;\n    batt_mode = \"idle\";\n}\n\nif (ess_setpoint != new_setpoint) {\n    msg.payload = new_setpoint;\n    context.global.setpoint_adjusted = false;\n    if (msg.inform_domo == false) {\n        // no plan to report status so inform setpoint change\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: change setpoint, mode is \"+batt_mode + \" setting setpoint to \"+new_setpoint+ \" from \"+ess_setpoint+\" and charge state \"+data[\"charge_state\"];+\"-\"\n        node.warn(msg.domo_msg);\n    }\n}\n\nif ((min == 0) || (min == 15) || (min == 30) || (min == 45)) {\n    if (msg.inform_domo == false) {\n        // no plan to report status so do it now\n        msg.inform_domo = true;\n        msg.domo_msg = \"Victron: keep setpoint, mode is \"+ batt_mode + \" with setpoint \"+new_setpoint\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3377,7 +3542,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Charge",
-        "func": "// this node handles a request to charge\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\n\n//Globals\nlet max_soc = context.global.max_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\n\nlet txt=\"\";\n\n// charge is requested, only charge if not at max_soc\nif (batt_soc < max_soc) {\n    msg.payload = charge_rate;\n    txt=\"Victron: Charge starting at \"+charge_rate;\n    node.warn(txt);\n    msg.batt_mode = \"Charge\";\n    context.global.setpoint_adjusted = false;\n}\nelse { \n    // batt == max_soc\n    txt=\"Victron: Battery already full, switching to idle\"\n    node.warn(txt)\n    msg.payload = idle_rate;\n    msg.batt_mode = \"Idle\"\n}\nmsg.inform_domo = true;\nmsg.domo_msg = txt;\nreturn msg;",
+        "func": "// this node handles a request to charge\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet charge_state = data[\"charge_state\"];\n\n//Globals\nlet max_soc = context.global.max_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\n\nlet txt=\"\";\n\n// charge is requested, only charge if not at max_soc\nif (batt_soc < max_soc) {\n    msg.payload = charge_rate;\n    txt=\"Victron: Charge starting at \"+charge_rate;\n    node.warn(txt);\n    msg.batt_mode = \"Charge\";\n    context.global.setpoint_adjusted = false;\n}\nelse { \n    // batt == max_soc\n    if (charge_state == 'Float') {\n        txt=\"Victron: Battery already full, switching to idle\"\n        node.warn(txt)\n        msg.payload = idle_rate;\n        msg.batt_mode = \"Idle\"\n    }\n    else {\n        msg.payload = charge_rate;\n        txt=\"Victron: Charge starting at \"+charge_rate;\n        node.warn(txt);\n        msg.batt_mode = \"Charge\";\n        context.global.setpoint_adjusted = false;\n    }\n}\nmsg.inform_domo = true;\nmsg.domo_msg = txt;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3487,7 +3652,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Battery Mode",
-        "func": "//node.warn(\"battmode is\"+msg.batt_mode +\" and \"+context.global.data[\"batt_mode\"])\nif (msg.batt_mode != context.global.data[\"batt_mode\"]){\n    msg.topic = \"batt_mode\";\n    msg.sendnow = true;\n    msg.payload = msg.batt_mode;\n    return(msg);\n}\n\n",
+        "func": "//node.warn(\"battmode is\"+msg.batt_mode +\" and \"+context.global.data[\"batt_mode\"])\nif (typeof msg.batt_mode !== 'undefined') {\n    if (msg.batt_mode != context.global.data[\"batt_mode\"]){\n        msg.topic = \"batt_mode\";\n        msg.sendnow = true;\n        msg.payload = msg.batt_mode;\n        return(msg);\n    }\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3577,7 +3742,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Idle near SOC Min/Max",
-        "func": "/*\n  this node gets called with every battery SOC change as well as on chate state change (bulk, float)\n  it checks if near min or max+float and switches to idle if so\n*/\n\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet batt_mode = data[\"batt_mode\"];\nlet charge_state = data[\"charge_state\"];\n\n// Globals\nlet max_soc = context.global.max_soc;\nlet min_soc = context.global.min_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\n\nlet txt=\"\";\n\n// check if SOC is near min or max and adjust of so\n//if ((batt_mode == \"Charge\") && (batt_soc == max_soc)) {\nif ((charge_rate > idle_rate) && (batt_soc == max_soc)) {\n    if (charge_state != \"Float\") {\n        // either in charge or bulk so continue\n        msg.payload = charge_rate;\n        txt=\"Victron: Continue Charge because not in Float, at \"+charge_rate;\n        node.warn(txt);\n        return(msg);\n    }\n    else {\n        // max_soc reached and we are in float\n        msg.payload = idle_rate;\n        context.global.data[\"batt_mode\"] = \"Idle\";\n        txt=\"Victron: End of Charge reached, in float so switching to idle!\";\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return(msg)\n    }\n}\nelse if ((batt_mode == \"Discharge\") && (batt_soc <= min_soc)) {\n    // at the end of discharge so switch to idle\n    msg.payload = idle_rate;\n    context.global.data[\"batt_mode\"] = \"Idle\";\n    txt=\"Victron: End of Discharge reached, switching to idle!\";\n    node.warn(txt);\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return(msg)\n}\n\n/*\n  we should not end up here as:\n    Discharging should not happen below min_soc and\n    max_soc during Charge get's handled above\n*/\n\nif (batt_mode != \"Idle\") {\n    if (((batt_soc < min_soc) && (batt_mode == \"Discharge\")) || ((batt_soc == max_soc) && (charge_state != \"Float\"))) {\n        // Oops... should not be here ...\n        msg.payload = idle_rate;\n        context.global.data[\"batt_mode\"] = \"Idle\";\n        txt=\"Victron: Something weird happened, exception not trapped, switching to idle!\";\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return(msg)\n    }\n}\n",
+        "func": "/*\n  this node gets called with every battery SOC change as well as on chate state change (bulk, float)\n  it checks if near min or max+float and switches to idle if so\n*/\n\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet batt_mode = data[\"batt_mode\"];\nlet charge_state = data[\"charge_state\"];\nlet ess_setpoint = data[\"ess_setpoint\"]\n\n// Globals\nlet max_soc = context.global.max_soc;\nlet min_soc = context.global.min_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\n\nlet txt=\"\";\n\n// check if SOC is near min or max and adjust of so\nif ((ess_setpoint > idle_rate) && (batt_soc == max_soc)) {\n    if (charge_state != \"Float\") {\n        // either in charge or bulk so continue\n        node.warn(\"Check SOC near end: not in float\")\n        msg.payload = charge_rate;\n        txt=\"Victron: Continue Charge because not in Float, at \"+charge_rate;\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.batt_mode = context.global.data[\"batt_mode\"]\n        msg.inform_domo = true;\n        return(msg);\n    }\n    else {\n        // max_soc reached and we are in float\n        node.warn(\"Check SOC near end: in float so idle\")\n        msg.payload = idle_rate;\n        if (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n            msg.batt_mode = \"Idle\";\n        }\n        else {\n            msg.batt_mode = context.global.data[\"batt_mode\"]\n        }\n        txt=\"Victron: End of Charge reached, in float so switching to idle!\";\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return(msg)\n    }\n}\n\nif ((ess_setpoint < 0) && (batt_soc <= min_soc)) {\n    // at the end of discharge so switch to idle\n    msg.payload = idle_rate;\n    node.warn(\"Check SOC near end: at min soc so idle\")\n\n    if (batt_mode != \"IQ Smart Mode\") { \n        context.global.data[\"batt_mode\"] = \"Idle\";\n    }\n    else {\n        msg.batt_mode = context.global.data[\"batt_mode\"];\n    }\n    txt=\"Victron: End of Discharge reached, switching to idle!\";\n    node.warn(txt);\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return(msg)\n}\n\n/*\n  we should not end up here as:\n    Discharging should not happen below min_soc and\n    max_soc during Charge get's handled above\n*/\n\nif (batt_mode != \"Idle\") {\n    if (((batt_soc < min_soc) && (batt_mode == \"Discharge\")) || ((batt_soc == max_soc) && (charge_state != \"Float\"))) {\n        // Oops... should not be here ...\n        msg.payload = idle_rate;\n        context.global.data[\"batt_mode\"] = \"Idle\";\n        txt=\"Victron: Something weird happened, exception not trapped, switching to idle!\";\n        node.warn(txt);\n        msg.batt_mode = \"Idle\";\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return(msg)\n    }\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4058,50 +4223,1385 @@
         "l": false
     },
     {
-        "id": "ee1bb25c871ce5fc",
-        "type": "mqtt-broker",
-        "name": "freenas",
-        "broker": "192.168.1.109",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "autoUnsubscribe": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
+        "id": "648e528a859f3a50",
+        "type": "victron-virtual",
+        "z": "f288e92fa3b1548c",
+        "name": "Enphase Solar",
+        "device": "pvinverter",
+        "default_values": true,
+        "battery_capacity": 25,
+        "include_battery_temperature": false,
+        "grid_nrofphases": 1,
+        "include_motor_temp": false,
+        "include_controller_temp": false,
+        "include_coolant_temp": false,
+        "include_motor_rpm": true,
+        "include_motor_direction": true,
+        "position": 0,
+        "pvinverter_nrofphases": "3",
+        "fluid_type": 0,
+        "include_tank_battery": false,
+        "include_tank_temperature": false,
+        "tank_battery_voltage": 3.3,
+        "tank_capacity": 0.2,
+        "temperature_type": 2,
+        "include_humidity": false,
+        "include_pressure": false,
+        "include_temp_battery": false,
+        "temp_battery_voltage": 3.3,
+        "x": 140,
+        "y": 40,
+        "wires": []
     },
     {
-        "id": "482140b3ae8976c9",
-        "type": "ui_group",
-        "name": "BL109",
-        "tab": "4a6b773847c2eaa7",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
+        "id": "20f3dd28e63a1967",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Connected",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Connected",
+            "name": "/Connected",
+            "type": "number",
+            "value": 1
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 380,
+        "y": 120,
+        "wires": []
     },
     {
-        "id": "4a6b773847c2eaa7",
-        "type": "ui_tab",
-        "name": "BL109",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
+        "id": "7e84598c750b18c4",
+        "type": "inject",
+        "z": "f288e92fa3b1548c",
+        "name": "1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "20f3dd28e63a1967"
+            ]
+        ]
+    },
+    {
+        "id": "e53d485b5dfebcce",
+        "type": "inject",
+        "z": "f288e92fa3b1548c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Enphase",
+        "payloadType": "str",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "375e7292136efaac"
+            ]
+        ]
+    },
+    {
+        "id": "375e7292136efaac",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/ProductName",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/ProductName",
+            "name": "/ProductName",
+            "type": "string",
+            "value": "Virtual pvinverter"
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 390,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "eb91ceadaf32819d",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Serial",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Serial",
+            "name": "/Serial",
+            "type": "string",
+            "value": "648e528a859f3a50"
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 360,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7786b47bfc0ef489",
+        "type": "inject",
+        "z": "f288e92fa3b1548c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "42635462",
+        "payloadType": "str",
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "eb91ceadaf32819d"
+            ]
+        ]
+    },
+    {
+        "id": "726e2f28d0d54716",
+        "type": "inject",
+        "z": "f288e92fa3b1548c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "7",
+        "payloadType": "num",
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "ecd7fead17f9f67b"
+            ]
+        ]
+    },
+    {
+        "id": "94298c90081378c3",
+        "type": "inject",
+        "z": "f288e92fa3b1548c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "12000",
+        "payloadType": "num",
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "2c06c1e5cf0b8328"
+            ]
+        ]
+    },
+    {
+        "id": "ecd7fead17f9f67b",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/StatusCode",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/StatusCode",
+            "name": "/StatusCode",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 380,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "2c06c1e5cf0b8328",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/MaxPower",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/MaxPower",
+            "name": "/Ac/MaxPower",
+            "type": "number",
+            "value": 1000
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 390,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5eee62410628f5b9",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L1/Voltage",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L1/Voltage",
+            "name": "/Ac/L1/Voltage",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 570,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "4c9fcfc0b9049e09",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L1/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L1/Power",
+            "name": "/Ac/L1/Power",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 560,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "785478de2056ae04",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L1/Energy/Forward",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L1/Energy/Forward",
+            "name": "/Ac/L1/Energy/Forward",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 590,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "a7d7fcaa76689282",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L1/Current",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L1/Current",
+            "name": "/Ac/L1/Current",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 1290,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "621fb0b6e8350044",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/Power",
+            "name": "/Ac/Power",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 560,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "b3032d747b10fda4",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/Energy/Forward",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/Energy/Forward",
+            "name": "/Ac/Energy/Forward",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 590,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "c7ab76eaeed1e037",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "ABS",
+        "func": "msg.payload = Math.max(msg.payload.instant,0);\nmsg.topic=\"power\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 520,
+        "wires": [
+            [
+                "4c9fcfc0b9049e09",
+                "50b0ece631a8f085"
+            ]
+        ]
+    },
+    {
+        "id": "50b0ece631a8f085",
+        "type": "join",
+        "z": "f288e92fa3b1548c",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 870,
+        "y": 380,
+        "wires": [
+            [
+                "50cf05523392af4a"
+            ]
+        ]
+    },
+    {
+        "id": "50cf05523392af4a",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "Make Amps",
+        "func": "let amps = 0;\n//node.error(\"Volt is\", msg.payload.voltage)\n//node.error(\"Power is\", msg.payload.power)\n\nif (msg.payload.voltage != 0)\n{\n    amps = msg.payload.power / msg.payload.voltage;\n}\nmsg.topic = \"amps\"\nmsg.payload = amps;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 380,
+        "wires": [
+            [
+                "a7d7fcaa76689282"
+            ]
+        ]
+    },
+    {
+        "id": "16858a72355be5de",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "kWh",
+        "func": "msg.payload = msg.payload.usage / 1000.0;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 680,
+        "wires": [
+            [
+                "785478de2056ae04"
+            ]
+        ]
+    },
+    {
+        "id": "3dc5e1a246c38019",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/CustomName",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/CustomName",
+            "name": "/CustomName",
+            "type": "string",
+            "value": "Enphase Solar"
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 390,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "89a1f97f36226007",
+        "type": "inject",
+        "z": "f288e92fa3b1548c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Enphase",
+        "payloadType": "str",
+        "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "3dc5e1a246c38019"
+            ]
+        ]
+    },
+    {
+        "id": "d19aa70a53538180",
+        "type": "comment",
+        "z": "f288e92fa3b1548c",
+        "name": "7 = running, 8=standby",
+        "info": "",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a5dfc387ca3d8130",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L2/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L2/Power",
+            "name": "/Ac/L2/Power",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 560,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "ba0ff5bc1e04c496",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L3/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L3/Power",
+            "name": "/Ac/L3/Power",
+            "type": "number",
+            "value": 1931.7
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 550,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e4bc6679ad81fc0a",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L2/Voltage",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L2/Voltage",
+            "name": "/Ac/L2/Voltage",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 570,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3232bbd17bba6f74",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L3/Voltage",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L3/Voltage",
+            "name": "/Ac/L3/Voltage",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 570,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "0d4bfc8ad7699b1d",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L2/Energy/Forward",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L2/Energy/Forward",
+            "name": "/Ac/L2/Energy/Forward",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 590,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "baa11d9f6cf2d247",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L3/Energy/Forward",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase Solar (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L3/Energy/Forward",
+            "name": "/Ac/L3/Energy/Forward",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 590,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "71735ca3e1d1f0d4",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L2/Current",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L2/Current",
+            "name": "/Ac/L2/Current",
+            "type": "number",
+            "value": 8.704111911827045
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 1270,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "b6c41af57c9ce51e",
+        "type": "victron-output-custom",
+        "z": "f288e92fa3b1548c",
+        "service": "com.victronenergy.pvinverter/100",
+        "path": "/Ac/L3/Current",
+        "serviceObj": {
+            "service": "com.victronenergy.pvinverter/100",
+            "name": "Enphase (100)"
+        },
+        "pathObj": {
+            "path": "/Ac/L3/Current",
+            "name": "/Ac/L3/Current",
+            "type": "number",
+            "value": 0
+        },
+        "name": "",
+        "onlyChanges": false,
+        "x": 1270,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9d0c7932c8c5b276",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "Make Amps",
+        "func": "let amps = 0;\nif (msg.payload.voltage != 0)\n{\n    amps = msg.payload.power / msg.payload.voltage;\n}\nmsg.topic = \"amps\"\nmsg.payload = amps;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 420,
+        "wires": [
+            [
+                "71735ca3e1d1f0d4"
+            ]
+        ]
+    },
+    {
+        "id": "fcb3165ad1ae5d6d",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "Make Amps",
+        "func": "let amps = 0;\nif (msg.payload.voltage != 0)\n{\n    amps = msg.payload.power / msg.payload.voltage;\n}\nmsg.topic = \"amps\"\nmsg.payload = amps;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 460,
+        "wires": [
+            [
+                "b6c41af57c9ce51e"
+            ]
+        ]
+    },
+    {
+        "id": "928469d059f226cd",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "ABS",
+        "func": "msg.payload = Math.max(msg.payload.instant,0);\nmsg.topic=\"power\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 560,
+        "wires": [
+            [
+                "a5dfc387ca3d8130",
+                "90df129155e6a5a3"
+            ]
+        ]
+    },
+    {
+        "id": "f4dbd90a08e4d3a3",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "ABS",
+        "func": "msg.payload = Math.max(msg.payload.instant,0);\nmsg.topic=\"power\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 600,
+        "wires": [
+            [
+                "ba0ff5bc1e04c496",
+                "94f43131b10fbadc"
+            ]
+        ]
+    },
+    {
+        "id": "1379f59a9ab8bfaa",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "ABS",
+        "func": "msg.payload = Math.max(msg.payload.instant,0);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 640,
+        "wires": [
+            [
+                "621fb0b6e8350044"
+            ]
+        ]
+    },
+    {
+        "id": "5a3df00adb5a3c5d",
+        "type": "mqtt in",
+        "z": "f288e92fa3b1548c",
+        "name": "L1 Voltage - voltage",
+        "topic": "domo-pub/9607/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 380,
+        "wires": [
+            [
+                "4b01cfddd5a8ca3b"
+            ]
+        ]
+    },
+    {
+        "id": "fc84e8f8dcd238db",
+        "type": "mqtt in",
+        "z": "f288e92fa3b1548c",
+        "name": "L2 Voltage - voltage",
+        "topic": "domo-pub/9611/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "fe13c07048e090bd"
+            ]
+        ]
+    },
+    {
+        "id": "7f0c03114d0b987a",
+        "type": "mqtt in",
+        "z": "f288e92fa3b1548c",
+        "name": "L3 Voltage - voltage",
+        "topic": "domo-pub/9603/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 460,
+        "wires": [
+            [
+                "5eea50d91a368f97"
+            ]
+        ]
+    },
+    {
+        "id": "89b5a3f61172c5cf",
+        "type": "mqtt in",
+        "z": "f288e92fa3b1548c",
+        "name": "L1 Power - usage",
+        "topic": "domo-pub/9605/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 520,
+        "wires": [
+            [
+                "c7ab76eaeed1e037",
+                "16858a72355be5de"
+            ]
+        ]
+    },
+    {
+        "id": "60d9c24aab84031a",
+        "type": "mqtt in",
+        "z": "f288e92fa3b1548c",
+        "name": "L2 Power - usage",
+        "topic": "domo-pub/9609/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "928469d059f226cd",
+                "f524255c0d1089d7"
+            ]
+        ]
+    },
+    {
+        "id": "7e8821966fbf33a9",
+        "type": "mqtt in",
+        "z": "f288e92fa3b1548c",
+        "name": "L3 Power - usage",
+        "topic": "domo-pub/9601/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 600,
+        "wires": [
+            [
+                "f4dbd90a08e4d3a3",
+                "30b934f63d921160"
+            ]
+        ]
+    },
+    {
+        "id": "51218b102c095b2f",
+        "type": "mqtt in",
+        "z": "f288e92fa3b1548c",
+        "name": "Total Power - usage",
+        "topic": "domo-pub/9613/state",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 640,
+        "wires": [
+            [
+                "1379f59a9ab8bfaa",
+                "703e01f8440f5150"
+            ]
+        ]
+    },
+    {
+        "id": "4b01cfddd5a8ca3b",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "voltage",
+        "func": "let v=msg.payload.voltage;\nmsg.payload=v\nmsg.topic = \"voltage\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 380,
+        "wires": [
+            [
+                "5eee62410628f5b9",
+                "50b0ece631a8f085"
+            ]
+        ]
+    },
+    {
+        "id": "fe13c07048e090bd",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "voltage",
+        "func": "let v=msg.payload.voltage;\nmsg.payload=v\nmsg.topic = \"voltage\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "e4bc6679ad81fc0a",
+                "90df129155e6a5a3"
+            ]
+        ]
+    },
+    {
+        "id": "5eea50d91a368f97",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "voltage",
+        "func": "let v=msg.payload.voltage;\nmsg.payload=v\nmsg.topic = \"voltage\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 460,
+        "wires": [
+            [
+                "3232bbd17bba6f74",
+                "94f43131b10fbadc"
+            ]
+        ]
+    },
+    {
+        "id": "f524255c0d1089d7",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "kWh",
+        "func": "msg.payload = msg.payload.usage / 1000.0;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 720,
+        "wires": [
+            [
+                "0d4bfc8ad7699b1d"
+            ]
+        ]
+    },
+    {
+        "id": "30b934f63d921160",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "kWh",
+        "func": "msg.payload = msg.payload.usage / 1000.0;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 760,
+        "wires": [
+            [
+                "baa11d9f6cf2d247"
+            ]
+        ]
+    },
+    {
+        "id": "703e01f8440f5150",
+        "type": "function",
+        "z": "f288e92fa3b1548c",
+        "name": "kWh",
+        "func": "msg.payload = msg.payload.usage / 1000.0;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 800,
+        "wires": [
+            [
+                "b3032d747b10fda4"
+            ]
+        ]
+    },
+    {
+        "id": "90df129155e6a5a3",
+        "type": "join",
+        "z": "f288e92fa3b1548c",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 870,
+        "y": 420,
+        "wires": [
+            [
+                "9d0c7932c8c5b276"
+            ]
+        ]
+    },
+    {
+        "id": "94f43131b10fbadc",
+        "type": "join",
+        "z": "f288e92fa3b1548c",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 870,
+        "y": 460,
+        "wires": [
+            [
+                "fcb3165ad1ae5d6d"
+            ]
+        ]
+    },
+    {
+        "id": "4943b9a1398b4d9d",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "name": "log_domo",
+        "func": "let str = msg.payload;\nlet alert = encodeURIComponent(str);\nlet level=2\nmsg.url = \"http://192.168.1.109:18081/json.htm?type=command&param=addlogmessage&message=\"+alert+\"&level=\"+level;\n//node.warn(msg.url)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 100,
+        "wires": [
+            [
+                "54ff11746108429f"
+            ]
+        ]
+    },
+    {
+        "id": "54ff11746108429f",
+        "type": "http request",
+        "z": "13fd8d3e42908a31",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 120,
+        "wires": [
+            [
+                "dae890e2161d6a61"
+            ]
+        ]
+    },
+    {
+        "id": "44d07b9e813b1e68",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "name": "log_domo",
+        "links": [
+            "47ac3bb0d650e7cd",
+            "50726057d964075f",
+            "d72e4c9c76c0a54b",
+            "198705d9b12167f3",
+            "99ad6f3fc2443ad9",
+            "59660e1586e1ec48",
+            "031b9cbf3eb7ea67",
+            "0b2f6c937ecdd315",
+            "f6df8aab7f837216"
+        ],
+        "x": 65,
+        "y": 100,
+        "wires": [
+            [
+                "4943b9a1398b4d9d"
+            ]
+        ]
+    },
+    {
+        "id": "dae890e2161d6a61",
+        "type": "debug",
+        "z": "13fd8d3e42908a31",
+        "name": "Domo result",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6744f5332974af3d",
+        "type": "inject",
+        "z": "13fd8d3e42908a31",
+        "name": "Node Red Log",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "2",
+        "payload": "Node Red restarted",
+        "payloadType": "str",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "47ac3bb0d650e7cd"
+            ]
+        ]
+    },
+    {
+        "id": "47ac3bb0d650e7cd",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 295,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "05d89bda971debf5",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "name": "alert_domo",
+        "func": "let str = msg.payload;\nlet alert = encodeURIComponent(str);\nlet subject=msg.topic\nmsg.url = \"http://192.168.1.109:18081/json.htm?type=command&param=sendnotification&subject=\"+subject+\"&body=\"+alert;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "54ff11746108429f"
+            ]
+        ]
+    },
+    {
+        "id": "1ade85b91dd1ef10",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "name": "alert_domo",
+        "links": [
+            "cb675392ac82f529",
+            "99ad6f3fc2443ad9",
+            "c98ba4a4240e9149",
+            "34d0e700c095c17d"
+        ],
+        "x": 65,
+        "y": 160,
+        "wires": [
+            [
+                "05d89bda971debf5"
+            ]
+        ]
+    },
+    {
+        "id": "1286c1e855b91cf4",
+        "type": "inject",
+        "z": "13fd8d3e42908a31",
+        "name": "Node Red Alert",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ALERT",
+        "payload": "Node Red restarted",
+        "payloadType": "str",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "cb675392ac82f529"
+            ]
+        ]
+    },
+    {
+        "id": "cb675392ac82f529",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "1ade85b91dd1ef10"
+        ],
+        "x": 295,
+        "y": 280,
+        "wires": []
     }
 ]
