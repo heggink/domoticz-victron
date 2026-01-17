@@ -150,7 +150,7 @@
             "40bc446b3c9032c2"
         ],
         "x": 14,
-        "y": 1939,
+        "y": 2219,
         "w": 632,
         "h": 122
     },
@@ -203,7 +203,7 @@
             "efc682e349616a06"
         ],
         "x": 14,
-        "y": 2079,
+        "y": 2379,
         "w": 1112,
         "h": 642
     },
@@ -254,12 +254,24 @@
             "6c95c716e4ab5d1f",
             "d6e4856191966e9e",
             "1fbbec3b31fce42a",
-            "819b8b5bd25157f3"
+            "819b8b5bd25157f3",
+            "5b53d8e0fe370c42",
+            "b216d9def802896b",
+            "85b987b4dabca378",
+            "cee9fbdad1051b8d",
+            "d89e8ae11a05103d",
+            "ab2095ce56bd1b63",
+            "d0adeebd3e85d3a8",
+            "bed15d3b5b24f90a",
+            "7240a062f3294b04",
+            "95843414747162ff",
+            "22a9ab355a5f6554",
+            "c52e25968d4266af"
         ],
         "x": 14,
         "y": 1719,
         "w": 752,
-        "h": 202
+        "h": 482
     },
     {
         "id": "61da6231d7299de3",
@@ -329,7 +341,7 @@
             "f6df8aab7f837216"
         ],
         "x": 14,
-        "y": 2939,
+        "y": 3239,
         "w": 402,
         "h": 82
     },
@@ -374,7 +386,7 @@
             "390279dcded85e0f"
         ],
         "x": 14,
-        "y": 2739,
+        "y": 3039,
         "w": 932,
         "h": 182
     },
@@ -542,7 +554,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 100,
-        "y": 1980,
+        "y": 2260,
         "wires": [
             [
                 "40bc446b3c9032c2"
@@ -564,7 +576,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 470,
-        "y": 2020,
+        "y": 2300,
         "wires": []
     },
     {
@@ -593,7 +605,7 @@
         "name": "",
         "onlyChanges": false,
         "x": 500,
-        "y": 1980,
+        "y": 2260,
         "wires": []
     },
     {
@@ -610,7 +622,7 @@
         "finalize": "",
         "libs": [],
         "x": 240,
-        "y": 1980,
+        "y": 2260,
         "wires": [
             [
                 "d39b7539103b3513",
@@ -1348,7 +1360,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 100,
-        "y": 2220,
+        "y": 2520,
         "wires": [
             [
                 "053fac255b781adb",
@@ -1410,7 +1422,7 @@
         "repair": false,
         "outputs": 8,
         "x": 340,
-        "y": 2220,
+        "y": 2520,
         "wires": [
             [
                 "5b3acf804ca416d1"
@@ -1464,7 +1476,7 @@
         "name": "MP2 Switch position",
         "onlyChanges": false,
         "x": 980,
-        "y": 2160,
+        "y": 2460,
         "wires": []
     },
     {
@@ -1481,7 +1493,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 2120,
+        "y": 2420,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -1503,7 +1515,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 2160,
+        "y": 2460,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -1526,7 +1538,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 980,
-        "y": 2120,
+        "y": 2420,
         "wires": []
     },
     {
@@ -3232,7 +3244,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 2400,
+        "y": 2700,
         "wires": [
             [
                 "eedb7eaeb1af5d15"
@@ -3250,7 +3262,7 @@
             "44d07b9e813b1e68"
         ],
         "x": 905,
-        "y": 2820,
+        "y": 3120,
         "wires": []
     },
     {
@@ -3268,7 +3280,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 160,
-        "y": 2820,
+        "y": 3120,
         "wires": [
             [
                 "a317260c5a3441e9",
@@ -3290,7 +3302,7 @@
         "finalize": "",
         "libs": [],
         "x": 470,
-        "y": 2820,
+        "y": 3120,
         "wires": [
             [
                 "2317ba8453921b8c",
@@ -3313,7 +3325,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 635,
-        "y": 2820,
+        "y": 3120,
         "wires": [],
         "l": false
     },
@@ -3332,7 +3344,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 505,
-        "y": 2880,
+        "y": 3180,
         "wires": [],
         "l": false
     },
@@ -3351,7 +3363,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 480,
-        "y": 2780,
+        "y": 3080,
         "wires": []
     },
     {
@@ -3368,7 +3380,7 @@
         "finalize": "",
         "libs": [],
         "x": 650,
-        "y": 2880,
+        "y": 3180,
         "wires": [
             [
                 "59660e1586e1ec48"
@@ -3390,7 +3402,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 170,
-        "y": 2780,
+        "y": 3080,
         "wires": [
             [
                 "a317260c5a3441e9",
@@ -3421,7 +3433,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 2880,
+        "y": 3180,
         "wires": [
             [
                 "390279dcded85e0f"
@@ -3442,7 +3454,7 @@
         "finalize": "",
         "libs": [],
         "x": 320,
-        "y": 2880,
+        "y": 3180,
         "wires": [
             [
                 "bb22a74d34f44c62",
@@ -3483,7 +3495,7 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 2200,
+        "y": 2500,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -3508,7 +3520,7 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 2240,
+        "y": 2540,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -3533,7 +3545,7 @@
         "finalize": "",
         "libs": [],
         "x": 570,
-        "y": 2280,
+        "y": 2580,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -3558,7 +3570,7 @@
         "finalize": "",
         "libs": [],
         "x": 950,
-        "y": 2280,
+        "y": 2580,
         "wires": [
             [
                 "031b9cbf3eb7ea67"
@@ -3576,7 +3588,7 @@
             "44d07b9e813b1e68"
         ],
         "x": 1085,
-        "y": 2280,
+        "y": 2580,
         "wires": []
     },
     {
@@ -3593,7 +3605,7 @@
         "finalize": "",
         "libs": [],
         "x": 960,
-        "y": 2240,
+        "y": 2540,
         "wires": [
             [
                 "e50fcdcc15023c7c"
@@ -3615,7 +3627,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 215,
-        "y": 2220,
+        "y": 2520,
         "wires": [],
         "l": false
     },
@@ -3639,7 +3651,7 @@
         "onlyChanges": true,
         "roundValues": "1",
         "x": 180,
-        "y": 2620,
+        "y": 2920,
         "wires": [
             [
                 "2f9c61d13cdca117"
@@ -3660,7 +3672,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2600,
+        "y": 2900,
         "wires": [
             [
                 "d14625af14055f20",
@@ -3685,7 +3697,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 905,
-        "y": 2200,
+        "y": 2500,
         "wires": [],
         "l": false
     },
@@ -3704,7 +3716,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 845,
-        "y": 2600,
+        "y": 2900,
         "wires": [],
         "l": false
     },
@@ -3719,7 +3731,7 @@
             "84f5b9b1e88bca69"
         ],
         "x": 1085,
-        "y": 2240,
+        "y": 2540,
         "wires": []
     },
     {
@@ -3750,7 +3762,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2540,
+        "y": 2840,
         "wires": [
             [
                 "e50fcdcc15023c7c",
@@ -3773,7 +3785,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 845,
-        "y": 2540,
+        "y": 2840,
         "wires": [],
         "l": false
     },
@@ -3796,7 +3808,7 @@
         "name": "Venus | Grid set-point (W)",
         "onlyChanges": true,
         "x": 150,
-        "y": 2540,
+        "y": 2840,
         "wires": [
             [
                 "cb51f6a8d0f024b5"
@@ -3826,7 +3838,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 130,
-        "y": 2680,
+        "y": 2980,
         "wires": [
             [
                 "a3169756890e06b6"
@@ -3847,7 +3859,7 @@
         "finalize": "",
         "libs": [],
         "x": 520,
-        "y": 2680,
+        "y": 2980,
         "wires": [
             [
                 "d14625af14055f20"
@@ -3886,7 +3898,7 @@
         "name": "MultiPlus-II 48/5000 | Charge State",
         "onlyChanges": true,
         "x": 180,
-        "y": 2580,
+        "y": 2880,
         "wires": [
             [
                 "2f9c61d13cdca117"
@@ -3903,7 +3915,7 @@
         "scope": null,
         "uncaught": false,
         "x": 100,
-        "y": 2980,
+        "y": 3280,
         "wires": [
             [
                 "8de232d607ed9dae"
@@ -3924,7 +3936,7 @@
         "finalize": "",
         "libs": [],
         "x": 260,
-        "y": 2980,
+        "y": 3280,
         "wires": [
             [
                 "f6df8aab7f837216"
@@ -3942,7 +3954,7 @@
             "44d07b9e813b1e68"
         ],
         "x": 375,
-        "y": 2980,
+        "y": 3280,
         "wires": []
     },
     {
@@ -3951,15 +3963,15 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Monitor GridBalance",
-        "func": "let data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet power = Math.round(data[\"grid_total_w\"]);\nlet sp = Math.round(data[\"ess_setpoint\"]);\nlet soc = data[\"batt_soc\"];\nlet idle_rate = context.global.idle_rate;\nlet num_mp = context.global.number_of_multiplus;\nlet min_soc = context.global.min_soc\nlet txt = \"\";\nmsg.batt_mode = \"Grid Balance\";\nlet smart_mode = data[\"smart_mode\"]\n\nif ((batt_mode == \"Grid Balance\") ||\n    (batt_mode == \"IQ Smart Mode\" && smart_mode == \"gridbalance\")) {\n    node.warn(\"In Grid Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (Math.abs(power) > 250) {\n        // adjust power only if over 250W difference\n        node.warn(\"Power needs adjusting: \"+power)\n        let new_sp = sp - power;\n        txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n        node.warn(txt)\n        msg.domo_message = txt\n        msg.inform_domo = true\n        msg.payload = new_sp\n        if (((soc <= min_soc && batt_state == \"Discharging\")) || ((new_sp > idle_rate) && (charge_state == \"Float\"))) {\n            // discharging whilst at minimim or charging in float\n            new_sp = idle_rate;\n            txt = \"Victron: switching from Grid balance to idle as battery near the end, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n        }\n        return msg;\n    }\n}\n\n",
+        "func": "let data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet soc = data[\"batt_soc\"];\nlet smart_mode = data[\"smart_mode\"]\n\nlet power = Math.round(data[\"grid_total_w\"]);\nlet sp = Math.round(data[\"ess_setpoint\"]);\nlet idle_rate = context.global.idle_rate;\nlet num_mp = context.global.number_of_multiplus;\nlet min_soc = context.global.min_soc\nlet txt = \"\";\n\nif ((batt_mode == \"Grid Balance\") ||\n    (batt_mode == \"IQ Smart Mode\" && smart_mode == \"gridbalance\")) {\n    node.warn(\"In Grid Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (Math.abs(power) > 250) {\n        // adjust power only if over 250W difference\n        node.warn(\"Power needs adjusting: \"+power)\n        let new_sp = sp - power;\n        txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n        node.warn(txt)\n        msg.domo_message = txt\n        msg.inform_domo = true\n        msg.payload = new_sp\n        if ((soc <= min_soc) && (batt_state == \"Discharging\")) {\n            // discharging whilst at minimim\n            new_sp = idle_rate;\n            txt = \"Victron: Batt at minimum in grad balance so idle, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n        }\n        else if ((new_sp > idle_rate) && (charge_state == \"Float\")) {\n            // charging whilst at max\n            new_sp = idle_rate;\n            txt = \"Victron: Batt at max in grid balance so whitch to idle rate, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n        }\n        return msg;\n    }\n}\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 2500,
+        "x": 840,
+        "y": 2660,
         "wires": [
             [
                 "d14625af14055f20",
@@ -3983,7 +3995,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 2360,
+        "y": 2660,
         "wires": [
             [
                 "d14625af14055f20",
@@ -3997,7 +4009,7 @@
         "type": "inject",
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
-        "name": "1 minute ping",
+        "name": "1 min",
         "props": [
             {
                 "p": "payload"
@@ -4014,8 +4026,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 140,
-        "y": 2500,
+        "x": 630,
+        "y": 2700,
         "wires": [
             [
                 "d464f5880be3efb4",
@@ -4037,7 +4049,7 @@
         "finalize": "",
         "libs": [],
         "x": 600,
-        "y": 2320,
+        "y": 2620,
         "wires": [
             [
                 "d14625af14055f20",
@@ -4052,7 +4064,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "GridBalance log",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -4060,8 +4072,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 845,
-        "y": 2500,
+        "x": 985,
+        "y": 2660,
         "wires": [],
         "l": false
     },
@@ -4147,8 +4159,8 @@
         "links": [
             "11fac77a0d071027"
         ],
-        "x": 975,
-        "y": 2360,
+        "x": 1085,
+        "y": 2660,
         "wires": []
     },
     {
@@ -4157,7 +4169,7 @@
         "z": "8d3b29f48feb985c",
         "g": "bad554f7d868bf19",
         "name": "Set SP",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -4174,16 +4186,16 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
-        "name": "IQ Smart Mode",
-        "func": "// this node looks finds the entry in the schedule to determine wether to:\n// idle\n// charge\n// discharge\n// balance or\n// solar-balance\n// it sets msg.payload such that the action nodes know we're in smart more\n\n// Globals\nlet data = context.global.data;\nmin_soc = context.global.min_soc;\nmax_soc = context.global.max_soc;\n//min_soc_overnight_level = context.global.min_soc_overnight;\nidle_rate = context.global.idle_rate;\ncharge_rate = context.global.charge_rate;\ndischarge_rate = context.global.discharge_rate;\n\n// Locals\nlet new_setpoint = idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nlet batt_soc = data[\"batt_soc\"];\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\nnode.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\nnode.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\n\nif (context.global.scheme_today === 'undefined') {\n    txt = \"Victron has no scheme_today\";\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\n\nnode.warn(\"victron: IQ Mode New says: \"+batt_mode);\n\nmsg.payload = \"IQ Smart Mode\";\ncontext.global.data[\"smart_mode\"] = batt_mode;\nmsg.smart_mode = batt_mode;\nreturn msg;",
+        "name": "IQ S-M",
+        "func": "// this node looks finds the entry in the schedule to determine wether to:\n// idle\n// charge\n// discharge\n// balance or\n// solar-balance\n// it sets msg.payload such that the action nodes know we're in smart more\n\n// Globals\nlet data = context.global.data;\nmin_soc = context.global.min_soc;\nmax_soc = context.global.max_soc;\n//min_soc_overnight_level = context.global.min_soc_overnight;\nidle_rate = context.global.idle_rate;\ncharge_rate = context.global.charge_rate;\ndischarge_rate = context.global.discharge_rate;\n\n// Locals\nlet new_setpoint = idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nlet batt_soc = data[\"batt_soc\"];\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\n//node.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\n//node.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\n\nif (context.global.scheme_today === 'undefined') {\n    txt = \"Victron has no scheme_today\";\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.payload = idle_rate;\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\n\nnode.warn(\"victron: IQ Mode New says: \"+batt_mode);\n\nmsg.payload = \"IQ Smart Mode\";\ncontext.global.data[\"smart_mode\"] = batt_mode;\nmsg.smart_mode = batt_mode;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 260,
-        "y": 2400,
+        "x": 240,
+        "y": 2700,
         "wires": [
             [
                 "f893c02906d0409b"
@@ -4228,8 +4240,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 5,
-        "x": 410,
-        "y": 2400,
+        "x": 370,
+        "y": 2700,
         "wires": [
             [
                 "9e15b637df84d87f"
@@ -4254,15 +4266,15 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Monitor SolarBalance",
-        "func": "//\n// this node adjusts the setpoint to direct solar energy into the batt instead of return to grid\n//\nlet data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet power = Math.round(data[\"grid_total_w\"]);\nlet sp = Math.round(data[\"ess_setpoint\"]);\nlet batt_soc = data[\"batt_soc\"];\nlet idle_rate = context.global.idle_rate;\nlet max_soc = context.global.max_soc\nlet txt = \"\";\nmsg.batt_mode = \"Solar Balance\";\nlet smart_mode = data[\"smart_mode\"]\n\nif ((batt_mode == \"Solar Balance\") ||\n    (batt_mode == \"IQ Smart Mode\" && smart_mode == \"solarbalance\")) {\n    node.warn(\"In solar Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (power < -250) {\n        // we are defivering more than 250W back to the grid so see if we can charge the batt\n        node.warn(\"Power needs adjusting: \"+power)\n        \n        if (batt_soc == max_soc && charge_state == 'Float') {\n            msg.payload = idle_rate;\n            txt=\"Victron: Solar Balance wants to charge but batt is full so Idle \"+msg.payload_rate;\n            node.warn(txt);\n            context.global.setpoint_adjusted = false;\n        }\n        else { \n            let new_sp = sp - power;\n            txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.inform_domo = true\n            msg.payload = new_sp\n        }\n        return msg;\n    }\n}\n\n",
+        "func": "//\n// this node adjusts the setpoint to direct solar energy into the batt instead of return to grid\n//\nlet data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet smart_mode = data[\"smart_mode\"]\nlet batt_soc = data[\"batt_soc\"];\nlet pv_total = data[\"pv_total\"]\nlet acl_total = data[\"acl_total\"]\n\n\nlet power = Math.round(data[\"grid_total_w\"]);\nlet sp = Math.round(data[\"ess_setpoint\"]);\nlet idle_rate = context.global.idle_rate;\nlet max_soc = context.global.max_soc\nlet txt = \"\";\nmsg.batt_mode = \"Solar Balance\";\n\nnode.warn(\"In Solar Balance with power \"+power+\" and batt_mode \"+batt_mode+\" an smart mode \"+smart_mode)\nif ((batt_mode == \"Solar Balance\") ||\n    (batt_mode == \"IQ Smart Mode\" && smart_mode == \"solarbalance\")) {\n    node.warn(\"In solar Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (pv_total < 250) {\n        // no use trying to charge if there is no solar power\n        return\n    }\n    if (power < -250) {\n        // we are delivering more than 250W back to the grid so see if we can charge the batt\n        node.warn(\"Power needs adjusting: \"+power)\n        \n        if (batt_soc == max_soc && charge_state == 'Float') {\n            msg.payload = idle_rate;\n            txt=\"Victron: Solar Balance wants to charge but batt is full so Idle \"+msg.payload_rate;\n            node.warn(txt);\n            context.global.setpoint_adjusted = false;\n        }\n        else { \n            let new_sp = sp - power;\n            txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.inform_domo = true\n            msg.payload = new_sp\n        }\n        return msg;\n    }\n    else if (power > 250) {\n        if (power > pv_total) {\n        // we are consuming more power than we have in solar energy so set setpoint to idle as there is no PV left to charge\n            new_sp = idle_rate;\n            txt=\"we are consuming more power than we have in solar energy so set setpoint to idle as there is no PV left to charge, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.inform_domo = true\n            msg.payload = new_sp\n        }\n        else { // power < pv_total\n            new_sp = pv_total - acl_total;\n            txt=\"Adust Setpoint as we are net consuming but there is room to charge solar energy, power: \"+power+\", pv: \"+pv_total+\" from: \"+sp+\" to \"+new_sp;\n            node.warn(txt)\n            msg.domo_message = txt\n            msg.inform_domo = true\n            msg.payload = new_sp\n        }\n        return msg;\n    }\n}\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 2460,
+        "x": 840,
+        "y": 2740,
         "wires": [
             [
                 "efc682e349616a06",
@@ -4284,7 +4296,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 2400,
+        "y": 2740,
         "wires": [
             [
                 "12c695775f8c73d2",
@@ -4298,7 +4310,107 @@
         "type": "debug",
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
-        "name": "GridBalance log",
+        "name": "SolarBalance log",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1005,
+        "y": 2740,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "5b53d8e0fe370c42",
+        "type": "victron-input-system",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "service": "com.victronenergy.system/0",
+        "path": "/Ac/PvOnGrid/L1/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.system/0",
+            "name": "Venus system"
+        },
+        "pathObj": {
+            "path": "/Ac/PvOnGrid/L1/Power",
+            "type": "float",
+            "name": "PV - AC-coupled on input L1 (W)"
+        },
+        "name": "pvl1",
+        "onlyChanges": false,
+        "roundValues": "0",
+        "x": 90,
+        "y": 1940,
+        "wires": [
+            [
+                "d89e8ae11a05103d"
+            ]
+        ]
+    },
+    {
+        "id": "b216d9def802896b",
+        "type": "victron-input-system",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "service": "com.victronenergy.system/0",
+        "path": "/Ac/PvOnGrid/L2/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.system/0",
+            "name": "Venus system"
+        },
+        "pathObj": {
+            "path": "/Ac/PvOnGrid/L2/Power",
+            "type": "float",
+            "name": "PV - AC-coupled on input L2 (W)"
+        },
+        "name": "pvl2",
+        "onlyChanges": false,
+        "roundValues": "0",
+        "x": 90,
+        "y": 1980,
+        "wires": [
+            [
+                "d89e8ae11a05103d"
+            ]
+        ]
+    },
+    {
+        "id": "85b987b4dabca378",
+        "type": "victron-input-system",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "service": "com.victronenergy.system/0",
+        "path": "/Ac/PvOnGrid/L3/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.system/0",
+            "name": "Venus system"
+        },
+        "pathObj": {
+            "path": "/Ac/PvOnGrid/L3/Power",
+            "type": "float",
+            "name": "PV - AC-coupled on input L3 (W)"
+        },
+        "name": "pvl3",
+        "onlyChanges": false,
+        "roundValues": "0",
+        "x": 90,
+        "y": 2020,
+        "wires": [
+            [
+                "d89e8ae11a05103d"
+            ]
+        ]
+    },
+    {
+        "id": "cee9fbdad1051b8d",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "name": "PV Data",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -4307,10 +4419,208 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 845,
-        "y": 2460,
-        "wires": [],
-        "l": false
+        "x": 620,
+        "y": 1980,
+        "wires": []
+    },
+    {
+        "id": "d89e8ae11a05103d",
+        "type": "join",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 270,
+        "y": 1980,
+        "wires": [
+            [
+                "ab2095ce56bd1b63"
+            ]
+        ]
+    },
+    {
+        "id": "ab2095ce56bd1b63",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "name": "Combine",
+        "func": "let total = 0;\nif (msg.payload.pvl1 != null) {\n    total += msg.payload.pvl1;\n}\nif (msg.payload.pvl2 != null) {\n    total += msg.payload.pvl2;\n}\nif (msg.payload.pvl3 != null) {\n    total += msg.payload.pvl3;\n}\ncontext.global.data[\"pv_total\"] = total\nmsg.payload = total;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 1980,
+        "wires": [
+            [
+                "cee9fbdad1051b8d"
+            ]
+        ]
+    },
+    {
+        "id": "d0adeebd3e85d3a8",
+        "type": "victron-input-system",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "service": "com.victronenergy.system/0",
+        "path": "/Ac/Consumption/L1/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.system/0",
+            "name": "Venus system"
+        },
+        "pathObj": {
+            "path": "/Ac/Consumption/L1/Power",
+            "type": "float",
+            "name": "AC Consumption L1 (W)"
+        },
+        "name": "acl1",
+        "onlyChanges": false,
+        "roundValues": "0",
+        "x": 90,
+        "y": 2080,
+        "wires": [
+            [
+                "95843414747162ff"
+            ]
+        ]
+    },
+    {
+        "id": "bed15d3b5b24f90a",
+        "type": "victron-input-system",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "service": "com.victronenergy.system/0",
+        "path": "/Ac/Consumption/L2/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.system/0",
+            "name": "Venus system"
+        },
+        "pathObj": {
+            "path": "/Ac/Consumption/L2/Power",
+            "type": "float",
+            "name": "AC Consumption L2 (W)"
+        },
+        "name": "acl2",
+        "onlyChanges": false,
+        "roundValues": "0",
+        "x": 90,
+        "y": 2120,
+        "wires": [
+            [
+                "95843414747162ff"
+            ]
+        ]
+    },
+    {
+        "id": "7240a062f3294b04",
+        "type": "victron-input-system",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "service": "com.victronenergy.system/0",
+        "path": "/Ac/Consumption/L3/Power",
+        "serviceObj": {
+            "service": "com.victronenergy.system/0",
+            "name": "Venus system"
+        },
+        "pathObj": {
+            "path": "/Ac/Consumption/L3/Power",
+            "type": "float",
+            "name": "AC Consumption L3 (W)"
+        },
+        "name": "acl3",
+        "onlyChanges": false,
+        "roundValues": "0",
+        "x": 90,
+        "y": 2160,
+        "wires": [
+            [
+                "95843414747162ff"
+            ]
+        ]
+    },
+    {
+        "id": "95843414747162ff",
+        "type": "join",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 250,
+        "y": 2120,
+        "wires": [
+            [
+                "22a9ab355a5f6554"
+            ]
+        ]
+    },
+    {
+        "id": "22a9ab355a5f6554",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "name": "Combine",
+        "func": "let total = 0;\nif (msg.payload.acl1 != null) {\n    total += msg.payload.acl1;\n}\nif (msg.payload.acl2 != null) {\n    total += msg.payload.acl2;\n}\nif (msg.payload.acl3 != null) {\n    total += msg.payload.acl3;\n}\ncontext.global.data[\"acl_total\"] = total\nmsg.payload = total;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 2120,
+        "wires": [
+            [
+                "c52e25968d4266af"
+            ]
+        ]
+    },
+    {
+        "id": "c52e25968d4266af",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "g": "e904e3df5b7461ca",
+        "name": "AC Loads Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 2120,
+        "wires": []
     },
     {
         "id": "648e528a859f3a50",
