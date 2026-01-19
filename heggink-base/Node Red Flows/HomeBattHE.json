@@ -268,9 +268,9 @@
             "22a9ab355a5f6554",
             "c52e25968d4266af"
         ],
-        "x": 14,
+        "x": 4,
         "y": 1719,
-        "w": 752,
+        "w": 762,
         "h": 482
     },
     {
@@ -361,7 +361,7 @@
         ],
         "x": 694,
         "y": 159,
-        "w": 272,
+        "w": 262,
         "h": 122
     },
     {
@@ -3487,7 +3487,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Charge",
-        "func": "// this node handles a request to charge\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet charge_state = data[\"charge_state\"];\n\n//Globals\nlet max_soc = context.global.max_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\nmsg.batt_mode = msg.payload // either Charge or IQ Smart Mode\n\nlet txt=\"\";\n\n// charge is requested, only charge if not at max_soc\nif (batt_soc < max_soc) {\n    msg.payload = charge_rate;\n    txt=\"Victron: Charge requested by \"+msg.payload+\", starting at \"+charge_rate;\n    node.warn(txt);\n    msg.batt_mode = msg.payload;\n    context.global.setpoint_adjusted = false;\n}\nelse { \n    // batt == max_soc\n    if (charge_state == 'Float') {\n        txt=\"Victron: Battery already full, switching to idle\"\n        node.warn(txt)\n        msg.payload = idle_rate;\n        if (msg.payload != \"IQ Smart Mode\") {\n            msg.batt_mode = \"Idle\"\n        }\n    }\n    else {\n        msg.payload = charge_rate;\n        txt=\"Victron: Charge requested by \"+msg.payload+\", continuing at \"+charge_rate;\n        node.warn(txt);\n        context.global.setpoint_adjusted = false;\n    }\n}\nmsg.inform_domo = true;\nmsg.domo_msg = txt;\nreturn msg;",
+        "func": "// this node handles a request to charge\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet charge_state = data[\"charge_state\"];\n\n//Globals\nlet max_soc = context.global.max_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\nmsg.batt_mode = msg.payload // either Charge or IQ Smart Mode\n\nlet txt=\"\";\n\n// charge is requested, only charge if not at max_soc\nif (batt_soc < max_soc) {\n    msg.payload = charge_rate;\n    txt=\"Victron: Charge requested by \"+msg.payload+\", starting at \"+charge_rate;\n    node.warn(txt);\n    context.global.setpoint_adjusted = false;\n}\nelse { \n    // batt == max_soc\n    if (charge_state == 'Float') {\n        txt=\"Victron: Battery already full, switching to idle\"\n        node.warn(txt)\n        msg.payload = idle_rate;\n        if (msg.payload != \"IQ Smart Mode\") {\n            msg.batt_mode = \"Idle\"\n        }\n    }\n    else {\n        msg.payload = charge_rate;\n        txt=\"Victron: Charge requested by \"+msg.payload+\", continuing at \"+charge_rate;\n        node.warn(txt);\n        context.global.setpoint_adjusted = false;\n    }\n}\nmsg.inform_domo = true;\nmsg.domo_msg = txt;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3512,7 +3512,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Discharge",
-        "func": "// this node handles discharge requests\n// either from IQ Smart Mode or from a Discharge request\n// this is set from msg.payload\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet batt_mode = context.global.data[\"batt_mode\"];\nmsg.batt_mode = msg.payload // either IQ Smart Mode or Discharge\n\n//Globals\nlet min_soc = context.global.min_soc;\nlet idle_rate = context.global.idle_rate;\nlet discharge_rate = context.global.discharge_rate;\nlet txt = \"\";\n\n// discharge is requested, only discharge if > min_soc\nif (batt_soc > min_soc){\n    txt=\"Victron: Discharge requested from \"+msg.payload+\", starting at \"+discharge_rate\n    msg.payload = discharge_rate;\n    node.warn(txt)\n    context.global.setpoint_adjusted = false;\n}\nelse {\n    txt=\"Victron: Battery at minimum, switching to idle\"\n    node.warn(txt)\n    if (msg.payload != \"IQ Smart Mode\") {\n        msg.batt_mode = \"Idle\"; // switch to idle if not in smart mode\n    }\n    msg.payload = idle_rate;\n}\nmsg.inform_domo = true\nmsg.domo_msg = txt;\n\nreturn msg;",
+        "func": "// this node handles discharge requests\n// either from IQ Smart Mode or from a Discharge request\n// this is set from msg.payload\n\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet batt_mode = context.global.data[\"batt_mode\"];\nmsg.batt_mode = msg.payload // either IQ Smart Mode or Discharge\n\n//Globals\nlet min_soc = context.global.min_soc;\nlet idle_rate = context.global.idle_rate;\nlet discharge_rate = context.global.discharge_rate;\nlet txt = \"\";\n\n// discharge is requested, only discharge if > min_soc\nif (batt_soc > min_soc){\n    txt=\"Victron: Discharge requested from \"+msg.payload+\", starting at \"+discharge_rate\n    msg.payload = discharge_rate;\n    node.warn(txt)\n    context.global.setpoint_adjusted = false;\n}\nelse {\n    txt=\"Victron: Battery at minimum, switching to idle\"\n    node.warn(txt)\n    if (msg.batt_mode != \"IQ Smart Mode\") {\n        msg.batt_mode = \"Idle\"; // switch to idle if not in smart mode\n    }\n    msg.payload = idle_rate;\n}\nmsg.inform_domo = true\nmsg.domo_msg = txt;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
