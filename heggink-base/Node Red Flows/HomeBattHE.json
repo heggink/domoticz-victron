@@ -757,7 +757,11 @@
             "36726300a181d1bc",
             "e713c342f73380f4",
             "3744c5c2ecfb5437",
-            "bef546e79a9c7023"
+            "bef546e79a9c7023",
+            "36467e194401587a",
+            "b536e26a6836cb3a",
+            "1d69ccd5c18cb48e",
+            "463b328f85c17401"
         ],
         "x": 14,
         "y": 159,
@@ -6066,7 +6070,9 @@
             "031b9cbf3eb7ea67",
             "0b2f6c937ecdd315",
             "f6df8aab7f837216",
-            "ab42b7cbbf66ef48"
+            "ab42b7cbbf66ef48",
+            "1d69ccd5c18cb48e",
+            "463b328f85c17401"
         ],
         "x": 65,
         "y": 100,
@@ -6242,7 +6248,7 @@
         "y": 200,
         "wires": [
             [
-                "18983c8132c11beb"
+                "b536e26a6836cb3a"
             ]
         ]
     },
@@ -6421,8 +6427,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 715,
-        "y": 340,
+        "x": 735,
+        "y": 460,
         "wires": [],
         "l": false
     },
@@ -6588,7 +6594,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 390,
+        "x": 550,
         "y": 200,
         "wires": [
             [
@@ -6616,7 +6622,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 530,
+        "x": 690,
         "y": 200,
         "wires": [
             [
@@ -6644,7 +6650,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 250,
+        "x": 430,
         "y": 200,
         "wires": [
             [
@@ -6690,7 +6696,7 @@
         "links": [
             "9d7f474efb189328"
         ],
-        "x": 985,
+        "x": 1045,
         "y": 200,
         "wires": []
     },
@@ -7344,7 +7350,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 650,
+        "x": 810,
         "y": 200,
         "wires": [
             [
@@ -7383,7 +7389,7 @@
         "links": [
             "9d508e53fd26ec14"
         ],
-        "x": 785,
+        "x": 805,
         "y": 240,
         "wires": []
     },
@@ -7637,8 +7643,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 870,
-        "y": 200,
+        "x": 910,
+        "y": 220,
         "wires": [
             [
                 "95ef6a6364e11d89"
@@ -7707,7 +7713,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Reformat array",
-        "func": "/*\nthis function reformats the array into hour/quaterly indexable entries\ninstead of just an array\n*/\nlet to_data = {}\nlet from_data = msg.payload;\n\nconst mins = [\"00\", \"15\", \"30\", \"45\"]\nlet lm = mins.length\nconst hrs = [\"00\",\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\"]\nlet lh = hrs.length\n\nlet records_count = from_data.data.length;\nto_data.status = from_data.status;\nto_data.datum = from_data.datum;\nto_data.num_records = records_count;\n\nlet txt = \"\"\nconsole.log(\" Num Hours %d\", lh)\nconsole.log(\" Num Mins %d\", lm)\n\nlet count = 0\n\nif (records_count == 96) {\n\tconsole.log(\"Kwartierprijzen\");\n\tfor (let  i = 0; i < lh; i++) {\n\t\tfor (let j = 0; j < lm; j++) {\n\t\t\ttxt = hrs[i] + \":\" + mins[j]\n\t\t\tto_data[txt] = {};\n\t\t\tto_data[txt].hour_price = from_data.data[count].hour_price\n\t\t\tto_data[txt].level = from_data.data[count].level\n\t\t\tto_data[txt].forecast = from_data.data[count].forecast\n\t\t\tto_data[txt].hour_type = from_data.data[count].hour_type\n\t\t\tconsole.log(\"Adding \" + to_data[txt].hour_type);\n\t\t\tto_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt\n\t\t\tto_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage\n\t\t\tto_data[txt].earned_money = from_data.data[count].earned_money\n\t\t\tcount += 1;\n\t\t}\n\t}\n}\nelse {\n\tfor (let  i = 0; i < lh; i++) { // uurprijzen\n\t\ttxt = hrs[i] + \":00\"\n\t\tto_data[txt].hour_price = from_data.data[count].hour_price\n\t\tto_data[txt].level = from_data.data[count].level\n\t\tto_data[txt].forecast = from_data.data[count].forecast\n\t\tto_data[txt].hour_type = from_data.data[count].hour_type\n\t\tto_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt\n\t\tto_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage\n\t\tto_data[txt].earned_money = from_data.data[count].earned_money\n\t\tcount += 1;\n\t}\n}\nmsg.payload = to_data;\nif (msg.today == true) {\n    context.global.scheme_today = to_data;\n    node.warn(\"Saving today data\");\n}\nelse {\n    context.global.scheme_tomorrow = to_data\n    node.warn(\"Saving tomorrow data\");\n}\n\nreturn msg;",
+        "func": "/*\nthis function reformats the array into hour/quaterly indexable entries\ninstead of just an array\n*/\nlet to_data = {}\nlet from_data = msg.payload;\n\nconst mins = [\"00\", \"15\", \"30\", \"45\"]\nlet lm = mins.length\nconst hrs = [\"00\",\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\"]\nlet lh = hrs.length\n\nlet records_count = from_data.data.length;\nto_data.status = from_data.status;\nto_data.datum = from_data.datum;\nto_data.num_records = records_count;\n\nlet txt = \"\"\n//console.log(\" Num Hours %d\", lh)\n//console.log(\" Num Mins %d\", lm)\n\nlet count = 0\n\nif (records_count == 96) {\n\tconsole.log(\"Kwartierprijzen\");\n\tfor (let  i = 0; i < lh; i++) {\n\t\tfor (let j = 0; j < lm; j++) {\n\t\t\ttxt = hrs[i] + \":\" + mins[j]\n\t\t\tto_data[txt] = {};\n\t\t\tto_data[txt].hour_price = from_data.data[count].hour_price\n\t\t\tto_data[txt].level = from_data.data[count].level\n\t\t\tto_data[txt].forecast = from_data.data[count].forecast\n\t\t\tto_data[txt].hour_type = from_data.data[count].hour_type\n\t\t\tconsole.log(\"Adding \" + to_data[txt].hour_type);\n\t\t\tto_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt\n\t\t\tto_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage\n\t\t\tto_data[txt].earned_money = from_data.data[count].earned_money\n\t\t\tcount += 1;\n\t\t}\n\t}\n}\nelse {\n\tfor (let  i = 0; i < lh; i++) { // uurprijzen\n\t\ttxt = hrs[i] + \":00\"\n\t\tto_data[txt].hour_price = from_data.data[count].hour_price\n\t\tto_data[txt].level = from_data.data[count].level\n\t\tto_data[txt].forecast = from_data.data[count].forecast\n\t\tto_data[txt].hour_type = from_data.data[count].hour_type\n\t\tto_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt\n\t\tto_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage\n\t\tto_data[txt].earned_money = from_data.data[count].earned_money\n\t\tcount += 1;\n\t}\n}\nmsg.payload = to_data;\nif (msg.today == true) {\n    context.global.scheme_today = to_data;\n    node.warn(\"Saving today data\");\n}\nelse {\n    context.global.scheme_tomorrow = to_data\n    node.warn(\"Saving tomorrow data\");\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -7963,9 +7969,81 @@
         "y": 480,
         "wires": [
             [
-                "ab42b7cbbf66ef48",
-                "4cd6e73f79a62c1a"
+                "4cd6e73f79a62c1a",
+                "463b328f85c17401"
             ]
         ]
+    },
+    {
+        "id": "36467e194401587a",
+        "type": "function",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "Inform Domo",
+        "func": "if (context.global.scheme_today[\"status\"] == false){\n    msg.payload = \"No rates available so let's get some\";\n}\nelse {\n    msg.payload = \"Rates already available so no need to get them\";\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 280,
+        "wires": [
+            [
+                "ab42b7cbbf66ef48",
+                "1d69ccd5c18cb48e"
+            ]
+        ]
+    },
+    {
+        "id": "b536e26a6836cb3a",
+        "type": "function",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "Rates avail?",
+        "func": "if (context.global.scheme_today[\"status\"] == false){\n    node.warn(\"Tobber rates not available\");\n    return msg;\n}\nelse { // we have a schedule but check the date\n    const date = new Date();\n    let y = date.getFullYear();\n    let month = date.getMonth()+1;\n    let day = date.getDate();\n    let m = (\"0\" + month).slice(-2);\n    let d = (\"0\" + day).slice(-2);\n    let ymd = y+\"-\"+m+\"-\"+d;\n    if (context.global.scheme_today.datum != ymd) {\n        node.warn(\"Scheme today has invalid date: \"+context.global.scheme_today.datum);\n        return msg;\n    }\n    else {\n        node.warn(\"Rates available and date OK: \"+ymd);\n    }\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 200,
+        "wires": [
+            [
+                "36467e194401587a",
+                "18983c8132c11beb"
+            ]
+        ]
+    },
+    {
+        "id": "1d69ccd5c18cb48e",
+        "type": "link out",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "log_domo",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 605,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "463b328f85c17401",
+        "type": "link out",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "log_domo",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 1095,
+        "y": 480,
+        "wires": []
     }
 ]
