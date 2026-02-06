@@ -686,7 +686,7 @@
         ],
         "x": 694,
         "y": 179,
-        "w": 442,
+        "w": 452,
         "h": 82
     },
     {
@@ -756,7 +756,8 @@
             "ab42b7cbbf66ef48",
             "36726300a181d1bc",
             "e713c342f73380f4",
-            "3744c5c2ecfb5437"
+            "3744c5c2ecfb5437",
+            "bef546e79a9c7023"
         ],
         "x": 14,
         "y": 159,
@@ -2327,7 +2328,8 @@
             "3c056975a4c64fd9",
             "94ca4d9426138867",
             "c07a24ed25d071fe",
-            "7347ef667ed20efa"
+            "7347ef667ed20efa",
+            "9e88ca438deb4b19"
         ],
         "x": 705,
         "y": 100,
@@ -6264,7 +6266,7 @@
         "z": "edf9f455029eeb7f",
         "g": "1a81b3b5b7840ea2",
         "name": "Startup Function",
-        "func": "let discovery_topic = \"victron\";\nlet root_topic = \"tibber_data\";\n\nlet pobject = [\n    //Text\n    { \"tibber_prices_today\": [\"sensor\", \"today\", \"0x9000000001\", \"variable\", \"\", 0] },\n    { \"tibber_prices_tomorrow\": [\"sensor\", \"tomorrow\", \"0x9000000002\", \"variable\", \"\", 0] },\n    { \"charge_scheme_today\": [\"sensor\", \"scheme_today\", \"0x9000000003\", \"variable\", \"\", 0] },\n    { \"charge_scheme_tomorrow\": [\"sensor\", \"scheme_tomorrow\", \"0x9000000004\", \"variable\", \"\", 0] },\n];\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let vjson = {\n                \"stat_t\": \"~/\" + varname + \"/state\",\n                \"dev\": {\n                    \"manufacturer\": \"PA1DVB\",\n                    \"ids\": []\n                }\n    };\n    \n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    vjson.dev.ids.push(device_identifier);\n\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n\n    return vjson\n}\n\npobject.forEach((vvar) => {\n    let name = Object.keys(vvar)[0];\n    let vobj = vvar[Object.keys(vvar)];\n    let object_type = vobj[0]\n    let varname = vobj[1]\n    let unique_id = vobj[2]\n\n    let jobj = null\n    if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj[3]\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n\n    if (jobj != null) {\n        if (unique_id.indexOf(\"_\") != -1)\n        {\n            unique_id = unique_id.split(\"_\")[0];\n        }\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.log(\"publishing config ->: \" + dtopic);\n\n        msg.payload = jobj;\n        msg.topic = dtopic;\n        msg.retain = true;\n        node.send(msg);\n    }\n});\nreturn null;",
+        "func": "let discovery_topic = \"victron\";\nlet root_topic = \"tibber_data\";\n\nlet pobject = [\n    //Text\n    { \"tibber_prices_today\": [\"sensor\", \"today\", \"0x9000000001\", \"variable\", \"\", 0] },\n    { \"tibber_prices_tomorrow\": [\"sensor\", \"tomorrow\", \"0x9000000002\", \"variable\", \"\", 0] },\n    { \"charge_scheme_today\": [\"sensor\", \"scheme_today\", \"0x9000000003\", \"variable\", \"\", 0] },\n    { \"charge_scheme_tomorrow\": [\"sensor\", \"scheme_tomorrow\", \"0x9000000004\", \"variable\", \"\", 0] },\n    { \"new_scheme_today\": [\"sensor\", \"new_scheme_today\", \"0x9000000005\", \"variable\", \"\", 0] },\n    { \"new_scheme_tomorrow\": [\"sensor\", \"new_scheme_tomorrow\", \"0x9000000006\", \"variable\", \"\", 0] },\n];\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let vjson = {\n                \"stat_t\": \"~/\" + varname + \"/state\",\n                \"dev\": {\n                    \"manufacturer\": \"PA1DVB\",\n                    \"ids\": []\n                }\n    };\n    \n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    vjson.dev.ids.push(device_identifier);\n\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n\n    return vjson\n}\n\npobject.forEach((vvar) => {\n    let name = Object.keys(vvar)[0];\n    let vobj = vvar[Object.keys(vvar)];\n    let object_type = vobj[0]\n    let varname = vobj[1]\n    let unique_id = vobj[2]\n\n    let jobj = null\n    if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj[3]\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n\n    if (jobj != null) {\n        if (unique_id.indexOf(\"_\") != -1)\n        {\n            unique_id = unique_id.split(\"_\")[0];\n        }\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.log(\"publishing config ->: \" + dtopic);\n\n        msg.payload = jobj;\n        msg.topic = dtopic;\n        msg.retain = true;\n        node.send(msg);\n    }\n});\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -6317,7 +6319,9 @@
         "g": "1a81b3b5b7840ea2",
         "name": "ToMQTT-Direct",
         "mode": "link",
-        "links": [],
+        "links": [
+            "171e2947b5815a6e"
+        ],
         "x": 605,
         "y": 100,
         "wires": []
@@ -7445,8 +7449,9 @@
                 "p": "payload"
             },
             {
-                "p": "topic",
-                "vt": "str"
+                "p": "today",
+                "v": "false",
+                "vt": "bool"
             }
         ],
         "repeat": "",
@@ -7620,8 +7625,9 @@
                 "p": "payload"
             },
             {
-                "p": "topic",
-                "vt": "str"
+                "p": "today",
+                "v": "true",
+                "vt": "bool"
             }
         ],
         "repeat": "",
@@ -7713,7 +7719,8 @@
         "wires": [
             [
                 "4cd6e73f79a62c1a",
-                "7347ef667ed20efa"
+                "7347ef667ed20efa",
+                "bef546e79a9c7023"
             ]
         ]
     },
@@ -7723,7 +7730,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "debug 7",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -7923,7 +7930,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Scheme cutover",
-        "func": "context.global.scheme_today = context.global.scheme_tomorrow;\nmsg.domo_msg = \"Victron: Switching over day rates\"; \nmsg.inform_domo = true;\nreturn msg;",
+        "func": "if (context.global.scheme_tomorrow[\"status\"] != false) {\n    context.global.scheme_today = context.global.scheme_tomorrow;\n    msg.domo_msg = \"Victron: Switching over day rates\"; \n    msg.inform_domo = true;\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -7936,6 +7943,28 @@
             [
                 "e713c342f73380f4",
                 "36726300a181d1bc"
+            ]
+        ]
+    },
+    {
+        "id": "bef546e79a9c7023",
+        "type": "function",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "Inform domo",
+        "func": "//node.warn(\"inform says: \"+msg.inform_domo);\n\nif (msg.today == true) {\n    msg.payload = \"Today rates received OK: \" + msg.payload[\"datum\"];\n}\nelse {\n    msg.payload = \"Tomorrow rates received OK: \" + msg.payload[\"datum\"];\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 480,
+        "wires": [
+            [
+                "ab42b7cbbf66ef48",
+                "4cd6e73f79a62c1a"
             ]
         ]
     }
