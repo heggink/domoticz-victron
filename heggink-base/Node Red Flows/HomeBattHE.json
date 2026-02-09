@@ -762,7 +762,8 @@
             "463b328f85c17401",
             "cfd27c89de082d6a",
             "50a71cf060aa84e6",
-            "07307d18b95c5cfb"
+            "07307d18b95c5cfb",
+            "8b1eb8cd7e641e28"
         ],
         "x": 14,
         "y": 159,
@@ -3695,7 +3696,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Idle",
-        "func": "// This node handles idle requests\n\nlet data = context.global.data;\nlet idle_rate = context.global.idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nmsg.batt_mode = msg.payload // either Idle or IQ Smart Mode\n\nif (msg.payload == 'Idle') {\n    node.warn(\"Victron: Requesting idle at \"+idle_rate)\n    msg.payload = idle_rate;\n    msg.inform_domo = true\n    msg.domo_msg = \"Victron: Idling at \"+idle_rate;\n    return msg;\n}\nelse { // Smart Mode\n    // idle is requested, only switch to idle if not in idle already\n    if (ess_setpoint != idle_rate) {\n        node.warn(\"Victron: Requesting idle at \"+idle_rate)\n        msg.payload = idle_rate;\n        msg.inform_domo = true\n        msg.domo_msg = \"Victron: Idling at \"+idle_rate;\n        return msg;\n    }\n    else {\n        node.warn(\"Already in Idle so nothing to do\")\n    }\n}",
+        "func": "// This node handles idle requests\n\nlet data = context.global.data;\nlet idle_rate = context.global.idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nmsg.batt_mode = msg.payload // either Idle or IQ Smart Mode\n\nif (msg.payload == 'Idle') {\n    node.warn(\"Victron: Requesting idle at \"+idle_rate)\n    msg.payload = idle_rate;\n    msg.inform_domo = true\n    msg.domo_msg = \"Victron: Requesting Idle mode at \"+idle_rate;\n    return msg;\n}\nelse { // Smart Mode\n    // idle is requested, only switch to idle if not in idle already\n    if (ess_setpoint != idle_rate) {\n        node.warn(\"Victron: Requesting idle at \"+idle_rate)\n        msg.payload = idle_rate;\n        msg.inform_domo = true\n        msg.domo_msg = \"Victron: Smart Mode Idling at \"+idle_rate;\n        return msg;\n    }\n    else {\n        node.warn(\"Already in Idle so nothing to do\")\n    }\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3822,7 +3823,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Idle near SOC Min/Max",
-        "func": "/*\n  this node gets called with every battery SOC change as well as on chate state change (bulk, float)\n  it checks if near min or max+float and switches to idle if so\n*/\n\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet batt_mode = data[\"batt_mode\"];\nlet charge_state = data[\"charge_state\"];\nlet ess_setpoint = data[\"ess_setpoint\"]\n\n// Globals\nlet max_soc = context.global.max_soc;\nlet min_soc = context.global.min_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\n\nlet txt=\"\";\n\n// check if SOC is near min or max and adjust of so\nif ((ess_setpoint > idle_rate) && (batt_soc >= (max_soc - 1))) {\n    if (charge_state != \"Float\") {\n        // either in charge or bulk so continue\n        node.warn(\"Check SOC near end: not in float\")\n        msg.payload = charge_rate;\n        txt=\"Victron: Continue Charge because not in Float, at \"+charge_rate;\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.batt_mode = context.global.data[\"batt_mode\"]\n        msg.inform_domo = true;\n        return msg;\n    }\n    else {\n        // max_soc reached and we are in float\n        node.warn(\"Check SOC near end: in float so idle\")\n        msg.payload = idle_rate;\n        if (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n            msg.batt_mode = \"Idle\"; // switch to idle if not in smart mode\n        }\n        \n        txt=\"Victron: End of Charge reached, in float so switching to idle!\";\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return msg;\n    }\n}\n\nif (batt_soc == max_soc && charge_state == 'Float') {\n    node.warn(\"Check SOC near end: in float so idle\")\n    msg.payload = idle_rate;\n    if (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n        msg.batt_mode = \"Idle\"; // switch to idle if not in smart mode\n    }\n        \n    txt=\"Victron: End of Charge reached, in float so switching to idle!\";\n    node.warn(txt);\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return msg;\n}\n\nif ((ess_setpoint < 0) && (batt_soc <= min_soc)) {\n    // at the end of discharge so switch to idle\n    msg.payload = idle_rate;\n    node.warn(\"Check SOC near end: at min soc so idle\")\n\n    if (batt_mode != \"IQ Smart Mode\") { \n        context.global.data[\"batt_mode\"] = \"Idle\";\n    }\n    else {\n        msg.batt_mode = context.global.data[\"batt_mode\"];\n    }\n    txt=\"Victron: End of Discharge reached, switching to idle!\";\n    node.warn(txt);\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return msg;\n}\n\n/*\n  we should not end up here as:\n    Discharging should not happen below min_soc and\n    max_soc during Charge get's handled above\n*/\n\nif (batt_mode != \"Idle\") {\n    if (((batt_soc < min_soc) && (batt_mode == \"Discharge\")) || ((batt_soc == max_soc) && (charge_state != \"Float\"))) {\n        // Oops... should not be here ...\n        msg.payload = idle_rate;\n        context.global.data[\"batt_mode\"] = \"Idle\";\n        txt=\"Victron: Something weird happened, exception not trapped, switching to idle!\";\n        node.warn(txt);\n        msg.batt_mode = \"Idle\";\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return msg;\n    }\n}\n",
+        "func": "/*\n  this node gets called with every battery SOC change as well as on chate state change (bulk, float)\n  it checks if near min or max+float and switches to idle if so\n*/\n\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet batt_mode = data[\"batt_mode\"];\nlet charge_state = data[\"charge_state\"];\nlet ess_setpoint = data[\"ess_setpoint\"]\n\n// Globals\nlet max_soc = context.global.max_soc;\nlet min_soc = context.global.min_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\n\nlet txt=\"\";\n\n// check if SOC is near min or max and adjust of so\n// check if SOC is near min or max and adjust of so\nif (ess_setpoint == idle_rate) {\n    // in idle so nothing to do\n    node.warn(\"Check SOC near end: already in idle\")\n    return;\n}\n\nif ((batt_soc > min_soc) && (batt_soc < (max_soc -1))) {\n    //node.warn(\"Check soc near end: nowhere near end so do nothing\")\n    return;\n}\n\n// charging near the end\nif ((ess_setpoint > idle_rate) && (batt_soc >= (max_soc - 1))) {\n    if (charge_state != \"Float\") {\n        // either in charge or bulk so continue\n        node.warn(\"Check SOC near end: not in float\")\n        msg.payload = charge_rate;\n        txt=\"Victron: Continue Charge because not in Float, at \"+charge_rate;\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.batt_mode = context.global.data[\"batt_mode\"]\n        msg.inform_domo = true;\n        return msg;\n    }\n    else {\n        // max_soc reached and we are in float whilst charging\n        node.warn(\"Check SOC near end: in float so idle\")\n        msg.payload = idle_rate;\n        if (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n            msg.batt_mode = \"Idle\"; // switch to idle if not in smart mode\n        }\n        txt=\"Victron: End of Charge reached, in float so switching to idle!\";\n        node.warn(txt);\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return msg;\n    }\n}\n\n// at max, still in absorption but no longer charging\nif (ess_setpoint == idle_rate && charge_state != 'Float' && batt_soc == max_soc) {\n    node.warn(\"Check SOC near end: idle but still in absorption\")\n    msg.payload = idle_rate;\n    if (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n        msg.batt_mode = \"Idle\"; // switch to idle if not in smart mode\n    }\n    txt=\"Victron: at max_soc, stay in idle!\";\n    node.warn(txt);\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return msg;\n}\n\n// at max and in float\nif (batt_soc == max_soc && charge_state == 'Float') {\n    node.warn(\"Check SOC near end: in float so idle\")\n    msg.payload = idle_rate;\n    if (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n        msg.batt_mode = \"Idle\"; // switch to idle if not in smart mode\n    }\n    txt=\"Victron: End of Charge reached, in float so switching to idle!\";\n    node.warn(txt);\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return msg;\n}\n\n// discharging at minimum\nif ((ess_setpoint < 0) && (batt_soc <= min_soc)) {\n    // at the end of discharge so switch to idle\n    msg.payload = idle_rate;\n    node.warn(\"Check SOC near end: at min soc so idle\")\n\n    if (batt_mode != \"IQ Smart Mode\") { \n        context.global.data[\"batt_mode\"] = \"Idle\";\n    }\n    else {\n        msg.batt_mode = context.global.data[\"batt_mode\"];\n    }\n    txt=\"Victron: End of Discharge reached, switching to idle!\";\n    node.warn(txt);\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return msg;\n}\n\n/*\n  we should not end up here as:\n    Discharging should not happen below min_soc and\n    max_soc during Charge get's handled above\n*/\n\nif (batt_mode != \"Idle\") {\n    if (((batt_soc < min_soc) && (batt_mode == \"Discharge\")) || ((batt_soc == max_soc) && (charge_state != \"Float\"))) {\n        // Oops... should not be here ...\n        msg.payload = idle_rate;\n        context.global.data[\"batt_mode\"] = \"Idle\";\n        txt=\"Victron: Something weird happened, exception not trapped, switching to idle!\";\n        node.warn(txt);\n        msg.batt_mode = \"Idle\";\n        msg.domo_msg = txt;\n        msg.inform_domo = true;\n        return msg;\n    }\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4736,7 +4737,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Force Idle",
-        "func": "msg.payload = \"Idle\";\nreturn msg;",
+        "func": "msg.payload = \"Idle\";\nmsg.domo_msg = \"Victron: STartup requesting Idle mode\";\nmsg.inform_domo = true;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4747,7 +4748,8 @@
         "y": 2240,
         "wires": [
             [
-                "9e15b637df84d87f"
+                "9e15b637df84d87f",
+                "d14625af14055f20"
             ]
         ]
     },
@@ -7819,7 +7821,7 @@
         "links": [
             "44d07b9e813b1e68"
         ],
-        "x": 675,
+        "x": 755,
         "y": 520,
         "wires": []
     },
@@ -7837,7 +7839,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 425,
+        "x": 535,
         "y": 520,
         "wires": [],
         "l": false
@@ -7855,7 +7857,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 560,
+        "x": 650,
         "y": 520,
         "wires": [
             [
@@ -7868,7 +7870,7 @@
         "type": "inject",
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
-        "name": "23:58",
+        "name": "23:59:55",
         "props": [
             {
                 "p": "payload"
@@ -7879,17 +7881,17 @@
             }
         ],
         "repeat": "",
-        "crontab": "58 23 * * *",
+        "crontab": "59 23 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
+        "x": 120,
         "y": 520,
         "wires": [
             [
-                "3744c5c2ecfb5437"
+                "8b1eb8cd7e641e28"
             ]
         ]
     },
@@ -7906,7 +7908,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
+        "x": 420,
         "y": 520,
         "wires": [
             [
@@ -8056,5 +8058,31 @@
         "x": 695,
         "y": 400,
         "wires": []
+    },
+    {
+        "id": "8b1eb8cd7e641e28",
+        "type": "delay",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "45",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 260,
+        "y": 520,
+        "wires": [
+            [
+                "3744c5c2ecfb5437"
+            ]
+        ]
     }
 ]
