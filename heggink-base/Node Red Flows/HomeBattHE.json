@@ -563,7 +563,8 @@
             "e2a9c31b9a104939",
             "95cad9eee2aedcbe",
             "c77f55e1ea5958fb",
-            "8a2ea324471e9e48"
+            "8a2ea324471e9e48",
+            "b0ac7ab4425d80b8"
         ],
         "x": 14,
         "y": 1999,
@@ -663,7 +664,9 @@
             "aacbe0c5d5d3ed9d",
             "0460462083e78ff0",
             "0b2f6c937ecdd315",
-            "7f1f55894fcbda14"
+            "7f1f55894fcbda14",
+            "fb6799af32434934",
+            "f72eb9e09a69444e"
         ],
         "x": 14,
         "y": 1719,
@@ -3661,7 +3664,8 @@
                 "d14625af14055f20",
                 "3289791d00f40465",
                 "f2c94a03e44ac36d",
-                "51c0cfb742f07a47"
+                "51c0cfb742f07a47",
+                "b0ac7ab4425d80b8"
             ]
         ]
     },
@@ -4840,6 +4844,63 @@
             [
                 "d464f5880be3efb4",
                 "12c695775f8c73d2"
+            ]
+        ]
+    },
+    {
+        "id": "fb6799af32434934",
+        "type": "link in",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "Overload Monitor",
+        "links": [
+            "b0ac7ab4425d80b8"
+        ],
+        "x": 75,
+        "y": 1760,
+        "wires": [
+            [
+                "f72eb9e09a69444e"
+            ]
+        ]
+    },
+    {
+        "id": "b0ac7ab4425d80b8",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "link out 10",
+        "mode": "link",
+        "links": [
+            "fb6799af32434934"
+        ],
+        "x": 1025,
+        "y": 2120,
+        "wires": []
+    },
+    {
+        "id": "f72eb9e09a69444e",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "05bc2ab263663dde",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "4",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 180,
+        "y": 1760,
+        "wires": [
+            [
+                "7fd426c7ab23f005"
             ]
         ]
     },
