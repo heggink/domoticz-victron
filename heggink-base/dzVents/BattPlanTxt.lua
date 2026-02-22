@@ -12,12 +12,7 @@ return {
             'new_scheme_today',
             'new_scheme_tomorrow'
         },
-		timer = {
-		    'at 00:02',
-		    'at 01:02',
-		    'at 14:02',
-		    'at 15:02'
-        } 
+		--timer = { 'at 00:02', 'at 01:02', 'at 14:02', 'at 15:02' } 
 	},
 	execute = function(dz, item)
         local today = dz.utils.fromJSON(dz.variables('new_scheme_today').value)
@@ -32,10 +27,6 @@ return {
         local now = Time() -- current time
         --local cutover = tostring(now.hour) .. ":" .. tostring(now.minutes)
         local cutover = now.hour .. ":" .. now.minutes
-
-        if (cutover == "23:59") then
-            do return end -- cutover happens before midnight but then the date mismatches
-        end
 
         -- Local Functions go here =============
         local function makePlan(data, dStr)
