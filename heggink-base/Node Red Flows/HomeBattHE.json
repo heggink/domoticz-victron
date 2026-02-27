@@ -439,11 +439,22 @@
             "cada246f092254da",
             "5d7f18d2fe1a1e8e",
             "929b618e5d657887",
-            "8973442a5c9052aa"
+            "a850f90f56dec85c",
+            "5e44118efd967c6a",
+            "fb458aa078a31385",
+            "d64aea3b07554e0f",
+            "936055f036bb558c",
+            "eeab59f9fc7a00fd",
+            "bcda863f1ed674b6",
+            "ac363398c7630edf",
+            "72fc35bb334d7df7",
+            "bc51548be23b1d8a",
+            "7b17745fa5b70396",
+            "02f47256b55649cd"
         ],
         "x": 14,
         "y": 279,
-        "w": 852,
+        "w": 992,
         "h": 682
     },
     {
@@ -485,11 +496,12 @@
             "3391833f0a3beec6",
             "69a2629d096d7a9c",
             "b67775dd052f962b",
-            "07d611da6ffa41ed"
+            "07d611da6ffa41ed",
+            "5d710e3b6330a15f"
         ],
         "x": 14,
         "y": 19,
-        "w": 642,
+        "w": 732,
         "h": 142
     },
     {
@@ -563,12 +575,18 @@
             "95cad9eee2aedcbe",
             "c77f55e1ea5958fb",
             "8a2ea324471e9e48",
-            "b0ac7ab4425d80b8"
+            "b0ac7ab4425d80b8",
+            "77a5a34baaf865e8",
+            "5dced18c5df56dc7",
+            "e3bf12371445b2b1",
+            "60ca368b143dead4",
+            "87ae15cf892b180a",
+            "43cc388e6b01ecd9"
         ],
         "x": 14,
-        "y": 1999,
-        "w": 1112,
-        "h": 562
+        "y": 2039,
+        "w": 1132,
+        "h": 622
     },
     {
         "id": "9f7e7bb0a86e90c8",
@@ -585,7 +603,7 @@
             "9ee290e31a66a382",
             "ac0f2b4f46e7672b"
         ],
-        "x": 684,
+        "x": 774,
         "y": 19,
         "w": 342,
         "h": 82
@@ -635,7 +653,11 @@
             "7240a062f3294b04",
             "95843414747162ff",
             "22a9ab355a5f6554",
-            "c52e25968d4266af"
+            "c52e25968d4266af",
+            "485e1e0de5f5c20b",
+            "880ab817a8cef6e1",
+            "8860fd4be74d6407",
+            "f8cb9ca1dcd7b306"
         ],
         "x": 14,
         "y": 1019,
@@ -701,14 +723,14 @@
             "1c936b634fa5b6d7",
             "9e88ca438deb4b19",
             "14c3076dd27b816b",
-            "643fb68e048c5182",
             "54895a5d99b89a09",
-            "62dd10ce91fba3e1"
+            "62dd10ce91fba3e1",
+            "e5a25d0cfd90a5f5"
         ],
         "x": 14,
         "y": 19,
-        "w": 632,
-        "h": 122
+        "w": 652,
+        "h": 142
     },
     {
         "id": "9fc897c32bfacc77",
@@ -766,11 +788,14 @@
             "0406284b3e87a184",
             "6aa23d6b0de4cfb3",
             "94c6e0e11b33ad56",
-            "cc8106ab30ce2277"
+            "cc8106ab30ce2277",
+            "b83de423f544687c",
+            "51a03128e28bf463",
+            "7afa5acc73d37a7b"
         ],
         "x": 14,
         "y": 159,
-        "w": 1152,
+        "w": 1202,
         "h": 442
     },
     {
@@ -856,8 +881,8 @@
             "100feff42d17aff9",
             "a2a08948b80ec841"
         ],
-        "x": 664,
-        "y": 19,
+        "x": 684,
+        "y": 39,
         "w": 352,
         "h": 82
     },
@@ -918,104 +943,6 @@
         "type": "victron-client"
     },
     {
-        "id": "1c4bcced4bf72c6d",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-dark",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#097479",
-                    "value": "#097479",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#097479",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#333333",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#0eb8c0",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#555555",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#333333",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#eeeeee",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#097479",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#333333",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Home Batt",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
         "id": "ee1bb25c871ce5fc",
         "type": "mqtt-broker",
         "name": "freenas",
@@ -1044,25 +971,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "482140b3ae8976c9",
-        "type": "ui_group",
-        "name": "BL109",
-        "tab": "4a6b773847c2eaa7",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "4a6b773847c2eaa7",
-        "type": "ui_tab",
-        "name": "BL109",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "a2a053bcd855cabf",
         "type": "global-config",
         "env": []
@@ -1075,6 +983,106 @@
         "feedTimeout": "60",
         "queryRequestTimeout": "30",
         "name": "TibberHE"
+    },
+    {
+        "id": "bbb775b8b2a251e9",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "0ce35bfbec95d06d",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "b5b74048b568e596",
+        "type": "ui-page",
+        "name": "Overview",
+        "ui": "bbb775b8b2a251e9",
+        "path": "/overview",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "0ce35bfbec95d06d",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "e6f2e12210710b47",
+        "type": "ui-group",
+        "name": "Home Battery",
+        "page": "b5b74048b568e596",
+        "width": "6",
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "c10aaafad3f3d226",
+        "type": "ui-spacer",
+        "group": "e6f2e12210710b47",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 11,
+        "width": "6",
+        "height": "1",
+        "className": ""
     },
     {
         "id": "5726694de195109f",
@@ -1513,7 +1521,8 @@
         "y": 320,
         "wires": [
             [
-                "7e3ce011ce905df4"
+                "7e3ce011ce905df4",
+                "72fc35bb334d7df7"
             ]
         ]
     },
@@ -1534,8 +1543,7 @@
         "y": 800,
         "wires": [
             [
-                "2638424905d9e622",
-                "8973442a5c9052aa"
+                "2638424905d9e622"
             ]
         ]
     },
@@ -1584,7 +1592,9 @@
         "wires": [
             [
                 "1527d034459a3668",
-                "b5fc09490e6b1cd6"
+                "b5fc09490e6b1cd6",
+                "5e44118efd967c6a",
+                "02f47256b55649cd"
             ]
         ]
     },
@@ -1612,7 +1622,8 @@
         "y": 440,
         "wires": [
             [
-                "1690588ef40df22a"
+                "1690588ef40df22a",
+                "eeab59f9fc7a00fd"
             ]
         ]
     },
@@ -1640,7 +1651,8 @@
         "y": 480,
         "wires": [
             [
-                "534bcc84ed2012b1"
+                "534bcc84ed2012b1",
+                "bc51548be23b1d8a"
             ]
         ]
     },
@@ -1751,7 +1763,8 @@
         "y": 680,
         "wires": [
             [
-                "cada246f092254da"
+                "cada246f092254da",
+                "fb458aa078a31385"
             ]
         ]
     },
@@ -1778,7 +1791,8 @@
         "y": 720,
         "wires": [
             [
-                "5d7f18d2fe1a1e8e"
+                "5d7f18d2fe1a1e8e",
+                "d64aea3b07554e0f"
             ]
         ]
     },
@@ -1805,7 +1819,8 @@
         "y": 760,
         "wires": [
             [
-                "929b618e5d657887"
+                "929b618e5d657887",
+                "936055f036bb558c"
             ]
         ]
     },
@@ -1844,7 +1859,8 @@
         "y": 800,
         "wires": [
             [
-                "1643bcd645477a2b"
+                "1643bcd645477a2b",
+                "a850f90f56dec85c"
             ]
         ]
     },
@@ -1885,15 +1901,15 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "b362b271c03a0415",
-        "name": "Startup Function",
-        "func": "let discovery_topic = \"victron\";\nlet root_topic = \"my_victron\";\ncontext.global.batt_capacity = 60000; //Wh\ncontext.global.max_charge_setpoint = 10000; //3000=90.7% see efficiency chart \ncontext.global.max_discharge_setpoint = 10000; //4126=90.8, 4750 = 89.6\ncontext.global.number_of_multiplus = 3;\ncontext.global.min_soc = 30;\ncontext.global.max_soc = 100; //Because we use a smartshunt and specified 55.2V as 100% (=90%)\ncontext.global.idle_rate = 103;\ncontext.global.min_soc_overnight = 10;\ncontext.global.charge_rate = 9000;\ncontext.global.discharge_rate = -10000;\ncontext.global.setpoint_adjusted = false;\ncontext.global.max_phase_power = 5550;\ncontext.flow.root_topic = root_topic;\n\n//context.global.max_phase_power = 4000;\ncontext.global.data = context.global.data || {};\n\nlet pobject = [\n    //\"name\": [\"object_type\", \"varname\", \"unique_id\", \"payload_on/unit\", \"payload_off\", \"step\"],\n\n    //Setpoint\n    //{ \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-5000|5000\", 100] },\n    { \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-12000|12000\", 100] },\n\n    //Switches\n    { \"ESS Control Mode\": [\"select\", \"ess_mode\", \"0x8000000001\", \"Mode 1|Mode 2\", \"\", 0] },\n    { \"Battery Mode\": [\"select\", \"batt_mode\", \"0x800000000E\", \"Off|Idle|Charge|Discharge|Grid Balance|IQ Smart Mode|Solar Balance|Manual\", \"\", 0] },\n    { \"Battery State\": [\"select\", \"batt_state\", \"0x8000000014\", \"Off|Idle|Charging|Discharging\", \"\", 0] },\n    { \"MP2 On/Off state\": [\"switch\", \"mp2_switch_position\", \"0x800000000F\", \"On\", \"Off\", 0] },\n\n    //Sensors\n    { \"Battery Percentage\": [\"sensor\", \"batt_soc\", \"0x8000000003\", \"%\", \"\", 0] },\n    { \"Battery Voltage\": [\"sensor\", \"batt_voltage\", \"0x8000000004\", \"V\", \"\", 0] },\n    { \"Battery Amps\": [\"sensor\", \"batt_amps\", \"0x8000000005\", \"A\", \"\", 0] },\n    { \"Battery Temperature\": [\"sensor\", \"batt_temp\", \"0x800000000D\", \"\\u00b0c\", \"\", 0] },\n    { \"ET340 L1 Watt\": [\"sensor\", \"grid_l1_w\", \"0x8000000006\", \"W\", \"\", 0] },\n    { \"ET340 L2 Watt\": [\"sensor\", \"grid_l2_w\", \"0x8000000007\", \"W\", \"\", 0] },\n    { \"ET340 L3 Watt\": [\"sensor\", \"grid_l3_w\", \"0x8000000008\", \"W\", \"\", 0] },\n    { \"ET340 Total Watt\": [\"sensor\", \"grid_total_w\", \"0x8000000108\", \"W\", \"\", 0] },\n    { \"Battery Capacity\": [\"sensor\", \"batt_capacity\", \"0x8000000012\", \"W\", \"\", 0] },\n    { \"Battery Charged kWh\": [\"sensor\", \"batt_charged_kwh\", \"0x8000000015_power\", \"kWh\", \"\", 0] },\n    { \"Battery Charged W\": [\"sensor\", \"batt_charged_w\", \"0x8000000015_energy\", \"W\", \"\", 0] },\n    { \"Battery Discharged kWh\": [\"sensor\", \"batt_discharged_kwh\", \"0x8000000016_power\", \"kWh\", \"\", 0] },\n    { \"Battery Discharged W\": [\"sensor\", \"batt_discharged_w\", \"0x8000000016_energy\", \"W\", \"\", 0] },\n    { \"MP2 AC-In kWh\": [\"sensor\", \"inv_acin_kwh\", \"0x8000000017_power\", \"kWh\", \"\", 0] },\n    { \"MP2 AC-In Charged W\": [\"sensor\", \"inv_acin_w\", \"0x8000000017_energy\", \"W\", \"\", 0] },\n\n    //Temperatures\n    { \"Ceil Temp\": [\"sensor\", \"temp_1\", \"0x8000000009\", \"\\u00b0c\", \"\", 0] },\n    { \"Lynx Temp\": [\"sensor\", \"temp_2\", \"0x800000000A\", \"\\u00b0c\", \"\", 0] },\n    { \"Shunt Temp\": [\"sensor\", \"temp_3\", \"0x800000000B\", \"\\u00b0c\", \"\", 0] },\n    \n    //Text\n    { \"ESS Charge State\": [\"sensor\", \"charge_state\", \"0x800000000C\", \"text\", \"\", 0] },\n];\n\nfunction createBinaryObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createLightObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",            \n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSelectObject(root, name, varname, unique_id, select_options)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",            \n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n\n    vjson[\"options\"] = [];\n    select_options.split(\"|\").forEach(function (item) {\n        vjson[\"options\"].push(item);\n    });\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createNumberObject(root, name, varname, unique_id, step = 1)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",            \n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"step\"] = step;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",\n            \"ids\": []\n        }\n    };\n\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n\n    let state_class = \"measurement\";\n\n    let device_class = \"\";\n    switch (unit_of_measurement)\n    {\n        case \"text\":\n            state_class = \"\";\n            break;\n        case \"%\":\n            if (\n                (name.indexOf('Batt') !== -1)\n                || (name.indexOf('batt') !== -1)\n                || (varname.indexOf('_soc') !== -1)\n            ) {\n                device_class = \"battery\";\n            } else {\n                device_class = \"percentage\";\n            }\n            break;\n        case \"°C\":\n        case \"C\":\n        case \"°F\":\n        case \"F\":\n            device_class = \"temperature\";\n            break;\n        case \"V\":\n        case \"mV\":\n            device_class = \"voltage\";\n            break;\n        case \"A\":\n        case \"mA\":\n            device_class = \"current\";\n            break;\n        case \"\\u00b0c\":\n        case \"\\u00b0C\":\n            device_class = \"temperature\";\n            break;\n        case \"W\":\n            device_class = \"power\";\n            break;\n        case \"kWh\":\n        case \"Wh\":\n            device_class = \"energy\";\n            state_class = \"total_increasing\";\n            break;\n    }\n\n    if (device_class != \"\")\n    {\n        vjson[\"device_class\"] = device_class;\n    }\n    if (state_class != \"\")\n    {\n        vjson[\"state_class\"] = state_class;\n    }\n\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n\n    return vjson\n}\n\n/*\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson\n}\n*/\n\nfunction createClimateObject(root, name, varname, unique_id, unit_of_measurement, min_value = 6.5, max_value = 35.0, step_size = 1.0)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"temp_stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"temp_unit\"] = unit_of_measurement;\n    vjson[\"temp_cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"temp_stat_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    vjson[\"temp_step\"] = step_size;\n    vjson[\"min_temp\"] = min_value;\n    vjson[\"max_temp\"] = max_value;\n    return vjson\n}\n\nnode.log(\"Flow Initialisation\");\n\npobject.forEach((vvar) => {\n    let name = Object.keys(vvar)[0];\n    let vobj = vvar[Object.keys(vvar)];\n    let object_type = vobj[0]\n    let varname = vobj[1]\n    let unique_id = vobj[2]\n\n    let jobj = null\n    if (object_type == \"light\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"switch\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"binary_sensor\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createBinaryObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"select\") {\n        let soptions = vobj[3]\n        jobj = createSelectObject(root_topic, name, varname, unique_id, soptions);\n    }\n    else if (object_type == \"number\") {\n        let step = vobj[5]\n        jobj = createNumberObject(root_topic, name, varname, unique_id, step);\n    }\n    else if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj[3]\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n    else if (object_type == \"climate\") {\n        let unit_of_measurement = vobj[3]\n        let minmax = vobj[4];\n        let step_size = vobj[5]\n\n        let min_value = 6.5;\n        let max_value = 35;\n        let sresults = minmax.split(\"|\");\n        if (sresults.length == 2) {\n            min_value = parseFloat(sresults[0]);\n            max_value = parseFloat(sresults[1]);\n        }\n\n        jobj = createClimateObject(root_topic, name, varname, unique_id, unit_of_measurement, min_value, max_value, step_size);\n    }\n\n    if (jobj != null) {\n        if (unique_id.indexOf(\"_\") != -1)\n        {\n            unique_id = unique_id.split(\"_\")[0];\n        }\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.log(\"publishing config ->: \" + dtopic);\n\n        msg.payload = jobj;\n        msg.topic = dtopic;\n        msg.retain = true;\n        node.send(msg);\n    }\n});\nreturn null;",
+        "name": "Startup",
+        "func": "let discovery_topic = \"victron\";\nlet root_topic = \"my_victron\";\ncontext.flow.root_topic = root_topic;\n\n//context.global.max_phase_power = 4000;\ncontext.global.data = context.global.data || {};\n\nlet pobject = [\n    //\"name\": [\"object_type\", \"varname\", \"unique_id\", \"payload_on/unit\", \"payload_off\", \"step\"],\n\n    //Setpoint\n    //{ \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-5000|5000\", 100] },\n    { \"ESS Setpoint\": [\"climate\", \"ess_setpoint\", \"0x8000000002\", \"Watt\", \"-12000|12000\", 100] },\n\n    //Switches\n    { \"ESS Control Mode\": [\"select\", \"ess_mode\", \"0x8000000001\", \"Mode 1|Mode 2\", \"\", 0] },\n    { \"Battery Mode\": [\"select\", \"batt_mode\", \"0x800000000E\", \"Off|Idle|Charge|Discharge|Grid Balance|IQ Smart Mode|Solar Balance|Manual\", \"\", 0] },\n    { \"Battery State\": [\"select\", \"batt_state\", \"0x8000000014\", \"Off|Idle|Charging|Discharging\", \"\", 0] },\n    { \"MP2 On/Off state\": [\"switch\", \"mp2_switch_position\", \"0x800000000F\", \"On\", \"Off\", 0] },\n\n    //Sensors\n    { \"Battery Percentage\": [\"sensor\", \"batt_soc\", \"0x8000000003\", \"%\", \"\", 0] },\n    { \"Battery Voltage\": [\"sensor\", \"batt_voltage\", \"0x8000000004\", \"V\", \"\", 0] },\n    { \"Battery Amps\": [\"sensor\", \"batt_amps\", \"0x8000000005\", \"A\", \"\", 0] },\n    { \"Battery Temperature\": [\"sensor\", \"batt_temp\", \"0x800000000D\", \"\\u00b0c\", \"\", 0] },\n    { \"ET340 L1 Watt\": [\"sensor\", \"grid_l1_w\", \"0x8000000006\", \"W\", \"\", 0] },\n    { \"ET340 L2 Watt\": [\"sensor\", \"grid_l2_w\", \"0x8000000007\", \"W\", \"\", 0] },\n    { \"ET340 L3 Watt\": [\"sensor\", \"grid_l3_w\", \"0x8000000008\", \"W\", \"\", 0] },\n    { \"ET340 Total Watt\": [\"sensor\", \"grid_total_w\", \"0x8000000108\", \"W\", \"\", 0] },\n    { \"Battery Capacity\": [\"sensor\", \"batt_capacity\", \"0x8000000012\", \"W\", \"\", 0] },\n    { \"Battery Charged kWh\": [\"sensor\", \"batt_charged_kwh\", \"0x8000000015_power\", \"kWh\", \"\", 0] },\n    { \"Battery Charged W\": [\"sensor\", \"batt_charged_w\", \"0x8000000015_energy\", \"W\", \"\", 0] },\n    { \"Battery Discharged kWh\": [\"sensor\", \"batt_discharged_kwh\", \"0x8000000016_power\", \"kWh\", \"\", 0] },\n    { \"Battery Discharged W\": [\"sensor\", \"batt_discharged_w\", \"0x8000000016_energy\", \"W\", \"\", 0] },\n    { \"MP2 AC-In kWh\": [\"sensor\", \"inv_acin_kwh\", \"0x8000000017_power\", \"kWh\", \"\", 0] },\n    { \"MP2 AC-In Charged W\": [\"sensor\", \"inv_acin_w\", \"0x8000000017_energy\", \"W\", \"\", 0] },\n\n    //Temperatures\n    { \"Ceil Temp\": [\"sensor\", \"temp_1\", \"0x8000000009\", \"\\u00b0c\", \"\", 0] },\n    { \"Lynx Temp\": [\"sensor\", \"temp_2\", \"0x800000000A\", \"\\u00b0c\", \"\", 0] },\n    { \"Shunt Temp\": [\"sensor\", \"temp_3\", \"0x800000000B\", \"\\u00b0c\", \"\", 0] },\n    \n    //Text\n    { \"ESS Charge State\": [\"sensor\", \"charge_state\", \"0x800000000C\", \"text\", \"\", 0] },\n];\n\nfunction createBinaryObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createLightObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",            \n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSelectObject(root, name, varname, unique_id, select_options)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",            \n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n\n    vjson[\"options\"] = [];\n    select_options.split(\"|\").forEach(function (item) {\n        vjson[\"options\"].push(item);\n    });\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createNumberObject(root, name, varname, unique_id, step = 1)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",            \n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"step\"] = step;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",\n            \"ids\": []\n        }\n    };\n\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n\n    let state_class = \"measurement\";\n\n    let device_class = \"\";\n    switch (unit_of_measurement)\n    {\n        case \"text\":\n            state_class = \"\";\n            break;\n        case \"%\":\n            if (\n                (name.indexOf('Batt') !== -1)\n                || (name.indexOf('batt') !== -1)\n                || (varname.indexOf('_soc') !== -1)\n            ) {\n                device_class = \"battery\";\n            } else {\n                device_class = \"percentage\";\n            }\n            break;\n        case \"°C\":\n        case \"C\":\n        case \"°F\":\n        case \"F\":\n            device_class = \"temperature\";\n            break;\n        case \"V\":\n        case \"mV\":\n            device_class = \"voltage\";\n            break;\n        case \"A\":\n        case \"mA\":\n            device_class = \"current\";\n            break;\n        case \"\\u00b0c\":\n        case \"\\u00b0C\":\n            device_class = \"temperature\";\n            break;\n        case \"W\":\n            device_class = \"power\";\n            break;\n        case \"kWh\":\n        case \"Wh\":\n            device_class = \"energy\";\n            state_class = \"total_increasing\";\n            break;\n    }\n\n    if (device_class != \"\")\n    {\n        vjson[\"device_class\"] = device_class;\n    }\n    if (state_class != \"\")\n    {\n        vjson[\"state_class\"] = state_class;\n    }\n\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n\n    return vjson\n}\n\n/*\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n    vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson\n}\n*/\n\nfunction createClimateObject(root, name, varname, unique_id, unit_of_measurement, min_value = 6.5, max_value = 35.0, step_size = 1.0)\n{\n    let device_identifier = unique_id;\n    if (device_identifier.indexOf(\"_\") != -1)\n    {\n        device_identifier = unique_id.split(\"_\")[0];\n    }\n    \n    let vjson = {\n        \"temp_stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": {\n            \"manufacturer\": \"PA1DVB\",\n            \"model\": \"Node-Red\",\n            \"name\": \"BatteryControl\",\n            \"ids\": []\n        }\n    };\n    vjson.dev.ids.push(device_identifier);\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"temp_unit\"] = unit_of_measurement;\n    vjson[\"temp_cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"temp_stat_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    vjson[\"temp_step\"] = step_size;\n    vjson[\"min_temp\"] = min_value;\n    vjson[\"max_temp\"] = max_value;\n    return vjson\n}\n\nnode.log(\"Flow Initialisation\");\n\npobject.forEach((vvar) => {\n    let name = Object.keys(vvar)[0];\n    let vobj = vvar[Object.keys(vvar)];\n    let object_type = vobj[0]\n    let varname = vobj[1]\n    let unique_id = vobj[2]\n\n    let jobj = null\n    if (object_type == \"light\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"switch\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"binary_sensor\") {\n        let payload_on = vobj[3]\n        let payload_off = vobj[4]\n        jobj = createBinaryObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"select\") {\n        let soptions = vobj[3]\n        jobj = createSelectObject(root_topic, name, varname, unique_id, soptions);\n    }\n    else if (object_type == \"number\") {\n        let step = vobj[5]\n        jobj = createNumberObject(root_topic, name, varname, unique_id, step);\n    }\n    else if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj[3]\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n    else if (object_type == \"climate\") {\n        let unit_of_measurement = vobj[3]\n        let minmax = vobj[4];\n        let step_size = vobj[5]\n\n        let min_value = 6.5;\n        let max_value = 35;\n        let sresults = minmax.split(\"|\");\n        if (sresults.length == 2) {\n            min_value = parseFloat(sresults[0]);\n            max_value = parseFloat(sresults[1]);\n        }\n\n        jobj = createClimateObject(root_topic, name, varname, unique_id, unit_of_measurement, min_value, max_value, step_size);\n    }\n\n    if (jobj != null) {\n        if (unique_id.indexOf(\"_\") != -1)\n        {\n            unique_id = unique_id.split(\"_\")[0];\n        }\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.log(\"publishing config ->: \" + dtopic);\n\n        msg.payload = jobj;\n        msg.topic = dtopic;\n        msg.retain = true;\n        node.send(msg);\n    }\n});\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
+        "x": 600,
         "y": 60,
         "wires": [
             [
@@ -1942,7 +1958,7 @@
         "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": "0.5",
+        "onceDelay": "2",
         "topic": "online",
         "payload": "true",
         "payloadType": "str",
@@ -1950,9 +1966,9 @@
         "y": 100,
         "wires": [
             [
-                "b970c5ce031efaf2",
                 "69a2629d096d7a9c",
-                "07d611da6ffa41ed"
+                "07d611da6ffa41ed",
+                "5d710e3b6330a15f"
             ]
         ]
     },
@@ -1970,12 +1986,13 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 100,
-        "y": 2140,
+        "x": 120,
+        "y": 2240,
         "wires": [
             [
                 "053fac255b781adb",
-                "554f27d183597978"
+                "554f27d183597978",
+                "77a5a34baaf865e8"
             ]
         ]
     },
@@ -2032,8 +2049,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 8,
-        "x": 340,
-        "y": 2140,
+        "x": 360,
+        "y": 2240,
         "wires": [
             [
                 "5b3acf804ca416d1"
@@ -2086,8 +2103,8 @@
         },
         "name": "MP2 Switch position",
         "onlyChanges": false,
-        "x": 980,
-        "y": 2080,
+        "x": 1000,
+        "y": 2180,
         "wires": []
     },
     {
@@ -2103,8 +2120,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 2040,
+        "x": 610,
+        "y": 2140,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -2125,8 +2142,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 2080,
+        "x": 610,
+        "y": 2180,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -2148,8 +2165,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 2040,
+        "x": 1000,
+        "y": 2140,
         "wires": []
     },
     {
@@ -2274,7 +2291,7 @@
             "e50fcdcc15023c7c",
             "f372c7304a23c6e0"
         ],
-        "x": 725,
+        "x": 815,
         "y": 60,
         "wires": [
             [
@@ -2292,7 +2309,7 @@
         "links": [
             "bcff41bce48abac6"
         ],
-        "x": 615,
+        "x": 705,
         "y": 60,
         "wires": []
     },
@@ -2671,7 +2688,8 @@
         "y": 600,
         "wires": [
             [
-                "2638424905d9e622"
+                "2638424905d9e622",
+                "7b17745fa5b70396"
             ]
         ]
     },
@@ -3445,28 +3463,6 @@
         ]
     },
     {
-        "id": "8973442a5c9052aa",
-        "type": "ui_text",
-        "z": "8d3b29f48feb985c",
-        "g": "b699493a4e613ac0",
-        "group": "482140b3ae8976c9",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "name": "Charger state",
-        "label": "",
-        "format": "{{msg.payload}}",
-        "layout": "row-center",
-        "className": "",
-        "style": true,
-        "font": "Verdana,Verdana,Geneva,sans-serif",
-        "fontSize": 16,
-        "color": "#eeff00",
-        "x": 760,
-        "y": 800,
-        "wires": []
-    },
-    {
         "id": "20679d9650260f27",
         "type": "mqtt in",
         "z": "8d3b29f48feb985c",
@@ -3501,7 +3497,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
+        "x": 290,
         "y": 60,
         "wires": [
             [
@@ -3531,8 +3527,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
-        "y": 2320,
+        "x": 130,
+        "y": 2420,
         "wires": [
             [
                 "eedb7eaeb1af5d15"
@@ -3554,7 +3550,7 @@
         "correl": "",
         "expiry": "",
         "broker": "ee1bb25c871ce5fc",
-        "x": 520,
+        "x": 620,
         "y": 100,
         "wires": []
     },
@@ -3571,8 +3567,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 2120,
+        "x": 600,
+        "y": 2220,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -3597,8 +3593,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 2160,
+        "x": 600,
+        "y": 2260,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -3622,8 +3618,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 2200,
+        "x": 590,
+        "y": 2300,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -3647,8 +3643,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 970,
-        "y": 2200,
+        "x": 990,
+        "y": 2300,
         "wires": [
             [
                 "031b9cbf3eb7ea67"
@@ -3665,8 +3661,8 @@
         "links": [
             "44d07b9e813b1e68"
         ],
-        "x": 1085,
-        "y": 2200,
+        "x": 1105,
+        "y": 2300,
         "wires": []
     },
     {
@@ -3682,8 +3678,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 960,
-        "y": 2160,
+        "x": 980,
+        "y": 2260,
         "wires": [
             [
                 "e50fcdcc15023c7c"
@@ -3704,8 +3700,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 215,
-        "y": 2140,
+        "x": 235,
+        "y": 2240,
         "wires": [],
         "l": false
     },
@@ -3728,8 +3724,8 @@
         "name": "Venus Battery | State of Charge (%)",
         "onlyChanges": true,
         "roundValues": "1",
-        "x": 180,
-        "y": 2480,
+        "x": 200,
+        "y": 2580,
         "wires": [
             [
                 "2f9c61d13cdca117"
@@ -3749,8 +3745,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
-        "y": 2460,
+        "x": 550,
+        "y": 2560,
         "wires": [
             [
                 "d14625af14055f20",
@@ -3774,8 +3770,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 905,
-        "y": 2120,
+        "x": 925,
+        "y": 2220,
         "wires": [],
         "l": false
     },
@@ -3793,8 +3789,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 765,
-        "y": 2460,
+        "x": 785,
+        "y": 2560,
         "wires": [],
         "l": false
     },
@@ -3809,8 +3805,8 @@
             "84f5b9b1e88bca69",
             "dcf03f2d43607f7c"
         ],
-        "x": 1085,
-        "y": 2160,
+        "x": 1105,
+        "y": 2260,
         "wires": []
     },
     {
@@ -3840,8 +3836,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 2400,
+        "x": 640,
+        "y": 2500,
         "wires": [
             [
                 "e50fcdcc15023c7c",
@@ -3863,8 +3859,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 785,
-        "y": 2400,
+        "x": 805,
+        "y": 2500,
         "wires": [],
         "l": false
     },
@@ -3886,8 +3882,8 @@
         },
         "name": "Venus | Grid set-point (W)",
         "onlyChanges": true,
-        "x": 150,
-        "y": 2400,
+        "x": 170,
+        "y": 2500,
         "wires": [
             [
                 "cb51f6a8d0f024b5"
@@ -3916,8 +3912,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
-        "y": 2520,
+        "x": 150,
+        "y": 2620,
         "wires": [
             [
                 "a3169756890e06b6"
@@ -3937,8 +3933,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 2520,
+        "x": 520,
+        "y": 2620,
         "wires": [
             [
                 "d14625af14055f20"
@@ -3976,8 +3972,8 @@
         "initial": "",
         "name": "MultiPlus-II 48/5000 | Charge State",
         "onlyChanges": true,
-        "x": 180,
-        "y": 2440,
+        "x": 200,
+        "y": 2540,
         "wires": [
             [
                 "2f9c61d13cdca117"
@@ -3997,8 +3993,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 840,
-        "y": 2280,
+        "x": 860,
+        "y": 2380,
         "wires": [
             [
                 "d14625af14055f20",
@@ -4021,8 +4017,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 2280,
+        "x": 610,
+        "y": 2380,
         "wires": [
             [
                 "d14625af14055f20",
@@ -4044,8 +4040,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
-        "y": 2240,
+        "x": 620,
+        "y": 2340,
         "wires": [
             [
                 "d14625af14055f20",
@@ -4069,8 +4065,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 985,
-        "y": 2280,
+        "x": 1005,
+        "y": 2380,
         "wires": [],
         "l": false
     },
@@ -4107,7 +4103,8 @@
             "824d7a39eb03356e",
             "7f1f55894fcbda14",
             "51c0cfb742f07a47",
-            "308488716b4a1ceb"
+            "308488716b4a1ceb",
+            "6af2e6d4917ea5e3"
         ],
         "x": 735,
         "y": 220,
@@ -4156,8 +4153,8 @@
         "links": [
             "11fac77a0d071027"
         ],
-        "x": 1085,
-        "y": 2280,
+        "x": 1105,
+        "y": 2380,
         "wires": []
     },
     {
@@ -4174,7 +4171,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
+        "x": 870,
         "y": 220,
         "wires": []
     },
@@ -4191,8 +4188,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 240,
-        "y": 2320,
+        "x": 260,
+        "y": 2420,
         "wires": [
             [
                 "f893c02906d0409b"
@@ -4237,8 +4234,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 5,
-        "x": 370,
-        "y": 2320,
+        "x": 390,
+        "y": 2420,
         "wires": [
             [
                 "9e15b637df84d87f"
@@ -4270,8 +4267,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 840,
-        "y": 2360,
+        "x": 860,
+        "y": 2460,
         "wires": [
             [
                 "efc682e349616a06",
@@ -4292,8 +4289,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 2360,
+        "x": 610,
+        "y": 2460,
         "wires": [
             [
                 "12c695775f8c73d2",
@@ -4316,8 +4313,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1005,
-        "y": 2360,
+        "x": 1025,
+        "y": 2460,
         "wires": [],
         "l": false
     },
@@ -4466,7 +4463,8 @@
         "y": 1500,
         "wires": [
             [
-                "cee9fbdad1051b8d"
+                "cee9fbdad1051b8d",
+                "8860fd4be74d6407"
             ]
         ]
     },
@@ -4597,7 +4595,8 @@
         "y": 1620,
         "wires": [
             [
-                "c52e25968d4266af"
+                "c52e25968d4266af",
+                "f8cb9ca1dcd7b306"
             ]
         ]
     },
@@ -4628,8 +4627,8 @@
         "links": [
             "b67775dd052f962b"
         ],
-        "x": 135,
-        "y": 2240,
+        "x": 155,
+        "y": 2340,
         "wires": [
             [
                 "95cad9eee2aedcbe",
@@ -4647,7 +4646,7 @@
         "links": [
             "e2a9c31b9a104939"
         ],
-        "x": 385,
+        "x": 505,
         "y": 120,
         "wires": []
     },
@@ -4664,8 +4663,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 2240,
+        "x": 340,
+        "y": 2340,
         "wires": [
             [
                 "9e15b637df84d87f",
@@ -4687,8 +4686,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 195,
-        "y": 2240,
+        "x": 215,
+        "y": 2340,
         "wires": [],
         "l": false
     },
@@ -4710,7 +4709,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 280,
+        "x": 400,
         "y": 120,
         "wires": [
             [
@@ -4740,8 +4739,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 580,
-        "y": 2320,
+        "x": 600,
+        "y": 2420,
         "wires": [
             [
                 "d464f5880be3efb4",
@@ -4776,8 +4775,8 @@
         "links": [
             "fb6799af32434934"
         ],
-        "x": 1025,
-        "y": 2120,
+        "x": 1045,
+        "y": 2220,
         "wires": []
     },
     {
@@ -4819,7 +4818,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
+        "x": 950,
         "y": 60,
         "wires": [
             [
@@ -4837,9 +4836,969 @@
         "links": [
             "e59d555255ef29a0"
         ],
-        "x": 985,
+        "x": 1075,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "5d710e3b6330a15f",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "b362b271c03a0415",
+        "name": "Gobals",
+        "func": "context.global.batt_capacity = 60000; //Wh\ncontext.global.max_charge_setpoint = 10000; //3000=90.7% see efficiency chart \ncontext.global.max_discharge_setpoint = 10000; //4126=90.8, 4750 = 89.6\ncontext.global.number_of_multiplus = 3;\ncontext.global.min_soc = 30;\ncontext.global.max_soc = 100; //Because we use a smartshunt and specified 55.2V as 100% (=90%)\ncontext.global.idle_rate = 103;\ncontext.global.min_soc_overnight = 10;\ncontext.global.charge_rate = 9000;\ncontext.global.discharge_rate = -10000;\ncontext.global.setpoint_adjusted = false;\ncontext.global.max_phase_power = 5550;\n\n//context.global.max_phase_power = 4000;\ncontext.global.data = context.global.data || {};\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 80,
+        "wires": [
+            [
+                "b970c5ce031efaf2"
+            ]
+        ]
+    },
+    {
+        "id": "77a5a34baaf865e8",
+        "type": "ui-dropdown",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "group": "e6f2e12210710b47",
+        "name": "Battery Mode",
+        "label": "Battery Mode",
+        "tooltip": "",
+        "order": 2,
+        "width": "3",
+        "height": "1",
+        "passthru": false,
+        "multiple": false,
+        "chips": false,
+        "clearable": false,
+        "options": [
+            {
+                "label": "Off",
+                "value": "Off",
+                "type": "str"
+            },
+            {
+                "label": "On",
+                "value": "On",
+                "type": "str"
+            },
+            {
+                "label": "Charge",
+                "value": "Charge",
+                "type": "str"
+            },
+            {
+                "label": "Discharge",
+                "value": "Discharge",
+                "type": "str"
+            },
+            {
+                "label": "IQ Smart Mode",
+                "value": "IQ Smart Mode",
+                "type": "str"
+            },
+            {
+                "label": "Solar Balance",
+                "value": "Solar Balance",
+                "type": "str"
+            },
+            {
+                "label": "Grid Balance",
+                "value": "Grid Balance",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "payload",
+        "topicType": "msg",
+        "className": "",
+        "typeIsComboBox": true,
+        "msgTrigger": "onChange",
+        "x": 240,
+        "y": 2160,
+        "wires": [
+            [
+                "053fac255b781adb"
+            ]
+        ]
+    },
+    {
+        "id": "3ee2b0e172594cb1",
+        "type": "ui-slider",
+        "z": "8d3b29f48feb985c",
+        "group": "e6f2e12210710b47",
+        "name": "Grid Setpoint",
+        "label": "",
+        "tooltip": "",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "payload",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": "-10000",
+        "max": "10000",
+        "step": "100",
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 250,
+        "y": 2700,
+        "wires": [
+            [
+                "67875c119bd17f5b",
+                "9a907c9c3e41b0b7",
+                "6af2e6d4917ea5e3"
+            ]
+        ]
+    },
+    {
+        "id": "9a907c9c3e41b0b7",
+        "type": "ui-number-input",
+        "z": "8d3b29f48feb985c",
+        "group": "e6f2e12210710b47",
+        "name": "Grid Setpoint",
+        "label": "Setpoint",
+        "order": 3,
+        "width": "3",
+        "height": "1",
+        "topic": "payload",
+        "topicType": "msg",
+        "min": "-10000",
+        "max": "10000",
+        "step": "100",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": false,
+        "sendOnDelay": false,
+        "sendOnBlur": false,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "spinner": "default",
+        "x": 250,
+        "y": 2740,
+        "wires": [
+            [
+                "67875c119bd17f5b",
+                "3ee2b0e172594cb1",
+                "6af2e6d4917ea5e3"
+            ]
+        ]
+    },
+    {
+        "id": "67875c119bd17f5b",
+        "type": "debug",
+        "z": "8d3b29f48feb985c",
+        "name": "debug 68",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 2700,
+        "wires": []
+    },
+    {
+        "id": "bc749cfad281a225",
+        "type": "link in",
+        "z": "8d3b29f48feb985c",
+        "name": "Dash SP",
+        "links": [
+            "72fc35bb334d7df7"
+        ],
+        "x": 75,
+        "y": 2720,
+        "wires": [
+            [
+                "3ee2b0e172594cb1",
+                "9a907c9c3e41b0b7"
+            ]
+        ]
+    },
+    {
+        "id": "a850f90f56dec85c",
+        "type": "ui-text",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "e6f2e12210710b47",
+        "order": 15,
+        "width": 0,
+        "height": 0,
+        "name": "Charge State",
+        "label": "Charge State",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 410,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "5e44118efd967c6a",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "SOC",
+        "group": "e6f2e12210710b47",
+        "order": 10,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "SOC",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "30",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "60",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 770,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fb458aa078a31385",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "Ceiling",
+        "group": "e6f2e12210710b47",
+        "order": 14,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "2",
+        "height": "2",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Ceiling",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "40",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "60",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "10",
+        "max": "70",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 250,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d64aea3b07554e0f",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "Cabling",
+        "group": "e6f2e12210710b47",
+        "order": 13,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "2",
+        "height": "2",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Cabling",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "40",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "60",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "10",
+        "max": "70",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 260,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "936055f036bb558c",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "Shunt",
+        "group": "e6f2e12210710b47",
+        "order": 12,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "2",
+        "height": "2",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Shunt",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "40",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "60",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "10",
+        "max": "70",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 250,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "485e1e0de5f5c20b",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "Panels",
+        "group": "e6f2e12210710b47",
+        "order": 8,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "PV",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "W",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [],
+        "min": 0,
+        "max": "12000",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 730,
+        "y": 1460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "880ab817a8cef6e1",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "Loads",
+        "group": "e6f2e12210710b47",
+        "order": 9,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Loads",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "W",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [],
+        "min": 0,
+        "max": "12000",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 730,
+        "y": 1580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eeab59f9fc7a00fd",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "Volt",
+        "group": "e6f2e12210710b47",
+        "order": 5,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Volt",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "V",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "48",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "49",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "48",
+        "max": "56",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 390,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bcda863f1ed674b6",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "Amps",
+        "group": "e6f2e12210710b47",
+        "order": 6,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Current",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "A",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [],
+        "min": "-100",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 790,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ac363398c7630edf",
+        "type": "ui-gauge",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "Watt",
+        "group": "e6f2e12210710b47",
+        "order": 7,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Power",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "W",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [],
+        "min": "-10000",
+        "max": "10000",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 930,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6af2e6d4917ea5e3",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "name": "to SP",
+        "mode": "link",
+        "links": [
+            "11fac77a0d071027"
+        ],
+        "x": 415,
+        "y": 2740,
+        "wires": []
+    },
+    {
+        "id": "72fc35bb334d7df7",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "link out 12",
+        "mode": "link",
+        "links": [
+            "bc749cfad281a225"
+        ],
+        "x": 345,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5dced18c5df56dc7",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 2120,
+        "wires": [
+            [
+                "e3bf12371445b2b1"
+            ]
+        ]
+    },
+    {
+        "id": "e3bf12371445b2b1",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "inform batt mode",
+        "func": "msg.payload = context.global.data[\"batt_mode\"];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 2120,
+        "wires": [
+            [
+                "77a5a34baaf865e8"
+            ]
+        ]
+    },
+    {
+        "id": "60ca368b143dead4",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2080,
+        "wires": [
+            [
+                "87ae15cf892b180a"
+            ]
+        ]
+    },
+    {
+        "id": "87ae15cf892b180a",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "inform smart mode",
+        "func": "msg.payload = context.global.data[\"smart_mode\"];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 2080,
+        "wires": [
+            [
+                "43cc388e6b01ecd9"
+            ]
+        ]
+    },
+    {
+        "id": "43cc388e6b01ecd9",
+        "type": "ui-text",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "group": "e6f2e12210710b47",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "name": "Smart Mode",
+        "label": "Smart Mode:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 530,
+        "y": 2080,
+        "wires": []
+    },
+    {
+        "id": "bc51548be23b1d8a",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 410,
+        "y": 460,
+        "wires": [
+            [
+                "bcda863f1ed674b6"
+            ]
+        ]
+    },
+    {
+        "id": "7b17745fa5b70396",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 790,
+        "y": 600,
+        "wires": [
+            [
+                "ac363398c7630edf"
+            ]
+        ]
+    },
+    {
+        "id": "8860fd4be74d6407",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 1460,
+        "wires": [
+            [
+                "485e1e0de5f5c20b"
+            ]
+        ]
+    },
+    {
+        "id": "f8cb9ca1dcd7b306",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 1580,
+        "wires": [
+            [
+                "880ab817a8cef6e1"
+            ]
+        ]
+    },
+    {
+        "id": "02f47256b55649cd",
+        "type": "ui-chart",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "e6f2e12210710b47",
+        "name": "SOC Chart",
+        "label": "SOC",
+        "order": 16,
+        "chartType": "line",
+        "category": "payload",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "SOC",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "100",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "line",
+        "pointRadius": "2",
+        "showLegend": true,
+        "removeOlder": "12",
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": "6",
+        "className": "",
+        "interpolation": "smooth",
+        "x": 890,
+        "y": 420,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "648e528a859f3a50",
@@ -6452,12 +7411,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 60,
+        "x": 490,
+        "y": 80,
         "wires": [
             [
-                "9e88ca438deb4b19",
-                "643fb68e048c5182"
+                "9e88ca438deb4b19"
             ]
         ]
     },
@@ -6501,8 +7459,8 @@
         "links": [
             "bcff41bce48abac6"
         ],
-        "x": 605,
-        "y": 100,
+        "x": 625,
+        "y": 80,
         "wires": []
     },
     {
@@ -6880,8 +7838,7 @@
         "g": "53c4909b2cd159f9",
         "name": "Perform Today",
         "links": [
-            "95ef6a6364e11d89",
-            "643fb68e048c5182"
+            "95ef6a6364e11d89"
         ],
         "x": 55,
         "y": 660,
@@ -7906,20 +8863,6 @@
         "l": false
     },
     {
-        "id": "643fb68e048c5182",
-        "type": "link out",
-        "z": "edf9f455029eeb7f",
-        "g": "1a81b3b5b7840ea2",
-        "name": "Perform Today",
-        "mode": "link",
-        "links": [
-            "9d7f474efb189328"
-        ],
-        "x": 605,
-        "y": 60,
-        "wires": []
-    },
-    {
         "id": "82633b4d062d1a13",
         "type": "tibber-data",
         "z": "edf9f455029eeb7f",
@@ -8051,7 +8994,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Scheme cutover",
-        "func": "if (context.global.scheme_tomorrow[\"status\"] != false) {\n    context.global.scheme_today = context.global.scheme_tomorrow;\n    context.global.scheme_tomorrow = {}; // set tomorrow to empty\n    context.global.scheme_tomorrow.status = false; // with status false\n    msg.domo_msg = \"Victron: Switching over day rates\"; \n    msg.inform_domo = true;\n    return msg;\n}",
+        "func": "if (context.global.scheme_tomorrow.status != false) {\n    context.global.scheme_today = context.global.scheme_tomorrow;\n    context.global.scheme_tomorrow = {}; // set tomorrow to empty\n    context.global.scheme_tomorrow.status = false; // with status false\n    msg.domo_msg = \"Victron: Switching over day rates\"; \n    msg.inform_domo = true;\n    return msg;\n}\nelse {\n    msg.domo_msg = \"Victron: No rates for tomorrow\"; \n    msg.inform_domo = true;\n    context.global.scheme_today = {}; // set today to empty\n    context.global.scheme_tomorrow = {}; // set tomorrow to empty\n    context.global.scheme_tomorrow.status = false; // with status false\n    context.global.scheme_today.status = false; // with status false\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -8096,7 +9039,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Inform Domo",
-        "func": "if (context.global.scheme_today[\"status\"] == false){\n    msg.payload = \"No rates available so let's get some\";\n}\nelse {\n    msg.payload = \"Rates already available so no need to get them\";\n}\nreturn msg;",
+        "func": "if (context.global.scheme_today.status == false){\n    msg.payload = \"No rates available so let's get some\";\n}\nelse {\n    msg.payload = \"Rates already available so no need to get them\";\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -8241,7 +9184,7 @@
         "type": "function",
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
-        "name": "Send scheme_today to domo",
+        "name": "scheme_today => domo",
         "func": "msg.topic = \"new_scheme_today\";\nmsg.payload = context.global.scheme_today;\nmsg.sendnow = true;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -8249,7 +9192,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
+        "x": 990,
         "y": 520,
         "wires": [
             [
@@ -8262,7 +9205,7 @@
         "type": "function",
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
-        "name": "Send scheme_today to domo",
+        "name": "scheme_tomorrow => domo",
         "func": "msg.topic = \"new_scheme_tomorrow\";\nmsg.payload = context.global.scheme_tomorrow\nmsg.sendnow = true;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -8270,7 +9213,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
+        "x": 880,
         "y": 560,
         "wires": [
             [
@@ -8288,7 +9231,7 @@
         "links": [
             "c0e2a8234613d6fa"
         ],
-        "x": 1105,
+        "x": 1175,
         "y": 540,
         "wires": []
     },
@@ -8314,12 +9257,11 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 620,
+        "x": 320,
         "y": 560,
         "wires": [
             [
-                "4024186a9a81de45",
-                "0406284b3e87a184"
+                "51a03128e28bf463"
             ]
         ]
     },
@@ -8335,8 +9277,8 @@
             "07307d18b95c5cfb",
             "7347ef667ed20efa"
         ],
-        "x": 705,
-        "y": 60,
+        "x": 725,
+        "y": 80,
         "wires": [
             [
                 "a2a08948b80ec841"
@@ -8353,8 +9295,8 @@
         "links": [
             "e59d555255ef29a0"
         ],
-        "x": 975,
-        "y": 60,
+        "x": 995,
+        "y": 80,
         "wires": []
     },
     {
@@ -8370,8 +9312,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 840,
-        "y": 60,
+        "x": 860,
+        "y": 80,
         "wires": [
             [
                 "100feff42d17aff9"
@@ -8417,7 +9359,8 @@
         "y": 100,
         "wires": [
             [
-                "14c3076dd27b816b"
+                "122749331c478207",
+                "e5a25d0cfd90a5f5"
             ]
         ]
     },
@@ -8426,7 +9369,7 @@
         "type": "delay",
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
-        "name": "Delay 20s",
+        "name": "20s",
         "pauseType": "delay",
         "timeout": "20",
         "timeoutUnits": "seconds",
@@ -8439,12 +9382,85 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 640,
+        "x": 630,
         "y": 520,
         "wires": [
             [
-                "4024186a9a81de45",
-                "0406284b3e87a184"
+                "0406284b3e87a184",
+                "7afa5acc73d37a7b"
+            ]
+        ]
+    },
+    {
+        "id": "b83de423f544687c",
+        "type": "link in",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "Send Schemas",
+        "links": [
+            "e5a25d0cfd90a5f5",
+            "51a03128e28bf463"
+        ],
+        "x": 665,
+        "y": 560,
+        "wires": [
+            [
+                "0406284b3e87a184",
+                "7afa5acc73d37a7b"
+            ]
+        ]
+    },
+    {
+        "id": "e5a25d0cfd90a5f5",
+        "type": "link out",
+        "z": "edf9f455029eeb7f",
+        "g": "1a81b3b5b7840ea2",
+        "name": "Send Schemas",
+        "mode": "link",
+        "links": [
+            "b83de423f544687c"
+        ],
+        "x": 415,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "51a03128e28bf463",
+        "type": "link out",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "Send Schemas",
+        "mode": "link",
+        "links": [
+            "b83de423f544687c"
+        ],
+        "x": 455,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "7afa5acc73d37a7b",
+        "type": "delay",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "5s",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 810,
+        "y": 520,
+        "wires": [
+            [
+                "4024186a9a81de45"
             ]
         ]
     }
