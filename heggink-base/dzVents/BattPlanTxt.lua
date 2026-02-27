@@ -1,3 +1,4 @@
+icz/scripts/dzVents/scripts]# cat BattPlanTxt.lua 
 return {
 	active = true,
 	logging = {
@@ -15,6 +16,12 @@ return {
 		--timer = { 'at 00:02', 'at 01:02', 'at 14:02', 'at 15:02' } 
 	},
 	execute = function(dz, item)
+
+        if ((item.name == 'new_scheme_tomorrow') and (dz.time.matchesRule("between 00:00 and 00:02"))) then
+            -- scheme cutover so ignore as today and tomorrow will be updated
+            do return end
+        end
+
         local today = dz.utils.fromJSON(dz.variables('new_scheme_today').value)
         local tomorrow = dz.utils.fromJSON(dz.variables('new_scheme_tomorrow').value)
 
