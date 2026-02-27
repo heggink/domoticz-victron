@@ -4195,7 +4195,8 @@
         "y": 2420,
         "wires": [
             [
-                "f893c02906d0409b"
+                "f893c02906d0409b",
+                "87ae15cf892b180a"
             ]
         ]
     },
@@ -5575,14 +5576,14 @@
                 "vt": "str"
             }
         ],
-        "repeat": "900",
+        "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
+        "x": 120,
         "y": 2080,
         "wires": [
             [
@@ -5770,20 +5771,20 @@
         "stackSeries": false,
         "pointShape": "line",
         "pointRadius": "2",
-        "showLegend": true,
-        "removeOlder": "12",
-        "removeOlderUnit": "3600",
+        "showLegend": false,
+        "removeOlder": "1",
+        "removeOlderUnit": "86400",
         "removeOlderPoints": "",
         "colors": [
-            "#0095ff",
-            "#ff0000",
-            "#ff7f0e",
-            "#2ca02c",
-            "#a347e1",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c"
         ],
         "textColor": [
             "#666666"
