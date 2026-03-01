@@ -450,12 +450,19 @@
             "72fc35bb334d7df7",
             "bc51548be23b1d8a",
             "7b17745fa5b70396",
-            "02f47256b55649cd"
+            "02f47256b55649cd",
+            "688011391c4884b3",
+            "39e697686581a036",
+            "08c0173d9c5179d4",
+            "ab05e00e91651482",
+            "6d13cac10603fe66",
+            "c3e2d7599e28535f",
+            "0c87aea06395cdc5"
         ],
         "x": 14,
-        "y": 279,
-        "w": 992,
-        "h": 682
+        "y": 259,
+        "w": 1152,
+        "h": 702
     },
     {
         "id": "9e46f3329af496ae",
@@ -976,7 +983,12 @@
     {
         "id": "a2a053bcd855cabf",
         "type": "global-config",
-        "env": []
+        "env": [],
+        "modules": {
+            "@victronenergy/node-red-contrib-victron": "1.6.60",
+            "node-red-contrib-tibber-api": "6.4.1",
+            "@flowfuse/node-red-dashboard": "1.30.2"
+        }
     },
     {
         "id": "c375361050518336",
@@ -1082,10 +1094,29 @@
         "group": "e6f2e12210710b47",
         "name": "spacer",
         "tooltip": "",
-        "order": 13,
+        "order": 14,
         "width": "6",
         "height": "1",
         "className": ""
+    },
+    {
+        "id": "fd0439a44b288dfa",
+        "type": "ui-theme",
+        "name": "Dark",
+        "colors": {
+            "surface": "#002e7a",
+            "primary": "#53d5fd",
+            "bgPage": "#000000",
+            "groupBg": "#002e7a",
+            "groupOutline": "#d6d6d6"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
     },
     {
         "id": "5726694de195109f",
@@ -1476,6 +1507,7 @@
         "initial": "",
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 500,
         "y": 1900,
         "wires": []
@@ -1520,12 +1552,14 @@
         },
         "name": "Venus | Grid set-point (W)",
         "onlyChanges": true,
+        "outputs": 1,
         "x": 150,
         "y": 320,
         "wires": [
             [
                 "7e3ce011ce905df4",
-                "72fc35bb334d7df7"
+                "72fc35bb334d7df7",
+                "c3e2d7599e28535f"
             ]
         ]
     },
@@ -1546,7 +1580,8 @@
         "y": 800,
         "wires": [
             [
-                "2638424905d9e622"
+                "2638424905d9e622",
+                "a850f90f56dec85c"
             ]
         ]
     },
@@ -1590,6 +1625,7 @@
         "name": "Venus Battery | State of Charge (%)",
         "onlyChanges": true,
         "roundValues": "1",
+        "outputs": 1,
         "x": 180,
         "y": 380,
         "wires": [
@@ -1621,12 +1657,13 @@
         "name": "SmartShunt | Battery voltage (V)",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 170,
         "y": 440,
         "wires": [
             [
                 "1690588ef40df22a",
-                "eeab59f9fc7a00fd"
+                "688011391c4884b3"
             ]
         ]
     },
@@ -1650,6 +1687,7 @@
         "name": "SmartShunt | Battery current (A)",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 170,
         "y": 480,
         "wires": [
@@ -1678,6 +1716,7 @@
         "name": "L1 W",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 90,
         "y": 1080,
         "wires": [
@@ -1706,6 +1745,7 @@
         "name": "L3 W",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 90,
         "y": 1240,
         "wires": [
@@ -1734,6 +1774,7 @@
         "name": "L2 W",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 90,
         "y": 1160,
         "wires": [
@@ -1762,6 +1803,7 @@
         "name": "Temp1",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 90,
         "y": 680,
         "wires": [
@@ -1790,6 +1832,7 @@
         "name": "Temp2",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 90,
         "y": 720,
         "wires": [
@@ -1818,6 +1861,7 @@
         "name": "Temp3",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 90,
         "y": 760,
         "wires": [
@@ -1858,12 +1902,12 @@
         "initial": "",
         "name": "MultiPlus-II 48/5000 | Charge State",
         "onlyChanges": true,
+        "outputs": 1,
         "x": 180,
         "y": 800,
         "wires": [
             [
-                "1643bcd645477a2b",
-                "a850f90f56dec85c"
+                "1643bcd645477a2b"
             ]
         ]
     },
@@ -1891,6 +1935,7 @@
         "initial": "",
         "name": "ESS Mode",
         "onlyChanges": true,
+        "outputs": 1,
         "x": 100,
         "y": 840,
         "wires": [
@@ -2106,6 +2151,7 @@
         },
         "name": "MP2 Switch position",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 1000,
         "y": 2180,
         "wires": []
@@ -2197,6 +2243,7 @@
         "initial": "",
         "name": "",
         "onlyChanges": true,
+        "outputs": 1,
         "x": 150,
         "y": 880,
         "wires": [
@@ -2276,8 +2323,7 @@
         "name": "ToMQTT",
         "mode": "link",
         "links": [
-            "84f5b9b1e88bca69",
-            "dcf03f2d43607f7c"
+            "84f5b9b1e88bca69"
         ],
         "x": 795,
         "y": 680,
@@ -2387,6 +2433,7 @@
         "name": "SmartShunt | Battery Charged (kWh)",
         "onlyChanges": true,
         "roundValues": "3",
+        "outputs": 1,
         "x": 180,
         "y": 520,
         "wires": [
@@ -2415,6 +2462,7 @@
         "name": "SmartShunt | Battery Discharged (kWh)",
         "onlyChanges": true,
         "roundValues": "3",
+        "outputs": 1,
         "x": 190,
         "y": 560,
         "wires": [
@@ -2443,11 +2491,13 @@
         "name": "SmartShunt | Battery Power (W)",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 170,
         "y": 600,
         "wires": [
             [
-                "c51446dd8f316fdd"
+                "c51446dd8f316fdd",
+                "7b17745fa5b70396"
             ]
         ]
     },
@@ -2479,9 +2529,10 @@
         "id": "6d13cac10603fe66",
         "type": "comment",
         "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
         "name": "Version 2.5",
         "info": "Last edited: 2026-02-21\n- Moved Battery control into node red\n- Moved Batt IQ Mode into node red\n- Fixed minor overload node issues forcing idle mode\n- add Outstanding modes (Grid Balance, Solar balance )\n- added modes to the smart monitor algorithm\n- removed dashboard\n- added tibber rates retrieval\n- default to Idle on start\n- made root_topic configurable so multiple flows can use different root topics\n- fixed solarbalance setpoint bug",
-        "x": 960,
+        "x": 860,
         "y": 300,
         "wires": []
     },
@@ -2691,8 +2742,7 @@
         "y": 600,
         "wires": [
             [
-                "2638424905d9e622",
-                "7b17745fa5b70396"
+                "2638424905d9e622"
             ]
         ]
     },
@@ -2912,6 +2962,7 @@
         "name": "Input (kWh)",
         "onlyChanges": true,
         "roundValues": "3",
+        "outputs": 1,
         "x": 110,
         "y": 1420,
         "wires": [
@@ -2940,6 +2991,7 @@
         "name": "Input Phase 1 (W)",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 130,
         "y": 1300,
         "wires": [
@@ -2997,6 +3049,7 @@
         "name": "Input Phase 2 (W)",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 130,
         "y": 1340,
         "wires": [
@@ -3025,6 +3078,7 @@
         "name": "Input Phase 3 (W)",
         "onlyChanges": true,
         "roundValues": "2",
+        "outputs": 1,
         "x": 130,
         "y": 1380,
         "wires": [
@@ -3174,8 +3228,7 @@
         "name": "ToMQTT",
         "mode": "link",
         "links": [
-            "84f5b9b1e88bca69",
-            "dcf03f2d43607f7c"
+            "84f5b9b1e88bca69"
         ],
         "x": 775,
         "y": 1280,
@@ -3563,7 +3616,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Charge",
-        "func": "// this node handles a request to charge\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet charge_state = data[\"charge_state\"];\n\n//Globals\nlet max_soc = context.global.max_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\nmsg.batt_mode = msg.payload // either Charge or IQ Smart Mode\n\nlet txt=\"\";\n\n// charge is requested, only charge if not at max_soc\nif (batt_soc < max_soc) {\n    msg.payload = charge_rate;\n    txt=\"Victron: Charge requested by \"+msg.payload+\", starting at \"+charge_rate;\n    node.warn(txt);\n    context.global.setpoint_adjusted = false;\n}\nelse { \n    // batt == max_soc\n    if (charge_state == 'Float') {\n        txt=\"Victron: Battery already full, switching to idle\"\n        node.warn(txt)\n        msg.payload = idle_rate;\n        if (msg.payload != \"IQ Smart Mode\") {\n            msg.batt_mode = \"Idle\"\n        }\n    }\n    else {\n        msg.payload = charge_rate;\n        txt=\"Victron: Charge requested by \"+msg.payload+\", continuing at \"+charge_rate;\n        node.warn(txt);\n        context.global.setpoint_adjusted = false;\n    }\n}\nmsg.inform_domo = true;\nmsg.domo_msg = txt;\nreturn msg;",
+        "func": "// this node handles a request to charge\n// Variables\nlet data = context.global.data;\nlet batt_soc = data[\"batt_soc\"];\nlet charge_state = data[\"charge_state\"];\n\n//Globals\nlet max_soc = context.global.max_soc;\nlet idle_rate = context.global.idle_rate;\nlet charge_rate = context.global.charge_rate;\nmsg.batt_mode = msg.payload // either Charge or IQ Smart Mode\n\nlet txt=\"\";\n\n// charge is requested, only charge if not at max_soc\nif (batt_soc < max_soc) {\n    msg.payload = charge_rate;\n    txt=\"Victron: Charge requested by \"+msg.payload+\", starting at \"+charge_rate;\n    node.warn(txt);\n    context.global.setpoint_adjusted = false;\n}\nelse { \n    // batt == max_soc\n    if (charge_state == 'Float') {\n        txt=\"Victron: Battery already full, switching to idle\"\n        node.warn(txt)\n        if (msg.payload != \"IQ Smart Mode\") {\n            msg.batt_mode = \"Idle\"\n        }\n        msg.payload = idle_rate;\n    }\n    else {\n        msg.payload = charge_rate;\n        txt=\"Victron: Charge requested by \"+msg.payload+\", continuing at \"+charge_rate;\n        node.warn(txt);\n        context.global.setpoint_adjusted = false;\n    }\n}\nmsg.inform_domo = true;\nmsg.domo_msg = txt;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3579,7 +3632,8 @@
                 "3289791d00f40465",
                 "f2c94a03e44ac36d",
                 "51c0cfb742f07a47",
-                "b0ac7ab4425d80b8"
+                "b0ac7ab4425d80b8",
+                "e3bf12371445b2b1"
             ]
         ]
     },
@@ -3604,7 +3658,8 @@
                 "d14625af14055f20",
                 "3289791d00f40465",
                 "f2c94a03e44ac36d",
-                "51c0cfb742f07a47"
+                "51c0cfb742f07a47",
+                "e3bf12371445b2b1"
             ]
         ]
     },
@@ -3629,7 +3684,8 @@
                 "d14625af14055f20",
                 "3289791d00f40465",
                 "f2c94a03e44ac36d",
-                "51c0cfb742f07a47"
+                "51c0cfb742f07a47",
+                "e3bf12371445b2b1"
             ]
         ]
     },
@@ -3727,6 +3783,7 @@
         "name": "Venus Battery | State of Charge (%)",
         "onlyChanges": true,
         "roundValues": "1",
+        "outputs": 1,
         "x": 200,
         "y": 2580,
         "wires": [
@@ -3805,8 +3862,7 @@
         "name": "ToMQTT",
         "mode": "link",
         "links": [
-            "84f5b9b1e88bca69",
-            "dcf03f2d43607f7c"
+            "84f5b9b1e88bca69"
         ],
         "x": 1105,
         "y": 2260,
@@ -3885,6 +3941,7 @@
         },
         "name": "Venus | Grid set-point (W)",
         "onlyChanges": true,
+        "outputs": 1,
         "x": 170,
         "y": 2500,
         "wires": [
@@ -3975,6 +4032,7 @@
         "initial": "",
         "name": "MultiPlus-II 48/5000 | Charge State",
         "onlyChanges": true,
+        "outputs": 1,
         "x": 200,
         "y": 2540,
         "wires": [
@@ -4026,7 +4084,8 @@
             [
                 "d14625af14055f20",
                 "d464f5880be3efb4",
-                "3289791d00f40465"
+                "3289791d00f40465",
+                "e3bf12371445b2b1"
             ]
         ]
     },
@@ -4050,7 +4109,8 @@
                 "d14625af14055f20",
                 "f2c94a03e44ac36d",
                 "3289791d00f40465",
-                "eedb7eaeb1af5d15"
+                "eedb7eaeb1af5d15",
+                "e3bf12371445b2b1"
             ]
         ]
     },
@@ -4092,6 +4152,7 @@
         },
         "name": "Grid SetPoint",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 1040,
         "y": 220,
         "wires": []
@@ -4106,7 +4167,6 @@
             "824d7a39eb03356e",
             "7f1f55894fcbda14",
             "51c0cfb742f07a47",
-            "308488716b4a1ceb",
             "6af2e6d4917ea5e3"
         ],
         "x": 735,
@@ -4299,7 +4359,8 @@
             [
                 "12c695775f8c73d2",
                 "3289791d00f40465",
-                "d14625af14055f20"
+                "d14625af14055f20",
+                "e3bf12371445b2b1"
             ]
         ]
     },
@@ -4341,6 +4402,7 @@
         "name": "pvl1",
         "onlyChanges": false,
         "roundValues": "0",
+        "outputs": 1,
         "x": 90,
         "y": 1460,
         "wires": [
@@ -4368,6 +4430,7 @@
         "name": "pvl2",
         "onlyChanges": false,
         "roundValues": "0",
+        "outputs": 1,
         "x": 90,
         "y": 1500,
         "wires": [
@@ -4395,6 +4458,7 @@
         "name": "pvl3",
         "onlyChanges": false,
         "roundValues": "0",
+        "outputs": 1,
         "x": 90,
         "y": 1540,
         "wires": [
@@ -4491,6 +4555,7 @@
         "name": "acl1",
         "onlyChanges": false,
         "roundValues": "0",
+        "outputs": 1,
         "x": 90,
         "y": 1580,
         "wires": [
@@ -4518,6 +4583,7 @@
         "name": "acl2",
         "onlyChanges": false,
         "roundValues": "0",
+        "outputs": 1,
         "x": 90,
         "y": 1620,
         "wires": [
@@ -4545,6 +4611,7 @@
         "name": "acl3",
         "onlyChanges": false,
         "roundValues": "0",
+        "outputs": 1,
         "x": 90,
         "y": 1660,
         "wires": [
@@ -4874,7 +4941,7 @@
         "name": "Battery Mode",
         "label": "Battery Mode",
         "tooltip": "",
-        "order": 4,
+        "order": 5,
         "width": "3",
         "height": "1",
         "passthru": false,
@@ -4940,7 +5007,7 @@
         "name": "Grid Setpoint",
         "label": "",
         "tooltip": "",
-        "order": 6,
+        "order": 7,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -4976,7 +5043,7 @@
         "group": "e6f2e12210710b47",
         "name": "Grid Setpoint",
         "label": "Setpoint",
-        "order": 5,
+        "order": 6,
         "width": "3",
         "height": "1",
         "topic": "payload",
@@ -5045,13 +5112,13 @@
         "z": "8d3b29f48feb985c",
         "g": "b699493a4e613ac0",
         "group": "e6f2e12210710b47",
-        "order": 17,
-        "width": 0,
-        "height": 0,
+        "order": 4,
+        "width": "3",
+        "height": "1",
         "name": "Charge State",
-        "label": "Charge State",
+        "label": "Charge State:",
         "format": "{{msg.payload}}",
-        "layout": "row-spread",
+        "layout": "row-left",
         "style": false,
         "font": "",
         "fontSize": 16,
@@ -5060,8 +5127,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 410,
-        "y": 780,
+        "x": 1070,
+        "y": 840,
         "wires": []
     },
     {
@@ -5071,7 +5138,7 @@
         "g": "b699493a4e613ac0",
         "name": "SOC",
         "group": "e6f2e12210710b47",
-        "order": 12,
+        "order": 13,
         "value": "payload",
         "valueType": "msg",
         "width": 3,
@@ -5113,8 +5180,8 @@
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 770,
-        "y": 380,
+        "x": 1050,
+        "y": 320,
         "wires": [
             []
         ]
@@ -5126,7 +5193,7 @@
         "g": "b699493a4e613ac0",
         "name": "Ceiling",
         "group": "e6f2e12210710b47",
-        "order": 16,
+        "order": 17,
         "value": "payload",
         "valueType": "msg",
         "width": "2",
@@ -5142,6 +5209,12 @@
         "suffix": "",
         "segments": [
             {
+                "from": "10",
+                "color": "#0061ff",
+                "text": "",
+                "textType": "label"
+            },
+            {
                 "from": "40",
                 "color": "#5cd65c",
                 "text": "",
@@ -5168,8 +5241,8 @@
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 250,
-        "y": 660,
+        "x": 1050,
+        "y": 480,
         "wires": [
             []
         ]
@@ -5181,7 +5254,7 @@
         "g": "b699493a4e613ac0",
         "name": "Cabling",
         "group": "e6f2e12210710b47",
-        "order": 15,
+        "order": 16,
         "value": "payload",
         "valueType": "msg",
         "width": "2",
@@ -5197,6 +5270,12 @@
         "suffix": "",
         "segments": [
             {
+                "from": "10",
+                "color": "#0056d6",
+                "text": "",
+                "textType": "label"
+            },
+            {
                 "from": "40",
                 "color": "#5cd65c",
                 "text": "",
@@ -5223,8 +5302,8 @@
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 260,
-        "y": 700,
+        "x": 1060,
+        "y": 520,
         "wires": [
             []
         ]
@@ -5236,7 +5315,7 @@
         "g": "b699493a4e613ac0",
         "name": "Shunt",
         "group": "e6f2e12210710b47",
-        "order": 14,
+        "order": 15,
         "value": "payload",
         "valueType": "msg",
         "width": "2",
@@ -5252,6 +5331,12 @@
         "suffix": "",
         "segments": [
             {
+                "from": "10",
+                "color": "#0056d6",
+                "text": "",
+                "textType": "label"
+            },
+            {
                 "from": "40",
                 "color": "#5cd65c",
                 "text": "",
@@ -5278,8 +5363,8 @@
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 250,
-        "y": 740,
+        "x": 1050,
+        "y": 560,
         "wires": [
             []
         ]
@@ -5291,7 +5376,7 @@
         "g": "61da6231d7299de3",
         "name": "Panels",
         "group": "e6f2e12210710b47",
-        "order": 10,
+        "order": 11,
         "value": "payload",
         "valueType": "msg",
         "width": 3,
@@ -5305,7 +5390,14 @@
         "icon": "",
         "prefix": "",
         "suffix": "",
-        "segments": [],
+        "segments": [
+            {
+                "from": "0",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            }
+        ],
         "min": 0,
         "max": "12000",
         "sizeThickness": 16,
@@ -5327,7 +5419,7 @@
         "g": "61da6231d7299de3",
         "name": "Loads",
         "group": "e6f2e12210710b47",
-        "order": 11,
+        "order": 12,
         "value": "payload",
         "valueType": "msg",
         "width": 3,
@@ -5341,7 +5433,14 @@
         "icon": "",
         "prefix": "",
         "suffix": "",
-        "segments": [],
+        "segments": [
+            {
+                "from": "0",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            }
+        ],
         "min": 0,
         "max": "12000",
         "sizeThickness": 16,
@@ -5363,7 +5462,7 @@
         "g": "b699493a4e613ac0",
         "name": "Volt",
         "group": "e6f2e12210710b47",
-        "order": 7,
+        "order": 8,
         "value": "payload",
         "valueType": "msg",
         "width": 3,
@@ -5398,15 +5497,15 @@
             }
         ],
         "min": "48",
-        "max": "56",
+        "max": "57",
         "sizeThickness": 16,
         "sizeGap": 4,
         "sizeKeyThickness": 8,
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 390,
-        "y": 420,
+        "x": 1050,
+        "y": 360,
         "wires": [
             []
         ]
@@ -5418,7 +5517,7 @@
         "g": "b699493a4e613ac0",
         "name": "Amps",
         "group": "e6f2e12210710b47",
-        "order": 8,
+        "order": 9,
         "value": "payload",
         "valueType": "msg",
         "width": 3,
@@ -5432,17 +5531,24 @@
         "icon": "",
         "prefix": "",
         "suffix": "",
-        "segments": [],
-        "min": "-100",
-        "max": "100",
+        "segments": [
+            {
+                "from": "-200",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": "-200",
+        "max": "200",
         "sizeThickness": 16,
         "sizeGap": 4,
         "sizeKeyThickness": 8,
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 790,
-        "y": 460,
+        "x": 1050,
+        "y": 400,
         "wires": [
             []
         ]
@@ -5454,7 +5560,7 @@
         "g": "b699493a4e613ac0",
         "name": "Watt",
         "group": "e6f2e12210710b47",
-        "order": 9,
+        "order": 10,
         "value": "payload",
         "valueType": "msg",
         "width": 3,
@@ -5468,7 +5574,14 @@
         "icon": "",
         "prefix": "",
         "suffix": "",
-        "segments": [],
+        "segments": [
+            {
+                "from": "-10000",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            }
+        ],
         "min": "-10000",
         "max": "10000",
         "sizeThickness": 16,
@@ -5477,8 +5590,8 @@
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 930,
-        "y": 600,
+        "x": 1050,
+        "y": 440,
         "wires": [
             []
         ]
@@ -5553,7 +5666,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 310,
+        "x": 330,
         "y": 2120,
         "wires": [
             [
@@ -5619,8 +5732,8 @@
         "g": "09c2cef9562d2a46",
         "group": "e6f2e12210710b47",
         "order": 3,
-        "width": "0",
-        "height": "0",
+        "width": "3",
+        "height": "1",
         "name": "Smart Mode",
         "label": "Smart Mode:",
         "format": "{{msg.payload}}",
@@ -5655,11 +5768,12 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 410,
+        "x": 850,
         "y": 460,
         "wires": [
             [
-                "bcda863f1ed674b6"
+                "bcda863f1ed674b6",
+                "08c0173d9c5179d4"
             ]
         ]
     },
@@ -5681,11 +5795,12 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 790,
-        "y": 600,
+        "x": 850,
+        "y": 420,
         "wires": [
             [
-                "ac363398c7630edf"
+                "ac363398c7630edf",
+                "39e697686581a036"
             ]
         ]
     },
@@ -5747,11 +5862,11 @@
         "z": "8d3b29f48feb985c",
         "g": "b699493a4e613ac0",
         "group": "e6f2e12210710b47",
-        "name": "SOC Chart",
+        "name": "SOC_",
         "label": "SOC",
         "order": 18,
         "chartType": "line",
-        "category": "payload",
+        "category": "topic",
         "categoryType": "msg",
         "xAxisLabel": "",
         "xAxisProperty": "",
@@ -5798,8 +5913,313 @@
         "height": "6",
         "className": "",
         "interpolation": "smooth",
-        "x": 890,
-        "y": 420,
+        "x": 1050,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "688011391c4884b3",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 850,
+        "y": 380,
+        "wires": [
+            [
+                "eeab59f9fc7a00fd",
+                "ab05e00e91651482"
+            ]
+        ]
+    },
+    {
+        "id": "08c0173d9c5179d4",
+        "type": "ui-chart",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "e6f2e12210710b47",
+        "name": "A",
+        "label": "A",
+        "order": 22,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "-200",
+        "ymax": "200",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "line",
+        "pointRadius": "2",
+        "showLegend": false,
+        "removeOlder": 1,
+        "removeOlderUnit": "86400",
+        "removeOlderPoints": "",
+        "colors": [
+            "#ff4013",
+            "#ff4013",
+            "#ff4013",
+            "#ff4013",
+            "#ff4013",
+            "#ff4013",
+            "#ff4013",
+            "#ff4013",
+            "#ff4013"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": "6",
+        "className": "",
+        "interpolation": "smooth",
+        "x": 1050,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "39e697686581a036",
+        "type": "ui-chart",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "e6f2e12210710b47",
+        "name": "W",
+        "label": "W",
+        "order": 20,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "-10000",
+        "ymax": "10000",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "line",
+        "pointRadius": "2",
+        "showLegend": false,
+        "removeOlder": 1,
+        "removeOlderUnit": "86400",
+        "removeOlderPoints": "",
+        "colors": [
+            "#ffaa00",
+            "#ffaa00",
+            "#ffaa00",
+            "#ffaa00",
+            "#ffaa00",
+            "#ffaa00",
+            "#ffaa00",
+            "#ffb43f",
+            "#ffaa00"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": "6",
+        "className": "",
+        "interpolation": "smooth",
+        "x": 1050,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab05e00e91651482",
+        "type": "ui-chart",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "e6f2e12210710b47",
+        "name": "V",
+        "label": "V",
+        "order": 21,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "46",
+        "ymax": "57",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "line",
+        "pointRadius": "2",
+        "showLegend": false,
+        "removeOlder": 1,
+        "removeOlderUnit": "86400",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0061ff",
+            "#0061ff",
+            "#0061ff",
+            "#0061ff",
+            "#0061ff",
+            "#0061ff",
+            "#0061ff",
+            "#0061ff",
+            "#0061ff"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": "6",
+        "className": "",
+        "interpolation": "smooth",
+        "x": 1050,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c3e2d7599e28535f",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "10",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 850,
+        "y": 340,
+        "wires": [
+            [
+                "0c87aea06395cdc5"
+            ]
+        ]
+    },
+    {
+        "id": "0c87aea06395cdc5",
+        "type": "ui-chart",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "e6f2e12210710b47",
+        "name": "SP",
+        "label": "SP",
+        "order": 19,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "SOC",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "-10000",
+        "ymax": "10000",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "line",
+        "pointRadius": "2",
+        "showLegend": false,
+        "removeOlder": "1",
+        "removeOlderUnit": "86400",
+        "removeOlderPoints": "",
+        "colors": [
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c",
+            "#61177c"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": "6",
+        "className": "",
+        "interpolation": "smooth",
+        "x": 1050,
+        "y": 620,
         "wires": [
             []
         ]
@@ -5809,6 +6229,7 @@
         "type": "victron-virtual",
         "z": "f288e92fa3b1548c",
         "name": "Enphase Solar",
+        "outputs": 1,
         "device": "pvinverter",
         "default_values": true,
         "battery_capacity": 25,
@@ -5833,7 +6254,9 @@
         "temp_battery_voltage": 3.3,
         "x": 140,
         "y": 40,
-        "wires": []
+        "wires": [
+            []
+        ]
     },
     {
         "id": "20f3dd28e63a1967",
@@ -5853,6 +6276,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 380,
         "y": 120,
         "wires": []
@@ -5933,6 +6357,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 390,
         "y": 160,
         "wires": []
@@ -5955,6 +6380,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 360,
         "y": 240,
         "wires": []
@@ -6064,6 +6490,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 380,
         "y": 280,
         "wires": []
@@ -6086,6 +6513,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 390,
         "y": 320,
         "wires": []
@@ -6108,6 +6536,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 570,
         "y": 380,
         "wires": []
@@ -6130,6 +6559,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 560,
         "y": 520,
         "wires": []
@@ -6152,6 +6582,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 590,
         "y": 680,
         "wires": []
@@ -6174,6 +6605,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 1290,
         "y": 380,
         "wires": []
@@ -6196,6 +6628,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 560,
         "y": 640,
         "wires": []
@@ -6218,6 +6651,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 590,
         "y": 800,
         "wires": []
@@ -6329,6 +6763,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 390,
         "y": 200,
         "wires": []
@@ -6390,6 +6825,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 560,
         "y": 560,
         "wires": []
@@ -6412,6 +6848,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 550,
         "y": 600,
         "wires": []
@@ -6434,6 +6871,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 570,
         "y": 420,
         "wires": []
@@ -6456,6 +6894,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 570,
         "y": 460,
         "wires": []
@@ -6478,6 +6917,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 590,
         "y": 720,
         "wires": []
@@ -6500,6 +6940,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 590,
         "y": 760,
         "wires": []
@@ -6522,6 +6963,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 1270,
         "y": 420,
         "wires": []
@@ -6544,6 +6986,7 @@
         },
         "name": "",
         "onlyChanges": false,
+        "outputs": 0,
         "x": 1270,
         "y": 460,
         "wires": []
@@ -7032,14 +7475,8 @@
         "name": "log_domo",
         "links": [
             "47ac3bb0d650e7cd",
-            "50726057d964075f",
-            "d72e4c9c76c0a54b",
-            "198705d9b12167f3",
-            "99ad6f3fc2443ad9",
-            "59660e1586e1ec48",
             "031b9cbf3eb7ea67",
             "0b2f6c937ecdd315",
-            "f6df8aab7f837216",
             "ab42b7cbbf66ef48",
             "1d69ccd5c18cb48e",
             "463b328f85c17401"
@@ -7142,10 +7579,7 @@
         "g": "763d9651bff3c8d8",
         "name": "alert_domo",
         "links": [
-            "cb675392ac82f529",
-            "99ad6f3fc2443ad9",
-            "c98ba4a4240e9149",
-            "34d0e700c095c17d"
+            "cb675392ac82f529"
         ],
         "x": 105,
         "y": 160,
@@ -7314,8 +7748,6 @@
         "links": [
             "8fe78cb74a76da7b",
             "e97c1d773d4627cb",
-            "db0586425895da99",
-            "6898964fe10e86a8",
             "9e88ca438deb4b19",
             "0ab475386efa005d"
         ],
@@ -7336,8 +7768,7 @@
         "name": "ToMQTT-Direct",
         "mode": "link",
         "links": [
-            "bcff41bce48abac6",
-            "3d121fa88daf71a5"
+            "bcff41bce48abac6"
         ],
         "x": 555,
         "y": 400,
@@ -7351,8 +7782,7 @@
         "name": "ToMQTT-Direct",
         "mode": "link",
         "links": [
-            "bcff41bce48abac6",
-            "3d121fa88daf71a5"
+            "bcff41bce48abac6"
         ],
         "x": 445,
         "y": 440,
