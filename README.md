@@ -11,13 +11,7 @@ ability to control what my barrey should do at any time.
 
 These scrips will ultimately provide a full repo of everything required on the ESS side (using Node Red) and the domoticz side
 
-ATM VERY MUCH WIP since there will be scripts from multiple contributors (heggink being full 3 phase battery, gizmocuz being 1 phase, ..) that may not be completely in sync. 
-Hopefully, that will happen soon.
-
-Key actions:
-1) parameterise instead of hard code the number of phases
-2) paramererise the time to fully load (hardcoded 3 hrs)
-3) parameterise all access variables (domoticz IP and security, ess IP and security, mqtt ip and security, topics) from all ends
-4) sync up scripts between multiple sub repos (giz, myself)
-5) switch from domo variables to timers for (the setpoints and) battmodes in the lua scripts
-6)  ...
+--- MAJOR UPDATE ---
+Since the latest releaes, all control has been implemented in Node Red. The only domoticz (lua) script is for displaying the battery schedule in domoticz.
+Node red creates all necessary devices and variables though MQTT-AD
+With that, the battery is now a fully self contained system even with its own dashboard to control it.
