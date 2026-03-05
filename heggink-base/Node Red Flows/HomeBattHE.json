@@ -447,7 +447,6 @@
             "eeab59f9fc7a00fd",
             "bcda863f1ed674b6",
             "ac363398c7630edf",
-            "72fc35bb334d7df7",
             "bc51548be23b1d8a",
             "7b17745fa5b70396",
             "02f47256b55649cd",
@@ -455,14 +454,16 @@
             "39e697686581a036",
             "08c0173d9c5179d4",
             "ab05e00e91651482",
-            "6d13cac10603fe66",
             "c3e2d7599e28535f",
-            "0c87aea06395cdc5"
+            "0c87aea06395cdc5",
+            "3ee2b0e172594cb1",
+            "9a907c9c3e41b0b7",
+            "6af2e6d4917ea5e3"
         ],
         "x": 14,
         "y": 259,
         "w": 1152,
-        "h": 702
+        "h": 782
     },
     {
         "id": "9e46f3329af496ae",
@@ -504,12 +505,13 @@
             "69a2629d096d7a9c",
             "b67775dd052f962b",
             "07d611da6ffa41ed",
-            "5d710e3b6330a15f"
+            "5d710e3b6330a15f",
+            "519f1137fde4e380"
         ],
         "x": 14,
-        "y": 19,
+        "y": -1,
         "w": 732,
-        "h": 142
+        "h": 162
     },
     {
         "id": "cf8892e230473d3f",
@@ -528,7 +530,7 @@
             "40bc446b3c9032c2"
         ],
         "x": 14,
-        "y": 1859,
+        "y": 1899,
         "w": 632,
         "h": 122
     },
@@ -667,7 +669,7 @@
             "f8cb9ca1dcd7b306"
         ],
         "x": 14,
-        "y": 1019,
+        "y": 1059,
         "w": 1012,
         "h": 682
     },
@@ -692,7 +694,7 @@
             "f72eb9e09a69444e"
         ],
         "x": 14,
-        "y": 1719,
+        "y": 1759,
         "w": 762,
         "h": 122
     },
@@ -712,7 +714,7 @@
         ],
         "x": 694,
         "y": 179,
-        "w": 442,
+        "w": 452,
         "h": 82
     },
     {
@@ -801,7 +803,10 @@
             "7afa5acc73d37a7b",
             "f53b01f0a9cd6aac",
             "29dd1fe378336c99",
-            "492dda583f514a77"
+            "492dda583f514a77",
+            "71c9f3657e8b0023",
+            "6f1a0fe78249e29e",
+            "7d80cb1e219e99cb"
         ],
         "x": 14,
         "y": 179,
@@ -838,7 +843,7 @@
             "6594f371550728ae"
         ],
         "x": 14,
-        "y": 679,
+        "y": 719,
         "w": 1202,
         "h": 202
     },
@@ -872,7 +877,7 @@
             "de9ac7915d363f46"
         ],
         "x": 14,
-        "y": 899,
+        "y": 939,
         "w": 1202,
         "h": 202
     },
@@ -1117,6 +1122,20 @@
             "groupBorderRadius": "4px",
             "widgetGap": "12px"
         }
+    },
+    {
+        "id": "dc8c6117ea2164dd",
+        "type": "ui-group",
+        "name": "Group 2",
+        "page": "b5b74048b568e596",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": false,
+        "groupType": "default"
     },
     {
         "id": "5726694de195109f",
@@ -1457,7 +1476,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 100,
-        "y": 1900,
+        "y": 1940,
         "wires": [
             [
                 "40bc446b3c9032c2"
@@ -1479,7 +1498,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 470,
-        "y": 1940,
+        "y": 1980,
         "wires": []
     },
     {
@@ -1509,7 +1528,7 @@
         "onlyChanges": false,
         "outputs": 0,
         "x": 500,
-        "y": 1900,
+        "y": 1940,
         "wires": []
     },
     {
@@ -1526,7 +1545,7 @@
         "finalize": "",
         "libs": [],
         "x": 240,
-        "y": 1900,
+        "y": 1940,
         "wires": [
             [
                 "d39b7539103b3513",
@@ -1554,12 +1573,13 @@
         "onlyChanges": true,
         "outputs": 1,
         "x": 150,
-        "y": 320,
+        "y": 340,
         "wires": [
             [
                 "7e3ce011ce905df4",
-                "72fc35bb334d7df7",
-                "c3e2d7599e28535f"
+                "c3e2d7599e28535f",
+                "3ee2b0e172594cb1",
+                "9a907c9c3e41b0b7"
             ]
         ]
     },
@@ -1577,7 +1597,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 800,
+        "y": 880,
         "wires": [
             [
                 "2638424905d9e622",
@@ -1599,7 +1619,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 840,
+        "y": 920,
         "wires": [
             [
                 "2638424905d9e622"
@@ -1627,7 +1647,7 @@
         "roundValues": "1",
         "outputs": 1,
         "x": 180,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "1527d034459a3668",
@@ -1659,7 +1679,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 170,
-        "y": 440,
+        "y": 520,
         "wires": [
             [
                 "1690588ef40df22a",
@@ -1689,7 +1709,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 170,
-        "y": 480,
+        "y": 560,
         "wires": [
             [
                 "534bcc84ed2012b1",
@@ -1718,7 +1738,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 1080,
+        "y": 1120,
         "wires": [
             [
                 "e4c4f61b74e39169",
@@ -1747,7 +1767,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 1240,
+        "y": 1280,
         "wires": [
             [
                 "159833534a73765c",
@@ -1776,7 +1796,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 1160,
+        "y": 1200,
         "wires": [
             [
                 "a654b14df06a9ae9",
@@ -1805,7 +1825,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 680,
+        "y": 760,
         "wires": [
             [
                 "cada246f092254da",
@@ -1834,7 +1854,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 720,
+        "y": 800,
         "wires": [
             [
                 "5d7f18d2fe1a1e8e",
@@ -1863,7 +1883,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 760,
+        "y": 840,
         "wires": [
             [
                 "929b618e5d657887",
@@ -1904,7 +1924,7 @@
         "onlyChanges": true,
         "outputs": 1,
         "x": 180,
-        "y": 800,
+        "y": 880,
         "wires": [
             [
                 "1643bcd645477a2b"
@@ -1937,7 +1957,7 @@
         "onlyChanges": true,
         "outputs": 1,
         "x": 100,
-        "y": 840,
+        "y": 920,
         "wires": [
             [
                 "dd509f6cc0ef9064"
@@ -2245,7 +2265,7 @@
         "onlyChanges": true,
         "outputs": 1,
         "x": 150,
-        "y": 880,
+        "y": 960,
         "wires": [
             [
                 "67ea331bffac03a7"
@@ -2266,7 +2286,7 @@
         "finalize": "",
         "libs": [],
         "x": 570,
-        "y": 880,
+        "y": 960,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2308,7 +2328,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 400,
+        "y": 480,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2326,7 +2346,7 @@
             "84f5b9b1e88bca69"
         ],
         "x": 795,
-        "y": 680,
+        "y": 760,
         "wires": []
     },
     {
@@ -2376,7 +2396,7 @@
         "finalize": "",
         "libs": [],
         "x": 540,
-        "y": 920,
+        "y": 1000,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2406,7 +2426,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 130,
-        "y": 920,
+        "y": 1000,
         "wires": [
             [
                 "8cf8304d70a2e248"
@@ -2435,7 +2455,7 @@
         "roundValues": "3",
         "outputs": 1,
         "x": 180,
-        "y": 520,
+        "y": 600,
         "wires": [
             [
                 "dff55a5ecf6fb84d"
@@ -2464,7 +2484,7 @@
         "roundValues": "3",
         "outputs": 1,
         "x": 190,
-        "y": 560,
+        "y": 640,
         "wires": [
             [
                 "8779a8fae6cbab1b"
@@ -2493,7 +2513,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 170,
-        "y": 600,
+        "y": 680,
         "wires": [
             [
                 "c51446dd8f316fdd",
@@ -2515,7 +2535,7 @@
         "finalize": "",
         "libs": [],
         "x": 380,
-        "y": 600,
+        "y": 680,
         "wires": [
             [
                 "c3fa4f117c8d9f91"
@@ -2524,17 +2544,6 @@
                 "f83bb366c3721b45"
             ]
         ]
-    },
-    {
-        "id": "6d13cac10603fe66",
-        "type": "comment",
-        "z": "8d3b29f48feb985c",
-        "g": "b699493a4e613ac0",
-        "name": "Version 2.5",
-        "info": "Last edited: 2026-02-21\n- Moved Battery control into node red\n- Moved Batt IQ Mode into node red\n- Fixed minor overload node issues forcing idle mode\n- add Outstanding modes (Grid Balance, Solar balance )\n- added modes to the smart monitor algorithm\n- removed dashboard\n- added tibber rates retrieval\n- default to Idle on start\n- made root_topic configurable so multiple flows can use different root topics\n- fixed solarbalance setpoint bug",
-        "x": 860,
-        "y": 300,
-        "wires": []
     },
     {
         "id": "1690588ef40df22a",
@@ -2557,7 +2566,7 @@
         "to": "",
         "reg": false,
         "x": 540,
-        "y": 440,
+        "y": 520,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2585,7 +2594,7 @@
         "to": "",
         "reg": false,
         "x": 540,
-        "y": 480,
+        "y": 560,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2613,7 +2622,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 520,
+        "y": 600,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2641,7 +2650,7 @@
         "to": "",
         "reg": false,
         "x": 570,
-        "y": 560,
+        "y": 640,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2676,7 +2685,7 @@
         "to": "",
         "reg": false,
         "x": 550,
-        "y": 320,
+        "y": 400,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2711,7 +2720,7 @@
         "to": "",
         "reg": false,
         "x": 540,
-        "y": 360,
+        "y": 440,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2739,7 +2748,7 @@
         "to": "",
         "reg": false,
         "x": 560,
-        "y": 600,
+        "y": 680,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2767,7 +2776,7 @@
         "to": "",
         "reg": false,
         "x": 570,
-        "y": 640,
+        "y": 720,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2795,7 +2804,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1060,
+        "y": 1100,
         "wires": [
             [
                 "f372c7304a23c6e0"
@@ -2823,7 +2832,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1140,
+        "y": 1180,
         "wires": [
             [
                 "f372c7304a23c6e0"
@@ -2851,7 +2860,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1220,
+        "y": 1260,
         "wires": [
             [
                 "f372c7304a23c6e0"
@@ -2879,7 +2888,7 @@
         "to": "",
         "reg": false,
         "x": 540,
-        "y": 680,
+        "y": 760,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2907,7 +2916,7 @@
         "to": "",
         "reg": false,
         "x": 540,
-        "y": 720,
+        "y": 800,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2935,7 +2944,7 @@
         "to": "",
         "reg": false,
         "x": 540,
-        "y": 760,
+        "y": 840,
         "wires": [
             [
                 "2638424905d9e622"
@@ -2964,7 +2973,7 @@
         "roundValues": "3",
         "outputs": 1,
         "x": 110,
-        "y": 1420,
+        "y": 1460,
         "wires": [
             [
                 "1fbbec3b31fce42a"
@@ -2993,7 +3002,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 130,
-        "y": 1300,
+        "y": 1340,
         "wires": [
             [
                 "cab032cb2249b5bb"
@@ -3022,7 +3031,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 470,
-        "y": 1340,
+        "y": 1380,
         "wires": [
             [
                 "d6e4856191966e9e"
@@ -3051,7 +3060,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 130,
-        "y": 1340,
+        "y": 1380,
         "wires": [
             [
                 "57ee548438878441"
@@ -3080,7 +3089,7 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 130,
-        "y": 1380,
+        "y": 1420,
         "wires": [
             [
                 "6c95c716e4ab5d1f"
@@ -3108,7 +3117,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1300,
+        "y": 1340,
         "wires": [
             [
                 "65e74659afd2b0bd"
@@ -3136,7 +3145,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1340,
+        "y": 1380,
         "wires": [
             [
                 "65e74659afd2b0bd"
@@ -3164,7 +3173,7 @@
         "to": "",
         "reg": false,
         "x": 310,
-        "y": 1380,
+        "y": 1420,
         "wires": [
             [
                 "65e74659afd2b0bd"
@@ -3185,7 +3194,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 1340,
+        "y": 1380,
         "wires": [
             [
                 "f372c7304a23c6e0"
@@ -3213,7 +3222,7 @@
         "to": "",
         "reg": false,
         "x": 320,
-        "y": 1420,
+        "y": 1460,
         "wires": [
             [
                 "f372c7304a23c6e0"
@@ -3231,7 +3240,7 @@
             "84f5b9b1e88bca69"
         ],
         "x": 775,
-        "y": 1280,
+        "y": 1320,
         "wires": []
     },
     {
@@ -3255,7 +3264,7 @@
         "to": "",
         "reg": false,
         "x": 320,
-        "y": 1100,
+        "y": 1140,
         "wires": [
             [
                 "48fff1d72fed0b87"
@@ -3283,7 +3292,7 @@
         "to": "",
         "reg": false,
         "x": 320,
-        "y": 1180,
+        "y": 1220,
         "wires": [
             [
                 "48fff1d72fed0b87"
@@ -3311,7 +3320,7 @@
         "to": "",
         "reg": false,
         "x": 320,
-        "y": 1260,
+        "y": 1300,
         "wires": [
             [
                 "48fff1d72fed0b87"
@@ -3340,7 +3349,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 530,
-        "y": 1180,
+        "y": 1220,
         "wires": [
             [
                 "358c46e08f21676c",
@@ -3362,7 +3371,7 @@
         "finalize": "",
         "libs": [],
         "x": 740,
-        "y": 1180,
+        "y": 1220,
         "wires": [
             [
                 "f372c7304a23c6e0",
@@ -3385,7 +3394,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 615,
-        "y": 1180,
+        "y": 1220,
         "wires": [],
         "l": false
     },
@@ -3404,7 +3413,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 910,
-        "y": 1180,
+        "y": 1220,
         "wires": []
     },
     {
@@ -3421,7 +3430,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1800,
+        "y": 1840,
         "wires": [
             [
                 "51c59a043f433e82",
@@ -3445,7 +3454,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 560,
-        "y": 1800,
+        "y": 1840,
         "wires": []
     },
     {
@@ -3471,7 +3480,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 1800,
+        "y": 1840,
         "wires": [
             [
                 "7fd426c7ab23f005"
@@ -3511,7 +3520,7 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 1760,
+        "y": 1800,
         "wires": [
             [
                 "0b2f6c937ecdd315"
@@ -3879,7 +3888,7 @@
             "44d07b9e813b1e68"
         ],
         "x": 735,
-        "y": 1760,
+        "y": 1800,
         "wires": []
     },
     {
@@ -4047,7 +4056,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Monitor GridBalance",
-        "func": "let data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet soc = data[\"batt_soc\"];\nlet smart_mode = data[\"smart_mode\"]\n\nlet power = Math.round(data[\"grid_total_w\"]);\nlet sp = Math.round(data[\"ess_setpoint\"]);\nlet idle_rate = context.global.idle_rate;\nlet num_mp = context.global.number_of_multiplus;\nlet min_soc = context.global.min_soc\nlet txt = \"\";\n\nif ((batt_mode == \"Grid Balance\") ||\n    (batt_mode == \"IQ Smart Mode\" && smart_mode == \"gridbalance\")) {\n    node.warn(\"In Grid Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (Math.abs(power) > 250) {\n        // adjust power only if over 250W difference\n        node.warn(\"Power needs adjusting: \"+power)\n        let new_sp = - power;\n        txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n        node.warn(txt)\n        msg.domo_msg = txt\n        msg.inform_domo = true\n        msg.payload = new_sp\n        if ((soc <= min_soc) && (batt_state == \"Discharging\")) {\n            // discharging whilst at minimim\n            new_sp = idle_rate;\n            txt = \"Victron: Batt at minimum in grad balance so idle, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_msg = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n        }\n        else if ((new_sp > idle_rate) && (charge_state == \"Float\")) {\n            // charging whilst at max\n            new_sp = idle_rate;\n            txt = \"Victron: Batt at max in grid balance so whitch to idle rate, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_mmsg = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n        }\n        return msg;\n    }\n}\n\n",
+        "func": "let data = context.global.data;\nlet batt_mode = data[\"batt_mode\"];\nlet batt_state = data[\"batt_state\"];\nlet charge_state = data[\"charge_state\"];\nlet soc = data[\"batt_soc\"];\nlet smart_mode = data[\"smart_mode\"]\nlet pv_total = data[\"pv_total\"]\nlet acl_total = data[\"acl_total\"]\n\nlet power = Math.round(data[\"grid_total_w\"]);\nlet sp = Math.round(data[\"ess_setpoint\"]);\nlet idle_rate = context.global.idle_rate;\nlet num_mp = context.global.number_of_multiplus;\nlet min_soc = context.global.min_soc\nlet txt = \"\";\n\nif ((batt_mode == \"Grid Balance\") ||\n    (batt_mode == \"IQ Smart Mode\" && smart_mode == \"gridbalance\")) {\n    node.warn(\"In Grid Balance, batt_mode \"+batt_mode+\" with power \"+power+\" and setpoint \"+sp)\n    if (Math.abs(power) > 250) {\n        // adjust power only if over 250W difference\n        node.warn(\"Power needs adjusting: \"+power)\n        //let new_sp = - power;\n        let new_sp = pv_total - acl_total\n        txt=\"ESS Setpoint needs adjusting, power: \"+power+\" from: \"+sp+\" to \"+new_sp;\n        node.warn(txt)\n        msg.domo_msg = txt\n        msg.inform_domo = true\n        msg.payload = new_sp\n        if ((soc <= min_soc) && (batt_state == \"Discharging\")) {\n            // discharging whilst at minimim\n            new_sp = idle_rate;\n            txt = \"Victron: Batt at minimum in grad balance so idle, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_msg = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n        }\n        else if ((new_sp > idle_rate) && (charge_state == \"Float\")) {\n            // charging whilst at max\n            new_sp = idle_rate;\n            txt = \"Victron: Batt at max in grid balance so whitch to idle rate, power: \"+power+\" from: \"+sp+\" to \"+new_sp\n            node.warn(txt)\n            msg.domo_mmsg = txt\n            msg.payload = new_sp;\n            msg.batt_mode = \"Idle\";\n        }\n        return msg;\n    }\n}\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4203,7 +4212,7 @@
             "11fac77a0d071027"
         ],
         "x": 735,
-        "y": 1800,
+        "y": 1840,
         "wires": []
     },
     {
@@ -4404,7 +4413,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 1460,
+        "y": 1500,
         "wires": [
             [
                 "d89e8ae11a05103d"
@@ -4432,7 +4441,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 1500,
+        "y": 1540,
         "wires": [
             [
                 "d89e8ae11a05103d"
@@ -4460,7 +4469,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 1540,
+        "y": 1580,
         "wires": [
             [
                 "d89e8ae11a05103d"
@@ -4482,7 +4491,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 620,
-        "y": 1500,
+        "y": 1540,
         "wires": []
     },
     {
@@ -4507,7 +4516,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 290,
-        "y": 1500,
+        "y": 1540,
         "wires": [
             [
                 "ab2095ce56bd1b63"
@@ -4528,7 +4537,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 1500,
+        "y": 1540,
         "wires": [
             [
                 "cee9fbdad1051b8d",
@@ -4557,7 +4566,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 1580,
+        "y": 1620,
         "wires": [
             [
                 "95843414747162ff"
@@ -4585,7 +4594,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 1620,
+        "y": 1660,
         "wires": [
             [
                 "95843414747162ff"
@@ -4613,7 +4622,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 1660,
+        "y": 1700,
         "wires": [
             [
                 "95843414747162ff"
@@ -4642,7 +4651,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 290,
-        "y": 1620,
+        "y": 1660,
         "wires": [
             [
                 "22a9ab355a5f6554"
@@ -4663,7 +4672,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 1620,
+        "y": 1660,
         "wires": [
             [
                 "c52e25968d4266af",
@@ -4686,7 +4695,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 640,
-        "y": 1620,
+        "y": 1660,
         "wires": []
     },
     {
@@ -4829,7 +4838,7 @@
             "b0ac7ab4425d80b8"
         ],
         "x": 75,
-        "y": 1760,
+        "y": 1800,
         "wires": [
             [
                 "f72eb9e09a69444e"
@@ -4869,7 +4878,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 180,
-        "y": 1760,
+        "y": 1800,
         "wires": [
             [
                 "7fd426c7ab23f005"
@@ -4960,6 +4969,11 @@
                 "type": "str"
             },
             {
+                "label": "Idle",
+                "value": "Idle",
+                "type": "str"
+            },
+            {
                 "label": "Charge",
                 "value": "Charge",
                 "type": "str"
@@ -4991,118 +5005,11 @@
         "className": "",
         "typeIsComboBox": true,
         "msgTrigger": "onChange",
-        "x": 240,
-        "y": 2160,
+        "x": 170,
+        "y": 2180,
         "wires": [
             [
                 "053fac255b781adb"
-            ]
-        ]
-    },
-    {
-        "id": "3ee2b0e172594cb1",
-        "type": "ui-slider",
-        "z": "8d3b29f48feb985c",
-        "group": "e6f2e12210710b47",
-        "name": "Grid Setpoint",
-        "label": "",
-        "tooltip": "",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "outs": "end",
-        "topic": "payload",
-        "topicType": "msg",
-        "thumbLabel": "true",
-        "showTicks": "always",
-        "min": "-10000",
-        "max": "10000",
-        "step": "100",
-        "className": "",
-        "iconPrepend": "",
-        "iconAppend": "",
-        "color": "",
-        "colorTrack": "",
-        "colorThumb": "",
-        "showTextField": false,
-        "x": 250,
-        "y": 2700,
-        "wires": [
-            [
-                "67875c119bd17f5b",
-                "9a907c9c3e41b0b7",
-                "6af2e6d4917ea5e3"
-            ]
-        ]
-    },
-    {
-        "id": "9a907c9c3e41b0b7",
-        "type": "ui-number-input",
-        "z": "8d3b29f48feb985c",
-        "group": "e6f2e12210710b47",
-        "name": "Grid Setpoint",
-        "label": "Setpoint",
-        "order": 6,
-        "width": "3",
-        "height": "1",
-        "topic": "payload",
-        "topicType": "msg",
-        "min": "-10000",
-        "max": "10000",
-        "step": "100",
-        "tooltip": "",
-        "delay": 300,
-        "passthru": false,
-        "sendOnDelay": false,
-        "sendOnBlur": false,
-        "sendOnEnter": true,
-        "className": "",
-        "clearable": false,
-        "icon": "",
-        "iconPosition": "left",
-        "iconInnerPosition": "inside",
-        "spinner": "default",
-        "x": 250,
-        "y": 2740,
-        "wires": [
-            [
-                "67875c119bd17f5b",
-                "3ee2b0e172594cb1",
-                "6af2e6d4917ea5e3"
-            ]
-        ]
-    },
-    {
-        "id": "67875c119bd17f5b",
-        "type": "debug",
-        "z": "8d3b29f48feb985c",
-        "name": "debug 68",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 460,
-        "y": 2700,
-        "wires": []
-    },
-    {
-        "id": "bc749cfad281a225",
-        "type": "link in",
-        "z": "8d3b29f48feb985c",
-        "name": "Dash SP",
-        "links": [
-            "72fc35bb334d7df7"
-        ],
-        "x": 75,
-        "y": 2720,
-        "wires": [
-            [
-                "3ee2b0e172594cb1",
-                "9a907c9c3e41b0b7"
             ]
         ]
     },
@@ -5128,7 +5035,7 @@
         "value": "payload",
         "valueType": "msg",
         "x": 1070,
-        "y": 840,
+        "y": 920,
         "wires": []
     },
     {
@@ -5181,7 +5088,7 @@
         "styleGlow": false,
         "className": "",
         "x": 1050,
-        "y": 320,
+        "y": 400,
         "wires": [
             []
         ]
@@ -5242,7 +5149,7 @@
         "styleGlow": false,
         "className": "",
         "x": 1050,
-        "y": 480,
+        "y": 560,
         "wires": [
             []
         ]
@@ -5303,7 +5210,7 @@
         "styleGlow": false,
         "className": "",
         "x": 1060,
-        "y": 520,
+        "y": 600,
         "wires": [
             []
         ]
@@ -5364,7 +5271,7 @@
         "styleGlow": false,
         "className": "",
         "x": 1050,
-        "y": 560,
+        "y": 640,
         "wires": [
             []
         ]
@@ -5407,7 +5314,7 @@
         "styleGlow": false,
         "className": "",
         "x": 730,
-        "y": 1460,
+        "y": 1500,
         "wires": [
             []
         ]
@@ -5450,7 +5357,7 @@
         "styleGlow": false,
         "className": "",
         "x": 730,
-        "y": 1580,
+        "y": 1620,
         "wires": [
             []
         ]
@@ -5505,7 +5412,7 @@
         "styleGlow": false,
         "className": "",
         "x": 1050,
-        "y": 360,
+        "y": 440,
         "wires": [
             []
         ]
@@ -5548,7 +5455,7 @@
         "styleGlow": false,
         "className": "",
         "x": 1050,
-        "y": 400,
+        "y": 480,
         "wires": [
             []
         ]
@@ -5591,37 +5498,10 @@
         "styleGlow": false,
         "className": "",
         "x": 1050,
-        "y": 440,
+        "y": 520,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "6af2e6d4917ea5e3",
-        "type": "link out",
-        "z": "8d3b29f48feb985c",
-        "name": "to SP",
-        "mode": "link",
-        "links": [
-            "11fac77a0d071027"
-        ],
-        "x": 415,
-        "y": 2740,
-        "wires": []
-    },
-    {
-        "id": "72fc35bb334d7df7",
-        "type": "link out",
-        "z": "8d3b29f48feb985c",
-        "g": "b699493a4e613ac0",
-        "name": "link out 12",
-        "mode": "link",
-        "links": [
-            "bc749cfad281a225"
-        ],
-        "x": 345,
-        "y": 320,
-        "wires": []
     },
     {
         "id": "5dced18c5df56dc7",
@@ -5769,7 +5649,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 850,
-        "y": 460,
+        "y": 540,
         "wires": [
             [
                 "bcda863f1ed674b6",
@@ -5796,7 +5676,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 850,
-        "y": 420,
+        "y": 500,
         "wires": [
             [
                 "ac363398c7630edf",
@@ -5823,7 +5703,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 610,
-        "y": 1460,
+        "y": 1500,
         "wires": [
             [
                 "485e1e0de5f5c20b"
@@ -5849,7 +5729,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 610,
-        "y": 1580,
+        "y": 1620,
         "wires": [
             [
                 "880ab817a8cef6e1"
@@ -5914,7 +5794,7 @@
         "className": "",
         "interpolation": "smooth",
         "x": 1050,
-        "y": 780,
+        "y": 860,
         "wires": [
             []
         ]
@@ -5938,7 +5818,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 850,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "eeab59f9fc7a00fd",
@@ -6004,7 +5884,7 @@
         "className": "",
         "interpolation": "smooth",
         "x": 1050,
-        "y": 700,
+        "y": 780,
         "wires": [
             []
         ]
@@ -6067,7 +5947,7 @@
         "className": "",
         "interpolation": "smooth",
         "x": 1050,
-        "y": 740,
+        "y": 820,
         "wires": [
             []
         ]
@@ -6130,7 +6010,7 @@
         "className": "",
         "interpolation": "smooth",
         "x": 1050,
-        "y": 660,
+        "y": 740,
         "wires": [
             []
         ]
@@ -6154,7 +6034,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 850,
-        "y": 340,
+        "y": 420,
         "wires": [
             [
                 "0c87aea06395cdc5"
@@ -6219,10 +6099,138 @@
         "className": "",
         "interpolation": "smooth",
         "x": 1050,
-        "y": 620,
+        "y": 700,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "3ee2b0e172594cb1",
+        "type": "ui-slider",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "e6f2e12210710b47",
+        "name": "Grid Setpoint",
+        "label": "",
+        "tooltip": "",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "payload",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": "-10000",
+        "max": "10000",
+        "step": "100",
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 1070,
+        "y": 320,
+        "wires": [
+            [
+                "9a907c9c3e41b0b7",
+                "6af2e6d4917ea5e3"
+            ]
+        ]
+    },
+    {
+        "id": "9a907c9c3e41b0b7",
+        "type": "ui-number-input",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "group": "e6f2e12210710b47",
+        "name": "Grid Setpoint",
+        "label": "Setpoint",
+        "order": 6,
+        "width": "3",
+        "height": "1",
+        "topic": "payload",
+        "topicType": "msg",
+        "min": "-10000",
+        "max": "10000",
+        "step": "100",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": false,
+        "sendOnDelay": false,
+        "sendOnBlur": false,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "spinner": "default",
+        "x": 1070,
+        "y": 360,
+        "wires": [
+            [
+                "3ee2b0e172594cb1",
+                "6af2e6d4917ea5e3"
+            ]
+        ]
+    },
+    {
+        "id": "6af2e6d4917ea5e3",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "b699493a4e613ac0",
+        "name": "to SP",
+        "mode": "link",
+        "links": [
+            "11fac77a0d071027"
+        ],
+        "x": 745,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "519f1137fde4e380",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "b362b271c03a0415",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 440,
+        "y": 40,
+        "wires": [
+            [
+                "5d710e3b6330a15f"
+            ]
+        ]
+    },
+    {
+        "id": "6d13cac10603fe66",
+        "type": "comment",
+        "z": "8d3b29f48feb985c",
+        "name": "Version 2.6",
+        "info": "Last edited: 2026-03-05\n- Moved Battery control into node red\n- Moved Batt IQ Mode into node red\n- Fixed minor overload node issues forcing idle mode\n- add Outstanding modes (Grid Balance, Solar balance )\n- added modes to the smart monitor algorithm\n- removed dashboard\n- added tibber rates retrieval\n- default to Idle on start\n- made root_topic configurable so multiple flows can use different root topics\n- fixed solarbalance setpoint bug\n- fixed gridbalance setpoint bug",
+        "x": 860,
+        "y": 140,
+        "wires": []
     },
     {
         "id": "648e528a859f3a50",
@@ -7579,7 +7587,8 @@
         "g": "763d9651bff3c8d8",
         "name": "alert_domo",
         "links": [
-            "cb675392ac82f529"
+            "cb675392ac82f529",
+            "7d80cb1e219e99cb"
         ],
         "x": 105,
         "y": 160,
@@ -8275,7 +8284,7 @@
             "95ef6a6364e11d89"
         ],
         "x": 55,
-        "y": 720,
+        "y": 760,
         "wires": [
             [
                 "82633b4d062d1a13",
@@ -8294,7 +8303,7 @@
             "1b6c2789468c41cc"
         ],
         "x": 1175,
-        "y": 720,
+        "y": 760,
         "wires": []
     },
     {
@@ -8343,7 +8352,7 @@
         "to": "",
         "reg": false,
         "x": 1040,
-        "y": 720,
+        "y": 760,
         "wires": [
             [
                 "30037a5069c38173"
@@ -8372,7 +8381,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 800,
-        "y": 720,
+        "y": 760,
         "wires": [
             [
                 "ee7037e289888936",
@@ -8401,7 +8410,7 @@
         "to": "",
         "reg": false,
         "x": 650,
-        "y": 720,
+        "y": 760,
         "wires": [
             [
                 "3e91a56b38ec890b"
@@ -8430,7 +8439,7 @@
         "repair": false,
         "outputs": 2,
         "x": 520,
-        "y": 720,
+        "y": 760,
         "wires": [
             [
                 "9213fea48881c844"
@@ -8452,7 +8461,7 @@
             "f79ebd4ef82b18e4"
         ],
         "x": 635,
-        "y": 760,
+        "y": 800,
         "wires": []
     },
     {
@@ -8506,7 +8515,7 @@
             }
         ],
         "x": 220,
-        "y": 800,
+        "y": 840,
         "wires": [
             [
                 "c23bdedb46992b45",
@@ -8534,7 +8543,7 @@
         "repair": false,
         "outputs": 2,
         "x": 390,
-        "y": 800,
+        "y": 840,
         "wires": [
             [
                 "3933f3579ce2aad0"
@@ -8558,7 +8567,7 @@
         "finalize": "",
         "libs": [],
         "x": 570,
-        "y": 800,
+        "y": 840,
         "wires": [
             [
                 "3e91a56b38ec890b",
@@ -8580,7 +8589,7 @@
         "finalize": "",
         "libs": [],
         "x": 260,
-        "y": 760,
+        "y": 800,
         "wires": [
             [
                 "6c6c80a15e1cb4be"
@@ -8601,7 +8610,7 @@
         "finalize": "",
         "libs": [],
         "x": 200,
-        "y": 840,
+        "y": 880,
         "wires": [
             [
                 "c23bdedb46992b45"
@@ -8619,7 +8628,7 @@
             "1b6c2789468c41cc"
         ],
         "x": 1165,
-        "y": 940,
+        "y": 980,
         "wires": []
     },
     {
@@ -8644,7 +8653,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 790,
-        "y": 940,
+        "y": 980,
         "wires": [
             [
                 "a73a59c7a15f6a8f",
@@ -8673,7 +8682,7 @@
         "to": "",
         "reg": false,
         "x": 640,
-        "y": 940,
+        "y": 980,
         "wires": [
             [
                 "2267757ef11d51f0"
@@ -8702,7 +8711,7 @@
         "repair": false,
         "outputs": 2,
         "x": 510,
-        "y": 940,
+        "y": 980,
         "wires": [
             [
                 "c99527de89c75e32"
@@ -8723,7 +8732,7 @@
             "f79ebd4ef82b18e4"
         ],
         "x": 625,
-        "y": 980,
+        "y": 1020,
         "wires": []
     },
     {
@@ -8759,7 +8768,7 @@
             }
         ],
         "x": 210,
-        "y": 1020,
+        "y": 1060,
         "wires": [
             [
                 "ca4017109521366e",
@@ -8787,7 +8796,7 @@
         "repair": false,
         "outputs": 2,
         "x": 380,
-        "y": 1020,
+        "y": 1060,
         "wires": [
             [
                 "3ebb033deb357c05"
@@ -8811,7 +8820,7 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 1020,
+        "y": 1060,
         "wires": [
             [
                 "2267757ef11d51f0",
@@ -8833,7 +8842,7 @@
         "finalize": "",
         "libs": [],
         "x": 310,
-        "y": 980,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -8852,7 +8861,7 @@
         "finalize": "",
         "libs": [],
         "x": 190,
-        "y": 1060,
+        "y": 1100,
         "wires": [
             [
                 "ca4017109521366e"
@@ -8887,7 +8896,7 @@
         "to": "",
         "reg": false,
         "x": 1020,
-        "y": 940,
+        "y": 980,
         "wires": [
             [
                 "9e4cb9245413a0c8",
@@ -8935,7 +8944,7 @@
             "cef1e6499e62a43b"
         ],
         "x": 55,
-        "y": 940,
+        "y": 980,
         "wires": [
             [
                 "5333b48ce6123b27",
@@ -8971,7 +8980,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 400,
-        "y": 840,
+        "y": 880,
         "wires": []
     },
     {
@@ -8988,7 +8997,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 400,
-        "y": 1060,
+        "y": 1100,
         "wires": []
     },
     {
@@ -9005,7 +9014,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 460,
-        "y": 980,
+        "y": 1020,
         "wires": []
     },
     {
@@ -9053,7 +9062,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 890,
-        "y": 980,
+        "y": 1020,
         "wires": []
     },
     {
@@ -9070,7 +9079,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1110,
-        "y": 980,
+        "y": 1020,
         "wires": []
     },
     {
@@ -9087,7 +9096,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 470,
-        "y": 760,
+        "y": 800,
         "wires": []
     },
     {
@@ -9104,7 +9113,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 770,
-        "y": 780,
+        "y": 820,
         "wires": []
     },
     {
@@ -9121,7 +9130,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 930,
-        "y": 760,
+        "y": 800,
         "wires": []
     },
     {
@@ -9164,7 +9173,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 720,
-        "y": 840,
+        "y": 880,
         "wires": []
     },
     {
@@ -9181,7 +9190,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 760,
-        "y": 1020,
+        "y": 1060,
         "wires": []
     },
     {
@@ -9309,7 +9318,7 @@
         "energyResolution": "QUARTER_HOURLY",
         "lastCount": 10,
         "x": 290,
-        "y": 720,
+        "y": 760,
         "wires": [
             [
                 "6c6c80a15e1cb4be",
@@ -9330,7 +9339,7 @@
         "energyResolution": "QUARTER_HOURLY",
         "lastCount": 10,
         "x": 330,
-        "y": 940,
+        "y": 980,
         "wires": [
             [
                 "57db08c51ea509f2",
@@ -9348,8 +9357,8 @@
         "links": [
             "44d07b9e813b1e68"
         ],
-        "x": 785,
-        "y": 540,
+        "x": 695,
+        "y": 580,
         "wires": []
     },
     {
@@ -9367,7 +9376,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 535,
-        "y": 580,
+        "y": 620,
         "wires": [],
         "l": false
     },
@@ -9384,8 +9393,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
-        "y": 540,
+        "x": 590,
+        "y": 580,
         "wires": [
             [
                 "ab42b7cbbf66ef48"
@@ -9415,7 +9424,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 580,
+        "y": 620,
         "wires": [
             [
                 "8b1eb8cd7e641e28"
@@ -9435,8 +9444,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 580,
+        "x": 400,
+        "y": 620,
         "wires": [
             [
                 "e713c342f73380f4",
@@ -9494,7 +9503,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Rates avail?",
-        "func": "if (context.global.scheme_today.status == false){\n    node.warn(\"Tobber rates not available\");\n    return msg;\n}\nelse { // we have a schedule but check the date\n    const date = new Date();\n    let y = date.getFullYear();\n    let month = date.getMonth()+1;\n    let day = date.getDate();\n    let m = (\"0\" + month).slice(-2);\n    let d = (\"0\" + day).slice(-2);\n    let ymd = y+\"-\"+m+\"-\"+d;\n    if (context.global.scheme_today.datum != ymd) {\n        node.warn(\"Scheme today has invalid date: \"+context.global.scheme_today.datum);\n        return msg;\n    }\n    else {\n        node.warn(\"Rates available and date OK: \"+ymd);\n    }\n}\n",
+        "func": "if (context.global.scheme_today.status == false){\n    node.warn(\"Tibber rates not available\");\n    return msg;\n}\nelse { // we have a schedule but check the date\n    const date = new Date();\n    let y = date.getFullYear();\n    let month = date.getMonth()+1;\n    let day = date.getDate();\n    let m = (\"0\" + month).slice(-2);\n    let d = (\"0\" + day).slice(-2);\n    let ymd = y+\"-\"+m+\"-\"+d;\n    if (context.global.scheme_today.datum != ymd) {\n        node.warn(\"Scheme today has invalid date: \"+context.global.scheme_today.datum);\n        return msg;\n    }\n    else {\n        node.warn(\"Rates available and date OK: \"+ymd);\n    }\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -9544,7 +9553,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Rates avail?",
-        "func": "if (context.global.scheme_tomorrow.status == false) {\n    node.warn(\"Tobber rates not available\");\n    return msg;\n}\nelse {\n    node.warn(\"Rates already available\");\n}\n\n",
+        "func": "if (context.global.scheme_tomorrow.status == false) {\n    node.warn(\"Tibber rates not available\");\n    return msg;\n}\nelse {\n    node.warn(\"Rates already available\");\n}\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -9605,8 +9614,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 260,
-        "y": 580,
+        "x": 240,
+        "y": 620,
         "wires": [
             [
                 "3744c5c2ecfb5437"
@@ -9647,7 +9656,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 880,
+        "x": 980,
         "y": 620,
         "wires": [
             [
@@ -9691,8 +9700,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 320,
-        "y": 620,
+        "x": 860,
+        "y": 380,
         "wires": [
             [
                 "51a03128e28bf463"
@@ -9817,7 +9826,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 630,
-        "y": 580,
+        "y": 620,
         "wires": [
             [
                 "0406284b3e87a184",
@@ -9835,8 +9844,8 @@
             "e5a25d0cfd90a5f5",
             "51a03128e28bf463"
         ],
-        "x": 665,
-        "y": 620,
+        "x": 725,
+        "y": 540,
         "wires": [
             [
                 "0406284b3e87a184",
@@ -9868,8 +9877,8 @@
         "links": [
             "b83de423f544687c"
         ],
-        "x": 455,
-        "y": 620,
+        "x": 1035,
+        "y": 380,
         "wires": []
     },
     {
@@ -9998,5 +10007,71 @@
                 "7ed67c1510d458c5"
             ]
         ]
+    },
+    {
+        "id": "71c9f3657e8b0023",
+        "type": "inject",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "9pm",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 21 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 580,
+        "wires": [
+            [
+                "6f1a0fe78249e29e"
+            ]
+        ]
+    },
+    {
+        "id": "6f1a0fe78249e29e",
+        "type": "function",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "Alert if no rates",
+        "func": "if (context.global.scheme_tomorrow.status == false) {\n    node.warn(\"Tibber rates not available\");\n    msg.payload = \"Warning: No Tibber rates for tomorrow, final try. Check!\";\n    return msg;\n}\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 580,
+        "wires": [
+            [
+                "7d80cb1e219e99cb",
+                "b8e7d236d12fcbe8"
+            ]
+        ]
+    },
+    {
+        "id": "7d80cb1e219e99cb",
+        "type": "link out",
+        "z": "edf9f455029eeb7f",
+        "g": "9fc897c32bfacc77",
+        "name": "Alert domo",
+        "mode": "link",
+        "links": [
+            "1ade85b91dd1ef10"
+        ],
+        "x": 375,
+        "y": 580,
+        "wires": []
     }
 ]
