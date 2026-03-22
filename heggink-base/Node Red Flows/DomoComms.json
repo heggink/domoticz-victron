@@ -1,0 +1,456 @@
+[
+    {
+        "id": "13fd8d3e42908a31",
+        "type": "tab",
+        "label": "Domo comms",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "50c5e67c4fb00bfc",
+        "type": "group",
+        "z": "13fd8d3e42908a31",
+        "name": "MQTT",
+        "style": {
+            "stroke": "#ff7f7f",
+            "fill": "#ffcf3f",
+            "label": true
+        },
+        "nodes": [
+            "e3c668deea686995",
+            "8e46a5ee30a3df96",
+            "dfb0f0d3932d8d10",
+            "8e6a894750fa115d",
+            "e59d555255ef29a0",
+            "bcff41bce48abac6",
+            "e97c1d773d4627cb",
+            "8fe78cb74a76da7b"
+        ],
+        "x": 64,
+        "y": 359,
+        "w": 532,
+        "h": 122
+    },
+    {
+        "id": "763d9651bff3c8d8",
+        "type": "group",
+        "z": "13fd8d3e42908a31",
+        "name": "Domo logging",
+        "style": {
+            "stroke": "#ff0000",
+            "fill": "#ffbfbf",
+            "label": true
+        },
+        "nodes": [
+            "4943b9a1398b4d9d",
+            "54ff11746108429f",
+            "44d07b9e813b1e68",
+            "dae890e2161d6a61",
+            "6744f5332974af3d",
+            "47ac3bb0d650e7cd",
+            "05d89bda971debf5",
+            "1ade85b91dd1ef10",
+            "1286c1e855b91cf4",
+            "cb675392ac82f529"
+        ],
+        "x": 54,
+        "y": 59,
+        "w": 712,
+        "h": 262
+    },
+    {
+        "id": "4943b9a1398b4d9d",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "log_domo",
+        "func": "let str = msg.payload;\nlet alert = encodeURIComponent(str);\nlet level=2\nmsg.url = \"http://192.168.1.109:18081/json.htm?type=command&param=addlogmessage&message=\"+alert+\"&level=\"+level;\n//node.warn(msg.url)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "54ff11746108429f"
+            ]
+        ]
+    },
+    {
+        "id": "54ff11746108429f",
+        "type": "http request",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "dae890e2161d6a61"
+            ]
+        ]
+    },
+    {
+        "id": "44d07b9e813b1e68",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "log_domo",
+        "links": [
+            "47ac3bb0d650e7cd",
+            "031b9cbf3eb7ea67",
+            "0b2f6c937ecdd315",
+            "ab42b7cbbf66ef48",
+            "1d69ccd5c18cb48e",
+            "463b328f85c17401"
+        ],
+        "x": 105,
+        "y": 100,
+        "wires": [
+            [
+                "4943b9a1398b4d9d"
+            ]
+        ]
+    },
+    {
+        "id": "dae890e2161d6a61",
+        "type": "debug",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "Domo result",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6744f5332974af3d",
+        "type": "inject",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "Node Red Log",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "2",
+        "payload": "Victron Node Red restarted",
+        "payloadType": "str",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "47ac3bb0d650e7cd"
+            ]
+        ]
+    },
+    {
+        "id": "47ac3bb0d650e7cd",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 335,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "05d89bda971debf5",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "alert_domo",
+        "func": "let str = msg.payload;\nlet alert = encodeURIComponent(str);\nlet subject=msg.topic\nmsg.url = \"http://192.168.1.109:18081/json.htm?type=command&param=sendnotification&subject=\"+subject+\"&body=\"+alert;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "54ff11746108429f"
+            ]
+        ]
+    },
+    {
+        "id": "1ade85b91dd1ef10",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "alert_domo",
+        "links": [
+            "cb675392ac82f529",
+            "7d80cb1e219e99cb"
+        ],
+        "x": 105,
+        "y": 160,
+        "wires": [
+            [
+                "05d89bda971debf5"
+            ]
+        ]
+    },
+    {
+        "id": "1286c1e855b91cf4",
+        "type": "inject",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "Node Red Alert",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ALERT",
+        "payload": "Victron Node Red restarted",
+        "payloadType": "str",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "cb675392ac82f529"
+            ]
+        ]
+    },
+    {
+        "id": "cb675392ac82f529",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "1ade85b91dd1ef10"
+        ],
+        "x": 335,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e3c668deea686995",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "construct MQTT-AD",
+        "func": "// messages on output 1 will be rate limit\n\nlet final_topic = msg.root_topic + \"/\" + msg.topic + \"/state\";\n\nlet data_msg = context.global.data || {};\nlet data_timestamp = context.global.timetamp || {};\nlet topic = msg.topic;\n\nlet sendnow = false;\n\nif (typeof msg.sendnow !== 'undefined') {\n    sendnow = (msg.sendnow == true);\n}\n\ndata_msg[topic] = msg.payload;\ndata_timestamp[topic] = Date.now();\ncontext.global.data = data_msg;\ncontext.global.timetamp = data_timestamp;\n\nmsg.topic = final_topic;\n\nlet msg2 = null;\n\nif (sendnow == true) {\n    //node.warn('send now: ' + msg.topic);\n    //send directly\n    msg2 = msg;\n    msg = null;\n}\n\nreturn [msg, msg2];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "8e6a894750fa115d"
+            ],
+            [
+                "8fe78cb74a76da7b"
+            ]
+        ]
+    },
+    {
+        "id": "8e46a5ee30a3df96",
+        "type": "mqtt out",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "Domoticz-MQTT",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ee1bb25c871ce5fc",
+        "x": 310,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "dfb0f0d3932d8d10",
+        "type": "debug",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "JSON Output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 175,
+        "y": 440,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "8e6a894750fa115d",
+        "type": "delay",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "Rate Limit",
+        "pauseType": "timed",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 460,
+        "y": 400,
+        "wires": [
+            [
+                "e97c1d773d4627cb"
+            ]
+        ]
+    },
+    {
+        "id": "e59d555255ef29a0",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "ToMQTT-Limit-D",
+        "links": [
+            "ac0f2b4f46e7672b",
+            "100feff42d17aff9"
+        ],
+        "x": 105,
+        "y": 400,
+        "wires": [
+            [
+                "e3c668deea686995"
+            ]
+        ]
+    },
+    {
+        "id": "bcff41bce48abac6",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "ToMQTT-Direct-D",
+        "links": [
+            "8fe78cb74a76da7b",
+            "e97c1d773d4627cb",
+            "9e88ca438deb4b19",
+            "0ab475386efa005d"
+        ],
+        "x": 105,
+        "y": 440,
+        "wires": [
+            [
+                "dfb0f0d3932d8d10",
+                "8e46a5ee30a3df96"
+            ]
+        ]
+    },
+    {
+        "id": "e97c1d773d4627cb",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "ToMQTT-Direct",
+        "mode": "link",
+        "links": [
+            "bcff41bce48abac6"
+        ],
+        "x": 555,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8fe78cb74a76da7b",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "ToMQTT-Direct",
+        "mode": "link",
+        "links": [
+            "bcff41bce48abac6"
+        ],
+        "x": 445,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ee1bb25c871ce5fc",
+        "type": "mqtt-broker",
+        "name": "freenas",
+        "broker": "192.168.1.109",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
