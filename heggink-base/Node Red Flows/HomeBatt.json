@@ -121,9 +121,9 @@
             "519f1137fde4e380"
         ],
         "x": 14,
-        "y": 19,
+        "y": -1,
         "w": 732,
-        "h": 162
+        "h": 182
     },
     {
         "id": "cf8892e230473d3f",
@@ -3796,7 +3796,7 @@
         "z": "8d3b29f48feb985c",
         "g": "b362b271c03a0415",
         "name": "Gobals",
-        "func": "context.global.batt_capacity = 60000; //Wh\ncontext.global.max_charge_setpoint = 10000; //3000=90.7% see efficiency chart \ncontext.global.max_discharge_setpoint = 10000; //4126=90.8, 4750 = 89.6\ncontext.global.number_of_multiplus = 3;\ncontext.global.min_soc = 30;\ncontext.global.max_soc = 100; //Because we use a smartshunt and specified 55.2V as 100% (=90%)\ncontext.global.idle_rate = 103;\ncontext.global.min_soc_overnight = 10;\ncontext.global.charge_rate = 9000;\ncontext.global.discharge_rate = -10000;\ncontext.global.setpoint_adjusted = false;\ncontext.global.max_phase_power = 5550;\n\n//context.global.max_phase_power = 4000;\ncontext.global.data = context.global.data || {};\n\nreturn msg;",
+        "func": "context.global.batt_capacity = 62000; //Wh\ncontext.global.batt_charge_efficiency = 0.907;   //90.7% AC->battery efficiency\ncontext.global.batt_discharge_efficiency = 0.92; //92% battery->AC efficiency\ncontext.global.number_of_multiplus = 3;\ncontext.global.max_charge_setpoint = 9000; \ncontext.global.max_discharge_setpoint = 10000;\ncontext.global.idle_rate = 103;\ncontext.global.min_soc = 30;\ncontext.global.max_soc = 100;\ncontext.global.charge_rate = context.global.max_charge_setpoint; // used in batt control as charge setpoint for inverter\ncontext.global.discharge_rate = - context.global.max_discharge_setpoint; // used in batt control as discharge setpoint for inverter\ncontext.global.setpoint_adjusted = false;\ncontext.global.max_phase_power = 5550; // max power (<25A) so a single phase does not get overloaded\n\ncontext.global.batt_charge_rate = context.global.max_charge_setpoint * context.global.batt_charge_efficiency; // the net going into the batt\ncontext.global.batt_discharge_rate = context.global.max_discharge_setpoint * context.global.batt_discharge_efficiency; // the net coming out of the batt\n//context.global.min_soc_overnight = 10;\ncontext.global.setpoint_adjusted = false;\ncontext.global.data = context.global.data || {};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -5086,7 +5086,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 440,
-        "y": 60,
+        "y": 40,
         "wires": [
             [
                 "5d710e3b6330a15f"
@@ -5235,11 +5235,11 @@
         }
     },
     {
-        "id": "f0fab3f0721294c3",
+        "id": "604a1a050676318a",
         "type": "global-config",
         "env": [],
         "modules": {
-            "@victronenergy/node-red-contrib-victron": "1.6.60",
+            "@victronenergy/node-red-contrib-victron": "1.6.63",
             "@flowfuse/node-red-dashboard": "1.30.2"
         }
     }
