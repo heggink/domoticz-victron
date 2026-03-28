@@ -858,7 +858,8 @@
             "217231edf82187b4",
             "b1959991955e2764",
             "7ad94d67cc981181",
-            "de9ac7915d363f46"
+            "de9ac7915d363f46",
+            "c02f9ada30c88639"
         ],
         "x": 14,
         "y": 939,
@@ -1000,7 +1001,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Combine/Simplify",
-        "func": "var ret = {};\nvar json = msg.payload.tibber;\nnode.warn(\"Combine\")\nret.datum = json[0].startsAt.substr(0, 10);\n\n// Tibber prices in Hours or Quarters only\nif ((json.length != 24) && (json.length != 24*4)) {\n    ret.status = false;\n    msg.payload = ret;\n    node.warn(\"Combine: wrong number: \"+json.length)\n    return msg;\n}\n\nret.status = true;\n\n//Check if forecast has 24 values, otherwise it's invalid!\nvar varray = msg.payload.forecast || [];\nvar bHaveForecast = (varray.length == 24);\n\n// Transform array of objects\nret.data = json.map(item => ({\n                    datum: ret.datum + \" \" + item.startsAt.substr(11, 8),\n                    hour_price: item.total,\n                    level: item.level,\n                    forecast: (bHaveForecast == true) ? varray[parseInt(item.startsAt.substr(11, 2))] : 0\n                }));\n\nmsg.payload = ret;\nreturn msg;",
+        "func": "var ret = {};\nvar json = msg.payload.tibber;\nnode.warn(\"Combine\")\nret.datum = json[0].startsAt.substr(0, 10);\n\n// Tibber prices in Hours or Quarters only\nif ((json.length != 24) && \n    (json.length != 96) &&\n    (json.length != 92) && // summer time\n    (json.length != 100)) {// winter time\n    ret.status = false;\n    msg.payload = ret;\n    node.warn(\"Combine: wrong number: \"+json.length)\n    return msg;\n}\n\nret.status = true;\n\n//Check if forecast has 24 values, otherwise it's invalid!\nvar varray = msg.payload.forecast || [];\nvar bHaveForecast = (varray.length == 24);\n\n// Transform array of objects\nret.data = json.map(item => ({\n                    datum: ret.datum + \" \" + item.startsAt.substr(11, 8),\n                    hour_price: item.total,\n                    level: item.level,\n                    forecast: (bHaveForecast == true) ? varray[parseInt(item.startsAt.substr(11, 2))] : 0\n                }));\n\nmsg.payload = ret;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1182,7 +1183,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Do Retry",
-        "func": "let act_retry_count = flow.get('retry_count')  + 1;\nif (act_retry_count >= 8)\n    return null;\nflow.set('retry_count', act_retry_count);\nreturn msg;",
+        "func": "node.warn(\"Do Retry\")\nlet act_retry_count = flow.get('retry_count')  + 1;\nif (act_retry_count >= 8)\n    return null;\nflow.set('retry_count', act_retry_count);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1388,7 +1389,8 @@
         "g": "9fc897c32bfacc77",
         "name": "Data Ready",
         "links": [
-            "30037a5069c38173"
+            "30037a5069c38173",
+            "c02f9ada30c88639"
         ],
         "x": 55,
         "y": 520,
@@ -1711,6 +1713,7 @@
         "key": "topic",
         "joiner": "\\n",
         "joinerType": "str",
+        "useparts": true,
         "accumulate": false,
         "timeout": "",
         "count": "2",
@@ -1767,7 +1770,7 @@
         "rules": [
             {
                 "t": "jsonata_exp",
-                "v": "($count(payload))=24 or ($count(payload))=96",
+                "v": "($count(payload))=24 or ($count(payload))=96 or ($count(payload))=92",
                 "vt": "jsonata"
             },
             {
@@ -1967,7 +1970,7 @@
         "wires": [
             [
                 "7ad94d67cc981181",
-                "3822f057ea823e2f"
+                "c02f9ada30c88639"
             ]
         ]
     },
@@ -2056,7 +2059,7 @@
         "z": "edf9f455029eeb7f",
         "g": "09a080a963e69d6f",
         "name": "debug 63",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2073,7 +2076,7 @@
         "z": "edf9f455029eeb7f",
         "g": "09a080a963e69d6f",
         "name": "debug 4",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2138,7 +2141,7 @@
         "z": "edf9f455029eeb7f",
         "g": "09a080a963e69d6f",
         "name": "debug 6",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2337,7 +2340,7 @@
         "z": "edf9f455029eeb7f",
         "g": "9fc897c32bfacc77",
         "name": "Reformat array",
-        "func": "/*\nthis function reformats the array into hour/quaterly indexable entries\ninstead of just an array\n*/\nlet to_data = {}\nlet from_data = msg.payload;\n\nconst mins = [\"00\", \"15\", \"30\", \"45\"]\nlet lm = mins.length\nconst hrs = [\"00\",\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\"]\nlet lh = hrs.length\n\nlet records_count = from_data.data.length;\nto_data.status = from_data.status;\nto_data.datum = from_data.datum;\nto_data.num_records = records_count;\nnode.warn(\"In reformat array\")\nlet txt = \"\"\n//console.log(\" Num Hours %d\", lh)\n//console.log(\" Num Mins %d\", lm)\n\nlet count = 0\n\nif (records_count == 96) {\n\tnode.warn(\"Kwartierprijzen\");\n\tfor (let  i = 0; i < lh; i++) {\n\t\tfor (let j = 0; j < lm; j++) {\n\t\t\ttxt = hrs[i] + \":\" + mins[j]\n\t\t\tto_data[txt] = {};\n\t\t\tto_data[txt].hour_price = from_data.data[count].hour_price;\n\t\t    to_data[txt].hour_type = from_data.data[count].hour_type;\n\t\t\tto_data[txt].level = from_data.data[count].level;\n\t\t\tto_data[txt].forecast = from_data.data[count].forecast;\n\t\t\tto_data[txt].setpoint = from_data.data[count].setpoint;\n\t\t\tto_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt;\n\t\t\tto_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage;\n\t\t\tto_data[txt].earned_money = from_data.data[count].earned_money;\n\t\t\t\n\t\t\tif ((to_data[txt].forecast > 2000) && (to_data[txt].hour_type) == \"idle\" && (to_data[txt].level == \"CHEAP\")) {\n\t\t\t    // there is expected sunlight, we were planning to be idle and the energy rate is not worth returning\n\t\t\t    to_data[txt].hour_type = \"solarbalance\"\n\t\t\t}\n\n\t\t\tconsole.log(\"Adding \" + to_data[txt].hour_type);\n\t\t\tto_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt\n\t\t\tto_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage\n\t\t\tto_data[txt].earned_money = from_data.data[count].earned_money\n\t\t\tcount += 1;\n\t\t}\n\t}\n}\nelse {\n\tfor (let  i = 0; i < lh; i++) { // uurprijzen\n\t\ttxt = hrs[i] + \":00\"\n\t\tto_data[txt].hour_price = from_data.data[count].hour_price\n\t\tto_data[txt].level = from_data.data[count].level\n\t\tto_data[txt].forecast = from_data.data[count].forecast\n\t\tto_data[txt].hour_type = from_data.data[count].hour_type\n\t\tto_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt\n\t\tto_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage\n\t\tto_data[txt].earned_money = from_data.data[count].earned_money\n\t\tcount += 1;\n\t}\n}\nmsg.payload = to_data;\nif (msg.today == true) {\n    context.global.scheme_today = to_data;\n    node.warn(\"Saving today data\");\n}\nelse {\n    context.global.scheme_tomorrow = to_data\n    node.warn(\"Saving tomorrow data\");\n}\n\nreturn msg;",
+        "func": "/*\nthis function reformats the array into hour/quaterly indexable entries\ninstead of just an array\n*/\nlet to_data = {}\nlet from_data = msg.payload;\n\nconst mins = [\"00\", \"15\", \"30\", \"45\"]\nlet lm = mins.length\nlet records_count = from_data.data.length;\nlet hrs = [];\n\nif (records_count == 96) {\n    hrs = [\"00\",\"01\",\"02\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\"]\n}\nelse if (records_count == 92) { // summertime so no hour 2am, skip it\n    node.warn(\"Switch to summertime\")\n    hrs = [\"00\",\"01\",\"03\",\"04\",\"05\",\"06\",\"07\",\"08\",\"09\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\"]\n}\n//node.warn(\"Count \"+records_count)\n//node.warn(\"hrs says \"+ hrs)    \nlet lh = hrs.length\n\n\nto_data.status = from_data.status;\nto_data.datum = from_data.datum;\nto_data.num_records = records_count;\nnode.warn(\"In reformat array\")\nlet txt = \"\"\n//console.log(\" Num Hours %d\", lh)\n//console.log(\" Num Mins %d\", lm)\n\nlet count = 0\n\nif (records_count > 24) {\n\tnode.warn(\"Kwartierprijzen\");\n\tfor (let  i = 0; i < lh; i++) {\n\t\tfor (let j = 0; j < lm; j++) {\n\t\t    txt = hrs[i] + \":\" + mins[j]\n\t\t    to_data[txt] = {};\n\t\t    to_data[txt].hour_price = from_data.data[count].hour_price;\n\t\t    to_data[txt].hour_type = from_data.data[count].hour_type;\n\t\t    to_data[txt].level = from_data.data[count].level;\n\t\t    to_data[txt].forecast = from_data.data[count].forecast;\n\t\t    to_data[txt].setpoint = from_data.data[count].setpoint;\n\t\t    to_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt;\n\t\t    to_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage;\n\t\t    to_data[txt].earned_money = from_data.data[count].earned_money;\n\t\t\t\n\t\t    if ((to_data[txt].forecast > 2000) && (to_data[txt].hour_type) == \"idle\" && (to_data[txt].level == \"CHEAP\")) {\n\t\t        // there is expected sunlight, we were planning to be idle and the energy rate is not worth returning\n\t\t        to_data[txt].hour_type = \"solarbalance\"\n\t\t    }\n\n\t\t    //node.warn(\"Adding \" + to_data[txt].hour_type);\n\t\t    count += 1;\n\t\t}\n\t}\n}\nelse {\n\tfor (let  i = 0; i < lh; i++) { // uurprijzen\n\t\ttxt = hrs[i] + \":00\"\n\t\tto_data[txt].hour_price = from_data.data[count].hour_price\n\t\tto_data[txt].level = from_data.data[count].level\n\t\tto_data[txt].forecast = from_data.data[count].forecast\n\t\tto_data[txt].hour_type = from_data.data[count].hour_type\n\t\tto_data[txt].battery_capacity_watt = from_data.data[count].battery_capacity_watt\n\t\tto_data[txt].battery_capacity_percentage = from_data.data[count].battery_capacity_percentage\n\t\tto_data[txt].earned_money = from_data.data[count].earned_money\n\t\tcount += 1;\n\t}\n}\nmsg.payload = to_data;\nif (msg.today == true) {\n    context.global.scheme_today = to_data;\n    node.warn(\"Saving today data\");\n}\nelse {\n    context.global.scheme_tomorrow = to_data\n    node.warn(\"Saving tomorrow data\");\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3312,6 +3315,20 @@
         "l": false
     },
     {
+        "id": "c02f9ada30c88639",
+        "type": "link out",
+        "z": "edf9f455029eeb7f",
+        "g": "09a080a963e69d6f",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "1b6c2789468c41cc"
+        ],
+        "x": 1165,
+        "y": 980,
+        "wires": []
+    },
+    {
         "id": "c375361050518336",
         "type": "tibber-api-endpoint",
         "queryUrl": "https://api.tibber.com/v1-beta/gql",
@@ -3438,7 +3455,7 @@
         }
     },
     {
-        "id": "c07460a3b87e46a9",
+        "id": "9210251c156f83c9",
         "type": "global-config",
         "env": [],
         "modules": {
