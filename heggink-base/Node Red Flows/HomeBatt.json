@@ -103,11 +103,13 @@
             "31d9308ecec4dbde",
             "442445439b3c1314",
             "d8b87ec184ee0386",
-            "824d7a39eb03356e"
+            "824d7a39eb03356e",
+            "40d327d4ce4ec2c0",
+            "23e1c22f918c3ebe"
         ],
         "x": 14,
         "y": 199,
-        "w": 652,
+        "w": 802,
         "h": 82
     },
     {
@@ -130,12 +132,13 @@
             "07d611da6ffa41ed",
             "5d710e3b6330a15f",
             "519f1137fde4e380",
-            "9601241ddb365638"
+            "9601241ddb365638",
+            "8c8fe8c79f29b872"
         ],
         "x": 14,
-        "y": 19,
+        "y": -1,
         "w": 692,
-        "h": 162
+        "h": 182
     },
     {
         "id": "cf8892e230473d3f",
@@ -151,11 +154,13 @@
             "302c4817a35421ee",
             "b58160e237c0d83d",
             "d39b7539103b3513",
-            "40bc446b3c9032c2"
+            "40bc446b3c9032c2",
+            "80776ad7fdf15462",
+            "baef46aeb315c403"
         ],
         "x": 14,
-        "y": 2399,
-        "w": 592,
+        "y": 2259,
+        "w": 852,
         "h": 122
     },
     {
@@ -215,10 +220,11 @@
             "60ca368b143dead4",
             "87ae15cf892b180a",
             "43cc388e6b01ecd9",
-            "af6a7dc64becfea1"
+            "af6a7dc64becfea1",
+            "8c01f2d48ab51a94"
         ],
         "x": 14,
-        "y": 2539,
+        "y": 2399,
         "w": 1132,
         "h": 642
     },
@@ -235,12 +241,13 @@
         "nodes": [
             "84f5b9b1e88bca69",
             "9ee290e31a66a382",
-            "ac0f2b4f46e7672b"
+            "ac0f2b4f46e7672b",
+            "07aae5c9d8c9b62c"
         ],
         "x": 734,
         "y": 19,
         "w": 342,
-        "h": 82
+        "h": 122
     },
     {
         "id": "61da6231d7299de3",
@@ -259,22 +266,11 @@
             "a654b14df06a9ae9",
             "159833534a73765c",
             "f372c7304a23c6e0",
-            "d5ba4bcb0468fbf1",
-            "a998a9a4eb633448",
-            "32175fee5146afea",
             "48fff1d72fed0b87",
             "358c46e08f21676c",
             "c022f5482e4936a0",
             "7379c2bee96ee81d",
-            "a236b11b7fc6946a",
             "9d8915e414a76f0e",
-            "65e74659afd2b0bd",
-            "22394a20ce5a7b95",
-            "0f019469f8d07b39",
-            "cab032cb2249b5bb",
-            "57ee548438878441",
-            "6c95c716e4ab5d1f",
-            "d6e4856191966e9e",
             "1fbbec3b31fce42a",
             "5b53d8e0fe370c42",
             "b216d9def802896b",
@@ -312,12 +308,33 @@
             "433c748afaa3c0aa",
             "632f1dd5df58afe6",
             "e888bdf521f6764b",
-            "f71abfb28b377783"
+            "f71abfb28b377783",
+            "07174a23a244e8d7",
+            "2c7e645602abb2b0",
+            "e42eadf219f1e15b",
+            "234f4d9f7bab6d42",
+            "2e96659d5661c29b",
+            "cf0b0925e5582126",
+            "773b6718c12cb54a",
+            "18ebebd24e0b3df7",
+            "54870597763a0246",
+            "2d0d78749ed1b756",
+            "c4329a13dddaadec",
+            "62630059de05c2ae",
+            "7c81a3a834b4d7d3",
+            "01aa2d67f1a68c21",
+            "bce915492cfd4c01",
+            "4121a4bd7b04ce07",
+            "2bcce4eb032dfa26",
+            "be3013645a74a27c",
+            "9e900a16b28e3b19",
+            "bf491d84922ba521",
+            "733815c3415b96e4"
         ],
         "x": 14,
         "y": 1239,
-        "w": 1152,
-        "h": 1002
+        "w": 1472,
+        "h": 862
     },
     {
         "id": "05bc2ab263663dde",
@@ -340,7 +357,7 @@
             "f72eb9e09a69444e"
         ],
         "x": 14,
-        "y": 2259,
+        "y": 2119,
         "w": 742,
         "h": 122
     },
@@ -358,7 +375,7 @@
             "11fac77a0d071027",
             "74a4ce465b0fb3ee"
         ],
-        "x": 694,
+        "x": 854,
         "y": 199,
         "w": 452,
         "h": 82
@@ -386,16 +403,16 @@
         "z": "8d3b29f48feb985c",
         "g": "cf8892e230473d3f",
         "name": "ESS Mode",
-        "topic": "victron2/set/ess_mode",
+        "topic": "",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "ee1bb25c871ce5fc",
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
-        "x": 100,
-        "y": 2440,
+        "inputs": 1,
+        "x": 340,
+        "y": 2300,
         "wires": [
             [
                 "40bc446b3c9032c2"
@@ -416,8 +433,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 430,
-        "y": 2480,
+        "x": 690,
+        "y": 2340,
         "wires": []
     },
     {
@@ -446,8 +463,8 @@
         "name": "",
         "onlyChanges": false,
         "outputs": 0,
-        "x": 460,
-        "y": 2440,
+        "x": 720,
+        "y": 2300,
         "wires": []
     },
     {
@@ -463,8 +480,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 240,
-        "y": 2440,
+        "x": 500,
+        "y": 2300,
         "wires": [
             [
                 "d39b7539103b3513",
@@ -657,11 +674,10 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 1300,
+        "y": 1280,
         "wires": [
             [
-                "e4c4f61b74e39169",
-                "d5ba4bcb0468fbf1"
+                "e4c4f61b74e39169"
             ]
         ]
     },
@@ -686,11 +702,10 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 1460,
+        "y": 1360,
         "wires": [
             [
-                "159833534a73765c",
-                "32175fee5146afea"
+                "159833534a73765c"
             ]
         ]
     },
@@ -715,11 +730,10 @@
         "roundValues": "2",
         "outputs": 1,
         "x": 90,
-        "y": 1380,
+        "y": 1320,
         "wires": [
             [
-                "a654b14df06a9ae9",
-                "a998a9a4eb633448"
+                "a654b14df06a9ae9"
             ]
         ]
     },
@@ -889,15 +903,15 @@
         "z": "8d3b29f48feb985c",
         "g": "9e46f3329af496ae",
         "name": "ESS Setpoint",
-        "topic": "victron2/set/ess_setpoint",
+        "topic": "",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "ee1bb25c871ce5fc",
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
-        "x": 110,
+        "inputs": 1,
+        "x": 350,
         "y": 240,
         "wires": [
             [
@@ -929,7 +943,7 @@
         "payload": "online",
         "payloadType": "str",
         "x": 120,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "69a2629d096d7a9c",
@@ -944,16 +958,16 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Batt Mode",
-        "topic": "victron2/set/batt_mode",
+        "topic": "",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "ee1bb25c871ce5fc",
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
+        "inputs": 1,
         "x": 120,
-        "y": 2760,
+        "y": 2620,
         "wires": [
             [
                 "053fac255b781adb",
@@ -1016,7 +1030,7 @@
         "repair": false,
         "outputs": 8,
         "x": 360,
-        "y": 2760,
+        "y": 2620,
         "wires": [
             [
                 "5b3acf804ca416d1"
@@ -1071,7 +1085,7 @@
         "onlyChanges": false,
         "outputs": 0,
         "x": 1000,
-        "y": 2700,
+        "y": 2560,
         "wires": []
     },
     {
@@ -1088,7 +1102,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2660,
+        "y": 2520,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -1110,7 +1124,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2700,
+        "y": 2560,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -1133,7 +1147,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1000,
-        "y": 2660,
+        "y": 2520,
         "wires": []
     },
     {
@@ -1204,7 +1218,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
+        "x": 620,
         "y": 240,
         "wires": [
             [
@@ -1252,12 +1266,11 @@
         "type": "link in",
         "z": "8d3b29f48feb985c",
         "g": "9f7e7bb0a86e90c8",
-        "name": "ToMQTT-Limit",
+        "name": "ToMQTT",
         "links": [
             "2638424905d9e622",
-            "e50fcdcc15023c7c",
-            "f372c7304a23c6e0",
-            "af6a7dc64becfea1"
+            "af6a7dc64becfea1",
+            "e50fcdcc15023c7c"
         ],
         "x": 775,
         "y": 60,
@@ -1275,7 +1288,7 @@
         "name": "ToMQTT-Direct",
         "mode": "link",
         "links": [
-            "bcff41bce48abac6"
+            "7c74e0718d47277c"
         ],
         "x": 665,
         "y": 80,
@@ -1687,7 +1700,7 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T=Watt L1",
+        "name": "T=grid_l1_w",
         "rules": [
             {
                 "t": "set",
@@ -1706,7 +1719,8 @@
         "y": 1280,
         "wires": [
             [
-                "f372c7304a23c6e0"
+                "48fff1d72fed0b87",
+                "e42eadf219f1e15b"
             ]
         ]
     },
@@ -1715,7 +1729,7 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T=Watt L2",
+        "name": "T=grid_l2_w",
         "rules": [
             {
                 "t": "set",
@@ -1731,10 +1745,11 @@
         "to": "",
         "reg": false,
         "x": 390,
-        "y": 1360,
+        "y": 1320,
         "wires": [
             [
-                "f372c7304a23c6e0"
+                "48fff1d72fed0b87",
+                "234f4d9f7bab6d42"
             ]
         ]
     },
@@ -1743,7 +1758,7 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T=Watt L3",
+        "name": "T=grid_l3_w",
         "rules": [
             {
                 "t": "set",
@@ -1759,10 +1774,11 @@
         "to": "",
         "reg": false,
         "x": 390,
-        "y": 1440,
+        "y": 1360,
         "wires": [
             [
-                "f372c7304a23c6e0"
+                "48fff1d72fed0b87",
+                "2e96659d5661c29b"
             ]
         ]
     },
@@ -1868,16 +1884,16 @@
             "name": "Energy AcIn1 to Inverter (kWh)"
         },
         "initial": "",
-        "name": "Energy ACIn1 to Inverter (kWh)",
+        "name": "Energy AcIn1 to Inverter (kWh)",
         "onlyChanges": true,
-        "roundValues": "3",
+        "roundValues": "1",
         "outputs": 1,
         "conditionalMode": false,
         "outputTrue": "",
         "outputFalse": "",
         "debounce": "",
-        "x": 170,
-        "y": 1640,
+        "x": 160,
+        "y": 1700,
         "wires": [
             [
                 "1fbbec3b31fce42a"
@@ -1885,36 +1901,49 @@
         ]
     },
     {
-        "id": "a236b11b7fc6946a",
-        "type": "victron-input-vebus",
+        "id": "1fbbec3b31fce42a",
+        "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "service": "com.victronenergy.vebus/276",
-        "path": "/Ac/ActiveIn/L1/P",
-        "serviceObj": {
-            "service": "com.victronenergy.vebus/276",
-            "name": "MultiPlus-II 48/5000/70-50"
-        },
-        "pathObj": {
-            "path": "/Ac/ActiveIn/L1/P",
-            "type": "float",
-            "name": "Input power phase 1 (W)"
-        },
-        "initial": "",
-        "name": "Input Phase 1 (W)",
-        "onlyChanges": true,
-        "roundValues": "2",
-        "outputs": 1,
-        "x": 120,
-        "y": 1520,
+        "name": "T=acin1_inv_kwh",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "acin1_inv_kwh",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 1700,
         "wires": [
             [
-                "cab032cb2249b5bb"
+                "62630059de05c2ae"
             ]
         ]
     },
     {
-        "id": "65e74659afd2b0bd",
+        "id": "f372c7304a23c6e0",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "ToMQTT-RL",
+        "mode": "link",
+        "links": [
+            "07aae5c9d8c9b62c"
+        ],
+        "x": 1445,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "48fff1d72fed0b87",
         "type": "join",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
@@ -1936,325 +1965,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 590,
-        "y": 1560,
-        "wires": [
-            [
-                "d6e4856191966e9e"
-            ]
-        ]
-    },
-    {
-        "id": "22394a20ce5a7b95",
-        "type": "victron-input-vebus",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "service": "com.victronenergy.vebus/276",
-        "path": "/Ac/ActiveIn/L2/P",
-        "serviceObj": {
-            "service": "com.victronenergy.vebus/276",
-            "name": "MultiPlus"
-        },
-        "pathObj": {
-            "path": "/Ac/ActiveIn/L2/P",
-            "type": "float",
-            "name": "Input power phase 2 (W)"
-        },
-        "initial": "",
-        "name": "Input Phase 2 (W)",
-        "onlyChanges": true,
-        "roundValues": "2",
-        "outputs": 1,
-        "x": 120,
-        "y": 1560,
-        "wires": [
-            [
-                "57ee548438878441"
-            ]
-        ]
-    },
-    {
-        "id": "0f019469f8d07b39",
-        "type": "victron-input-vebus",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "service": "com.victronenergy.vebus/276",
-        "path": "/Ac/ActiveIn/L3/P",
-        "serviceObj": {
-            "service": "com.victronenergy.vebus/276",
-            "name": "MultiPlus"
-        },
-        "pathObj": {
-            "path": "/Ac/ActiveIn/L3/P",
-            "type": "float",
-            "name": "Input power phase 3 (W)"
-        },
-        "initial": "",
-        "name": "Input Phase 3 (W)",
-        "onlyChanges": true,
-        "roundValues": "2",
-        "outputs": 1,
-        "x": 120,
-        "y": 1600,
-        "wires": [
-            [
-                "6c95c716e4ab5d1f"
-            ]
-        ]
-    },
-    {
-        "id": "cab032cb2249b5bb",
-        "type": "change",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "T=phase_1",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "phase_1",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 390,
-        "y": 1520,
-        "wires": [
-            [
-                "65e74659afd2b0bd"
-            ]
-        ]
-    },
-    {
-        "id": "57ee548438878441",
-        "type": "change",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "T=phase_2",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "phase_2",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 390,
-        "y": 1560,
-        "wires": [
-            [
-                "65e74659afd2b0bd"
-            ]
-        ]
-    },
-    {
-        "id": "6c95c716e4ab5d1f",
-        "type": "change",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "T=phase_3",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "phase_3",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 390,
-        "y": 1600,
-        "wires": [
-            [
-                "65e74659afd2b0bd"
-            ]
-        ]
-    },
-    {
-        "id": "d6e4856191966e9e",
-        "type": "function",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "Combine",
-        "func": "let total = 0;\nif (msg.payload.phase_1 != null) {\n    total += msg.payload.phase_1;\n}\nif (msg.payload.phase_2 != null) {\n    total += msg.payload.phase_2;\n}\nif (msg.payload.phase_3 != null) {\n    total += msg.payload.phase_3;\n}\nmsg.topic = \"inv_acin_w\"\nmsg.payload = total;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 1560,
-        "wires": [
-            [
-                "f372c7304a23c6e0"
-            ]
-        ]
-    },
-    {
-        "id": "1fbbec3b31fce42a",
-        "type": "change",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "T=acin_inv_kwh",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "acin_inv_kwh",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 400,
-        "y": 1640,
-        "wires": [
-            [
-                "f372c7304a23c6e0"
-            ]
-        ]
-    },
-    {
-        "id": "f372c7304a23c6e0",
-        "type": "link out",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "ToMQTT",
-        "mode": "link",
-        "links": [
-            "84f5b9b1e88bca69"
-        ],
-        "x": 1125,
-        "y": 1560,
-        "wires": []
-    },
-    {
-        "id": "d5ba4bcb0468fbf1",
-        "type": "change",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "T=et_phase_1",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "et_phase_1",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 400,
         "y": 1320,
-        "wires": [
-            [
-                "48fff1d72fed0b87"
-            ]
-        ]
-    },
-    {
-        "id": "a998a9a4eb633448",
-        "type": "change",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "T=et_phase_2",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "et_phase_2",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 400,
-        "y": 1400,
-        "wires": [
-            [
-                "48fff1d72fed0b87"
-            ]
-        ]
-    },
-    {
-        "id": "32175fee5146afea",
-        "type": "change",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "T=et_phase_3",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "et_phase_3",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 400,
-        "y": 1480,
-        "wires": [
-            [
-                "48fff1d72fed0b87"
-            ]
-        ]
-    },
-    {
-        "id": "48fff1d72fed0b87",
-        "type": "join",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "3",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 550,
-        "y": 1400,
         "wires": [
             [
                 "358c46e08f21676c",
@@ -2267,20 +1978,20 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "Combine",
-        "func": "let total = 0;\nif (msg.payload.et_phase_1 != null) {\n    total += msg.payload.et_phase_1;\n}\nif (msg.payload.et_phase_2 != null) {\n    total += msg.payload.et_phase_2;\n}\nif (msg.payload.et_phase_3 != null) {\n    total += msg.payload.et_phase_3;\n}\nmsg.topic = \"grid_total_w\"\nmsg.payload = total;\nreturn msg;",
+        "name": "Combine grid_total_w",
+        "func": "let total = 0;\nif (msg.payload.grid_l1_w != null) {\n    total += msg.payload.grid_l1_w;\n}\nif (msg.payload.grid_l2_w != null) {\n    total += msg.payload.grid_l2_w;\n}\nif (msg.payload.grid_l3_w != null) {\n    total += msg.payload.grid_l3_w;\n}\nmsg.topic = \"grid_total_w\"\nmsg.payload = total;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
-        "y": 1400,
+        "x": 800,
+        "y": 1320,
         "wires": [
             [
-                "f372c7304a23c6e0",
-                "7379c2bee96ee81d"
+                "7379c2bee96ee81d",
+                "2c7e645602abb2b0"
             ]
         ]
     },
@@ -2298,8 +2009,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 625,
-        "y": 1400,
+        "x": 675,
+        "y": 1280,
         "wires": [],
         "l": false
     },
@@ -2317,8 +2028,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 910,
-        "y": 1400,
+        "x": 1010,
+        "y": 1320,
         "wires": []
     },
     {
@@ -2335,7 +2046,7 @@
         "finalize": "",
         "libs": [],
         "x": 320,
-        "y": 2320,
+        "y": 2180,
         "wires": [
             [
                 "51c59a043f433e82",
@@ -2359,7 +2070,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 540,
-        "y": 2340,
+        "y": 2200,
         "wires": []
     },
     {
@@ -2385,7 +2096,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 2340,
+        "y": 2200,
         "wires": [
             [
                 "7fd426c7ab23f005"
@@ -2398,7 +2109,7 @@
         "z": "8d3b29f48feb985c",
         "g": "9e46f3329af496ae",
         "name": "New SP received",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2406,7 +2117,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 235,
+        "x": 455,
         "y": 240,
         "wires": [],
         "l": false
@@ -2425,7 +2136,7 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 2300,
+        "y": 2160,
         "wires": [
             [
                 "0b2f6c937ecdd315"
@@ -2447,7 +2158,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 120,
-        "y": 60,
+        "y": 40,
         "wires": [
             [
                 "3391833f0a3beec6"
@@ -2468,7 +2179,7 @@
         "finalize": "",
         "libs": [],
         "x": 370,
-        "y": 60,
+        "y": 40,
         "wires": [
             [
                 "9601241ddb365638"
@@ -2498,7 +2209,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 130,
-        "y": 2940,
+        "y": 2800,
         "wires": [
             [
                 "eedb7eaeb1af5d15"
@@ -2520,7 +2231,7 @@
         "correl": "",
         "expiry": "",
         "broker": "ee1bb25c871ce5fc",
-        "x": 590,
+        "x": 550,
         "y": 120,
         "wires": []
     },
@@ -2538,7 +2249,7 @@
         "finalize": "",
         "libs": [],
         "x": 600,
-        "y": 2740,
+        "y": 2600,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -2565,7 +2276,7 @@
         "finalize": "",
         "libs": [],
         "x": 600,
-        "y": 2780,
+        "y": 2640,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -2591,7 +2302,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 2820,
+        "y": 2680,
         "wires": [
             [
                 "fb69601b138e6096",
@@ -2617,7 +2328,7 @@
         "finalize": "",
         "libs": [],
         "x": 990,
-        "y": 2820,
+        "y": 2680,
         "wires": [
             [
                 "031b9cbf3eb7ea67"
@@ -2635,7 +2346,7 @@
             "44d07b9e813b1e68"
         ],
         "x": 1105,
-        "y": 2820,
+        "y": 2680,
         "wires": []
     },
     {
@@ -2652,7 +2363,7 @@
         "finalize": "",
         "libs": [],
         "x": 980,
-        "y": 2780,
+        "y": 2640,
         "wires": [
             [
                 "e50fcdcc15023c7c"
@@ -2674,7 +2385,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 235,
-        "y": 2760,
+        "y": 2620,
         "wires": [],
         "l": false
     },
@@ -2699,7 +2410,7 @@
         "roundValues": "1",
         "outputs": 1,
         "x": 200,
-        "y": 3100,
+        "y": 2960,
         "wires": [
             [
                 "2f9c61d13cdca117"
@@ -2720,7 +2431,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 3080,
+        "y": 2940,
         "wires": [
             [
                 "d14625af14055f20",
@@ -2745,7 +2456,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 925,
-        "y": 2740,
+        "y": 2600,
         "wires": [],
         "l": false
     },
@@ -2764,7 +2475,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 785,
-        "y": 3080,
+        "y": 2940,
         "wires": [],
         "l": false
     },
@@ -2779,7 +2490,7 @@
             "84f5b9b1e88bca69"
         ],
         "x": 1105,
-        "y": 2780,
+        "y": 2640,
         "wires": []
     },
     {
@@ -2793,7 +2504,7 @@
             "44d07b9e813b1e68"
         ],
         "x": 715,
-        "y": 2300,
+        "y": 2160,
         "wires": []
     },
     {
@@ -2810,7 +2521,7 @@
         "finalize": "",
         "libs": [],
         "x": 640,
-        "y": 3020,
+        "y": 2880,
         "wires": [
             [
                 "e50fcdcc15023c7c",
@@ -2833,7 +2544,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 805,
-        "y": 3020,
+        "y": 2880,
         "wires": [],
         "l": false
     },
@@ -2857,7 +2568,7 @@
         "onlyChanges": true,
         "outputs": 1,
         "x": 170,
-        "y": 3020,
+        "y": 2880,
         "wires": [
             [
                 "cb51f6a8d0f024b5"
@@ -2887,7 +2598,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 150,
-        "y": 3140,
+        "y": 3000,
         "wires": [
             [
                 "a3169756890e06b6"
@@ -2908,7 +2619,7 @@
         "finalize": "",
         "libs": [],
         "x": 520,
-        "y": 3140,
+        "y": 3000,
         "wires": [
             [
                 "d14625af14055f20"
@@ -2948,7 +2659,7 @@
         "onlyChanges": true,
         "outputs": 1,
         "x": 200,
-        "y": 3060,
+        "y": 2920,
         "wires": [
             [
                 "2f9c61d13cdca117"
@@ -2969,7 +2680,7 @@
         "finalize": "",
         "libs": [],
         "x": 860,
-        "y": 2900,
+        "y": 2760,
         "wires": [
             [
                 "d14625af14055f20",
@@ -2993,7 +2704,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2900,
+        "y": 2760,
         "wires": [
             [
                 "d14625af14055f20",
@@ -3017,7 +2728,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2860,
+        "y": 2720,
         "wires": [
             [
                 "d14625af14055f20",
@@ -3043,7 +2754,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1005,
-        "y": 2900,
+        "y": 2760,
         "wires": [],
         "l": false
     },
@@ -3067,7 +2778,7 @@
         "name": "Grid SetPoint",
         "onlyChanges": false,
         "outputs": 0,
-        "x": 1040,
+        "x": 1200,
         "y": 240,
         "wires": []
     },
@@ -3083,7 +2794,7 @@
             "51c0cfb742f07a47",
             "6af2e6d4917ea5e3"
         ],
-        "x": 735,
+        "x": 895,
         "y": 240,
         "wires": [
             [
@@ -3102,7 +2813,7 @@
         "links": [
             "11fac77a0d071027"
         ],
-        "x": 625,
+        "x": 775,
         "y": 240,
         "wires": []
     },
@@ -3117,7 +2828,7 @@
             "11fac77a0d071027"
         ],
         "x": 705,
-        "y": 2340,
+        "y": 2200,
         "wires": []
     },
     {
@@ -3131,7 +2842,7 @@
             "11fac77a0d071027"
         ],
         "x": 1105,
-        "y": 2900,
+        "y": 2760,
         "wires": []
     },
     {
@@ -3148,7 +2859,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 870,
+        "x": 1030,
         "y": 240,
         "wires": []
     },
@@ -3166,7 +2877,7 @@
         "finalize": "",
         "libs": [],
         "x": 260,
-        "y": 2940,
+        "y": 2800,
         "wires": [
             [
                 "f893c02906d0409b",
@@ -3213,7 +2924,7 @@
         "repair": false,
         "outputs": 5,
         "x": 390,
-        "y": 2940,
+        "y": 2800,
         "wires": [
             [
                 "9e15b637df84d87f"
@@ -3246,7 +2957,7 @@
         "finalize": "",
         "libs": [],
         "x": 860,
-        "y": 2980,
+        "y": 2840,
         "wires": [
             [
                 "efc682e349616a06",
@@ -3268,7 +2979,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2980,
+        "y": 2840,
         "wires": [
             [
                 "12c695775f8c73d2",
@@ -3293,7 +3004,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1025,
-        "y": 2980,
+        "y": 2840,
         "wires": [],
         "l": false
     },
@@ -3318,7 +3029,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 2000,
+        "y": 1840,
         "wires": [
             [
                 "d89e8ae11a05103d"
@@ -3346,7 +3057,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 2040,
+        "y": 1880,
         "wires": [
             [
                 "d89e8ae11a05103d"
@@ -3374,7 +3085,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 2080,
+        "y": 1920,
         "wires": [
             [
                 "d89e8ae11a05103d"
@@ -3395,8 +3106,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 2060,
+        "x": 680,
+        "y": 1900,
         "wires": []
     },
     {
@@ -3421,7 +3132,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 290,
-        "y": 2040,
+        "y": 1880,
         "wires": [
             [
                 "ab2095ce56bd1b63"
@@ -3433,20 +3144,21 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "Combine",
-        "func": "let total = 0;\nif (msg.payload.pvl1 != null) {\n    total += msg.payload.pvl1;\n}\nif (msg.payload.pvl2 != null) {\n    total += msg.payload.pvl2;\n}\nif (msg.payload.pvl3 != null) {\n    total += msg.payload.pvl3;\n}\ncontext.global.data[\"pv_total\"] = total\nmsg.payload = total;\nreturn msg;",
+        "name": "Combine pv_total_w",
+        "func": "let total = 0;\nif (msg.payload.pvl1 != null) {\n    total += msg.payload.pvl1;\n}\nif (msg.payload.pvl2 != null) {\n    total += msg.payload.pvl2;\n}\nif (msg.payload.pvl3 != null) {\n    total += msg.payload.pvl3;\n}\ncontext.global.data[\"pv_total\"] = total\nmsg.payload = total;\nmsg.topic = \"pv_total_w\"\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
-        "y": 2040,
+        "x": 480,
+        "y": 1880,
         "wires": [
             [
                 "cee9fbdad1051b8d",
-                "8860fd4be74d6407"
+                "8860fd4be74d6407",
+                "bf491d84922ba521"
             ]
         ]
     },
@@ -3471,7 +3183,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 2120,
+        "y": 1980,
         "wires": [
             [
                 "95843414747162ff"
@@ -3499,7 +3211,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 2160,
+        "y": 2020,
         "wires": [
             [
                 "95843414747162ff"
@@ -3527,7 +3239,7 @@
         "roundValues": "0",
         "outputs": 1,
         "x": 90,
-        "y": 2200,
+        "y": 2060,
         "wires": [
             [
                 "95843414747162ff"
@@ -3557,7 +3269,7 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 290,
-        "y": 2160,
+        "y": 2020,
         "wires": [
             [
                 "22a9ab355a5f6554"
@@ -3569,20 +3281,21 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "Combine",
-        "func": "let total = 0;\nif (msg.payload.acl1 != null) {\n    total += msg.payload.acl1;\n}\nif (msg.payload.acl2 != null) {\n    total += msg.payload.acl2;\n}\nif (msg.payload.acl3 != null) {\n    total += msg.payload.acl3;\n}\ncontext.global.data[\"acl_total\"] = total\nmsg.payload = total;\nreturn msg;",
+        "name": "Combine acl_total_w",
+        "func": "let total = 0;\nif (msg.payload.acl1 != null) {\n    total += msg.payload.acl1;\n}\nif (msg.payload.acl2 != null) {\n    total += msg.payload.acl2;\n}\nif (msg.payload.acl3 != null) {\n    total += msg.payload.acl3;\n}\ncontext.global.data[\"acl_total\"] = total\nmsg.payload = total;\nmsg.topic = \"acl_total_w\"\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
-        "y": 2160,
+        "x": 480,
+        "y": 2020,
         "wires": [
             [
                 "c52e25968d4266af",
-                "f8cb9ca1dcd7b306"
+                "f8cb9ca1dcd7b306",
+                "733815c3415b96e4"
             ]
         ]
     },
@@ -3600,8 +3313,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
-        "y": 2180,
+        "x": 700,
+        "y": 2040,
         "wires": []
     },
     {
@@ -3614,7 +3327,7 @@
             "b67775dd052f962b"
         ],
         "x": 155,
-        "y": 2860,
+        "y": 2720,
         "wires": [
             [
                 "95cad9eee2aedcbe",
@@ -3632,7 +3345,7 @@
         "links": [
             "e2a9c31b9a104939"
         ],
-        "x": 505,
+        "x": 475,
         "y": 140,
         "wires": []
     },
@@ -3650,7 +3363,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 2860,
+        "y": 2720,
         "wires": [
             [
                 "9e15b637df84d87f",
@@ -3673,7 +3386,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 215,
-        "y": 2860,
+        "y": 2720,
         "wires": [],
         "l": false
     },
@@ -3726,7 +3439,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 600,
-        "y": 2940,
+        "y": 2800,
         "wires": [
             [
                 "d464f5880be3efb4",
@@ -3744,7 +3457,7 @@
             "b0ac7ab4425d80b8"
         ],
         "x": 55,
-        "y": 2300,
+        "y": 2160,
         "wires": [
             [
                 "f72eb9e09a69444e"
@@ -3762,7 +3475,7 @@
             "fb6799af32434934"
         ],
         "x": 1045,
-        "y": 2740,
+        "y": 2600,
         "wires": []
     },
     {
@@ -3784,7 +3497,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 160,
-        "y": 2300,
+        "y": 2160,
         "wires": [
             [
                 "7fd426c7ab23f005"
@@ -3831,16 +3544,16 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "b362b271c03a0415",
-        "name": "Globals",
-        "func": "context.global.batt_capacity = 58000; //Wh\ncontext.global.batt_charge_efficiency = 0.89;   //90.7% AC->battery efficiency\ncontext.global.batt_discharge_efficiency = 0.92; //was 92% battery->AC efficiency but is actually less\ncontext.global.number_of_multiplus = 3;\ncontext.global.max_charge_setpoint = 9000; \ncontext.global.max_discharge_setpoint = 10000;\ncontext.global.idle_rate = 103;\ncontext.global.min_soc = 30;\ncontext.global.max_soc = 100;\ncontext.global.charge_rate = context.global.max_charge_setpoint; // used in batt control as charge setpoint for inverter\ncontext.global.discharge_rate = - context.global.max_discharge_setpoint; // used in batt control as discharge setpoint for inverter\ncontext.global.setpoint_adjusted = false;\ncontext.global.max_phase_power = 5550; // max power (<25A) so a single phase does not get overloaded\n\ncontext.global.batt_charge_rate = context.global.max_charge_setpoint * context.global.batt_charge_efficiency; // the net going into the batt\ncontext.global.batt_discharge_rate = context.global.max_discharge_setpoint / context.global.batt_discharge_efficiency; // the net coming out of the batt\n//context.global.min_soc_overnight = 10;\ncontext.global.setpoint_adjusted = false;\ncontext.global.data = context.global.data || {};\n\nreturn msg;",
+        "name": "Flow/Globals",
+        "func": "context.global.batt_capacity = 58000; //Wh\ncontext.global.batt_charge_efficiency = 0.89;   //90.7% AC->battery efficiency\ncontext.global.batt_discharge_efficiency = 0.93; //was 92% battery->AC efficiency but is actually less\ncontext.global.number_of_multiplus = 3;\ncontext.global.max_charge_setpoint = 9000; \ncontext.global.max_discharge_setpoint = 10000;\ncontext.global.idle_rate = 103;\ncontext.global.min_soc = 30;\ncontext.global.max_soc = 100;\ncontext.global.charge_rate = context.global.max_charge_setpoint; // used in batt control as charge setpoint for inverter\ncontext.global.discharge_rate = - context.global.max_discharge_setpoint; // used in batt control as discharge setpoint for inverter\ncontext.global.setpoint_adjusted = false;\ncontext.global.max_phase_power = 5550; // max power (<25A) so a single phase does not get overloaded\n\ncontext.global.batt_charge_rate = context.global.max_charge_setpoint * context.global.batt_charge_efficiency; // the net going into the batt\ncontext.global.batt_discharge_rate = context.global.max_discharge_setpoint / context.global.batt_discharge_efficiency; // the net coming out of the batt\n//context.global.min_soc_overnight = 10;\ncontext.global.setpoint_adjusted = false;\ncontext.global.data = context.global.data || {};\n\ncontext.flow.discovery_topic = context.flow.discovery_topic || \"ad_victron\";\ncontext.flow.root_topic = context.flow.root_topic || \"victron2\";\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
-        "y": 100,
+        "x": 370,
+        "y": 80,
         "wires": [
             [
                 "9601241ddb365638"
@@ -3912,7 +3625,7 @@
         "typeIsComboBox": true,
         "msgTrigger": "onChange",
         "x": 170,
-        "y": 2700,
+        "y": 2560,
         "wires": [
             [
                 "053fac255b781adb"
@@ -4219,8 +3932,8 @@
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 750,
-        "y": 2020,
+        "x": 810,
+        "y": 1820,
         "wires": [
             []
         ]
@@ -4262,8 +3975,8 @@
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 750,
-        "y": 2140,
+        "x": 810,
+        "y": 2000,
         "wires": [
             []
         ]
@@ -4432,7 +4145,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 2640,
+        "y": 2500,
         "wires": [
             [
                 "e3bf12371445b2b1"
@@ -4453,7 +4166,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 2640,
+        "y": 2500,
         "wires": [
             [
                 "77a5a34baaf865e8"
@@ -4483,7 +4196,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 2600,
+        "y": 2460,
         "wires": [
             [
                 "87ae15cf892b180a"
@@ -4504,7 +4217,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 2600,
+        "y": 2460,
         "wires": [
             [
                 "43cc388e6b01ecd9",
@@ -4534,7 +4247,7 @@
         "value": "payload",
         "valueType": "msg",
         "x": 530,
-        "y": 2620,
+        "y": 2480,
         "wires": []
     },
     {
@@ -4609,8 +4322,8 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 610,
-        "y": 2020,
+        "x": 670,
+        "y": 1840,
         "wires": [
             [
                 "485e1e0de5f5c20b"
@@ -4635,8 +4348,8 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 610,
-        "y": 2140,
+        "x": 670,
+        "y": 2000,
         "wires": [
             [
                 "880ab817a8cef6e1"
@@ -5122,7 +4835,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 100,
+        "y": 80,
         "wires": [
             [
                 "5d710e3b6330a15f"
@@ -5135,7 +4848,7 @@
         "z": "8d3b29f48feb985c",
         "name": "Version 2.7",
         "info": "Last edited: 2026-04-03\n- refactor of startup function\n- added multiple nre data fields\n- \n\n- Moved Battery control into node red\n- Moved Batt IQ Mode into node red\n- Fixed minor overload node issues forcing idle mode\n- add Outstanding modes (Grid Balance, Solar balance )\n- added modes to the smart monitor algorithm\n- removed dashboard\n- added tibber rates retrieval\n- default to Idle on start\n- made root_topic configurable so multiple flows can use different root topics\n- fixed solarbalance setpoint bug\n- fixed gridbalance setpoint bug",
-        "x": 840,
+        "x": 1180,
         "y": 140,
         "wires": []
     },
@@ -5150,7 +4863,7 @@
             "84f5b9b1e88bca69"
         ],
         "x": 475,
-        "y": 2580,
+        "y": 2440,
         "wires": []
     },
     {
@@ -5158,74 +4871,13 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T=inv_acin_kwh",
+        "name": "T=inv_acin1_kwh",
         "rules": [
             {
                 "t": "set",
                 "p": "topic",
                 "pt": "msg",
-                "to": "inv_acin_kwh",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 400,
-        "y": 1680,
-        "wires": [
-            [
-                "f372c7304a23c6e0"
-            ]
-        ]
-    },
-    {
-        "id": "1cd59b87c798a82e",
-        "type": "victron-input-vebus",
-        "z": "8d3b29f48feb985c",
-        "service": "com.victronenergy.vebus/276",
-        "path": "/Energy/InverterToAcIn1",
-        "serviceObj": {
-            "service": "com.victronenergy.vebus/276",
-            "name": "MultiPlus-II 48/5000/70-50",
-            "communityTag": "vebus"
-        },
-        "pathObj": {
-            "path": "/Energy/InverterToAcIn1",
-            "type": "float",
-            "name": "Energy Inverter to AcIn1 (kWh)"
-        },
-        "initial": "",
-        "name": "Energy Inverter to ACIn1 (kWh)",
-        "onlyChanges": true,
-        "roundValues": "3",
-        "outputs": 1,
-        "conditionalMode": false,
-        "outputTrue": "",
-        "outputFalse": "",
-        "debounce": "",
-        "x": 170,
-        "y": 1520,
-        "wires": [
-            [
-                "6c239935609f897a"
-            ]
-        ]
-    },
-    {
-        "id": "5ce0be143691ceeb",
-        "type": "change",
-        "z": "8d3b29f48feb985c",
-        "g": "61da6231d7299de3",
-        "name": "T=inv_acout1_kwh",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "inv_acout1_kwh",
+                "to": "inv_acin1_kwh",
                 "tot": "str"
             }
         ],
@@ -5235,10 +4887,38 @@
         "to": "",
         "reg": false,
         "x": 410,
-        "y": 1720,
+        "y": 1740,
         "wires": [
             [
-                "f372c7304a23c6e0"
+                "7c81a3a834b4d7d3"
+            ]
+        ]
+    },
+    {
+        "id": "5ce0be143691ceeb",
+        "type": "change",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "T=inv_acout_kwh",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "inv_acout_kwh",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 1780,
+        "wires": [
+            [
+                "01aa2d67f1a68c21"
             ]
         ]
     },
@@ -5260,16 +4940,16 @@
             "name": "Inverter To AcOut (kWh)"
         },
         "initial": "",
-        "name": "Energy Inverter to ACout (kWh)",
+        "name": "Energy Inverter to AcOut (kWh)",
         "onlyChanges": true,
-        "roundValues": "3",
+        "roundValues": "1",
         "outputs": 1,
         "conditionalMode": false,
         "outputTrue": "",
         "outputFalse": "",
         "debounce": "",
         "x": 170,
-        "y": 1720,
+        "y": 1780,
         "wires": [
             [
                 "5ce0be143691ceeb"
@@ -5281,13 +4961,13 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T= mp_acout1_L1",
+        "name": "T= inv_output_l1",
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "topic",
                 "pt": "msg",
-                "to": "mp_acout1_L1",
+                "to": "inv_output_l1",
                 "tot": "str"
             }
         ],
@@ -5297,11 +4977,11 @@
         "to": "",
         "reg": false,
         "x": 410,
-        "y": 1760,
+        "y": 1560,
         "wires": [
             [
                 "92381883a82b7e1b",
-                "f372c7304a23c6e0"
+                "54870597763a0246"
             ]
         ]
     },
@@ -5327,8 +5007,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 590,
-        "y": 1800,
+        "x": 630,
+        "y": 1600,
         "wires": [
             [
                 "caf7aa8649dff4d6"
@@ -5340,13 +5020,13 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T= mp_acout1_L2",
+        "name": "T= inv_output_l2",
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "topic",
                 "pt": "msg",
-                "to": "mp_acout1_L2",
+                "to": "inv_output_l2",
                 "tot": "str"
             }
         ],
@@ -5356,11 +5036,11 @@
         "to": "",
         "reg": false,
         "x": 410,
-        "y": 1800,
+        "y": 1600,
         "wires": [
             [
                 "92381883a82b7e1b",
-                "f372c7304a23c6e0"
+                "be3013645a74a27c"
             ]
         ]
     },
@@ -5369,13 +5049,13 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T= mp_acout1_L3",
+        "name": "T= inv_output_l3",
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "topic",
                 "pt": "msg",
-                "to": "mp_acout1_L3",
+                "to": "inv_output_l3",
                 "tot": "str"
             }
         ],
@@ -5385,11 +5065,11 @@
         "to": "",
         "reg": false,
         "x": 410,
-        "y": 1840,
+        "y": 1640,
         "wires": [
             [
                 "92381883a82b7e1b",
-                "f372c7304a23c6e0"
+                "c4329a13dddaadec"
             ]
         ]
     },
@@ -5398,20 +5078,21 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "Combine",
-        "func": "let total = 0;\nif (msg.payload.mp_acout1_L1 != null) {\n    total += msg.payload.mp_acout1_L1;\n}\nif (msg.payload.mp_acout1_L2 != null) {\n    total += msg.payload.mp_acout1_L2;\n}\nif (msg.payload.mp_acout1_L3 != null) {\n    total += msg.payload.mp_acout1_L3;\n}\nmsg.topic = \"inv_acout1_w\"\nmsg.payload = total;\nreturn msg;",
+        "name": "Combine inv_output_w",
+        "func": "let total = 0;\nif (msg.payload.inv_output_l1 != null) {\n    total += msg.payload.inv_output_l1;\n}\nif (msg.payload.inv_output_l2 != null) {\n    total += msg.payload.inv_output_l2;\n}\nif (msg.payload.inv_output_l3 != null) {\n    total += msg.payload.inv_output_l3;\n}\nmsg.topic = \"inv_output_w\"\nmsg.payload = total;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
-        "y": 1800,
+        "x": 810,
+        "y": 1600,
         "wires": [
             [
                 "30bf530551792467",
-                "433c748afaa3c0aa"
+                "433c748afaa3c0aa",
+                "9e900a16b28e3b19"
             ]
         ]
     },
@@ -5442,7 +5123,7 @@
         "outputFalse": "",
         "debounce": "",
         "x": 160,
-        "y": 1760,
+        "y": 1560,
         "wires": [
             [
                 "81998b12fdf5bbca"
@@ -5476,7 +5157,7 @@
         "outputFalse": "",
         "debounce": "",
         "x": 160,
-        "y": 1800,
+        "y": 1600,
         "wires": [
             [
                 "7a574e904d1d83d2"
@@ -5510,7 +5191,7 @@
         "outputFalse": "",
         "debounce": "",
         "x": 160,
-        "y": 1840,
+        "y": 1640,
         "wires": [
             [
                 "2178939c51b61f75"
@@ -5522,13 +5203,13 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T=mp_acin_L1",
+        "name": "T= inv_input_l1",
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "topic",
                 "pt": "msg",
-                "to": "mp_acin_L1",
+                "to": "inv_input_l1",
                 "tot": "str"
             }
         ],
@@ -5538,11 +5219,11 @@
         "to": "",
         "reg": false,
         "x": 400,
-        "y": 1880,
+        "y": 1420,
         "wires": [
             [
                 "96318c6c94fcfe5d",
-                "f372c7304a23c6e0"
+                "cf0b0925e5582126"
             ]
         ]
     },
@@ -5551,13 +5232,13 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T=mp_acin_L2",
+        "name": "T= inv_input_l2",
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "topic",
                 "pt": "msg",
-                "to": "mp_acin_L2",
+                "to": "inv_input_l2",
                 "tot": "str"
             }
         ],
@@ -5567,11 +5248,11 @@
         "to": "",
         "reg": false,
         "x": 400,
-        "y": 1920,
+        "y": 1460,
         "wires": [
             [
                 "96318c6c94fcfe5d",
-                "f372c7304a23c6e0"
+                "773b6718c12cb54a"
             ]
         ]
     },
@@ -5580,13 +5261,13 @@
         "type": "change",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "T=mp_acin_L3",
+        "name": "T= inv_input_l3",
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
+                "p": "topic",
                 "pt": "msg",
-                "to": "mp_acin_L3",
+                "to": "inv_input_l3",
                 "tot": "str"
             }
         ],
@@ -5596,11 +5277,11 @@
         "to": "",
         "reg": false,
         "x": 400,
-        "y": 1960,
+        "y": 1500,
         "wires": [
             [
                 "96318c6c94fcfe5d",
-                "f372c7304a23c6e0"
+                "18ebebd24e0b3df7"
             ]
         ]
     },
@@ -5626,8 +5307,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 590,
-        "y": 1920,
+        "x": 610,
+        "y": 1460,
         "wires": [
             [
                 "1e19bdeb808f8e3a"
@@ -5639,19 +5320,19 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "61da6231d7299de3",
-        "name": "Combine",
-        "func": "let total = 0;\nif (msg.payload.mp_acin_L1 != null) {\n    total += msg.payload.mp_acin_L1;\n}\nif (msg.payload.mp_acin_L2 != null) {\n    total += msg.payload.mp_acin_L2;\n}\nif (msg.payload.mp_acin_L3 != null) {\n    total += msg.payload.mp_acin_L3;\n}\nmsg.payload = total;\nreturn msg;",
+        "name": "Combine inv_input_w",
+        "func": "let total = 0;\nif (msg.payload.inv_input_l1 != null) {\n    total += msg.payload.inv_input_l1;\n}\nif (msg.payload.inv_input_l2 != null) {\n    total += msg.payload.inv_input_l2;\n}\nif (msg.payload.inv_input_l3 != null) {\n    total += msg.payload.inv_input_l3;\n}\nmsg.payload = total;\nmsg.topic = \"inv_input_w\"\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
-        "y": 1920,
+        "x": 800,
+        "y": 1460,
         "wires": [
             [
-                "f372c7304a23c6e0"
+                "2bcce4eb032dfa26"
             ]
         ]
     },
@@ -5675,11 +5356,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 900,
-        "y": 1780,
+        "x": 1080,
+        "y": 1660,
         "wires": [
             [
-                "f372c7304a23c6e0"
+                "4121a4bd7b04ce07"
             ]
         ]
     },
@@ -5703,11 +5384,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 900,
-        "y": 1820,
+        "x": 1080,
+        "y": 1700,
         "wires": [
             [
-                "f372c7304a23c6e0"
+                "bce915492cfd4c01"
             ]
         ]
     },
@@ -5738,7 +5419,7 @@
         "outputFalse": "",
         "debounce": "",
         "x": 150,
-        "y": 1880,
+        "y": 1420,
         "wires": [
             [
                 "45fa5767a4e01d60"
@@ -5772,7 +5453,7 @@
         "outputFalse": "",
         "debounce": "",
         "x": 150,
-        "y": 1920,
+        "y": 1460,
         "wires": [
             [
                 "c67e6f99699b0a7a"
@@ -5806,7 +5487,7 @@
         "outputFalse": "",
         "debounce": "",
         "x": 150,
-        "y": 1960,
+        "y": 1500,
         "wires": [
             [
                 "9dbb44f2543ba5fa"
@@ -6163,18 +5844,19 @@
         "type": "function",
         "z": "8d3b29f48feb985c",
         "g": "b362b271c03a0415",
-        "name": "Startup",
-        "func": "let discovery_topic = \"ad_victron\";\nlet root_topic = \"victron2\";\ncontext.flow.root_topic = root_topic;\n\n//node.warn(\"Sending config to AD\")\n\ncontext.global.data = context.global.data || {};\n\nlet pobject = [\n    //\"name\": [\"object_type\", \"varname\", \"unique_id\", \"payload_on/unit\", \"payload_off\", \"step\"],\n\n    //Setpoint\n    { type: \"climate\", name: \"ESS Setpoint\", varname: \"ess_setpoint\", unique_id: \"0x8000000002\", unit: \"Watt\", minmax: \"-12000|12000\", step: 100 },\n\n    //Switches\n    { type: \"select\", name: \"ESS Control Mode\", varname: \"ess_mode\", unique_id: \"0x8000000001\", options: [\"Mode 1\", \"Mode 2\"] },\n    { type: \"select\", name: \"Battery Mode\", varname: \"batt_mode\", unique_id: \"0x800000000E\", options: [\"Off\", \"Idle\", \"Charge\", \"Discharge\", \"IQ Smart Mode\", \"Grid Balance\", \"Solar Balance\", \"Manual\"] },\n    { type: \"select\", name: \"Battery State\", varname: \"batt_state\", unique_id: \"0x8000000014\", options: [\"Off\", \"Idle\", \"Charging\", \"Discharging\"] },\n    { type: \"switch\", name: \"MP2 On/Off state\", varname: \"mp2_switch_position\", unique_id: \"0x800000000F\", payload_on: \"On\", payload_off: \"Off\" },\n\n    //Sensors\n    { type: \"sensor\", name: \"Battery Percentage\", varname: \"batt_soc\", unique_id: \"0x8000000003\", unit: \"%\" },\n    { type: \"sensor\", name: \"Battery Voltage\", varname: \"batt_voltage\", unique_id: \"0x8000000004\", unit: \"V\" },\n    { type: \"sensor\", name: \"Battery Amps\", varname: \"batt_amps\", unique_id: \"0x8000000005\", unit: \"A\" },\n    { type: \"sensor\", name: \"Battery Temperature\", varname: \"batt_temp\", unique_id: \"0x800000010D\", unit: \"\\u00b0C\" },\n    \n    { type: \"sensor\", name: \"ET340 Grid L1 Watt\", varname: \"grid_l1_w\", unique_id: \"0x8000000006\", unit: \"W\" },\n    { type: \"sensor\", name: \"ET340 Grid L2 Watt\", varname: \"grid_l2_w\", unique_id: \"0x8000000007\", unit: \"W\" },\n    { type: \"sensor\", name: \"ET340 Grid L3 Watt\", varname: \"grid_l3_w\", unique_id: \"0x8000000008\", unit: \"W\" },\n    { type: \"sensor\", name: \"ET340 Grid Total Watt\", varname: \"grid_total_w\", unique_id: \"0x8000000108\", unit: \"W\" },\n\n    { type: \"sensor\", name: \"Smartshunt SOC\", varname: \"smartshunt_soc\", unique_id: \"0x8000000018\", unit: \"%\" },\n    \n    { type: \"sensor\", name: \"BMS Percentage\", varname: \"bms_soc\", unique_id: \"0x8000000010\", unit: \"%\" },\n    { type: \"sensor\", name: \"BMS Voltage\", varname: \"bms_voltage\", unique_id: \"0x8000000011\", unit: \"V\" },\n    { type: \"sensor\", name: \"BMS Amps\", varname: \"bms_amps\", unique_id: \"0x8000000013\", unit: \"A\" },\n    { type: \"sensor\", name: \"BMS Watt\", varname: \"bms_watt\", unique_id: \"0x8000000113\", unit: \"W\" },\n    \n    { type: \"sensor\", name: \"Battery Capacity\", varname: \"batt_capacity\", unique_id: \"0x8000000012\", unit: \"W\" },\n    { type: \"sensor\", name: \"Battery Charged kWh\", varname: \"batt_charged_kwh\", unique_id: \"0x8000000015_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"Battery Charged W\", varname: \"batt_charged_w\", unique_id: \"0x8000000015_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Battery Discharged kWh\", varname: \"batt_discharged_kwh\", unique_id: \"0x8000000016_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"Battery Discharged W\", varname: \"batt_discharged_w\", unique_id: \"0x8000000016_energy\", unit: \"W\" },\n    \n        //AC Out !!!\n    { type: \"sensor\", name: \"MP2 AC-Out-1 kWh\", varname: \"inv_acout1_kwh\", unique_id: \"0x8000000023_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"MP2 AC-Out-1 Watt\", varname: \"inv_acout1_w\", unique_id: \"0x8000000023_energy\", unit: \"W\" },\n\n    { type: \"sensor\", name: \"MP2 AC-In L1\", varname: \"mp_acin_L1\", unique_id: \"0x8000000024_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"MP2 AC-In L2\", varname: \"mp_acin_L2\", unique_id: \"0x8000000025_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"MP2 AC-In L3\", varname: \"mp_acin_L3\", unique_id: \"0x8000000026_energy\", unit: \"W\" },\n\n    { type: \"sensor\", name: \"MP2 AC-Out-1 L1\", varname: \"mp_acout1_L1\", unique_id: \"0x8000000027_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"MP2 AC-Out-1 L2\", varname: \"mp_acout1_L2\", unique_id: \"0x8000000028_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"MP2 AC-Out-1 L3\", varname: \"mp_acout1_L3\", unique_id: \"0x8000000029_energy\", unit: \"W\" },\n    \n    //{ type: \"sensor\", name: \"Combined SOC\", varname: \"combined_soc\", unique_id: \"0x8000000019\", unit: \"%\" },\n    //{ type: \"sensor\", name: \"Combined kWh\", varname: \"combined_kw\", unique_id: \"0x800000001A\", unit: \"W\" },\n    //{ type: \"sensor\", name: \"Combined Volt\", varname: \"combined_volt\", unique_id: \"0x8000000021\", unit: \"V\" },\n    //{ type: \"sensor\", name: \"Combined Amps\", varname: \"combined_amps\", unique_id: \"0x8000000022\", unit: \"A\" },\n    \n       //These four should measure the battery in/out\n    { type: \"sensor\", name: \"MP2 AcIn1-Inv kWh\", varname: \"acin_inv_kwh\", unique_id: \"0x8000000017_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"MP2 AcIn1-Inv Charged W\", varname: \"acin_inv_w\", unique_id: \"0x8000000017_energy\", unit: \"W\" },\n\n    { type: \"sensor\", name: \"MP2 Inv-AcIn1 kWh\", varname: \"inv_acin_kwh\", unique_id: \"0x800000002A_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"MP2 Inv-AcIn1 Watt\", varname: \"inv_acin_w\", unique_id: \"0x800000002A_energy\", unit: \"W\" },\n\n    //Temperatures\n       //Temperatures\n    { type: \"sensor\", name: \"Ceil Temp\", varname: \"temp_1\", unique_id: \"0x8000000009\", unit: \"\\u00b0C\" },\n    { type: \"sensor\", name: \"Lynx Temp\", varname: \"temp_2\", unique_id: \"0x800000000A\", unit: \"\\u00b0C\" },\n    { type: \"sensor\", name: \"Shunt Temp\", varname: \"temp_3\", unique_id: \"0x800000000B\", unit: \"\\u00b0C\" },\n    \n    //Text\n    { type: \"sensor\", name: \"ESS Charge State\", varname: \"charge_state\", unique_id: \"0x800000000C\", unit: \"text\" },\n    { type: \"sensor\", name: \"Battery Smart Mode\", varname: \"smart_mode\", unique_id: \"0x800000000D\", unit: \"text\" },\n];\n\n//node.warn(\"devices defined\");\n\nfunction extractDeviceId(unique_id) {\n    return unique_id;\n//    return unique_id.includes(\"_\") ? unique_id.split(\"_\")[0] : unique_id;\n}\n\nfunction buildDeviceBlock(device_id) {\n    return {\n        manufacturer: \"PA1DVB\",\n        model: \"Node-Red\",\n        name: \"BatteryControl\",\n        ids: [device_id]\n    };\n}\n\nfunction createBinaryObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"uniq_id\"] = unique_id;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createLightObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSelectObject(root, name, varname, unique_id, select_options)\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n\n    vjson[\"options\"] = [];\n    select_options.forEach(function (item) {\n        vjson[\"options\"].push(item);\n    });\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createNumberObject(root, name, varname, unique_id, step = 1)\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"step\"] = step;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n\n    let state_class = \"measurement\";\n\n    let device_class = \"\";\n    switch (unit_of_measurement)\n    {\n        case \"text\":\n            state_class = \"\";\n            break;\n        case \"%\":\n            if (\n                (name.indexOf('Batt') !== -1)\n                || (name.indexOf('batt') !== -1)\n                || (varname.indexOf('_soc') !== -1)\n            ) {\n                device_class = \"battery\";\n            } else {\n                device_class = \"percentage\";\n            }\n            break;\n        case \"°C\":\n        case \"C\":\n        case \"°F\":\n        case \"F\":\n            device_class = \"temperature\";\n            break;\n        case \"V\":\n        case \"mV\":\n            device_class = \"voltage\";\n            break;\n        case \"A\":\n        case \"mA\":\n            device_class = \"current\";\n            break;\n        case \"\\u00b0c\":\n        case \"\\u00b0C\":\n            device_class = \"temperature\";\n            break;\n        case \"W\":\n            device_class = \"power\";\n            break;\n        case \"kWh\":\n        case \"Wh\":\n            device_class = \"energy\";\n            state_class = \"total_increasing\";\n            break;\n    }\n\n    if (device_class != \"\")\n    {\n        vjson[\"device_class\"] = device_class;\n    }\n    if (state_class != \"\")\n    {\n        vjson[\"state_class\"] = state_class;\n    }\n\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n\n    return vjson\n}\n\nfunction createClimateObject(root, name, varname, unique_id, unit_of_measurement, min_value = 6.5, max_value = 35.0, step_size = 1.0)\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"temp_stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"temp_unit\"] = unit_of_measurement;\n    vjson[\"temp_cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"temp_stat_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    vjson[\"temp_step\"] = step_size;\n    vjson[\"min_temp\"] = min_value;\n    vjson[\"max_temp\"] = max_value;\n    return vjson\n}\n\n//node.log(\"Flow Initialisation\");\n\npobject.forEach((vobj) => {\n    let object_type = vobj.type;\n    let name = vobj.name;\n    let varname = vobj.varname;\n    //let unique_id = vobj.unique_id;\n    let unique_id = \"victron-\"+varname // use a alphanumerical string with victron as prefix\n    \n    //node.warn(\"building \"+varname+\" for device type \"+object_type)\n    let jobj = null\n    if (object_type == \"light\") {\n        let payload_on = vobj.payload_on;\n        let payload_off = vobj.payload_off;\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"switch\") {\n        let payload_on = vobj.payload_on;\n        let payload_off = vobj.payload_off;\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"binary_sensor\") {\n        let payload_on = vobj.payload_on;\n        let payload_off = vobj.payload_off;\n        jobj = createBinaryObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"select\") {\n        let soptions = vobj.options;\n        jobj = createSelectObject(root_topic, name, varname, unique_id, soptions);\n    }\n    else if (object_type == \"number\") {\n        let step = vobj.step;\n        jobj = createNumberObject(root_topic, name, varname, unique_id, step);\n    }\n    else if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj.unit;\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n    else if (object_type == \"climate\") {\n        let unit_of_measurement = vobj.unit;\n        let minmax = vobj.minmax;\n        let step_size = vobj.step;\n\n        let min_value = 6.5;\n        let max_value = 35;\n        let sresults = minmax.split(\"|\");\n        if (sresults.length == 2) {\n            min_value = parseFloat(sresults[0]);\n            max_value = parseFloat(sresults[1]);\n        }\n\n        jobj = createClimateObject(root_topic, name, varname, unique_id, unit_of_measurement, min_value, max_value, step_size);\n    }\n    //node.warn(jobj)\n    if (jobj != null) {\n        //if (unique_id.indexOf(\"_\") != -1)\n        //{\n        //    unique_id = unique_id.split(\"_\")[0];\n        //}\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.warn(\"publishing config ->: \" + dtopic);\n\n        node.send({ ...msg, payload: jobj, topic: dtopic, retain: true });\n    }\n});\nreturn null;\n",
+        "name": "Startup New",
+        "func": "let root_topic = context.flow.root_topic; // defined in Globals\nlet discovery_topic = context.flow.discovery_topic || \"ad_\"+root_topic; // defined in globals or ad_+...\ncontext.global.data = context.global.data || {};\n\n//node.warn(\"Sending config to AD\")\n\nlet pobject = [\n    //\"name\": [\"object_type\", \"varname\", \"unique_id\", \"payload_on/unit\", \"payload_off\", \"step\"],\n\n    //Setpoint\n    { type: \"climate\", name: \"ESS Setpoint\", varname: \"ess_setpoint\", unique_id: \"0x8000000002\", unit: \"Watt\", minmax: \"-12000|12000\", step: 100 },\n\n    //Switches\n    { type: \"select\", name: \"ESS Control Mode\", varname: \"ess_mode\", unique_id: \"0x8000000001\", options: [\"Mode 1\", \"Mode 2\"] },\n    { type: \"select\", name: \"Battery Mode\", varname: \"batt_mode\", unique_id: \"0x800000000E\", options: [\"Off\", \"Idle\", \"Charge\", \"Discharge\", \"IQ Smart Mode\", \"Grid Balance\", \"Solar Balance\", \"Manual\"] },\n    { type: \"select\", name: \"Battery State\", varname: \"batt_state\", unique_id: \"0x8000000014\", options: [\"Off\", \"Idle\", \"Charging\", \"Discharging\"] },\n    { type: \"switch\", name: \"MP2 On/Off state\", varname: \"mp2_switch_position\", unique_id: \"0x800000000F\", payload_on: \"On\", payload_off: \"Off\" },\n\n    //Sensors\n    { type: \"sensor\", name: \"Battery Percentage\", varname: \"batt_soc\", unique_id: \"0x8000000003\", unit: \"%\" },\n    { type: \"sensor\", name: \"Battery Voltage\", varname: \"batt_voltage\", unique_id: \"0x8000000004\", unit: \"V\" },\n    { type: \"sensor\", name: \"Battery Amps\", varname: \"batt_amps\", unique_id: \"0x8000000005\", unit: \"A\" },\n    { type: \"sensor\", name: \"Battery Temperature\", varname: \"batt_temp\", unique_id: \"0x800000010D\", unit: \"\\u00b0C\" },\n    \n    { type: \"sensor\", name: \"ET340 Grid L1 Watt\", varname: \"grid_l1_w\", unique_id: \"0x8000000006\", unit: \"W\" },\n    { type: \"sensor\", name: \"ET340 Grid L2 Watt\", varname: \"grid_l2_w\", unique_id: \"0x8000000007\", unit: \"W\" },\n    { type: \"sensor\", name: \"ET340 Grid L3 Watt\", varname: \"grid_l3_w\", unique_id: \"0x8000000008\", unit: \"W\" },\n    { type: \"sensor\", name: \"ET340 Grid Total Watt\", varname: \"grid_total_w\", unique_id: \"0x8000000108\", unit: \"W\" },\n\n    { type: \"sensor\", name: \"Smartshunt SOC\", varname: \"smartshunt_soc\", unique_id: \"0x8000000018\", unit: \"%\" },\n    \n    { type: \"sensor\", name: \"BMS Percentage\", varname: \"bms_soc\", unique_id: \"0x8000000010\", unit: \"%\" },\n    { type: \"sensor\", name: \"BMS Voltage\", varname: \"bms_voltage\", unique_id: \"0x8000000011\", unit: \"V\" },\n    { type: \"sensor\", name: \"BMS Amps\", varname: \"bms_amps\", unique_id: \"0x8000000013\", unit: \"A\" },\n    { type: \"sensor\", name: \"BMS Watt\", varname: \"bms_watt\", unique_id: \"0x8000000113\", unit: \"W\" },\n    \n    { type: \"sensor\", name: \"Battery Capacity\", varname: \"batt_capacity\", unique_id: \"0x8000000012\", unit: \"W\" },\n    { type: \"sensor\", name: \"Battery Charged kWh\", varname: \"batt_charged_kwh\", unique_id: \"0x8000000015_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"Battery Charged W\", varname: \"batt_charged_w\", unique_id: \"0x8000000015_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Battery Discharged kWh\", varname: \"batt_discharged_kwh\", unique_id: \"0x8000000016_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"Battery Discharged W\", varname: \"batt_discharged_w\", unique_id: \"0x8000000016_energy\", unit: \"W\" },\n    \n// Inverter Energy\n    { type: \"sensor\", name: \"Inverter AcOut kWh\", varname: \"inv_acout_kwh\", unique_id: \"0x8000000023_power\", unit: \"kWh\" },\n       //These four should measure the battery in/out\n    { type: \"sensor\", name: \"AcIn1-Inv kWh\", varname: \"acin1_inv_kwh\", unique_id: \"0x8000000017_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"AcIn1-Inv Charged W\", varname: \"acin_inv_w\", unique_id: \"0x8000000017_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Inv-AcIn1 kWh\", varname: \"inv_acin1_kwh\", unique_id: \"0x800000002A_power\", unit: \"kWh\" },\n    { type: \"sensor\", name: \"Inv-AcIn1 Watt\", varname: \"inv_acin_w\", unique_id: \"0x800000002A_energy\", unit: \"W\" },\n\n// Inverter input W\n    { type: \"sensor\", name: \"Inverter Input L1\", varname: \"inv_input_11\", unique_id: \"0x8000000024_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Inverter Input L2\", varname: \"inv_input_l2\", unique_id: \"0x8000000025_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Inverter Input L3\", varname: \"inv_input_l3\", unique_id: \"0x8000000026_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Inverter Input  W\",  varname: \"inv_input_w\", unique_id: \"0x8000000126_energy\", unit: \"W\" },\n    \n// Inverter Output W\n    { type: \"sensor\", name: \"Inverter AC-Out-1 L1\", varname: \"inv_output_l1\", unique_id: \"0x8000000027_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Inverter AC-Out-1 L2\", varname: \"inv_output_l2\", unique_id: \"0x8000000028_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Inverter AC-Out-1 L3\", varname: \"inv_output_l3\", unique_id: \"0x8000000029_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"Inverter Output W\",    varname: \"inv_output_w\", unique_id: \"0x8000000129_energy\", unit: \"W\" },\n\n// PV and AC Loads\n    { type: \"sensor\", name: \"PV Total W\",    varname: \"pv_total_w\", unique_id: \"0x8000000130_energy\", unit: \"W\" },\n    { type: \"sensor\", name: \"AC Loads W\",    varname: \"acl_total_w\", unique_id: \"0x8000000131_energy\", unit: \"W\" },\n    \n    \n    //{ type: \"sensor\", name: \"Combined SOC\", varname: \"combined_soc\", unique_id: \"0x8000000019\", unit: \"%\" },\n    //{ type: \"sensor\", name: \"Combined kWh\", varname: \"combined_kw\", unique_id: \"0x800000001A\", unit: \"W\" },\n    //{ type: \"sensor\", name: \"Combined Volt\", varname: \"combined_volt\", unique_id: \"0x8000000021\", unit: \"V\" },\n    //{ type: \"sensor\", name: \"Combined Amps\", varname: \"combined_amps\", unique_id: \"0x8000000022\", unit: \"A\" },\n    \n    //Temperatures\n       //Temperatures\n    { type: \"sensor\", name: \"Ceil Temp\", varname: \"temp_1\", unique_id: \"0x8000000009\", unit: \"\\u00b0C\" },\n    { type: \"sensor\", name: \"Lynx Temp\", varname: \"temp_2\", unique_id: \"0x800000000A\", unit: \"\\u00b0C\" },\n    { type: \"sensor\", name: \"Shunt Temp\", varname: \"temp_3\", unique_id: \"0x800000000B\", unit: \"\\u00b0C\" },\n    \n    //Text\n    { type: \"sensor\", name: \"ESS Charge State\", varname: \"charge_state\", unique_id: \"0x800000000C\", unit: \"text\" },\n    { type: \"sensor\", name: \"Battery Smart Mode\", varname: \"smart_mode\", unique_id: \"0x800000000D\", unit: \"text\" },\n];\n\n//node.warn(\"devices defined\");\nmsg.pobject = pobject;\nmsg.root_topic = context.flow.root_topic\nmsg.discovery_topic = context.flow.discovery_topic;\n\n//node.log(\"Flow Initialisation\");\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 80,
+        "x": 530,
+        "y": 60,
         "wires": [
             [
+                "8c8fe8c79f29b872",
                 "0ab475386efa005d"
             ]
         ]
@@ -6266,6 +5948,726 @@
         "y": 60,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "07174a23a244e8d7",
+        "type": "victron-input-vebus",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "service": "com.victronenergy.vebus/276",
+        "path": "/Energy/InverterToAcIn1",
+        "serviceObj": {
+            "service": "com.victronenergy.vebus/276",
+            "name": "MultiPlus-II 48/5000/70-50",
+            "communityTag": "vebus"
+        },
+        "pathObj": {
+            "path": "/Energy/InverterToAcIn1",
+            "type": "float",
+            "name": "Energy Inverter to AcIn1 (kWh)"
+        },
+        "initial": "",
+        "name": "Energy Inverter to AcIn1 (kWh)",
+        "onlyChanges": true,
+        "roundValues": "1",
+        "outputs": 1,
+        "conditionalMode": false,
+        "outputTrue": "",
+        "outputFalse": "",
+        "debounce": "",
+        "x": 160,
+        "y": 1740,
+        "wires": [
+            [
+                "6c239935609f897a"
+            ]
+        ]
+    },
+    {
+        "id": "07aae5c9d8c9b62c",
+        "type": "link in",
+        "z": "8d3b29f48feb985c",
+        "g": "9f7e7bb0a86e90c8",
+        "name": "ToMQTT-RL",
+        "links": [
+            "f372c7304a23c6e0"
+        ],
+        "x": 775,
+        "y": 100,
+        "wires": [
+            [
+                "9ee290e31a66a382"
+            ]
+        ]
+    },
+    {
+        "id": "2c7e645602abb2b0",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 955,
+        "y": 1360,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "e42eadf219f1e15b",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 525,
+        "y": 1280,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "234f4d9f7bab6d42",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 675,
+        "y": 1360,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "2e96659d5661c29b",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 515,
+        "y": 1360,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "cf0b0925e5582126",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 565,
+        "y": 1420,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "773b6718c12cb54a",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 915,
+        "y": 1500,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "18ebebd24e0b3df7",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 565,
+        "y": 1500,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "54870597763a0246",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 545,
+        "y": 1560,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "2d0d78749ed1b756",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 835,
+        "y": 1580,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "c4329a13dddaadec",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 555,
+        "y": 1640,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "62630059de05c2ae",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 535,
+        "y": 1700,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "7c81a3a834b4d7d3",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 535,
+        "y": 1740,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "01aa2d67f1a68c21",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 555,
+        "y": 1780,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "bce915492cfd4c01",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1235,
+        "y": 1700,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "4121a4bd7b04ce07",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1235,
+        "y": 1660,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "2bcce4eb032dfa26",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 945,
+        "y": 1460,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "be3013645a74a27c",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 655,
+        "y": 1580,
+        "wires": [
+            [
+                "2d0d78749ed1b756"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "9e900a16b28e3b19",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1005,
+        "y": 1600,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "bf491d84922ba521",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1005,
+        "y": 1860,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "733815c3415b96e4",
+        "type": "delay",
+        "z": "8d3b29f48feb985c",
+        "g": "61da6231d7299de3",
+        "name": "RL",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1025,
+        "y": 1920,
+        "wires": [
+            [
+                "f372c7304a23c6e0"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "40d327d4ce4ec2c0",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "9e46f3329af496ae",
+        "name": "ESS SP topic",
+        "func": "msg.topic = context.flow.root_topic + \"/set/ess_setpoint\"\nmsg.action = \"subscribe\"\nmsg.payload = null;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "31d9308ecec4dbde"
+            ]
+        ]
+    },
+    {
+        "id": "80776ad7fdf15462",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "cf8892e230473d3f",
+        "name": "ESS Mode topic",
+        "func": "msg.topic = context.flow.root_topic + \"/set/ess_mode\"\nmsg.action = \"subscribe\"\nmsg.payload = null;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 2300,
+        "wires": [
+            [
+                "302c4817a35421ee"
+            ]
+        ]
+    },
+    {
+        "id": "8c8fe8c79f29b872",
+        "type": "link out",
+        "z": "8d3b29f48feb985c",
+        "g": "b362b271c03a0415",
+        "name": "Start",
+        "mode": "link",
+        "links": [
+            "23e1c22f918c3ebe",
+            "baef46aeb315c403",
+            "1e73ca9119e30ea6"
+        ],
+        "x": 665,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "23e1c22f918c3ebe",
+        "type": "link in",
+        "z": "8d3b29f48feb985c",
+        "g": "9e46f3329af496ae",
+        "name": "Start",
+        "links": [
+            "8c8fe8c79f29b872"
+        ],
+        "x": 55,
+        "y": 240,
+        "wires": [
+            [
+                "40d327d4ce4ec2c0"
+            ]
+        ]
+    },
+    {
+        "id": "baef46aeb315c403",
+        "type": "link in",
+        "z": "8d3b29f48feb985c",
+        "g": "cf8892e230473d3f",
+        "name": "Start",
+        "links": [
+            "8c8fe8c79f29b872"
+        ],
+        "x": 55,
+        "y": 2300,
+        "wires": [
+            [
+                "80776ad7fdf15462"
+            ]
+        ]
+    },
+    {
+        "id": "8c01f2d48ab51a94",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "ESS Batt topic",
+        "func": "msg.topic = context.flow.root_topic + \"/set/batt_mode\"\nmsg.action = \"subscribe\"\nmsg.payload = null;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 2680,
+        "wires": [
+            [
+                "3b35d6d218a12c21"
+            ]
+        ]
+    },
+    {
+        "id": "1e73ca9119e30ea6",
+        "type": "link in",
+        "z": "8d3b29f48feb985c",
+        "name": "Start",
+        "links": [
+            "8c8fe8c79f29b872"
+        ],
+        "x": 55,
+        "y": 2700,
+        "wires": [
+            [
+                "8c01f2d48ab51a94"
+            ]
         ]
     },
     {
@@ -6386,7 +6788,7 @@
         }
     },
     {
-        "id": "507078a30e3e59b3",
+        "id": "dfd5fb2ec2136c66",
         "type": "global-config",
         "env": [],
         "modules": {
