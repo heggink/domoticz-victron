@@ -1,0 +1,489 @@
+[
+    {
+        "id": "13fd8d3e42908a31",
+        "type": "tab",
+        "label": "Domo comms",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "50c5e67c4fb00bfc",
+        "type": "group",
+        "z": "13fd8d3e42908a31",
+        "name": "MQTT",
+        "style": {
+            "stroke": "#ff7f7f",
+            "fill": "#ffcf3f",
+            "label": true
+        },
+        "nodes": [
+            "e3c668deea686995",
+            "8e46a5ee30a3df96",
+            "dfb0f0d3932d8d10",
+            "8e6a894750fa115d",
+            "e59d555255ef29a0",
+            "bcff41bce48abac6",
+            "e97c1d773d4627cb",
+            "8fe78cb74a76da7b",
+            "6c1b4abf861e39fc",
+            "7c74e0718d47277c"
+        ],
+        "x": 54,
+        "y": 339,
+        "w": 582,
+        "h": 222
+    },
+    {
+        "id": "763d9651bff3c8d8",
+        "type": "group",
+        "z": "13fd8d3e42908a31",
+        "name": "Domo logging",
+        "style": {
+            "stroke": "#ff0000",
+            "fill": "#ffbfbf",
+            "label": true
+        },
+        "nodes": [
+            "4943b9a1398b4d9d",
+            "54ff11746108429f",
+            "44d07b9e813b1e68",
+            "dae890e2161d6a61",
+            "6744f5332974af3d",
+            "47ac3bb0d650e7cd",
+            "05d89bda971debf5",
+            "1ade85b91dd1ef10",
+            "1286c1e855b91cf4",
+            "cb675392ac82f529"
+        ],
+        "x": 54,
+        "y": 59,
+        "w": 712,
+        "h": 262
+    },
+    {
+        "id": "4943b9a1398b4d9d",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "log_domo",
+        "func": "let str = msg.payload;\nlet alert = encodeURIComponent(str);\nlet level=2\nmsg.url = \"http://192.168.1.109:18081/json.htm?type=command&param=addlogmessage&message=\"+alert+\"&level=\"+level;\n//node.warn(msg.url)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "54ff11746108429f"
+            ]
+        ]
+    },
+    {
+        "id": "54ff11746108429f",
+        "type": "http request",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "dae890e2161d6a61"
+            ]
+        ]
+    },
+    {
+        "id": "44d07b9e813b1e68",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "log_domo",
+        "links": [
+            "47ac3bb0d650e7cd",
+            "031b9cbf3eb7ea67",
+            "0b2f6c937ecdd315"
+        ],
+        "x": 105,
+        "y": 100,
+        "wires": [
+            [
+                "4943b9a1398b4d9d"
+            ]
+        ]
+    },
+    {
+        "id": "dae890e2161d6a61",
+        "type": "debug",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "Domo result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6744f5332974af3d",
+        "type": "inject",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "Node Red Log",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "2",
+        "payload": "Victron Node Red restarted",
+        "payloadType": "str",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "47ac3bb0d650e7cd"
+            ]
+        ]
+    },
+    {
+        "id": "47ac3bb0d650e7cd",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "44d07b9e813b1e68"
+        ],
+        "x": 335,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "05d89bda971debf5",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "alert_domo",
+        "func": "let str = msg.payload;\nlet alert = encodeURIComponent(str);\nlet subject=msg.topic\nmsg.url = \"http://192.168.1.109:18081/json.htm?type=command&param=sendnotification&subject=\"+subject+\"&body=\"+alert;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "54ff11746108429f"
+            ]
+        ]
+    },
+    {
+        "id": "1ade85b91dd1ef10",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "alert_domo",
+        "links": [
+            "cb675392ac82f529"
+        ],
+        "x": 105,
+        "y": 160,
+        "wires": [
+            [
+                "05d89bda971debf5"
+            ]
+        ]
+    },
+    {
+        "id": "1286c1e855b91cf4",
+        "type": "inject",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "Node Red Alert",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "ALERT",
+        "payload": "Victron Node Red restarted",
+        "payloadType": "str",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "cb675392ac82f529"
+            ]
+        ]
+    },
+    {
+        "id": "cb675392ac82f529",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "g": "763d9651bff3c8d8",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "1ade85b91dd1ef10"
+        ],
+        "x": 335,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e3c668deea686995",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "construct MQTT-AD",
+        "func": "// messages on output 1 will be rate limit\n\nlet final_topic = msg.root_topic + \"/\" + msg.topic + \"/state\";\n\nlet data_msg = context.global.data || {};\nlet data_timestamp = context.global.timetamp || {};\nlet topic = msg.topic;\n\nlet sendnow = false;\n\nif (typeof msg.sendnow !== 'undefined') {\n    sendnow = (msg.sendnow == true);\n}\n\ndata_msg[topic] = msg.payload;\ndata_timestamp[topic] = Date.now();\ncontext.global.data = data_msg;\ncontext.global.timetamp = data_timestamp;\n\nmsg.topic = final_topic;\n\nlet msg2 = null;\n\nif (sendnow == true) {\n    //node.warn('send now: ' + msg.topic);\n    //send directly\n    msg2 = msg;\n    msg = null;\n}\n\nreturn [msg, msg2];\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "8e6a894750fa115d"
+            ],
+            [
+                "8fe78cb74a76da7b"
+            ]
+        ]
+    },
+    {
+        "id": "8e46a5ee30a3df96",
+        "type": "mqtt out",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "Domoticz-MQTT",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ee1bb25c871ce5fc",
+        "x": 520,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "dfb0f0d3932d8d10",
+        "type": "debug",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "JSON Output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 165,
+        "y": 480,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "8e6a894750fa115d",
+        "type": "delay",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "Rate Limit",
+        "pauseType": "timed",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 460,
+        "y": 380,
+        "wires": [
+            [
+                "e97c1d773d4627cb"
+            ]
+        ]
+    },
+    {
+        "id": "e59d555255ef29a0",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "ToMQTT-Limit-D",
+        "links": [
+            "ac0f2b4f46e7672b"
+        ],
+        "x": 105,
+        "y": 400,
+        "wires": [
+            [
+                "e3c668deea686995"
+            ]
+        ]
+    },
+    {
+        "id": "bcff41bce48abac6",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "ToMQTT-Direct-D",
+        "links": [
+            "8fe78cb74a76da7b",
+            "e97c1d773d4627cb"
+        ],
+        "x": 95,
+        "y": 480,
+        "wires": [
+            [
+                "dfb0f0d3932d8d10",
+                "8e46a5ee30a3df96"
+            ]
+        ]
+    },
+    {
+        "id": "e97c1d773d4627cb",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "ToMQTT-Direct",
+        "mode": "link",
+        "links": [
+            "bcff41bce48abac6"
+        ],
+        "x": 555,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8fe78cb74a76da7b",
+        "type": "link out",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "ToMQTT-Direct",
+        "mode": "link",
+        "links": [
+            "bcff41bce48abac6"
+        ],
+        "x": 425,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "6c1b4abf861e39fc",
+        "type": "function",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "Create MQTT-AD messages",
+        "func": "let discovery_topic = msg.discovery_topic;\nlet root_topic = msg.root_topic;\nlet pobject = msg.pobject;\n\ncontext.global.data = context.global.data || {};\n\nfunction extractDeviceId(unique_id) {\n    return unique_id;\n//    return unique_id.includes(\"_\") ? unique_id.split(\"_\")[0] : unique_id;\n}\n\nfunction buildDeviceBlock(device_id) {\n    return {\n        manufacturer: \"PA1DVB\",\n        model: \"Node-Red\",\n        name: \"BatteryControl\",\n        ids: [device_id]\n    };\n}\n\nfunction createBinaryObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"uniq_id\"] = unique_id;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createLightObject(root, name, varname, unique_id, payload_on = \"ON\", payload_off = \"OFF\")\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"payload_on\"] = payload_on;\n    vjson[\"payload_off\"] = payload_off;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSelectObject(root, name, varname, unique_id, select_options)\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n\n    vjson[\"options\"] = [];\n    select_options.forEach(function (item) {\n        vjson[\"options\"].push(item);\n    });\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createNumberObject(root, name, varname, unique_id, step = 1)\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"step\"] = step;\n    vjson[\"cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"uniq_id\"] = unique_id;\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    return vjson;\n}\n\nfunction createSensorObject(root, name, varname, unique_id, unit_of_measurement)\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"unit_of_meas\"] = unit_of_measurement;\n\n    let state_class = \"measurement\";\n\n    let device_class = \"\";\n    switch (unit_of_measurement)\n    {\n        case \"text\":\n            state_class = \"\";\n            break;\n        case \"%\":\n            if (\n                (name.indexOf('Batt') !== -1)\n                || (name.indexOf('batt') !== -1)\n                || (varname.indexOf('_soc') !== -1)\n            ) {\n                device_class = \"battery\";\n            } else {\n                device_class = \"percentage\";\n            }\n            break;\n        case \"°C\":\n        case \"C\":\n        case \"°F\":\n        case \"F\":\n            device_class = \"temperature\";\n            break;\n        case \"V\":\n        case \"mV\":\n            device_class = \"voltage\";\n            break;\n        case \"A\":\n        case \"mA\":\n            device_class = \"current\";\n            break;\n        case \"\\u00b0c\":\n        case \"\\u00b0C\":\n            device_class = \"temperature\";\n            break;\n        case \"W\":\n            device_class = \"power\";\n            break;\n        case \"kWh\":\n        case \"Wh\":\n            device_class = \"energy\";\n            state_class = \"total_increasing\";\n            break;\n    }\n\n    if (device_class != \"\")\n    {\n        vjson[\"device_class\"] = device_class;\n    }\n    if (state_class != \"\")\n    {\n        vjson[\"state_class\"] = state_class;\n    }\n\n    //vjson[\"val_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n\n    return vjson\n}\n\nfunction createClimateObject(root, name, varname, unique_id, unit_of_measurement, min_value = 6.5, max_value = 35.0, step_size = 1.0)\n{\n    let device_id = extractDeviceId(unique_id);\n    let vjson = {\n        \"temp_stat_t\": \"~/\" + varname + \"/state\",\n        \"dev\": buildDeviceBlock(device_id),\n        // Fix 12: Add origin block\n        \"origin\": {\n            \"name\": \"Victron Node-RED\",\n            \"sw_version\": \"1.0\"\n        }\n    };\n    vjson[\"~\"] = root;\n    vjson[\"name\"] = name;\n    vjson[\"uniq_id\"] = unique_id;\n    vjson[\"temp_unit\"] = unit_of_measurement;\n    vjson[\"temp_cmd_t\"] = \"~/set/\" + varname;\n    vjson[\"temp_stat_tpl\"] = \"{{ value_json.\" + varname + \" }}\";\n    vjson[\"temp_step\"] = step_size;\n    vjson[\"min_temp\"] = min_value;\n    vjson[\"max_temp\"] = max_value;\n    return vjson\n}\n\n//node.log(\"Flow Initialisation\");\n\npobject.forEach((vobj) => {\n    let object_type = vobj.type;\n    let name = vobj.name;\n    let varname = vobj.varname;\n    //let unique_id = vobj.unique_id;\n    let unique_id = \"victron-\"+varname // use a alphanumerical string with victron as prefix\n    \n    //node.warn(\"building \"+varname+\" for device type \"+object_type)\n    let jobj = null\n    if (object_type == \"light\") {\n        let payload_on = vobj.payload_on;\n        let payload_off = vobj.payload_off;\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"switch\") {\n        let payload_on = vobj.payload_on;\n        let payload_off = vobj.payload_off;\n        jobj = createLightObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"binary_sensor\") {\n        let payload_on = vobj.payload_on;\n        let payload_off = vobj.payload_off;\n        jobj = createBinaryObject(root_topic, name, varname, unique_id, payload_on, payload_off);\n    }\n    else if (object_type == \"select\") {\n        let soptions = vobj.options;\n        jobj = createSelectObject(root_topic, name, varname, unique_id, soptions);\n    }\n    else if (object_type == \"number\") {\n        let step = vobj.step;\n        jobj = createNumberObject(root_topic, name, varname, unique_id, step);\n    }\n    else if (object_type == \"sensor\") {\n        let unit_of_measurement = vobj.unit;\n        jobj = createSensorObject(root_topic, name, varname, unique_id, unit_of_measurement);\n    }\n    else if (object_type == \"climate\") {\n        let unit_of_measurement = vobj.unit;\n        let minmax = vobj.minmax;\n        let step_size = vobj.step;\n\n        let min_value = 6.5;\n        let max_value = 35;\n        let sresults = minmax.split(\"|\");\n        if (sresults.length == 2) {\n            min_value = parseFloat(sresults[0]);\n            max_value = parseFloat(sresults[1]);\n        }\n\n        jobj = createClimateObject(root_topic, name, varname, unique_id, unit_of_measurement, min_value, max_value, step_size);\n    }\n    //node.warn(jobj)\n    if (jobj != null) {\n        //if (unique_id.indexOf(\"_\") != -1)\n        //{\n        //    unique_id = unique_id.split(\"_\")[0];\n        //}\n        let dtopic = discovery_topic + \"/\" + object_type + \"/\" + unique_id + \"/\" + varname + \"/config\"\n        //node.warn(\"publishing config ->: \" + dtopic);\n\n        node.send({ ...msg, payload: jobj, topic: dtopic, retain: true });\n    }\n});\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 520,
+        "wires": [
+            [
+                "8e46a5ee30a3df96"
+            ]
+        ]
+    },
+    {
+        "id": "7c74e0718d47277c",
+        "type": "link in",
+        "z": "13fd8d3e42908a31",
+        "g": "50c5e67c4fb00bfc",
+        "name": "Create MQTT-AD",
+        "links": [
+            "0ab475386efa005d"
+        ],
+        "x": 95,
+        "y": 520,
+        "wires": [
+            [
+                "6c1b4abf861e39fc"
+            ]
+        ]
+    },
+    {
+        "id": "ee1bb25c871ce5fc",
+        "type": "mqtt-broker",
+        "name": "freenas",
+        "broker": "192.168.1.109",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
