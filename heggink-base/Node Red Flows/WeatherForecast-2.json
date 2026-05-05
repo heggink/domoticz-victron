@@ -1,0 +1,574 @@
+[
+    {
+        "id": "tab_wf",
+        "type": "tab",
+        "label": "Weather Forecast Lelystad"
+    },
+    {
+        "id": "cmt_setup",
+        "type": "comment",
+        "z": "tab_wf",
+        "name": "MQTT → existing broker 192.168.1.109 | Topic: weather/lelystad/forecast | Runs on deploy + every hour",
+        "info": "Sources:\n1. OpenWeatherMap  — 3h/5day free tier, key pre-filled\n2. Open-Meteo      — free, no key, 1h native\n3. MET Norway (Yr) — free, no key, 1h native\n4. KNMI station 269— free API key pre-filled, current obs only\n5. Buienradar rain — free, 5-min radar for next 2h\n\nThe KNMI node makes 3 sequential HTTPS calls internally (file list → temp URL → download).\nIt contributes observed data to the current-hour slot only.",
+        "x": 220,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "n_inject",
+        "type": "inject",
+        "z": "tab_wf",
+        "name": "Every Hour",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "trigger",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "trigger",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "n_http_owm",
+                "n_http_meteo",
+                "n_http_metno",
+                "n_http_rain",
+                "n_http_weerlive",
+                "n_http_buienradar_obs",
+                "n_http_weatherapi"
+            ]
+        ]
+    },
+    {
+        "id": "n_http_owm",
+        "type": "http request",
+        "z": "tab_wf",
+        "name": "OpenWeatherMap",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openweathermap.org/data/2.5/forecast?lat=52.5185&lon=5.4752&appid=&units=metric",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "n_parse_owm"
+            ]
+        ]
+    },
+    {
+        "id": "n_http_meteo",
+        "type": "http request",
+        "z": "tab_wf",
+        "name": "Open-Meteo",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=52.5185&longitude=5.4752&hourly=temperature_2m,precipitation_probability,precipitation,windspeed_10m,winddirection_10m,weathercode,cloudcover,shortwave_radiation,direct_radiation,diffuse_radiation,uv_index&forecast_days=3",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 330,
+        "y": 200,
+        "wires": [
+            [
+                "n_parse_meteo"
+            ]
+        ]
+    },
+    {
+        "id": "n_http_metno",
+        "type": "http request",
+        "z": "tab_wf",
+        "name": "MET Norway (Yr)",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=52.5185&lon=5.4752",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "name": "User-Agent",
+                "value": "WeatherForecastLelystad/1.0 herman.eggink@outlook.com"
+            }
+        ],
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "n_parse_metno"
+            ]
+        ]
+    },
+    {
+        "id": "n_http_rain",
+        "type": "http request",
+        "z": "tab_wf",
+        "name": "Buienradar Rain",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://gpsgadget.buienradar.nl/data/raintext/?lat=52.518&lon=5.475",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 340,
+        "y": 280,
+        "wires": [
+            [
+                "n_parse_rain"
+            ]
+        ]
+    },
+    {
+        "id": "n_http_weerlive",
+        "type": "http request",
+        "z": "tab_wf",
+        "name": "Weerlive.nl",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://weerlive.nl/api/weerlive_api_v2.php?key=&locatie=Lelystad",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "n_parse_weerlive"
+            ]
+        ]
+    },
+    {
+        "id": "n_parse_weerlive",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Parse Weerlive",
+        "func": "try {\n    var data   = msg.payload;\n    var slots  = {};\n    var now    = Date.now();\n    var cutoff = now + 48 * 3600 * 1000;\n\n    // uur_verw: hourly forecast array, 24 slots\n    // timestamp is UTC Unix seconds — use it directly for the key\n    // gr is already in W/m² (global radiation) — feeds solar consensus\n    if (data && data.uur_verw) {\n        data.uur_verw.forEach(function(item) {\n            var slotMs = item.timestamp * 1000;\n            if (slotMs < now - 3600000 || slotMs > cutoff) return;\n            var d = new Date(slotMs);\n            d.setMinutes(0, 0, 0);\n            var key = d.toISOString();\n            slots[key] = {\n                temp_c:               item.temp,\n                wind_kph:             item.windkmh,\n                wind_dir_deg:         item.windrgr,\n                precip_mm:            item.neersl  || 0,\n                rain_prob:            null,\n                cloud_pct:            null,\n                solar_radiation_wm2:  (item.gr !== undefined && item.gr !== null) ? item.gr : null,\n                direct_radiation_wm2: null,\n                diffuse_radiation_wm2:null,\n                uv_index:             null\n            };\n        });\n    }\n    msg.payload = { source: 'weerlive', slots: slots };\n} catch(e) {\n    node.warn('Weerlive parse error: ' + e.message);\n    msg.payload = { source: 'weerlive', slots: {} };\n}\nmsg.topic = 'weather_agg';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "n_join"
+            ]
+        ]
+    },
+    {
+        "id": "n_parse_owm",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Parse OWM",
+        "func": "try {\n    var data = msg.payload;\n    var slots = {};\n    var now    = Date.now();\n    var cutoff = now + 48 * 3600 * 1000;\n\n    if (data && data.list) {\n        data.list.forEach(function(item) {\n            var baseTime = item.dt * 1000;\n            if (baseTime > cutoff + 3 * 3600 * 1000) return;\n            // OWM gives 3h blocks — copy values to each of the 3 hourly slots\n            for (var h = 0; h < 3; h++) {\n                var slotMs = baseTime + h * 3600 * 1000;\n                if (slotMs < now - 3600000 || slotMs > cutoff) continue;\n                var d = new Date(slotMs);\n                d.setMinutes(0, 0, 0);\n                var key = d.toISOString();\n                var precip3h = (item.rain && item.rain['3h']) ? item.rain['3h'] : 0;\n                var snow3h   = (item.snow && item.snow['3h']) ? item.snow['3h'] : 0;\n                slots[key] = {\n                    temp_c:       item.main.temp,\n                    wind_kph:     (item.wind.speed || 0) * 3.6,\n                    wind_dir_deg: item.wind.deg || 0,\n                    precip_mm:    (precip3h + snow3h) / 3,\n                    rain_prob:    item.pop || 0,\n                    cloud_pct:    item.clouds ? item.clouds.all : null\n                };\n            }\n        });\n    }\n    msg.payload = { source: 'owm', slots: slots };\n} catch(e) {\n    node.warn('OWM parse error: ' + e.message);\n    msg.payload = { source: 'owm', slots: {} };\n}\nmsg.topic = 'weather_agg';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "n_join"
+            ]
+        ]
+    },
+    {
+        "id": "n_parse_meteo",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Parse Open-Meteo",
+        "func": "try {\n    var data = msg.payload;\n    var slots = {};\n    var now    = Date.now();\n    var cutoff = now + 48 * 3600 * 1000;\n\n    if (data && data.hourly && data.hourly.time) {\n        var h = data.hourly;\n        h.time.forEach(function(t, i) {\n            // Times arrive as 'YYYY-MM-DDTHH:mm' (no Z) — treat as UTC\n            var isoKey = (t.length === 16) ? t + ':00Z' : t;\n            var slotMs = new Date(isoKey).getTime();\n            if (isNaN(slotMs) || slotMs < now - 3600000 || slotMs > cutoff) return;\n            var d = new Date(slotMs);\n            d.setMinutes(0, 0, 0);\n            var key = d.toISOString();\n            slots[key] = {\n                temp_c:       h.temperature_2m          ? h.temperature_2m[i]                      : null,\n                wind_kph:     h.windspeed_10m           ? h.windspeed_10m[i]                       : null,\n                wind_dir_deg: h.winddirection_10m       ? h.winddirection_10m[i]                   : null,\n                precip_mm:    h.precipitation           ? (h.precipitation[i] || 0)                : 0,\n                rain_prob:             h.precipitation_probability  ? (h.precipitation_probability[i]  || 0) / 100 : null,\n                cloud_pct:             h.cloudcover                 ? h.cloudcover[i]                             : null,\n                solar_radiation_wm2:   h.shortwave_radiation        ? Math.round(h.shortwave_radiation[i]  || 0)   : null,\n                direct_radiation_wm2:  h.direct_radiation           ? Math.round(h.direct_radiation[i]    || 0)   : null,\n                diffuse_radiation_wm2: h.diffuse_radiation          ? Math.round(h.diffuse_radiation[i]   || 0)   : null,\n                uv_index:              h.uv_index                   ? Math.round((h.uv_index[i]           || 0) * 10) / 10 : null\n            };\n        });\n    }\n    msg.payload = { source: 'open_meteo', slots: slots };\n} catch(e) {\n    node.warn('Open-Meteo parse error: ' + e.message);\n    msg.payload = { source: 'open_meteo', slots: {} };\n}\nmsg.topic = 'weather_agg';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "n_join"
+            ]
+        ]
+    },
+    {
+        "id": "n_parse_metno",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Parse MET Norway",
+        "func": "try {\n    var data = msg.payload;\n    var slots = {};\n    var now    = Date.now();\n    var cutoff = now + 48 * 3600 * 1000;\n\n    if (data && data.properties && data.properties.timeseries) {\n        data.properties.timeseries.forEach(function(entry) {\n            var slotMs = new Date(entry.time).getTime();\n            if (slotMs < now - 3600000 || slotMs > cutoff) return;\n            var d = new Date(slotMs);\n            d.setMinutes(0, 0, 0);\n            var key    = d.toISOString();\n            var inst   = entry.data.instant.details;\n            var next1h = entry.data.next_1_hours;\n            // wind_speed from MET Norway is in m/s — convert to km/h\n            // ultraviolet_index_clear_sky only present in complete API\n            var uv = (inst.ultraviolet_index_clear_sky !== undefined) ? inst.ultraviolet_index_clear_sky : null;\n            slots[key] = {\n                temp_c:       inst.air_temperature,\n                wind_kph:     (inst.wind_speed || 0) * 3.6,\n                wind_dir_deg: inst.wind_from_direction || 0,\n                precip_mm:    next1h ? (next1h.details.precipitation_amount || 0) : null,\n                rain_prob:    null,\n                cloud_pct:    (inst.cloud_area_fraction !== undefined) ? inst.cloud_area_fraction : null,\n                uv_index:     uv\n            };\n        });\n    }\n    msg.payload = { source: 'met_norway', slots: slots };\n} catch(e) {\n    node.warn('MET Norway parse error: ' + e.message);\n    msg.payload = { source: 'met_norway', slots: {} };\n}\nmsg.topic = 'weather_agg';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 240,
+        "wires": [
+            [
+                "n_join"
+            ]
+        ]
+    },
+    {
+        "id": "n_parse_rain",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Parse Buienradar Rain",
+        "func": "try {\n    var text = msg.payload;\n    var rainCurve = [];\n\n    if (typeof text === 'string' && text.trim().length > 0) {\n        var baseTime = new Date();\n        baseTime.setSeconds(0, 0);\n\n        text.trim().split('\\n').forEach(function(line, i) {\n            var parts = line.trim().split('|');\n            var value = parseInt(parts[0], 10);\n            if (isNaN(value)) return;\n            // Convert Buienradar 0-255 intensity to mm/h: 10^((value-109)/32)\n            var mmh = (value <= 0) ? 0 : Math.pow(10, (value - 109) / 32);\n            var slotTime = new Date(baseTime.getTime() + i * 5 * 60000);\n            rainCurve.push({\n                time:            slotTime.toISOString(),\n                time_offset_min: i * 5,\n                mmh:             Math.round(mmh * 100) / 100\n            });\n        });\n    }\n    msg.payload = { source: 'buienradar_rain', rain_curve_5min: rainCurve, slots: {} };\n} catch(e) {\n    node.warn('Buienradar rain parse error: ' + e.message);\n    msg.payload = { source: 'buienradar_rain', rain_curve_5min: [], slots: {} };\n}\nmsg.topic = 'weather_agg';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "n_join"
+            ]
+        ]
+    },
+    {
+        "id": "n_join",
+        "type": "join",
+        "z": "tab_wf",
+        "name": "Collect 7 Sources",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "30",
+        "count": 7,
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 790,
+        "y": 240,
+        "wires": [
+            [
+                "ef272348027513d9"
+            ]
+        ]
+    },
+    {
+        "id": "n_mqtt_out",
+        "type": "mqtt out",
+        "z": "tab_wf",
+        "name": "Publish Forecast",
+        "topic": "weather/weather_forecast_he/state",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "application/json",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ee1bb25c871ce5fc",
+        "x": 1250,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "n_debug",
+        "type": "debug",
+        "z": "tab_wf",
+        "name": "Forecast Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "n_catch",
+        "type": "catch",
+        "z": "tab_wf",
+        "name": "Catch Errors",
+        "scope": null,
+        "uncaught": false,
+        "x": 330,
+        "y": 380,
+        "wires": [
+            [
+                "n_catch_debug"
+            ]
+        ]
+    },
+    {
+        "id": "n_catch_debug",
+        "type": "debug",
+        "z": "tab_wf",
+        "name": "Error Log",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "5f48132acb72427b",
+        "type": "inject",
+        "z": "tab_wf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "e3268c860918071b"
+            ]
+        ]
+    },
+    {
+        "id": "e3268c860918071b",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Create MQTT AD Forecast variable",
+        "func": "let discovery_topic = \"homeassistant\";\nlet root_topic = \"weather\";\n\nlet pobject = [\n    // { type: \"sensor\", name: \"Some name\",              varname: \"test_variable\",        unique_id: \"\",             unit: \"variable\" },\n    { type: \"sensor\", name: \"Weather Forecast HE\", varname: \"weather_forecast_he\", unique_id: \"\", unit: \"variable\" },\n];\n\nmsg.pobject = pobject;\nmsg.discovery_topic = discovery_topic;\nmsg.root_topic = root_topic;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "8b12a45af040cfc5"
+            ]
+        ]
+    },
+    {
+        "id": "8b12a45af040cfc5",
+        "type": "link out",
+        "z": "tab_wf",
+        "name": "domo AD",
+        "mode": "link",
+        "links": [
+            "b1dd6226796a15c5"
+        ],
+        "x": 605,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ef272348027513d9",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Aggregate & Consensus",
+        "func": "var sources = msg.payload;\n\n// Separate rain curve from forecast sources\nvar rainCurve       = [];\nvar forecastSources = [];\n\nsources.forEach(function(s) {\n    if (!s || !s.source) return;\n    if (s.source === 'buienradar_rain') {\n        rainCurve = s.rain_curve_5min || [];\n    } else {\n        forecastSources.push(s);\n    }\n});\n\n// Collect all unique time keys from forecast sources\nvar allKeys = {};\nforecastSources.forEach(function(s) {\n    Object.keys(s.slots || {}).forEach(function(k) { allKeys[k] = true; });\n});\nvar sortedKeys = Object.keys(allKeys).sort();\n\n// Circular mean for wind direction\nfunction circularMean(angles) {\n    var valid = angles.filter(function(a) { return a !== null && a !== undefined && !isNaN(a); });\n    if (!valid.length) return null;\n    var sinSum = 0, cosSum = 0;\n    valid.forEach(function(a) {\n        sinSum += Math.sin(a * Math.PI / 180);\n        cosSum += Math.cos(a * Math.PI / 180);\n    });\n    var mean = Math.atan2(sinSum / valid.length, cosSum / valid.length) * 180 / Math.PI;\n    return Math.round((mean + 360) % 360);\n}\n\n// Median ignoring nulls\nfunction median(arr) {\n    var valid = arr.filter(function(v) { return v !== null && v !== undefined && !isNaN(v); });\n    if (!valid.length) return null;\n    var sorted = valid.slice().sort(function(a, b) { return a - b; });\n    var mid = Math.floor(sorted.length / 2);\n    return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];\n}\n\n// 16-point compass label\nfunction windLabel(deg) {\n    if (deg === null || deg === undefined) return null;\n    var dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];\n    return dirs[Math.round(deg / 22.5) % 16];\n}\n\n// ── Solar power model ──────────────────────────────────────────────────────\nvar LAT    = 52.5185;  // Lelystad latitude, °N\nvar LON    = 5.4752;   // Lelystad longitude, °E\nvar TILT   = 22;       // Panel tilt from horizontal, degrees (all arrays)\nvar PR     = 0.82;     // System performance ratio (inverter, cables, temp, soiling)\nvar ALBEDO = 0.2;      // Ground reflectance\n\n// Three arrays, all at TILT=22°. Azimuth from South, positive=West.\nvar ARRAYS = [\n    { kwp: 3690, az:  -60 },  // East-facing\n    { kwp: 7790, az:   30 },  // South-facing (SSW)\n    { kwp: 3690, az:  120 }   // West-facing\n];\n\n// Returns estimated AC power output in watts for one hourly slot (sum of all arrays).\n// Uses direct+diffuse split when available (Open-Meteo/Weerlive gr),\n// otherwise falls back to Erbs decomposition of GHI alone.\nfunction solarPowerW(isoTime, ghi, directH, diffuseH) {\n    if (!ghi || ghi <= 0) return 0;\n\n    // Use slot midpoint for sun-position accuracy\n    var d   = new Date(new Date(isoTime).getTime() + 30 * 60000);\n    var soy = new Date(Date.UTC(d.getUTCFullYear(), 0, 0));\n    var doy = Math.ceil((d - soy) / 86400000);\n\n    // Solar geometry\n    var B    = 2 * Math.PI / 365 * (doy - 81);\n    var decl = 23.45 * Math.sin(B) * Math.PI / 180;                       // declination, rad\n    var eot  = 9.87*Math.sin(2*B) - 7.53*Math.cos(B) - 1.5*Math.sin(B);  // equation of time, min\n    var utcMin = d.getUTCHours() * 60 + d.getUTCMinutes();\n    var omega  = ((utcMin + (LON/15)*60 + eot) / 60 - 12) * 15 * Math.PI / 180; // hour angle, rad\n\n    var lat  = LAT  * Math.PI / 180;\n    var tilt = TILT * Math.PI / 180;\n\n    // Solar elevation — return 0 if sun is below ~2° horizon\n    var sinElev = Math.sin(lat)*Math.sin(decl) + Math.cos(lat)*Math.cos(decl)*Math.cos(omega);\n    if (sinElev <= Math.sin(2 * Math.PI / 180)) return 0;\n\n    // Beam/diffuse split — shared for all arrays\n    var Gb, Gd;\n    if (directH !== null && directH !== undefined &&\n        diffuseH !== null && diffuseH !== undefined) {\n        Gb = directH;\n        Gd = diffuseH;\n    } else {\n        // Erbs (1982) decomposition from GHI alone\n        var I0  = 1361 * (1 + 0.033 * Math.cos(2 * Math.PI * doy / 365));\n        var kt  = Math.min(ghi / Math.max(I0 * sinElev, 1), 1);  // clearness index\n        var kd  = kt <= 0.22 ? 1 - 0.09 * kt\n                : kt <= 0.80 ? 0.9511 - 0.1604*kt + 4.388*kt*kt - 16.638*kt*kt*kt + 12.336*kt*kt*kt*kt\n                : 0.165;\n        Gd = kd * ghi;\n        Gb = Math.max(0, ghi - Gd);\n    }\n\n    // Sky-diffuse and ground-reflected components depend only on tilt (same for all arrays)\n    var diffuseComponent = Gd * (1 + Math.cos(tilt)) / 2;\n    var groundComponent  = ghi * ALBEDO * (1 - Math.cos(tilt)) / 2;\n\n    // Sum AC power contribution from each array\n    var totalW = 0;\n    ARRAYS.forEach(function(arr) {\n        var azP = arr.az * Math.PI / 180;   // azimuth from South, positive=West\n\n        // Angle of incidence on this tilted surface (Duffie & Beckman, eq 1.6.2)\n        var cosAOI =\n            Math.sin(decl)*Math.sin(lat)*Math.cos(tilt)\n          - Math.sin(decl)*Math.cos(lat)*Math.sin(tilt)*Math.cos(azP)\n          + Math.cos(decl)*Math.cos(lat)*Math.cos(tilt)*Math.cos(omega)\n          + Math.cos(decl)*Math.sin(lat)*Math.sin(tilt)*Math.cos(azP)*Math.cos(omega)\n          + Math.cos(decl)*Math.sin(tilt)*Math.sin(azP)*Math.sin(omega);\n        cosAOI = Math.max(0, cosAOI);  // negative = sun behind panel\n\n        var poa =\n            Math.max(0, Gb * cosAOI / sinElev) +  // beam component\n            diffuseComponent +                     // isotropic sky diffuse\n            groundComponent;                       // ground reflected\n\n        totalW += arr.kwp * (poa / 1000) * PR;\n    });\n\n    return Math.round(Math.max(0, totalW));\n}\n// ──────────────────────────────────────────────────────────────────────────\n\nvar now = Date.now();\n\nvar forecastSlots = sortedKeys.map(function(key) {\n    var slotTime = new Date(key).getTime();\n    var temps = [], windSpeeds = [], windDirs = [], precips = [], rainProbs = [], clouds = [];\n    var solarRads = [], directRads = [], diffuseRads = [], uvIndices = [];\n    var forecastCount = 0;\n\n    forecastSources.forEach(function(s) {\n        var slot = (s.slots || {})[key];\n        if (!slot) return;\n        forecastCount++;\n        if (slot.temp_c                !== null && slot.temp_c                !== undefined) temps.push(slot.temp_c);\n        if (slot.wind_kph              !== null && slot.wind_kph              !== undefined) windSpeeds.push(slot.wind_kph);\n        if (slot.wind_dir_deg          !== null && slot.wind_dir_deg          !== undefined) windDirs.push(slot.wind_dir_deg);\n        if (slot.precip_mm             !== null && slot.precip_mm             !== undefined) precips.push(slot.precip_mm);\n        if (slot.rain_prob             !== null && slot.rain_prob             !== undefined) rainProbs.push(slot.rain_prob);\n        if (slot.cloud_pct             !== null && slot.cloud_pct             !== undefined) clouds.push(slot.cloud_pct);\n        if (slot.solar_radiation_wm2   !== null && slot.solar_radiation_wm2   !== undefined) solarRads.push(slot.solar_radiation_wm2);\n        if (slot.direct_radiation_wm2  !== null && slot.direct_radiation_wm2  !== undefined) directRads.push(slot.direct_radiation_wm2);\n        if (slot.diffuse_radiation_wm2 !== null && slot.diffuse_radiation_wm2 !== undefined) diffuseRads.push(slot.diffuse_radiation_wm2);\n        if (slot.uv_index              !== null && slot.uv_index              !== undefined) uvIndices.push(slot.uv_index);\n    });\n\n    if (!forecastCount) return null;\n\n    // Majority vote on rain: >0.3 mm/h = raining\n    var rainyVotes   = precips.filter(function(p) { return p > 0.3; }).length;\n    var rainMajority = precips.length > 0 ? rainyVotes / precips.length : 0;\n\n    // Confidence: weighted combination of model coverage and temperature agreement\n    var coverageScore = forecastCount / forecastSources.length;\n    var tempAgreement = 1;\n    if (temps.length > 1) {\n        var mean     = temps.reduce(function(a, b) { return a + b; }, 0) / temps.length;\n        var variance = temps.reduce(function(acc, t) { return acc + Math.pow(t - mean, 2); }, 0) / temps.length;\n        var stdDev   = Math.sqrt(variance);\n        // 0°C std = full confidence; 3°C std = half confidence\n        tempAgreement = Math.max(0, 1 - stdDev / 3);\n    }\n    var confidence = coverageScore * 0.3 + tempAgreement * 0.7;\n\n    // Attach 5-min rain curve to slots within the next 2 hours\n    var slotRainCurve = null;\n    if (slotTime >= now && slotTime < now + 2 * 3600000 && rainCurve.length > 0) {\n        var curve = rainCurve.filter(function(r) {\n            var rt = new Date(r.time).getTime();\n            return rt >= slotTime && rt < slotTime + 3600000;\n        });\n        if (curve.length > 0) slotRainCurve = curve;\n    }\n\n    var temp     = median(temps);\n    var windKph  = median(windSpeeds);\n    var windDir  = circularMean(windDirs);\n    var precipMm = median(precips);\n    var rainProbFinal = rainProbs.length > 0 ? median(rainProbs) : rainMajority;\n    var cloudPct = median(clouds);\n\n    var solarWm2   = median(solarRads);\n    var directWm2  = median(directRads);\n    var diffuseWm2 = median(diffuseRads);\n    var uvIdx      = median(uvIndices);\n\n    var result = {\n        time:                  key,\n        temp_c:                temp     !== null ? Math.round(temp     * 10) / 10   : null,\n        wind_kph:              windKph  !== null ? Math.round(windKph  * 10) / 10   : null,\n        wind_dir_deg:          windDir,\n        wind_dir_label:        windLabel(windDir),\n        precip_mm:             precipMm !== null ? Math.round(precipMm * 100) / 100 : null,\n        rain_prob:             Math.round(rainProbFinal * 100) / 100,\n        rain_majority:         Math.round(rainMajority  * 100) / 100,\n        cloud_pct:             cloudPct  !== null ? Math.round(cloudPct)             : null,\n        solar_radiation_wm2:   solarWm2  !== null ? Math.round(solarWm2)             : null,\n        direct_radiation_wm2:  directWm2 !== null ? Math.round(directWm2)            : null,\n        diffuse_radiation_wm2: diffuseWm2!== null ? Math.round(diffuseWm2)           : null,\n        uv_index:              uvIdx     !== null ? Math.round(uvIdx * 10) / 10      : null,\n        confidence:            Math.round(confidence * 100) / 100,\n        model_sources:         forecastCount\n    };\n\n    if (slotRainCurve) result.rain_curve_5min = slotRainCurve;\n    result.solar_power_w = solarPowerW(key, solarWm2, directWm2, diffuseWm2);\n    return result;\n}).filter(function(s) { return s !== null; });\n\nmsg.payload = JSON.stringify({\n    location:     { name: 'Lelystad', lat: 52.5185, lon: 5.4752 },\n    generated_at: new Date().toISOString(),\n    sources: {\n        forecast:   forecastSources.map(function(s) { return s.source; }),\n        rain_radar: rainCurve.length > 0 ? ['buienradar_rain'] : []\n    },\n    slot_count:   forecastSlots.length,\n    forecast:     forecastSlots\n});\nmsg.topic = 'weather/lelystad/forecast';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 240,
+        "wires": [
+            [
+                "n_debug",
+                "n_mqtt_out"
+            ]
+        ]
+    },
+    {
+        "id": "n_http_buienradar_obs",
+        "type": "http request",
+        "z": "tab_wf",
+        "name": "Buienradar Forecast",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://forecast.buienradar.nl/2.0/forecast/2751738",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 350,
+        "y": 420,
+        "wires": [
+            [
+                "n_parse_buienradar_obs"
+            ]
+        ]
+    },
+    {
+        "id": "n_parse_buienradar_obs",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Parse Buienradar Forecast",
+        "func": "try {\n    var data  = msg.payload;\n    var slots = {};\n    var now    = Date.now();\n    var cutoff = now + 48 * 3600 * 1000;\n\n    var days = data && data.days;\n    if (!days || !days.length) {\n        msg.payload = { source: 'buienradar_forecast', slots: {} };\n        msg.topic = 'weather_agg';\n        return msg;\n    }\n\n    days.forEach(function(day) {\n        var dayUv = (typeof day.uvindex === 'number') ? day.uvindex : null;\n        (day.hours || []).forEach(function(h) {\n            // datetimeutc has no Z — append it to parse as UTC\n            var isoKey = h.datetimeutc + 'Z';\n            var slotMs = new Date(isoKey).getTime();\n            if (isNaN(slotMs) || slotMs < now - 3600000 || slotMs > cutoff) return;\n\n            var d = new Date(slotMs);\n            d.setMinutes(0, 0, 0);\n            var key = d.toISOString();\n\n            var windKph = (typeof h.windspeedms === 'number') ? Math.round(h.windspeedms * 3.6 * 10) / 10 : null;\n            var solar = (typeof h.sunpower === 'number' && h.sunpower >= 0) ? Math.round(h.sunpower) : null;\n\n            slots[key] = {\n                temp_c:                (typeof h.temperature          === 'number') ? h.temperature          : null,\n                wind_kph:              windKph,\n                wind_dir_deg:          (typeof h.winddirectiondegrees === 'number') ? h.winddirectiondegrees : null,\n                precip_mm:             (typeof h.precipitationmm      === 'number') ? h.precipitationmm      : null,\n                rain_prob:             null,\n                cloud_pct:             (typeof h.cloudcover           === 'number') ? h.cloudcover           : null,\n                solar_radiation_wm2:   solar,\n                direct_radiation_wm2:  null,\n                diffuse_radiation_wm2: null,\n                uv_index:              dayUv\n            };\n        });\n    });\n\n    msg.payload = { source: 'buienradar_forecast', slots: slots };\n} catch(e) {\n    node.warn('Buienradar forecast parse error: ' + e.message);\n    msg.payload = { source: 'buienradar_forecast', slots: {} };\n}\nmsg.topic = 'weather_agg';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 420,
+        "wires": [
+            [
+                "n_join"
+            ]
+        ]
+    },
+    {
+        "id": "n_http_weatherapi",
+        "type": "http request",
+        "z": "tab_wf",
+        "name": "WeatherAPI.com",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://api.weatherapi.com/v1/forecast.json?key=&q=52.5185,5.4752&days=3&aqi=no&alerts=no",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 350,
+        "y": 480,
+        "wires": [
+            [
+                "n_parse_weatherapi"
+            ]
+        ]
+    },
+    {
+        "id": "n_parse_weatherapi",
+        "type": "function",
+        "z": "tab_wf",
+        "name": "Parse WeatherAPI",
+        "func": "try {\n    var data  = msg.payload;\n    var slots = {};\n    var now    = Date.now();\n    var cutoff = now + 48 * 3600 * 1000;\n\n    if (data && data.forecast && data.forecast.forecastday) {\n        data.forecast.forecastday.forEach(function(day) {\n            (day.hour || []).forEach(function(h) {\n                // h.time_epoch is Unix seconds, UTC\n                var slotMs = h.time_epoch * 1000;\n                if (slotMs < now - 3600000 || slotMs > cutoff) return;\n                var d = new Date(slotMs);\n                d.setMinutes(0, 0, 0);\n                var key = d.toISOString();\n                slots[key] = {\n                    temp_c:                (typeof h.temp_c         === 'number') ? h.temp_c         : null,\n                    wind_kph:              (typeof h.wind_kph       === 'number') ? h.wind_kph       : null,\n                    wind_dir_deg:          (typeof h.wind_degree    === 'number') ? h.wind_degree    : null,\n                    precip_mm:             (typeof h.precip_mm      === 'number') ? h.precip_mm      : null,\n                    rain_prob:             (typeof h.chance_of_rain === 'number') ? h.chance_of_rain : null,\n                    cloud_pct:             (typeof h.cloud          === 'number') ? h.cloud          : null,\n                    solar_radiation_wm2:   null,\n                    direct_radiation_wm2:  null,\n                    diffuse_radiation_wm2: null,\n                    uv_index:              (typeof h.uv             === 'number') ? h.uv             : null\n                };\n            });\n        });\n    }\n    msg.payload = { source: 'weatherapi', slots: slots };\n} catch(e) {\n    node.warn('WeatherAPI parse error: ' + e.message);\n    msg.payload = { source: 'weatherapi', slots: {} };\n}\nmsg.topic = 'weather_agg';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 480,
+        "wires": [
+            [
+                "n_join"
+            ]
+        ]
+    },
+    {
+        "id": "ee1bb25c871ce5fc",
+        "type": "mqtt-broker",
+        "name": "MQTT",
+        "broker": "192.168.1.109",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
