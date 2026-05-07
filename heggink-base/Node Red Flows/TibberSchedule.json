@@ -1,694 +1,5 @@
 [
     {
-        "id": "481b42546729112e",
-        "type": "subflow",
-        "name": "Solar forecast",
-        "info": "This subflow uses the http request node to fetch solar forecasts for geographical positions, using the API from https://forecast.solar/. Please check their website and consider getting a paid account.\n\nDo note that, on a free account, you are limited in the number of requests to do. Also note that the data only gets updated once every 15 minutes, so there is no reason to query more often. There is rate limiting built in the subflow not to perform requests more than once every 15 minutes.\n\n# Configuration\n\nIt uses the parameters as described on: http://doc.forecast.solar/doku.php\n\n - `:apikey` - personal API key for registered users\n - `:lat` - latitude of location, -90 (south) … 90 (north); Internal precission is 0.0001 or abt. 10 m\n - `:lon` - longitude of location, -180 (west) … 180 (east); Internal precission is 0.0001 or abt. 10 m\n - `:dec` - plane declination, 0 (horizontal) … 90 (vertical); Internal precission is integer\n - `:az` - plane azimuth, -180 … 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north); Internal precission is integer\n - `:kwp` - installed modules power in kilo watt peak (kWp)\n\nYou can choose between 3 different type of requests. Note that only `estimate` is available on the free plan.\n\n- `estimate` - this is the forecasted estimate that your panels should produce (given the right parameter settings)\n- `history` - historycal data\n- `clear sky` - estimate given if there would be a clear sky tomorrow\n\nIn case of estimates, one of the following options can be selected:\n- `watts` - Watts (power) average for the period\n- `watthours/period` - Watt hours (energy) for the period\n- `watthours` - Watt hours (energy) summarized over the day\n- `watthours/day` - Watt hours (energy) summarized for each day\n\nFor the graph output there are some extra settings available:\n\n- _Output in kWh_ - when checked output can be set to kWh instead of Wh\n- _Show todays forecast_ - whether or not to include todays forecast\n- _Days to forecast_ - the number of days to forecast (excluding today). Note that you can not get more days forecasted than your API key allows.\n- _Widen graph_ - widen the graph to only show non-zero values\n- _Show day instead of date_ - Show the day instead of the date in the series and labels\n\nThe optional _horizon_ field can be filled out in case an object blocks\nyour solar panels from the sun. See the description [here](https://doc.forecast.solar/horizon)\non what numbers to fill out.\nLeave it empty if you have no objects blocking your panels.\n\n# Input \n\nThe input is for triggering the solar forecast request. \nIt triggers when injecting a message into the node.\n\n# Output\n\nThere are two outputs. The first output is an object with the result and a status message stored into the `msg.payload`.\n\nMost important is the `msg.payload.result`, which contains the estimated production of the panels. E.g.:\n\n```\npayload: object\n  result: object\n    2022-11-28: 23\n    2022-11-29: 35\n```\n\nThe `msg.payload.message` gives information on how successful the query was, the exitcode of the query and the status of the rate limit (how many queries you have left).\n\nThe **second** output can be directly linked to a line or a bar chart, quickly giving a once-glance overview for the predicted forecast.\n\n# Status\n\nInitially the status of the note will be a blue dot, showing \"_Unknown limit_\", as it is unaware of the set ratelmits. After the first request, the returned ratelimit will be put in the text in the form of `remaining/limit`. If more than half the limit is remaining, the dot will be green. If less then half the limit is remaining, the dot will be yellow. If no limit is left, the dot will turn red.\nPlease keep in mind that the ratelimit will be reset after one hour, so you can send a new request after that hour.\n\nIf something is wrong in the API request, the dot will turn red\nand the message will contain the msg.payload with the error. This\nhappens typically when the API is temporally down for maintenance.",
-        "category": "",
-        "in": [
-            {
-                "x": 240,
-                "y": 100,
-                "wires": [
-                    {
-                        "id": "096ac1e73d64ec13"
-                    }
-                ]
-            }
-        ],
-        "out": [
-            {
-                "x": 760,
-                "y": 260,
-                "wires": [
-                    {
-                        "id": "1f9426b7b979cee1",
-                        "port": 0
-                    },
-                    {
-                        "id": "1ddc734f3070afa0",
-                        "port": 0
-                    }
-                ]
-            }
-        ],
-        "env": [
-            {
-                "name": "latitude",
-                "type": "num",
-                "value": "51.3",
-                "ui": {
-                    "icon": "font-awesome/fa-location-arrow",
-                    "label": {
-                        "en-US": "Latitude"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "num"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "longitude",
-                "type": "num",
-                "value": "5.6",
-                "ui": {
-                    "icon": "font-awesome/fa-location-arrow",
-                    "label": {
-                        "en-US": "Longitude"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "num"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "declination",
-                "type": "num",
-                "value": "37",
-                "ui": {
-                    "icon": "font-awesome/fa-chevron-up",
-                    "label": {
-                        "en-US": "Declination"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "num"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "azimuth",
-                "type": "num",
-                "value": "0",
-                "ui": {
-                    "icon": "font-awesome/fa-compass",
-                    "label": {
-                        "en-US": "Azimuth"
-                    },
-                    "type": "spinner",
-                    "opts": {
-                        "min": -180,
-                        "max": 180
-                    }
-                }
-            },
-            {
-                "name": "modules power",
-                "type": "num",
-                "value": "1",
-                "ui": {
-                    "icon": "font-awesome/fa-power-off",
-                    "label": {
-                        "en-US": "Modules power (kWp)"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "num"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "apikey",
-                "type": "cred",
-                "ui": {
-                    "icon": "font-awesome/fa-key",
-                    "label": {
-                        "en-US": "API key"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "cred"
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "type",
-                "type": "str",
-                "value": "estimate",
-                "ui": {
-                    "label": {
-                        "en-US": "Type"
-                    },
-                    "type": "select",
-                    "opts": {
-                        "opts": [
-                            {
-                                "l": {
-                                    "en-US": "Estimate"
-                                },
-                                "v": "estimate"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "History"
-                                },
-                                "v": "history"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "Clear sky"
-                                },
-                                "v": "clearsky"
-                            }
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "watt",
-                "type": "str",
-                "value": "watts",
-                "ui": {
-                    "icon": "font-awesome/fa-question-circle-o",
-                    "label": {
-                        "en-US": "Watt"
-                    },
-                    "type": "select",
-                    "opts": {
-                        "opts": [
-                            {
-                                "l": {
-                                    "en-US": "Watts (power) average for the period"
-                                },
-                                "v": "watts"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "Watt hours (energy) for the period"
-                                },
-                                "v": "watthours/period"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "Watt hours (energy) summarized over the day"
-                                },
-                                "v": "watthours"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "Watt hours (energy) summarized for each day"
-                                },
-                                "v": "watthours/day"
-                            }
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "kwhoutput",
-                "type": "bool",
-                "value": "false",
-                "ui": {
-                    "label": {
-                        "en-US": "Output in kWh (in the graph)"
-                    },
-                    "type": "checkbox"
-                }
-            },
-            {
-                "name": "showtoday",
-                "type": "bool",
-                "value": "true",
-                "ui": {
-                    "label": {
-                        "en-US": "Show todays forecast"
-                    },
-                    "type": "checkbox"
-                }
-            },
-            {
-                "name": "daystoforecast",
-                "type": "str",
-                "value": "-1",
-                "ui": {
-                    "label": {
-                        "en-US": "Days to forecast"
-                    },
-                    "type": "select",
-                    "opts": {
-                        "opts": [
-                            {
-                                "l": {
-                                    "en-US": "Max"
-                                },
-                                "v": "-1"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "0"
-                                },
-                                "v": "0"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "1"
-                                },
-                                "v": "1"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "2"
-                                },
-                                "v": "2"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "3"
-                                },
-                                "v": "3"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "4"
-                                },
-                                "v": "4"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "5"
-                                },
-                                "v": "5"
-                            },
-                            {
-                                "l": {
-                                    "en-US": "6"
-                                },
-                                "v": "6"
-                            }
-                        ]
-                    }
-                }
-            },
-            {
-                "name": "widengraph",
-                "type": "bool",
-                "value": "true",
-                "ui": {
-                    "label": {
-                        "en-US": "Widen graph"
-                    },
-                    "type": "checkbox"
-                }
-            },
-            {
-                "name": "showday",
-                "type": "bool",
-                "value": "false",
-                "ui": {
-                    "label": {
-                        "en-US": "Show day instead of date"
-                    },
-                    "type": "checkbox"
-                }
-            },
-            {
-                "name": "horizon",
-                "type": "str",
-                "value": "",
-                "ui": {
-                    "icon": "font-awesome/fa-tree",
-                    "label": {
-                        "en-US": "(optional) horizon"
-                    },
-                    "type": "input",
-                    "opts": {
-                        "types": [
-                            "str"
-                        ]
-                    }
-                }
-            }
-        ],
-        "meta": {
-            "module": "Solar Forecast",
-            "version": "0.0.14",
-            "author": "dfaber@victronenergy.com",
-            "desc": "Get solar forecasting per location",
-            "keywords": "solar,forecast,api",
-            "license": "GPL-3.0"
-        },
-        "color": "#FFCC66",
-        "inputLabels": [
-            "trigger"
-        ],
-        "outputLabels": [
-            "output",
-            "graph",
-            ""
-        ],
-        "icon": "font-awesome/fa-sun-o",
-        "status": {
-            "x": 700,
-            "y": 460,
-            "wires": [
-                {
-                    "id": "07149d8d71dff11e",
-                    "port": 0
-                },
-                {
-                    "id": "8a583c51d336775e",
-                    "port": 0
-                }
-            ]
-        }
-    },
-    {
-        "id": "5726694de195109f",
-        "type": "http request",
-        "z": "481b42546729112e",
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 390,
-        "y": 180,
-        "wires": [
-            [
-                "7884fdf66931c555"
-            ]
-        ]
-    },
-    {
-        "id": "096ac1e73d64ec13",
-        "type": "function",
-        "z": "481b42546729112e",
-        "name": "create forecast.solar url",
-        "func": "msg.url = 'https://api.forecast.solar/';\n\nif (env.get('apikey')) {\n    msg.url += env.get('apikey') + '/';\n    }\n\nmsg.url += env.get('type') + '/';\n\nmsg.url += env.get('watt') + '/';\n\nmsg.url += env.get('latitude') + '/' +\n           env.get('longitude') + '/' +\n           env.get('declination') + '/' +\n           env.get('azimuth') + '/' +\n           env.get('modules power');\n\nif (env.get('horizon')) {\n    msg.url += '?horizon=' + env.get('horizon')\n}\nmsg.topic = 'solar forecast: '+(env.get('type') || '');\nmsg.topic += (' '+env.get('watt') || '');\nif (env.get('kwhoutput')) {\n    msg.topic += ' (kWh)';\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 630,
-        "y": 100,
-        "wires": [
-            [
-                "24bc9c8665678f59"
-            ]
-        ]
-    },
-    {
-        "id": "7884fdf66931c555",
-        "type": "json",
-        "z": "481b42546729112e",
-        "name": "Convert to json",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 680,
-        "y": 180,
-        "wires": [
-            [
-                "a1cdf6e6a3a96be1"
-            ]
-        ]
-    },
-    {
-        "id": "bc4a4177924fef16",
-        "type": "function",
-        "z": "481b42546729112e",
-        "name": "update ratelimit",
-        "func": "var remaining = msg.payload.message.ratelimit.remaining || 0;\nvar limit = msg.payload.message.ratelimit.limit;\n\nflow.set('forecast.solar.ratelimit.remaining', remaining)\nflow.set('forecast.solar.ratelimit.limit', limit)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 380,
-        "wires": [
-            [
-                "522529554126d3b5"
-            ]
-        ]
-    },
-    {
-        "id": "a1cdf6e6a3a96be1",
-        "type": "link out",
-        "z": "481b42546729112e",
-        "name": "link out 1",
-        "mode": "link",
-        "links": [
-            "9baea1642621f8ac",
-            "59083f23c4f10495"
-        ],
-        "x": 815,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "59083f23c4f10495",
-        "type": "link in",
-        "z": "481b42546729112e",
-        "name": "link in 1",
-        "links": [
-            "a1cdf6e6a3a96be1"
-        ],
-        "x": 405,
-        "y": 380,
-        "wires": [
-            [
-                "bc4a4177924fef16"
-            ]
-        ]
-    },
-    {
-        "id": "9baea1642621f8ac",
-        "type": "link in",
-        "z": "481b42546729112e",
-        "name": "link in 2",
-        "links": [
-            "a1cdf6e6a3a96be1"
-        ],
-        "x": 225,
-        "y": 260,
-        "wires": [
-            [
-                "1ddc734f3070afa0"
-            ]
-        ]
-    },
-    {
-        "id": "3ddaf128e6c97938",
-        "type": "inject",
-        "z": "481b42546729112e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 550,
-        "y": 340,
-        "wires": [
-            [
-                "522529554126d3b5"
-            ]
-        ]
-    },
-    {
-        "id": "07149d8d71dff11e",
-        "type": "function",
-        "z": "481b42546729112e",
-        "name": "update status",
-        "func": "var remaining = flow.get('forecast.solar.ratelimit.remaining') || -1;\nvar limit = flow.get('forecast.solar.ratelimit.limit') || -1\n\nvar text = remaining.toString() + '/' + limit.toString();\nvar fill = \"green\";\n\nif (remaining == 0) {\n    fill = \"red\";\n    text = \"Limit used\";\n}\n\nif (remaining > 0 && remaining < limit / 2) {\n    fill = \"yellow\"\n}\n\nif (remaining == -1 ) {\n    fill = \"blue\"\n    text = \"Limits unknown\"\n}\n\nmsg.payload = ({ fill: fill, text: text });\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "24bc9c8665678f59",
-        "type": "link out",
-        "z": "481b42546729112e",
-        "name": "link out 7",
-        "mode": "link",
-        "links": [
-            "dc22d91dddb12797"
-        ],
-        "x": 805,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "dc22d91dddb12797",
-        "type": "link in",
-        "z": "481b42546729112e",
-        "name": "link in 18",
-        "links": [
-            "24bc9c8665678f59"
-        ],
-        "x": 245,
-        "y": 180,
-        "wires": [
-            [
-                "5726694de195109f"
-            ]
-        ]
-    },
-    {
-        "id": "eee05cbf111c228c",
-        "type": "catch",
-        "z": "481b42546729112e",
-        "name": "",
-        "scope": null,
-        "uncaught": false,
-        "x": 280,
-        "y": 340,
-        "wires": [
-            [
-                "7e22fb1ce267ce1e"
-            ]
-        ]
-    },
-    {
-        "id": "522529554126d3b5",
-        "type": "link out",
-        "z": "481b42546729112e",
-        "name": "link out 8",
-        "mode": "link",
-        "links": [
-            "2b784cd8cf4d6f54"
-        ],
-        "x": 705,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "2b784cd8cf4d6f54",
-        "type": "link in",
-        "z": "481b42546729112e",
-        "name": "link in 19",
-        "links": [
-            "522529554126d3b5"
-        ],
-        "x": 405,
-        "y": 480,
-        "wires": [
-            [
-                "07149d8d71dff11e"
-            ]
-        ]
-    },
-    {
-        "id": "7e22fb1ce267ce1e",
-        "type": "link out",
-        "z": "481b42546729112e",
-        "name": "link out 9",
-        "mode": "link",
-        "links": [
-            "ec2a6da31af488af",
-            "1f9426b7b979cee1"
-        ],
-        "x": 395,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "ec2a6da31af488af",
-        "type": "link in",
-        "z": "481b42546729112e",
-        "name": "link in 20",
-        "links": [
-            "7e22fb1ce267ce1e"
-        ],
-        "x": 405,
-        "y": 440,
-        "wires": [
-            [
-                "8a583c51d336775e"
-            ]
-        ]
-    },
-    {
-        "id": "8a583c51d336775e",
-        "type": "function",
-        "z": "481b42546729112e",
-        "name": "Set error status",
-        "func": "node.warn(msg.payload)\nmsg.payload = ({ fill: \"red\", text: msg.payload });\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1f9426b7b979cee1",
-        "type": "link in",
-        "z": "481b42546729112e",
-        "name": "link in 21",
-        "links": [
-            "7e22fb1ce267ce1e"
-        ],
-        "x": 665,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1ddc734f3070afa0",
-        "type": "function",
-        "z": "481b42546729112e",
-        "name": "Processed info",
-        "func": "msg.resolution = 60;\nmsg.days = 1;\nmsg.type = env.get('type');\nmsg.watt = env.get('watt');\nmsg.kwhoutput = env.get('kwhoutput');\n\nvar key1 = Object.keys(msg.payload.result)[1];\nvar key2 = Object.keys(msg.payload.result)[2];\nvar key3 = Object.keys(msg.payload.result)[Object.keys(msg.payload.result).length-1];\n\nvar d1 = new Date(key1);\nvar d2 = new Date(key2); \nvar d3 = new Date(key3);\nmsg.resolution = 3600000 / (d2.getTime() - d1.getTime());\n\nmsg.days = Math.floor((d3.getTime() - d1.getTime()) / (1000 * 3600 * 24));\n\nif (msg.watt === 'watt_hours_day' || msg.watt === 'watthours/day') {\n    msg.resolution = null;\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 260,
-        "wires": [
-            []
-        ],
-        "info": "Function to process the result from forecast.solar to add\nextra information, which is handy for either graphing or\nto store in a database.\n\n\nThe extra values added:\n- `msg.resolution` - The number of measurements per hour. If\nno API key is used, this will be 1. Other values may be 2 or 4.\n- `msg.days` - The number of days in the forcast. If no API\n- key is used this will be 1. Other values may be 3 or 6."
-    },
-    {
         "id": "58fd4f3e316f9347",
         "type": "tab",
         "label": "Tibber Schedule",
@@ -775,13 +86,15 @@
             "123a7e7c3785524c",
             "4e59f965d2ba9885",
             "ce010c9886711266",
-            "6193353a4b0e6e84",
-            "b01608301674d1f0"
+            "solar_mqtt_in",
+            "solar_cache_fn",
+            "26c1933963e2228f",
+            "0f0dbc84b4e9db74"
         ],
         "x": 14,
         "y": 179,
         "w": 1212,
-        "h": 522
+        "h": 562
     },
     {
         "id": "cbeed08f2ae57e17",
@@ -814,7 +127,7 @@
             "df96aeaac830232a"
         ],
         "x": 14,
-        "y": 1059,
+        "y": 1099,
         "w": 1202,
         "h": 222
     },
@@ -848,7 +161,7 @@
             "a7e6aa0d46b774ab"
         ],
         "x": 14,
-        "y": 1319,
+        "y": 1339,
         "w": 1242,
         "h": 202
     },
@@ -897,7 +210,7 @@
             "4fad0b5209ed82b2"
         ],
         "x": 24,
-        "y": 719,
+        "y": 759,
         "w": 732,
         "h": 322
     },
@@ -1008,8 +321,8 @@
         "id": "2522e374af6b360b",
         "type": "comment",
         "z": "58fd4f3e316f9347",
-        "name": "Version 1.18",
-        "info": "Last edited: 2026-04-03\n1.18\n- various improvements incuding solarbalance if profitable\n- fix double batt_discharge_efficiency\n1.17\n- moved reformat array into OP6\n- adapted OP6 ti look at all future slots instead of just today\n- adapted OP6 to include solarbalance if the schedule itself is not reaching 100%\n1.16\n- fixed new OP3\n1.15\n- adopt Rob's new OP function and use solarbalance when rates are cheap instead of not expensive\n- \n1.14\n- use shared mqtt functions by setting msg.root_topic\n- change from idle to solarbalance if there is solar and rates are either cheap or normal\n- at midnight, cut over scheme, rather than recalculate, and send to domo\n\n1.13\nVarious optimisations including:\n- only get rates at 15:01 if not available\n- create rates array indexed by 15m time slots as key\n\n1.12\nPrepared for Tibber Quarter prices\n\n1.11\n- Also make today/tomorrow charge scheme when it is not interested (all 'idle')\n\n1.10\n- Better compatible with HASS\n\n1.09\n- Using forcast.solar for today/tomorrow forecast\n- Simplified flow\n\n1.08\n- setting milliseconds in today date check to 0\n- \n1.07\n- Optimized OptimusPrime (only use max. to charge hour count in highPrices block)\n\n",
+        "name": "Version 1.19",
+        "info": "Last edited: 2026-04-07\n1.19\n- fixed bug in OP9\n- switched to own weather solar calculator instead of forecast.solar\n1.18\n- various improvements incuding solarbalance if profitable\n- fix double batt_discharge_efficiency\n1.17\n- moved reformat array into OP6\n- adapted OP6 ti look at all future slots instead of just today\n- adapted OP6 to include solarbalance if the schedule itself is not reaching 100%\n1.16\n- fixed new OP3\n1.15\n- adopt Rob's new OP function and use solarbalance when rates are cheap instead of not expensive\n- \n1.14\n- use shared mqtt functions by setting msg.root_topic\n- change from idle to solarbalance if there is solar and rates are either cheap or normal\n- at midnight, cut over scheme, rather than recalculate, and send to domo\n\n1.13\nVarious optimisations including:\n- only get rates at 15:01 if not available\n- create rates array indexed by 15m time slots as key\n\n1.12\nPrepared for Tibber Quarter prices\n\n1.11\n- Also make today/tomorrow charge scheme when it is not interested (all 'idle')\n\n1.10\n- Better compatible with HASS\n\n1.09\n- Using forcast.solar for today/tomorrow forecast\n- Simplified flow\n\n1.08\n- setting milliseconds in today date check to 0\n- \n1.07\n- Optimized OptimusPrime (only use max. to charge hour count in highPrices block)\n\n",
         "x": 1170,
         "y": 60,
         "wires": []
@@ -1055,7 +368,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 715,
-        "y": 420,
+        "y": 440,
         "wires": [],
         "l": false
     },
@@ -1321,7 +634,7 @@
             "6fd413760df91655"
         ],
         "x": 55,
-        "y": 1120,
+        "y": 1160,
         "wires": [
             [
                 "b743f348c7dfb70f",
@@ -1340,7 +653,7 @@
             "82cc2e170949b6be"
         ],
         "x": 1175,
-        "y": 1120,
+        "y": 1160,
         "wires": []
     },
     {
@@ -1389,7 +702,7 @@
         "to": "",
         "reg": false,
         "x": 1040,
-        "y": 1120,
+        "y": 1160,
         "wires": [
             [
                 "29c51ca9a6053b5f"
@@ -1419,7 +732,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 810,
-        "y": 1120,
+        "y": 1160,
         "wires": [
             [
                 "88f51edd4906e0dd",
@@ -1448,7 +761,7 @@
         "to": "",
         "reg": false,
         "x": 640,
-        "y": 1100,
+        "y": 1140,
         "wires": [
             [
                 "643caf317e5eb646"
@@ -1477,7 +790,7 @@
         "repair": false,
         "outputs": 2,
         "x": 490,
-        "y": 1120,
+        "y": 1160,
         "wires": [
             [
                 "fea11261f58d39a0"
@@ -1499,7 +812,7 @@
             "282cea1575847c9b"
         ],
         "x": 625,
-        "y": 1160,
+        "y": 1200,
         "wires": []
     },
     {
@@ -1522,43 +835,19 @@
     },
     {
         "id": "06b229ea2dd23e8e",
-        "type": "subflow:481b42546729112e",
+        "type": "function",
         "z": "58fd4f3e316f9347",
         "g": "cbeed08f2ae57e17",
-        "name": "",
-        "env": [
-            {
-                "name": "latitude",
-                "value": "52.536129",
-                "type": "num"
-            },
-            {
-                "name": "longitude",
-                "value": "5.453455",
-                "type": "num"
-            },
-            {
-                "name": "declination",
-                "value": "22",
-                "type": "num"
-            },
-            {
-                "name": "azimuth",
-                "value": "30",
-                "type": "num"
-            },
-            {
-                "name": "modules power",
-                "value": "11",
-                "type": "num"
-            },
-            {
-                "name": "apikey",
-                "type": "cred"
-            }
-        ],
+        "name": "Read Solar Forecast",
+        "func": "var sf = flow.get('solarForecast');\nif (!sf) { node.warn('Solar forecast not yet cached'); return null; }\nmsg.payload = sf;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 220,
-        "y": 1200,
+        "y": 1240,
         "wires": [
             [
                 "811017906f302c23",
@@ -1586,7 +875,7 @@
         "repair": false,
         "outputs": 2,
         "x": 470,
-        "y": 1200,
+        "y": 1240,
         "wires": [
             [
                 "949cfa8246df8ac5"
@@ -1611,7 +900,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1200,
+        "y": 1240,
         "wires": [
             [
                 "643caf317e5eb646",
@@ -1633,7 +922,7 @@
         "finalize": "",
         "libs": [],
         "x": 200,
-        "y": 1160,
+        "y": 1200,
         "wires": [
             [
                 "58864caf322040c4"
@@ -1654,7 +943,7 @@
         "finalize": "",
         "libs": [],
         "x": 200,
-        "y": 1240,
+        "y": 1280,
         "wires": [
             [
                 "811017906f302c23"
@@ -1684,7 +973,7 @@
         "reduceInitType": "num",
         "reduceFixup": "",
         "x": 770,
-        "y": 1360,
+        "y": 1380,
         "wires": [
             [
                 "94c26eb1076c6135",
@@ -1713,7 +1002,7 @@
         "to": "",
         "reg": false,
         "x": 620,
-        "y": 1360,
+        "y": 1380,
         "wires": [
             [
                 "2e65863828590ebc"
@@ -1742,7 +1031,7 @@
         "repair": false,
         "outputs": 2,
         "x": 470,
-        "y": 1360,
+        "y": 1380,
         "wires": [
             [
                 "f430dbf7bc1a41b6"
@@ -1763,48 +1052,24 @@
             "282cea1575847c9b"
         ],
         "x": 625,
-        "y": 1400,
+        "y": 1420,
         "wires": []
     },
     {
         "id": "e7d407804390fb64",
-        "type": "subflow:481b42546729112e",
+        "type": "function",
         "z": "58fd4f3e316f9347",
         "g": "807507833b6e7f60",
-        "name": "",
-        "env": [
-            {
-                "name": "latitude",
-                "value": "52.536129",
-                "type": "num"
-            },
-            {
-                "name": "longitude",
-                "value": "5.453455",
-                "type": "num"
-            },
-            {
-                "name": "declination",
-                "value": "22",
-                "type": "num"
-            },
-            {
-                "name": "azimuth",
-                "value": "30",
-                "type": "num"
-            },
-            {
-                "name": "modules power",
-                "value": "11",
-                "type": "num"
-            },
-            {
-                "name": "apikey",
-                "type": "cred"
-            }
-        ],
+        "name": "Read Solar Forecast",
+        "func": "var sf = flow.get('solarForecast');\nif (!sf) { node.warn('Solar forecast not yet cached'); return null; }\nmsg.payload = sf;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 210,
-        "y": 1440,
+        "y": 1460,
         "wires": [
             [
                 "5b11a4628cb765f3",
@@ -1832,7 +1097,7 @@
         "repair": false,
         "outputs": 2,
         "x": 470,
-        "y": 1440,
+        "y": 1460,
         "wires": [
             [
                 "7821972dc8d83c2b"
@@ -1856,7 +1121,7 @@
         "finalize": "",
         "libs": [],
         "x": 660,
-        "y": 1440,
+        "y": 1460,
         "wires": [
             [
                 "2e65863828590ebc",
@@ -1878,7 +1143,7 @@
         "finalize": "",
         "libs": [],
         "x": 310,
-        "y": 1400,
+        "y": 1420,
         "wires": [
             []
         ]
@@ -1897,7 +1162,7 @@
         "finalize": "",
         "libs": [],
         "x": 190,
-        "y": 1480,
+        "y": 1500,
         "wires": [
             [
                 "5b11a4628cb765f3"
@@ -1932,7 +1197,7 @@
         "to": "",
         "reg": false,
         "x": 1010,
-        "y": 1360,
+        "y": 1380,
         "wires": [
             [
                 "2cd8c507132c2570",
@@ -1980,7 +1245,7 @@
             "71acf17ffab48466"
         ],
         "x": 55,
-        "y": 1360,
+        "y": 1380,
         "wires": [
             [
                 "483e9cbcea484874",
@@ -2017,7 +1282,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 345,
-        "y": 1200,
+        "y": 1240,
         "wires": [],
         "l": false
     },
@@ -2036,7 +1301,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 335,
-        "y": 1440,
+        "y": 1460,
         "wires": [],
         "l": false
     },
@@ -2055,7 +1320,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 365,
-        "y": 1360,
+        "y": 1380,
         "wires": [],
         "l": false
     },
@@ -2105,7 +1370,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 865,
-        "y": 1360,
+        "y": 1380,
         "wires": [],
         "l": false
     },
@@ -2124,7 +1389,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1145,
-        "y": 1360,
+        "y": 1380,
         "wires": [],
         "l": false
     },
@@ -2143,7 +1408,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 375,
-        "y": 1120,
+        "y": 1160,
         "wires": [],
         "l": false
     },
@@ -2162,7 +1427,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 675,
-        "y": 1140,
+        "y": 1180,
         "wires": [],
         "l": false
     },
@@ -2181,7 +1446,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 905,
-        "y": 1120,
+        "y": 1160,
         "wires": [],
         "l": false
     },
@@ -2226,7 +1491,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 755,
-        "y": 1200,
+        "y": 1240,
         "wires": [],
         "l": false
     },
@@ -2245,7 +1510,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 815,
-        "y": 1440,
+        "y": 1460,
         "wires": [],
         "l": false
     },
@@ -2293,7 +1558,7 @@
         "energyResolution": "QUARTER_HOURLY",
         "lastCount": 10,
         "x": 230,
-        "y": 1120,
+        "y": 1160,
         "wires": [
             [
                 "58864caf322040c4",
@@ -2314,7 +1579,7 @@
         "energyResolution": "QUARTER_HOURLY",
         "lastCount": 10,
         "x": 220,
-        "y": 1360,
+        "y": 1380,
         "wires": [
             [
                 "c9012be958e6e770",
@@ -2332,8 +1597,8 @@
         "links": [
             "44d07b9e813b1e68"
         ],
-        "x": 765,
-        "y": 620,
+        "x": 775,
+        "y": 640,
         "wires": []
     },
     {
@@ -2360,7 +1625,7 @@
         "type": "function",
         "z": "58fd4f3e316f9347",
         "g": "09b406b6262b403b",
-        "name": "Inform scheme cutover to domo",
+        "name": "Inform schema cutover to domo",
         "func": "//node.warn(\"inform says: \"+msg.inform_domo);\nif (msg.inform_domo == true) {\n    msg.payload = msg.domo_msg\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
@@ -2369,7 +1634,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 620,
+        "y": 640,
         "wires": [
             [
                 "d041cf27c270fea3"
@@ -2399,7 +1664,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 620,
+        "y": 640,
         "wires": [
             [
                 "a4f52c6ac922c8a1"
@@ -2420,7 +1685,7 @@
         "finalize": "",
         "libs": [],
         "x": 260,
-        "y": 620,
+        "y": 640,
         "wires": [
             [
                 "2f1fbff6510fbc7f",
@@ -2443,7 +1708,7 @@
         "finalize": "",
         "libs": [],
         "x": 820,
-        "y": 460,
+        "y": 480,
         "wires": [
             [
                 "91f32b9877ddc12b"
@@ -2517,8 +1782,8 @@
         "links": [
             "44d07b9e813b1e68"
         ],
-        "x": 1035,
-        "y": 480,
+        "x": 1025,
+        "y": 500,
         "wires": []
     },
     {
@@ -2847,7 +2112,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 515,
-        "y": 1240,
+        "y": 1280,
         "wires": [],
         "l": false
     },
@@ -2900,7 +2165,7 @@
             "82cc2e170949b6be"
         ],
         "x": 1215,
-        "y": 1360,
+        "y": 1380,
         "wires": []
     },
     {
@@ -2914,7 +2179,7 @@
             "c325ef3a2094fd12"
         ],
         "x": 715,
-        "y": 580,
+        "y": 600,
         "wires": []
     },
     {
@@ -2945,7 +2210,7 @@
         "finalize": "",
         "libs": [],
         "x": 490,
-        "y": 800,
+        "y": 840,
         "wires": [
             [
                 "5f9cf5569eb6b1fb"
@@ -2966,7 +2231,7 @@
         "finalize": "",
         "libs": [],
         "x": 480,
-        "y": 840,
+        "y": 880,
         "wires": [
             [
                 "5f9cf5569eb6b1fb"
@@ -2984,7 +2249,7 @@
             "0a1ea07df71f6a2b"
         ],
         "x": 715,
-        "y": 820,
+        "y": 860,
         "wires": []
     },
     {
@@ -3010,7 +2275,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 150,
-        "y": 920,
+        "y": 960,
         "wires": [
             [
                 "4fad0b5209ed82b2"
@@ -3031,7 +2296,7 @@
         "finalize": "",
         "libs": [],
         "x": 470,
-        "y": 760,
+        "y": 800,
         "wires": [
             [
                 "5f9cf5569eb6b1fb"
@@ -3052,7 +2317,7 @@
         "finalize": "",
         "libs": [],
         "x": 450,
-        "y": 880,
+        "y": 920,
         "wires": [
             [
                 "5f9cf5569eb6b1fb"
@@ -3071,7 +2336,7 @@
             "123a7e7c3785524c"
         ],
         "x": 65,
-        "y": 820,
+        "y": 860,
         "wires": [
             [
                 "152a5da7adfa9a89",
@@ -3096,7 +2361,7 @@
         "finalize": "",
         "libs": [],
         "x": 420,
-        "y": 960,
+        "y": 1000,
         "wires": [
             []
         ]
@@ -3124,7 +2389,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 960,
+        "y": 1000,
         "wires": [
             [
                 "a299a45b95b0d2cd"
@@ -3154,7 +2419,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 1000,
+        "y": 1040,
         "wires": [
             [
                 "25acdd8c4853ee0f"
@@ -3172,7 +2437,7 @@
             "c325ef3a2094fd12"
         ],
         "x": 355,
-        "y": 1000,
+        "y": 1040,
         "wires": []
     },
     {
@@ -3194,7 +2459,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 140,
-        "y": 880,
+        "y": 920,
         "wires": [
             [
                 "4fad0b5209ed82b2"
@@ -3215,7 +2480,7 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 920,
+        "y": 960,
         "wires": [
             [
                 "5f9cf5569eb6b1fb"
@@ -3236,7 +2501,7 @@
         "finalize": "",
         "libs": [],
         "x": 800,
-        "y": 500,
+        "y": 520,
         "wires": [
             [
                 "91f32b9877ddc12b"
@@ -3262,8 +2527,8 @@
         "type": "function",
         "z": "58fd4f3e316f9347",
         "g": "09b406b6262b403b",
-        "name": "OP9",
-        "func": "/*\n * OptimusPrime — Battery Charge/Discharge Optimizer\n * Version: 9\n *\n * OVERVIEW\n * --------\n * Calculates the optimal charge/discharge schedule for a home battery\n * against Tibber quarter-hour electricity prices using dynamic programming.\n *\n * Improvements over OP3 (v1.11) based on OP4:\n *   - Real battery SOC as DP start point (OP3 always assumed batt_min / 10%)\n *   - Joint today+tomorrow optimization in a single DP pass, so cross-day\n *     decisions are possible (e.g. don't fully discharge today if tomorrow\n *     morning has cheap buy prices)\n *   - Stores context.global.scheme_today as an indexed object (\"HH:MM\" → slot)\n *     for fast current-slot lookup and cross-day re-optimization\n *   - noChargeAfterLastDischarge applied per-day (not across the combined span)\n *   - Solar forecast hook (disabled by default, set USE_SOLAR_FORECAST = true)\n *\n * v5.1 changes:\n *   - applySolarBalanceFill: replaced the 'CHEAP' level filter with an\n *     efficiency-aware profitability test. Solar is captured only when\n *     discharge_eff × best_future_discharge_price > current_export_price.\n *     earnedDelta now reflects the net gain over direct export rather than\n *     the full slot price, and a suffix-maximum pre-pass makes lookup O(1).\n *   - applyNightBalanceFill: removed. HomeBattHE already holds grid consumption\n *     at zero continuously; the function was redundant. If explicit per-slot\n *     battery-over-grid control is needed, use the existing 'gridbalance' type.\n *\n * HOW THE DP WORKS\n * ----------------\n * The state space is battery energy level, discretised into steps of\n * gcd(charge_rate, discharge_rate) Wh. For each 15-minute slot the algorithm\n * considers three actions per reachable state:\n *\n *   IDLE      → stay at current level, profit unchanged\n *   CHARGE    → move up one charge step, pay  (energy_in  / charge_eff)  * price\n *   DISCHARGE → move down one discharge step, earn (energy_out * discharge_eff) * price\n *\n * A forward pass fills dp[k] = best profit reachable with k steps above batt_min.\n * A backward trace through the action/from arrays reconstructs the decision sequence.\n *\n * RUNNING STANDALONE (outside Node-RED)\n * --------------------------------------\n *   node runner.js                  → uses today1.json\n *   node runner.js today2.json      → use a different price file\n *\n * runner.js sets up the simulated globals in the CONFIG section below and\n * calls the exported functions directly.\n *\n * NODE-RED USAGE\n * --------------\n * Paste everything between CUT HERE markers into the OptimusPrime function node.\n * The Node-RED context API (context.global / context.flow) replaces the\n * standalone CONFIG section automatically.\n *\n * INPUT  (msg.payload):  { datum, status, data: [96 slot objects] }\n *         msg.topic:     \"scheme_today\"    → today-only DP (00:01 / restart)\n *                        \"scheme_tomorrow\" → joint today+tomorrow DP (14:01 / 15:01)\n *\n * OUTPUT (msg.payload):  { datum, status, data: [96 slot objects with added fields] }\n *         Per-slot added fields: hour_type, setpoint, battery_capacity_watt,\n *                                battery_capacity_percentage, earned_money\n *\n * Node-RED outputs:\n *   Output 1 → scheme_today  (topic: tibber_data/scheme_today/state)\n *   Output 2 → scheme_tomorrow (topic: tibber_data/scheme_tomorrow/state)\n *\n * Context writes:\n *   context.global.scheme_today            – indexed object (\"HH:MM\" → slot)\n *   context.global.scheme_tomorrow         – indexed object (\"HH:MM\" → slot)\n *   context.global.charge_scheme_today     – { status, datum, data: [...] } array format\n *   context.global.charge_scheme_tomorrow  – { status, datum, data: [...] } array format\n */\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// STANDALONE CONFIG  (used only when running via runner.js, not in Node-RED)\n// In Node-RED these values come from context.global / context.flow instead.\n// ═══════════════════════════════════════════════════════════════════════════════\n\nconst STANDALONE = (typeof context === \"undefined\");\n\nconst CONFIG = {\n    // ── Battery hardware ──────────────────────────────────────────────────────\n    batt_capacity:             58000,   // Wh   (4 × battery packs)\n    number_of_multiplus:           3,   // informational – number of Multiplus inverters\n\n    // Charge: batt_charge_rate is the power used for DP energy calculation.\n    //         max_charge_setpoint is the ESS setpoint commanded to the inverter.\n    batt_charge_rate:           9000,   // W   – charge power basis for DP (grid → battery)\n    max_charge_setpoint:       10000,   // W   – ESS setpoint sent during charge slots\n    batt_charge_efficiency:    0.907,   // –    energy stored in battery / energy drawn from grid\n\n    // Discharge: batt_discharge_rate is the power used for DP energy calculation.\n    //            max_discharge_setpoint is the ESS setpoint commanded to the inverter.\n    batt_discharge_rate:        9000,   // W   – discharge power basis for DP (battery → grid)\n    max_discharge_setpoint:    10000,   // W   – ESS setpoint sent during discharge slots (negated in output)\n    batt_discharge_efficiency: 0.930,   // –    energy delivered to grid / energy drawn from battery\n\n    // ── SOC limits ────────────────────────────────────────────────────────────\n    min_soc:                      30,   // %   – lower SOC floor (batt_min_charged derived from this)\n    max_soc:                     100,   // %   – upper cap; 100% = physical ~90% via SmartShunt (55.2 V = 100%)\n    // batt_min_charged is derived below: min_soc/100 × batt_capacity\n\n    // ── Idle consumption ─────────────────────────────────────────────────────\n    idle_rate:                   130,   // W   – standby draw / ESS setpoint when battery is idle\n\n    // ── Per-phase limit (used by Watt/kWh/Log/Monitor flow to guard grid overload)\n    max_phase_power:            5550,   // W   – max power per phase\n\n    // ── Trading parameters ────────────────────────────────────────────────────\n    price_min_sell_difference:  0.06,   // EUR/kWh – min spread above buy price to consider selling\n\n    // ── Simulation: current SOC for standalone testing ────────────────────────\n    batt_soc:                     50,   // %   – simulated current SOC (set null to use batt_min fallback)\n\n    // ── Feature flags ─────────────────────────────────────────────────────────\n    USE_SOLAR_FORECAST: false,\n    // In Node-RED: read from context.flow.USE_SOLAR_FORECAST (set by Global Variables node).\n    // When true, solar forecast values in slot.forecast (W average) will\n    // reduce the effective \"need to charge from grid\" by reducing the charge\n    // cost. Currently disabled; requires forecast calibration for your location.\n\n};\n\n// batt_min_charged is derived from min_soc × batt_capacity.\n// In Node-RED the init function pre-computes this into context.flow.batt_min_charged.\n// In standalone mode we derive it here so the F() adapter finds it in CONFIG.\nCONFIG.batt_min_charged = CONFIG.batt_capacity * CONFIG.min_soc / 100;\n\n// ── Adapter: in Node-RED these come from context.global / context.flow.\n//    In standalone mode they come from CONFIG above.\nfunction G(key) { return STANDALONE ? CONFIG[key] : context.global[key]; }\nfunction F(key) { return STANDALONE ? CONFIG[key] : context.flow[key];   }\nfunction GD(key) {\n    // Reads context.global.data[key] (live Victron state) in Node-RED.\n    // In standalone, returns the simulated value from CONFIG.\n    if (STANDALONE) return (key === \"batt_soc\") ? CONFIG.batt_soc : undefined;\n    const d = context.global.data;\n    return (d != null) ? d[key] : undefined;\n}\n\n// ── Warn/log adapter ─────────────────────────────────────────────────────────\nfunction warn(msg) {\n    if (STANDALONE) { console.warn(\"[OP9]\", msg); }\n    else            { node.warn(\"OP9: \" + msg); }\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — Scheme indexed-object format (\"HH:MM\" → slot)\n// The internal scheme_today is stored as an indexed object for O(1) lookup.\n// The MQTT output uses the original array format (consumed by Domoticz BattIQMode).\n// ═══════════════════════════════════════════════════════════════════════════════\n\nconst MINS = [\"00\", \"15\", \"30\", \"45\"];\n\n/** Build indexed scheme object from a flat result array.\n *  Returns { status:true, datum, \"00:00\":{slot}, \"00:15\":{slot}, ... }\n */\nfunction buildSchemeObj(datum, slotsArray) {\n    const obj = { status: true, datum: datum, num_records: slotsArray.length };\n    slotsArray.forEach(function(slot, idx) {\n        const h = Math.floor(idx / 4);\n        const m = idx % 4;\n        const key = (\"0\" + h).slice(-2) + \":\" + MINS[m];\n        obj[key] = slot;\n    });\n    return obj;\n}\n\n/** Convert indexed scheme back to flat array (price/metadata only, no schedule fields).\n *  Used to feed remaining today slots into the joint DP.\n */\nfunction schemeObjToArray(scheme) {\n    const arr = [];\n    for (let h = 0; h < 24; h++) {\n        for (let m = 0; m < 4; m++) {\n            const key = (\"0\" + h).slice(-2) + \":\" + MINS[m];\n            if (scheme[key] != null) arr.push(scheme[key]);\n        }\n    }\n    return arr;\n}\n\n/** Merge DP-updated slots back into an existing indexed scheme.\n *  Preserves price/level/forecast fields from the original; overwrites\n *  schedule fields (hour_type, setpoint, battery_capacity_watt, etc.).\n */\nfunction updateSchemeObj(scheme, startSlotIdx, updatedSlots) {\n    const updated = JSON.parse(JSON.stringify(scheme));\n    for (let i = 0; i < updatedSlots.length; i++) {\n        const slotIdx = startSlotIdx + i;\n        const h = Math.floor(slotIdx / 4);\n        const m = slotIdx % 4;\n        const key = (\"0\" + h).slice(-2) + \":\" + MINS[m];\n        updated[key] = Object.assign({}, updated[key] || {}, updatedSlots[i]);\n    }\n    return updated;\n}\n\n/** Return the \"HH:MM\" key for the current 15-minute slot (rounds down to 00/15/30/45). */\nfunction currentSlotKey() {\n    const now = new Date();\n    const m = Math.floor(now.getMinutes() / 15) * 15;\n    return (\"0\" + now.getHours()).slice(-2) + \":\" + (\"0\" + m).slice(-2);\n}\n\n/** Return the flat index (0–95) of the current 15-minute slot. */\nfunction currentSlotIdx() {\n    const now = new Date();\n    return now.getHours() * 4 + Math.floor(now.getMinutes() / 15);\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — SOC\n// ═══════════════════════════════════════════════════════════════════════════════\n\n/** Return the starting SOC in Wh for the DP.\n *  Prefers the live SOC reading from the Victron system.\n *  Falls back to batt_min_charged (same behaviour as OP3) if no live data.\n */\nfunction getStartSocWatt() {\n    const battSocPct = GD(\"batt_soc\");\n    if (battSocPct != null) {\n        return G(\"batt_capacity\") * battSocPct / 100;\n    }\n    warn(\"batt_soc not available, falling back to batt_min\");\n    return F(\"batt_min_charged\");\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — Solar balance fill\n//\n// Post-DP pass: promote idle slots with net solar surplus (forecast > HOUSE_LOAD_W)\n// to 'solarbalance' when storing in the battery and discharging later is strictly\n// more profitable than exporting to the grid immediately.\n//\n// Economics per slot at export price p_export:\n//   Export now:        solar_Wh × p_export                          (no efficiency loss)\n//   Store + discharge: solar_Wh × discharge_eff × p_discharge_best  (discharge loss only)\n//\n// Capture iff:  discharge_eff × p_discharge_best  >  p_export\n//\n// Note: charge_efficiency is NOT part of this decision. Solar energy arrives for\n// free — no grid tariff is paid to fill the battery from PV. Only the discharge\n// path carries an efficiency penalty.\n//\n// A suffix-maximum pre-pass computes the best future discharge price at each\n// position in O(n), so the per-slot test is O(1).\n//\n// When no future discharge slot exists (suffix max == 0) the battery route yields\n// nothing and direct export is always preferred.\n//\n// Skips the pass entirely when the DP already fills the battery — no benefit then.\n// ═══════════════════════════════════════════════════════════════════════════════\n\nfunction applySolarBalanceFill(schedule, startSocWatt) {\n    const HOUSE_LOAD_W   = G(\"solar_min_surplus_w\") || 800;\n    const bIsQuarterData = schedule.length > 24;\n    const blockMult      = bIsQuarterData ? 0.25 : 1.0;\n\n    const batt_max          = G(\"batt_capacity\") * G(\"max_soc\") / 100;\n    const batt_min          = F(\"batt_min_charged\");\n    const dischargeEff      = G(\"batt_discharge_efficiency\") || 0.930;\n    const calcChargeRate    = G(\"batt_charge_rate\") * blockMult;\n    const calcDischargeRate = G(\"batt_discharge_rate\") * blockMult;\n\n    // Skip if battery already reaches max_soc in the price-optimised schedule.\n    // Use a 0.5% tolerance to guard against toFixed(2) rounding (e.g. 99.99% != 100.00).\n    if (schedule.some(function(s) { return s.battery_capacity_percentage >= G(\"max_soc\") - 0.5; })) {\n        return schedule;\n    }\n\n    const n = schedule.length;\n\n    // Pre-compute suffix maximum of discharge slot prices.\n    // bestFutureDischargePrice[i] = highest hour_price among discharge slots\n    // at indices i+1 … n-1.  Value is 0.0 when no discharge slot follows index i.\n    const bestFutureDischargePrice = new Float64Array(n).fill(0.0);\n    for (let i = n - 2; i >= 0; i--) {\n        bestFutureDischargePrice[i] = bestFutureDischargePrice[i + 1];\n        if (schedule[i + 1].hour_type === 'discharge') {\n            bestFutureDischargePrice[i] = Math.max(\n                bestFutureDischargePrice[i],\n                schedule[i + 1].hour_price\n            );\n        }\n    }\n\n    const result    = JSON.parse(JSON.stringify(schedule));\n    let battLevel   = Math.min(batt_max, Math.max(batt_min, startSocWatt));\n    let earnedDelta = 0.0; // cumulative net gain (EUR) from solarbalance promotions\n\n    for (let i = 0; i < result.length; i++) {\n        const slot = result[i];\n\n        if (slot.hour_type === 'idle') {\n            const solarSurplus = Math.max(0, (slot.forecast || 0) - HOUSE_LOAD_W);\n            const availCap     = batt_max - battLevel;\n\n            if (solarSurplus > 0 && availCap > 0) {\n                const p_export    = slot.hour_price;\n                const p_discharge = bestFutureDischargePrice[i]; // 0 if no future discharge slot\n                const battYield   = p_discharge * dischargeEff;  // EUR/kWh after discharge loss\n\n                // Only capture solar when the battery route beats direct grid export.\n                // When p_discharge == 0 there are no future sell opportunities — export wins.\n                if (battYield > p_export) {\n                    const solarCharge = Math.min(solarSurplus * blockMult, availCap);\n                    slot.hour_type = 'solarbalance';\n                    slot.setpoint  = G(\"idle_rate\") || 110;\n                    battLevel     += solarCharge;\n                    // Incremental gain over exporting now:\n                    //   battery route:  solarCharge/1000 × battYield\n                    //   export now:     solarCharge/1000 × p_export\n                    //   delta:          solarCharge/1000 × (battYield − p_export)\n                    earnedDelta += (solarCharge / 1000) * (battYield - p_export);\n                }\n                // else: leave idle — solar exports to grid at p_export; no earnedDelta added\n            }\n        } else if (slot.hour_type === 'charge') {\n            const add = Math.min(calcChargeRate, batt_max - battLevel);\n            battLevel = Math.min(batt_max, battLevel + add);\n        } else if (slot.hour_type === 'discharge') {\n            const sub = Math.min(calcDischargeRate, battLevel - batt_min);\n            battLevel = Math.max(batt_min, battLevel - sub);\n        }\n\n        slot.battery_capacity_watt       = Math.round(battLevel);\n        slot.battery_capacity_percentage = parseFloat(((100.0 / batt_max) * battLevel).toFixed(2));\n        slot.earned_money                = Math.round((slot.earned_money + earnedDelta) * 10000) / 10000;\n    }\n\n    return result;\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — Validation\n// ═══════════════════════════════════════════════════════════════════════════════\n\n/** Validate incoming Tibber payload.\n *  allowFutureDays: 0 = today only, 1 = today or tomorrow, etc.\n */\nfunction sanityCheck(json, allowFutureDays) {\n    if (allowFutureDays === undefined) allowFutureDays = 0;\n    if (!json || json.status !== true) {\n        warn(\"sanityCheck failed: status != true\");\n        return false;\n    }\n    const jDate = new Date(json.datum + 'T00:00:00'); // no Z → parsed as local midnight\n    const today = new Date();\n    today.setHours(0, 0, 0, 0);\n    const maxDate = new Date(today);\n    maxDate.setDate(maxDate.getDate() + allowFutureDays + 1); // exclusive upper bound\n    if (jDate.getTime() < today.getTime() || jDate.getTime() >= maxDate.getTime()) {\n        warn(\"sanityCheck failed: datum \" + json.datum + \" out of range (allowFutureDays=\" + allowFutureDays + \")\");\n        return false;\n    }\n    if (!Array.isArray(json.data) || json.data.length < 24) {\n        warn(\"sanityCheck failed: data array too short (\" + (json.data ? json.data.length : 0) + \")\");\n        return false;\n    }\n    return true;\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — noChargeAfterLastDischarge\n// Removes charge slots that appear after the last discharge in a day-range.\n// Rationale: charging after you've finished selling is pointless — you'd be\n// buying expensive evening power just to top up, with no sale planned.\n// Applied per-day (not across combined today+tomorrow span).\n// ═══════════════════════════════════════════════════════════════════════════════\n\n/** In slots[start..end), find the last discharge and set any later charge → idle. */\nfunction applyNoChargeAfterLastDischarge(slots, start, end) {\n    let lastDischarge = -1;\n    for (let i = end - 1; i >= start; i--) {\n        if (slots[i].hour_type === \"discharge\") { lastDischarge = i; break; }\n    }\n    if (lastDischarge === -1) return;\n    for (let i = lastDischarge + 1; i < end; i++) {\n        if (slots[i].hour_type === \"charge\") {\n            slots[i].hour_type = \"idle\";\n            slots[i].setpoint  = G(\"idle_rate\") || 0;\n        }\n    }\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// CORE ALGORITHM — Forward DP\n//\n// State: k = number of charge steps above batt_min  (k=0 → battery at batt_min)\n// Step size: gcd(charge_rate, discharge_rate) Wh — prevents energy aliasing\n//   where two different paths reach the same SOC level with the same step\n// Profit: EUR, positive = earned money, negative = spent money\n//\n// For each slot i, for each reachable state k:\n//   IDLE:      newDp[k]    = max(newDp[k],    dp[k])\n//   CHARGE:    newDp[k+Δ]  = max(newDp[k+Δ],  dp[k] - cost_to_charge)\n//   DISCHARGE: newDp[k-Δ]  = max(newDp[k-Δ],  dp[k] + gain_from_discharge)\n//\n// After the forward pass: backtrack through btAction/btFrom arrays to recover\n// the optimal action sequence, then simulate forward to compute SOC and earnings.\n// ═══════════════════════════════════════════════════════════════════════════════\n\nfunction gcd(a, b) { while (b) { var t = b; b = a % b; a = t; } return a; }\n\n/**\n * @param {Array}   data                      - Array of slot objects (price/forecast input)\n * @param {number}  startSocWatt              - Battery energy at start of first slot (Wh)\n * @param {boolean} noChargeAfterLastDischarge - If true, strip trailing charge slots per-day\n *                                              Set false for joint data (handled externally)\n * @param {number}  startEarnedMoney          - Carry-over earned money from prior slots (EUR)\n * @returns {Array} Input array augmented with hour_type, setpoint, battery_capacity_watt,\n *                  battery_capacity_percentage, earned_money per slot\n */\nfunction calculate_charge_schema(data, startSocWatt, noChargeAfterLastDischarge, startEarnedMoney) {\n    if (noChargeAfterLastDischarge === undefined) noChargeAfterLastDischarge = true;\n    if (startEarnedMoney          === undefined) startEarnedMoney = 0.0;\n\n    const processedData = JSON.parse(JSON.stringify(data));\n    const n = processedData.length;\n\n    // Quarter-hour data has 96 slots/day; hourly has 24.\n    // blockMultiply converts power (W) to energy per slot (Wh): 0.25h for quarters, 1h for hourly.\n    const bIsQuarterData = (n > 24);\n    const blockMultiply  = bIsQuarterData ? 0.25 : 1.0;\n\n    // ── Battery parameters ───────────────────────────────────────────────────\n    const charge_efficiency    = G(\"batt_charge_efficiency\")    || 0.907;\n    const discharge_efficiency = G(\"batt_discharge_efficiency\") || 0.930;\n    const batt_min             = F(\"batt_min_charged\");\n    const batt_max             = G(\"batt_capacity\") * G(\"max_soc\") / 100;\n\n    // Energy added to battery per charge slot (Wh): charge_rate drawn from grid × eff\n    const calc_charge_rate = G(\"batt_charge_rate\") * blockMultiply;\n\n    // Energy removed from battery per discharge slot (Wh):\n    // The inverter exports max_discharge_setpoint W to the grid.\n    // Due to discharge efficiency losses the battery must supply more:\n    //   battery_drain = grid_export / discharge_efficiency\n    const calc_discharge_rate = G(\"batt_discharge_rate\") * blockMultiply;\n\n    const priceDiff = F(\"price_min_sell_difference\") || 0.02;\n\n    // ── DP discretisation ────────────────────────────────────────────────────\n    // Step size = gcd of charge and discharge rates → smallest common energy unit.\n    // Enforced minimum of 100 Wh: discharge_efficiency (0.930) makes the raw gcd=1 Wh,\n    // which creates ~41 000 DP levels and blocks the Node.js event loop for 30+ seconds.\n    // 100 Wh precision is sufficient (< 0.3 % of 46 kWh battery).\n    const MIN_STEP  = 100;\n    const calc_step = Math.max(MIN_STEP, gcd(Math.round(calc_charge_rate), Math.round(calc_discharge_rate)));\n    const maxLevel  = Math.ceil((batt_max - batt_min) / calc_step);\n\n    function socAtLevel(k) { return Math.min(batt_max, batt_min + k * calc_step); }\n\n    // Map startSocWatt to the nearest grid level (clamped to valid range)\n    const clampedStart = Math.min(batt_max, Math.max(batt_min, startSocWatt));\n    const startLevel   = Math.min(maxLevel, Math.max(0, Math.round((clampedStart - batt_min) / calc_step)));\n\n    // ── Forward DP ───────────────────────────────────────────────────────────\n    let dp = new Float64Array(maxLevel + 1).fill(-Infinity);\n    dp[startLevel] = 0.0;  // start with 0 profit at the actual SOC level\n\n    // btAction[slot * (maxLevel+1) + level] = best action to reach this state\n    // btFrom  [slot * (maxLevel+1) + level] = level we came from\n    const btAction = new Uint8Array(n * (maxLevel + 1));\n    const btFrom   = new Uint32Array(n * (maxLevel + 1));\n    const ACTION_IDLE = 0, ACTION_CHARGE = 1, ACTION_DISCHARGE = 2;\n\n    for (let i = 0; i < n; i++) {\n        const price = processedData[i].hour_price;\n        const newDp = new Float64Array(maxLevel + 1).fill(-Infinity);\n        const base  = i * (maxLevel + 1);\n\n        for (let k = 0; k <= maxLevel; k++) {\n            if (dp[k] === -Infinity) continue;\n            const soc = socAtLevel(k);\n\n            // IDLE: stay at level k\n            if (dp[k] > newDp[k]) {\n                newDp[k]          = dp[k];\n                btAction[base + k] = ACTION_IDLE;\n                btFrom[base + k]   = k;\n            }\n\n            // CHARGE: buy energy from grid, fill battery\n            if (soc < batt_max) {\n                const chargeEnergy = Math.min(calc_charge_rate, batt_max - soc);\n                const newK         = Math.min(maxLevel, Math.ceil((soc + chargeEnergy - batt_min) / calc_step));\n                // Cost: energy drawn from grid = chargeEnergy / charge_efficiency\n                const cost   = (chargeEnergy / charge_efficiency / 1000) * price;\n                const profit = dp[k] - cost;\n                if (profit > newDp[newK]) {\n                    newDp[newK]          = profit;\n                    btAction[base + newK] = ACTION_CHARGE;\n                    btFrom[base + newK]   = k;\n                }\n            }\n\n            // DISCHARGE: sell energy to grid.\n            // Require a FULL discharge step to be available (soc - batt_min >= calc_discharge_rate).\n            // Partial discharges (less than one full step) are excluded because they create a\n            // spurious charge→partial-discharge arbitrage cycle: charging earns more EUR per Wh\n            // than the partial discharge costs, even at uniform prices, due to the asymmetry\n            // between charge efficiency and discharge efficiency. Requiring a full step ensures\n            // the DP only discharges when there is genuinely enough energy for a complete action.\n            if (soc - batt_min >= calc_discharge_rate) {\n                const dischargeEnergy = calc_discharge_rate;\n                const newK            = Math.max(0, Math.floor((soc - dischargeEnergy - batt_min) / calc_step));\n                // Gain: energy delivered to grid = dischargeEnergy * discharge_efficiency\n                // Only sell if price exceeds priceDiff threshold (avoids near-zero arbitrage)\n                const gain   = (dischargeEnergy * discharge_efficiency / 1000) * (price - priceDiff);\n                const profit = dp[k] + gain;\n                if (profit > newDp[newK]) {\n                    newDp[newK]          = profit;\n                    btAction[base + newK] = ACTION_DISCHARGE;\n                    btFrom[base + newK]   = k;\n                }\n            }\n        }\n\n        dp = newDp;\n    }\n\n    // ── Find best end state ───────────────────────────────────────────────────\n    let bestProfit = -Infinity, bestEndLevel = 0;\n    for (let k = 0; k <= maxLevel; k++) {\n        if (dp[k] > bestProfit) { bestProfit = dp[k]; bestEndLevel = k; }\n    }\n\n    // ── Backward trace — recover action sequence ──────────────────────────────\n    const actionSeq = new Array(n);\n    let curLevel = bestEndLevel;\n    for (let i = n - 1; i >= 0; i--) {\n        const base = i * (maxLevel + 1);\n        const a = btAction[base + curLevel];\n        actionSeq[i] = (a === ACTION_CHARGE) ? \"charge\" : (a === ACTION_DISCHARGE) ? \"discharge\" : \"idle\";\n        curLevel = btFrom[base + curLevel];\n    }\n\n    processedData.forEach(function(item, i) { item.hour_type = actionSeq[i]; });\n\n    // ── Per-day noChargeAfterLastDischarge (if requested) ─────────────────────\n    if (noChargeAfterLastDischarge) {\n        applyNoChargeAfterLastDischarge(processedData, 0, n);\n    }\n\n    // ── Forward simulation — compute SOC trajectory and earnings ──────────────\n    let battery_capacity_watt = clampedStart;\n    let earned_money          = startEarnedMoney;\n\n    processedData.forEach(function(item) {\n        if (item.hour_type === \"charge\") {\n            const power_to_add = Math.min(calc_charge_rate, batt_max - battery_capacity_watt);\n            if (power_to_add > 0) {\n                battery_capacity_watt += power_to_add;\n                earned_money          -= (power_to_add / charge_efficiency / 1000) * item.hour_price;\n            }\n            item.setpoint = G(\"max_charge_setpoint\") || G(\"batt_charge_rate\");\n\n        } else if (item.hour_type === \"discharge\") {\n            const power_to_sub = Math.max(0, Math.min(calc_discharge_rate, battery_capacity_watt - batt_min));\n            if (power_to_sub > 0) {\n                battery_capacity_watt -= power_to_sub;\n                earned_money          += (power_to_sub * discharge_efficiency / 1000) * item.hour_price;\n                item.setpoint          = -(G(\"max_discharge_setpoint\"));\n            } else {\n                // Can't discharge (already at floor) → force idle\n                item.hour_type = \"idle\";\n                item.setpoint  = G(\"idle_rate\") || 0;\n            }\n\n        } else {\n            item.setpoint = G(\"idle_rate\") || 0;\n        }\n\n        item.battery_capacity_watt       = Math.round(battery_capacity_watt);\n        item.battery_capacity_percentage = parseFloat(((100.0 / batt_max) * battery_capacity_watt).toFixed(2));\n        item.earned_money                = parseFloat(earned_money.toFixed(4));\n    });\n\n    return processedData;\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// ENTRY POINTS\n// ═══════════════════════════════════════════════════════════════════════════════\n\n/**\n * Entry 1: Today-only calculation.\n * Called at 00:01 daily and on Node-RED startup (via inject once:true).\n * Runs a full single-day DP with the real current battery SOC.\n *\n * @param {object} json    - { datum, status, data[] } from Tibber/Combine node\n * @param {object} ctxRef  - In Node-RED: not needed (uses context directly).\n *                           In standalone: pass { scheme_today: null } to simulate.\n * @returns {object}       - { status, datum, data[] } for MQTT output\n */\nfunction runToday(json, ctxRef) {\n    if (!sanityCheck(json, 0)) return { status: false };\n\n    const startSoc = getStartSocWatt();\n    // In Node-RED skip slots that are already in the past; tests always start from 0.\n    const nowIdx   = STANDALONE ? 0 : currentSlotIdx();\n\n    // Run DP + post-passes only on current and future slots\n    const futureData   = json.data.slice(nowIdx);\n    const futureResult = calculate_charge_schema(futureData, startSoc, true, 0.0);\n    const futureFilled = applySolarBalanceFill(futureResult, startSoc);\n    const sbCount      = futureFilled.filter(function(s) { return s.hour_type === 'solarbalance'; }).length;\n    if (sbCount > 0) warn(\"solarbalance fill: \" + sbCount + \" slots added\");\n\n    // Past slots: force idle at current SOC (actual history is unknown here)\n    const batt_max  = G(\"batt_capacity\") * G(\"max_soc\") / 100;\n    const idle_rate = G(\"idle_rate\") || 0;\n    const pastSlots = json.data.slice(0, nowIdx).map(function(slot) {\n        return Object.assign({}, slot, {\n            hour_type:                   'idle',\n            setpoint:                    idle_rate,\n            battery_capacity_watt:       Math.round(startSoc),\n            battery_capacity_percentage: parseFloat(((100.0 / batt_max) * startSoc).toFixed(2)),\n            earned_money:                0\n        });\n    });\n\n    const todayFilled = pastSlots.concat(futureFilled);\n\n    // Store indexed scheme for fast lookup and cross-day re-optimization.\n    // Also write charge_scheme_today in array format for downstream consumers.\n    if (!STANDALONE) {\n        context.global.scheme_today       = buildSchemeObj(json.datum, todayFilled);\n        context.global.charge_scheme_today = { status: true, datum: json.datum, data: todayFilled };\n    } else if (ctxRef) {\n        ctxRef.scheme_today = buildSchemeObj(json.datum, todayFilled);\n    }\n\n    warn(\"Today done: \" + todayFilled.length + \" slots, startSOC=\" + Math.round(startSoc) + \"Wh, nowIdx=\" + nowIdx);\n    return { status: true, datum: json.datum, data: todayFilled };\n}\n\n/**\n * Entry 2: Joint today+tomorrow calculation.\n * Called at 14:01 / 15:01 daily and on Node-RED startup when time >= 14:01.\n * Reads remaining today slots from context.global.scheme_today, combines with\n * tomorrow data, and runs a single DP pass for cross-day optimization.\n *\n * Returns an array of two messages: [updatedTodayMsg, tomorrowMsg].\n * In Node-RED these are sent sequentially on the same output wire to MQTT.\n *\n * @param {object} tomorrowJson - { datum, status, data[] } for tomorrow\n * @param {object} ctxRef       - In standalone: { scheme_today: <indexed obj> }\n * @returns {Array|object}      - [todayMsg, tomorrowMsg] on success, or single fallback msg\n */\nfunction runTomorrow(tomorrowJson, ctxRef) {\n    if (!sanityCheck(tomorrowJson, 1)) return { status: false };\n\n    const todayScheme = STANDALONE\n        ? (ctxRef && ctxRef.scheme_today)\n        : context.global.scheme_today;\n\n    if (!todayScheme || todayScheme.status !== true) {\n        // No today scheme yet — optimize tomorrow standalone as a safe fallback\n        warn(\"No scheme_today, optimizing tomorrow standalone\");\n        const startSoc = getStartSocWatt();\n        const result   = calculate_charge_schema(tomorrowJson.data, startSoc, true, 0.0);\n        const filled  = applySolarBalanceFill(result, startSoc);\n        const sbCount = filled.filter(function(s) { return s.hour_type === 'solarbalance'; }).length;\n        if (sbCount > 0) warn(\"solarbalance fill: \" + sbCount + \" slots added\");\n        if (!STANDALONE) {\n            context.global.scheme_tomorrow       = buildSchemeObj(tomorrowJson.datum, filled);\n            context.global.charge_scheme_tomorrow = { status: true, datum: tomorrowJson.datum, data: filled };\n        } else if (ctxRef) {\n            ctxRef.scheme_tomorrow = buildSchemeObj(tomorrowJson.datum, filled);\n        }\n        return { status: true, datum: tomorrowJson.datum, data: filled };\n    }\n\n    const nowIdx    = currentSlotIdx();\n    const todayArr  = schemeObjToArray(todayScheme);\n\n    // Strip schedule fields from remaining today so DP can re-decide\n    const remainingToday = todayArr.slice(nowIdx).map(function(slot) {\n        return { datum: slot.datum, hour_price: slot.hour_price, level: slot.level, forecast: slot.forecast || 0 };\n    });\n    const nRemaining = remainingToday.length;\n    const nTomorrow  = tomorrowJson.data.length;\n\n    // Carry earned money from already-completed today slots\n    const prevSlot      = (nowIdx > 0) ? todayArr[nowIdx - 1] : null;\n    const startEarned   = prevSlot ? (prevSlot.earned_money || 0.0) : 0.0;\n    const startSoc      = getStartSocWatt();\n\n    // Single DP pass over remaining today + all tomorrow\n    // noChargeAfterLastDischarge=false here: we apply it per-day below\n    const combined       = remainingToday.concat(tomorrowJson.data);\n    const combinedResult = calculate_charge_schema(combined, startSoc, false, startEarned);\n\n    // Apply noChargeAfterLastDischarge independently per day\n    applyNoChargeAfterLastDischarge(combinedResult, 0, nRemaining);\n    applyNoChargeAfterLastDischarge(combinedResult, nRemaining, nRemaining + nTomorrow);\n\n    // Apply solarbalance fill across the combined span\n    const filledResult = applySolarBalanceFill(combinedResult, startSoc);\n    const sbCount = filledResult.filter(function(s) { return s.hour_type === 'solarbalance'; }).length;\n    if (sbCount > 0) warn(\"solarbalance fill: \" + sbCount + \" slots added\");\n\n    const updatedTodaySlots = filledResult.slice(0, nRemaining);\n    const tomorrowSlots     = filledResult.slice(nRemaining);\n\n    // Reset earned_money for tomorrow slots back to zero-based.\n    // The joint DP carries earned_money continuously from today's running total,\n    // but consumers (Forecast.html chart, BattPlanTxt) expect tomorrow to start at 0.\n    const earnedOffset = tomorrowSlots.length > 0 ? tomorrowSlots[0].earned_money : 0;\n    tomorrowSlots.forEach(function(slot) {\n        slot.earned_money = parseFloat((slot.earned_money - earnedOffset).toFixed(4));\n    });\n\n    // Persist updated schemes (indexed object for fast lookup) and\n    // charge_scheme_* (array format) for downstream consumers.\n    if (!STANDALONE) {\n        context.global.scheme_today    = updateSchemeObj(todayScheme, nowIdx, updatedTodaySlots);\n        context.global.scheme_tomorrow = buildSchemeObj(tomorrowJson.datum, tomorrowSlots);\n        context.global.charge_scheme_today = {\n            status: true,\n            datum:  todayScheme.datum,\n            data:   schemeObjToArray(context.global.scheme_today)\n        };\n        context.global.charge_scheme_tomorrow = {\n            status: true,\n            datum:  tomorrowJson.datum,\n            data:   tomorrowSlots\n        };\n    } else if (ctxRef) {\n        ctxRef.scheme_today    = updateSchemeObj(todayScheme, nowIdx, updatedTodaySlots);\n        ctxRef.scheme_tomorrow = buildSchemeObj(tomorrowJson.datum, tomorrowSlots);\n    }\n\n    const socSource = (GD(\"batt_soc\") != null) ? \"actual(\" + GD(\"batt_soc\") + \"%)\" : \"planned\";\n    warn(\"Joint done: remaining=\" + nRemaining + \" today + \" + nTomorrow + \" tomorrow, startSOC=\" + Math.round(startSoc) + \"Wh [\" + socSource + \"]\");\n\n    // Return two messages: updated today + full tomorrow\n    const todayMsg = {\n        topic:   \"scheme_today\",\n        payload: { status: true, datum: todayScheme.datum, data: schemeObjToArray(STANDALONE ? ctxRef.scheme_today : context.global.scheme_today) }\n    };\n    const tomorrowMsg = {\n        topic:   \"scheme_tomorrow\",\n        payload: { status: true, datum: tomorrowJson.datum, data: tomorrowSlots }\n    };\n    return [todayMsg, tomorrowMsg];\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// NODE-RED DISPATCH (entry point when running inside function node)\n// ── CUT HERE: everything above this line goes into the function node ──────────\n// ═══════════════════════════════════════════════════════════════════════════════\n\nif (!STANDALONE) {\n    // Node has 2 outputs:\n    //   Output 1 → tibber_data/scheme_today/state\n    //   Output 2 → tibber_data/scheme_tomorrow/state\n    //\n    // return [todayMsg, null]          → output 1 only (runToday)\n    // return [todayMsg, tomorrowMsg]   → both outputs (runTomorrow joint result)\n    // return [null, tomorrowMsg]       → output 2 only (runTomorrow fallback)\n\n    const topicRoot = 'tibber_data';\n\n    if (msg.topic.includes(\"scheme_today\")) {\n        const out = runToday(msg.payload);\n        if (!out.status) return null;\n        msg.payload = out;\n        msg.topic   = topicRoot + '/scheme_today/state';\n        msg.retain  = true;\n        return [msg, null];\n\n    } else if (msg.topic.includes(\"scheme_tomorrow\")) {\n        const out = runTomorrow(msg.payload);\n        if (!out) return null;\n        if (Array.isArray(out)) {\n            out[0].topic  = topicRoot + '/scheme_today/state';\n            out[0].retain = true;\n            out[1].topic  = topicRoot + '/scheme_tomorrow/state';\n            out[1].retain = true;\n            return out;  // [todayMsg, tomorrowMsg] → output 1 + output 2\n        }\n        // Fallback: no scheme_today available, tomorrow standalone\n        out.topic  = topicRoot + '/scheme_tomorrow/state';\n        out.retain = true;\n        return [null, out];\n\n    } else {\n        node.warn(\"OP9: unexpected topic: \" + msg.topic);\n        return null;\n    }\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// STANDALONE EXPORTS (used by runner.js)\n// ═══════════════════════════════════════════════════════════════════════════════\n\nif (STANDALONE) {\n    module.exports = {\n        runToday,\n        runTomorrow,\n        calculate_charge_schema,\n        buildSchemeObj,\n        schemeObjToArray,\n        updateSchemeObj,\n        currentSlotKey,\n        currentSlotIdx,\n        getStartSocWatt,\n        CONFIG,\n    };\n}\n",
+        "name": "OP10",
+        "func": "/*\n * OptimusPrime — Battery Charge/Discharge Optimizer\n * Version: 10\n *\n * OVERVIEW\n * --------\n * Calculates the optimal charge/discharge schedule for a home battery\n * against Tibber quarter-hour electricity prices using dynamic programming.\n *\n * Improvements over OP3 (v1.11) based on OP4:\n *   - Real battery SOC as DP start point (OP3 always assumed batt_min / 10%)\n *   - Joint today+tomorrow optimization in a single DP pass, so cross-day\n *     decisions are possible (e.g. don't fully discharge today if tomorrow\n *     morning has cheap buy prices)\n *   - Stores context.global.scheme_today as an indexed object (\"HH:MM\" → slot)\n *     for fast current-slot lookup and cross-day re-optimization\n *   - noChargeAfterLastDischarge applied per-day (not across the combined span)\n *   - Solar forecast hook (disabled by default, set USE_SOLAR_FORECAST = true)\n *\n * v5.1 changes:\n *   - applySolarBalanceFill: replaced the 'CHEAP' level filter with an\n *     efficiency-aware profitability test. Solar is captured only when\n *     discharge_eff × best_future_discharge_price > current_export_price.\n *     earnedDelta now reflects the net gain over direct export rather than\n *     the full slot price, and a suffix-maximum pre-pass makes lookup O(1).\n *   - applyNightBalanceFill: removed. HomeBattHE already holds grid consumption\n *     at zero continuously; the function was redundant. If explicit per-slot\n *     battery-over-grid control is needed, use the existing 'gridbalance' type.\n *\n * HOW THE DP WORKS\n * ----------------\n * The state space is battery energy level, discretised into steps of\n * gcd(charge_rate, discharge_rate) Wh. For each 15-minute slot the algorithm\n * considers three actions per reachable state:\n *\n *   IDLE      → stay at current level, profit unchanged\n *   CHARGE    → move up one charge step, pay  (energy_in  / charge_eff)  * price\n *   DISCHARGE → move down one discharge step, earn (energy_out * discharge_eff) * price\n *\n * A forward pass fills dp[k] = best profit reachable with k steps above batt_min.\n * A backward trace through the action/from arrays reconstructs the decision sequence.\n *\n * RUNNING STANDALONE (outside Node-RED)\n * --------------------------------------\n *   node runner.js                  → uses today1.json\n *   node runner.js today2.json      → use a different price file\n *\n * runner.js sets up the simulated globals in the CONFIG section below and\n * calls the exported functions directly.\n *\n * NODE-RED USAGE\n * --------------\n * Paste everything between CUT HERE markers into the OptimusPrime function node.\n * The Node-RED context API (context.global / context.flow) replaces the\n * standalone CONFIG section automatically.\n *\n * INPUT  (msg.payload):  { datum, status, data: [96 slot objects] }\n *         msg.topic:     \"scheme_today\"    → today-only DP (00:01 / restart)\n *                        \"scheme_tomorrow\" → joint today+tomorrow DP (14:01 / 15:01)\n *\n * OUTPUT (msg.payload):  { datum, status, data: [96 slot objects with added fields] }\n *         Per-slot added fields: hour_type, setpoint, battery_capacity_watt,\n *                                battery_capacity_percentage, earned_money\n *\n * Node-RED outputs:\n *   Output 1 → scheme_today  (topic: tibber_data/scheme_today/state)\n *   Output 2 → scheme_tomorrow (topic: tibber_data/scheme_tomorrow/state)\n *\n * Context writes:\n *   context.global.scheme_today            – indexed object (\"HH:MM\" → slot)\n *   context.global.scheme_tomorrow         – indexed object (\"HH:MM\" → slot)\n *   context.global.charge_scheme_today     – { status, datum, data: [...] } array format\n *   context.global.charge_scheme_tomorrow  – { status, datum, data: [...] } array format\n */\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// STANDALONE CONFIG  (used only when running via runner.js, not in Node-RED)\n// In Node-RED these values come from context.global / context.flow instead.\n// ═══════════════════════════════════════════════════════════════════════════════\n\nconst STANDALONE = (typeof context === \"undefined\");\n\nconst CONFIG = {\n    // ── Battery hardware ──────────────────────────────────────────────────────\n    batt_capacity:             46300,   // Wh  – 14300 + 16000 + 16000 (3 × battery packs)\n    number_of_multiplus:           3,   // informational – number of Multiplus inverters\n\n    // Charge: batt_charge_rate is the power used for DP energy calculation.\n    //         max_charge_setpoint is the ESS setpoint commanded to the inverter.\n    batt_charge_rate:           9000,   // W   – charge power basis for DP (grid → battery)\n    max_charge_setpoint:       10000,   // W   – ESS setpoint sent during charge slots\n    batt_charge_efficiency:    0.907,   // –    energy stored in battery / energy drawn from grid\n\n    // Discharge: batt_discharge_rate is the power used for DP energy calculation.\n    //            max_discharge_setpoint is the ESS setpoint commanded to the inverter.\n    batt_discharge_rate:        9000,   // W   – discharge power basis for DP (battery → grid)\n    max_discharge_setpoint:    10000,   // W   – ESS setpoint sent during discharge slots (negated in output)\n    batt_discharge_efficiency: 0.930,   // –    energy delivered to grid / energy drawn from battery\n\n    // ── SOC limits ────────────────────────────────────────────────────────────\n    min_soc:                      10,   // %   – lower SOC floor (batt_min_charged derived from this)\n    max_soc:                     100,   // %   – upper cap; 100% = physical ~90% via SmartShunt (55.2 V = 100%)\n    // batt_min_charged is derived below: min_soc/100 × batt_capacity\n\n    // ── Idle consumption ─────────────────────────────────────────────────────\n    idle_rate:                   110,   // W   – standby draw / ESS setpoint when battery is idle\n\n    // ── Per-phase limit (used by Watt/kWh/Log/Monitor flow to guard grid overload)\n    max_phase_power:            5550,   // W   – max power per phase\n\n    // ── Trading parameters ────────────────────────────────────────────────────\n    price_min_sell_difference:  0.06,   // EUR/kWh – min spread above buy price to consider selling\n\n    // ── Simulation: current SOC for standalone testing ────────────────────────\n    batt_soc:                     50,   // %   – simulated current SOC (set null to use batt_min fallback)\n\n    // ── Feature flags ─────────────────────────────────────────────────────────\n    USE_SOLAR_FORECAST: false,\n    // In Node-RED: read from context.flow.USE_SOLAR_FORECAST (set by Global Variables node).\n    // When true, solar forecast values in slot.forecast (W average) will\n    // reduce the effective \"need to charge from grid\" by reducing the charge\n    // cost. Currently disabled; requires forecast calibration for your location.\n\n};\n\n// batt_min_charged is derived from min_soc × batt_capacity.\n// In Node-RED the init function pre-computes this into context.flow.batt_min_charged.\n// In standalone mode we derive it here so the F() adapter finds it in CONFIG.\nCONFIG.batt_min_charged = CONFIG.batt_capacity * CONFIG.min_soc / 100;\n\n// ── Adapter: in Node-RED these come from context.global / context.flow.\n//    In standalone mode they come from CONFIG above.\nfunction G(key) { return STANDALONE ? CONFIG[key] : context.global[key]; }\nfunction F(key) { return STANDALONE ? CONFIG[key] : context.flow[key];   }\nfunction GD(key) {\n    // Reads context.global.data[key] (live Victron state) in Node-RED.\n    // In standalone, returns the simulated value from CONFIG.\n    if (STANDALONE) return (key === \"batt_soc\") ? CONFIG.batt_soc : undefined;\n    const d = context.global.data;\n    return (d != null) ? d[key] : undefined;\n}\n\n// ── Warn/log adapter ─────────────────────────────────────────────────────────\nfunction warn(msg) {\n    if (STANDALONE) { console.warn(\"[OP9]\", msg); }\n    else            { node.warn(\"OP9: \" + msg); }\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — Scheme indexed-object format (\"HH:MM\" → slot)\n// The internal scheme_today is stored as an indexed object for O(1) lookup.\n// The MQTT output uses the original array format (consumed by Domoticz BattIQMode).\n// ═══════════════════════════════════════════════════════════════════════════════\n\nconst MINS = [\"00\", \"15\", \"30\", \"45\"];\n\n/** Build indexed scheme object from a flat result array.\n *  Returns { status:true, datum, \"00:00\":{slot}, \"00:15\":{slot}, ... }\n */\nfunction buildSchemeObj(datum, slotsArray) {\n    const obj = { status: true, datum: datum, num_records: slotsArray.length };\n    slotsArray.forEach(function(slot, idx) {\n        const h = Math.floor(idx / 4);\n        const m = idx % 4;\n        const key = (\"0\" + h).slice(-2) + \":\" + MINS[m];\n        obj[key] = slot;\n    });\n    return obj;\n}\n\n/** Convert indexed scheme back to flat array (price/metadata only, no schedule fields).\n *  Used to feed remaining today slots into the joint DP.\n */\nfunction schemeObjToArray(scheme) {\n    const arr = [];\n    for (let h = 0; h < 24; h++) {\n        for (let m = 0; m < 4; m++) {\n            const key = (\"0\" + h).slice(-2) + \":\" + MINS[m];\n            if (scheme[key] != null) arr.push(scheme[key]);\n        }\n    }\n    return arr;\n}\n\n/** Merge DP-updated slots back into an existing indexed scheme.\n *  Preserves price/level/forecast fields from the original; overwrites\n *  schedule fields (hour_type, setpoint, battery_capacity_watt, etc.).\n */\nfunction updateSchemeObj(scheme, startSlotIdx, updatedSlots) {\n    const updated = JSON.parse(JSON.stringify(scheme));\n    for (let i = 0; i < updatedSlots.length; i++) {\n        const slotIdx = startSlotIdx + i;\n        const h = Math.floor(slotIdx / 4);\n        const m = slotIdx % 4;\n        const key = (\"0\" + h).slice(-2) + \":\" + MINS[m];\n        updated[key] = Object.assign({}, updated[key] || {}, updatedSlots[i]);\n    }\n    return updated;\n}\n\n/** Return the \"HH:MM\" key for the current 15-minute slot (rounds down to 00/15/30/45). */\nfunction currentSlotKey() {\n    const now = new Date();\n    const m = Math.floor(now.getMinutes() / 15) * 15;\n    return (\"0\" + now.getHours()).slice(-2) + \":\" + (\"0\" + m).slice(-2);\n}\n\n/** Return the flat index (0–95) of the current 15-minute slot. */\nfunction currentSlotIdx() {\n    const now = new Date();\n    return now.getHours() * 4 + Math.floor(now.getMinutes() / 15);\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — SOC\n// ═══════════════════════════════════════════════════════════════════════════════\n\n/** Return the starting SOC in Wh for the DP.\n *  Prefers the live SOC reading from the Victron system.\n *  Falls back to batt_min_charged (same behaviour as OP3) if no live data.\n */\nfunction getStartSocWatt() {\n    const battSocPct = GD(\"batt_soc\");\n    if (battSocPct != null) {\n        return G(\"batt_capacity\") * battSocPct / 100;\n    }\n    warn(\"batt_soc not available, falling back to batt_min\");\n    return F(\"batt_min_charged\");\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — Solar balance fill\n//\n// Post-DP pass: promote idle slots with net solar surplus (forecast > HOUSE_LOAD_W)\n// to 'solarbalance' when storing in the battery and discharging later is strictly\n// more profitable than exporting to the grid immediately.\n//\n// Economics per slot at export price p_export:\n//   Export now:        solar_Wh × p_export                          (no efficiency loss)\n//   Store + discharge: solar_Wh × discharge_eff × p_discharge_best  (discharge loss only)\n//\n// Capture iff:  discharge_eff × p_discharge_best  >  p_export\n//\n// Note: charge_efficiency is NOT part of this decision. Solar energy arrives for\n// free — no grid tariff is paid to fill the battery from PV. Only the discharge\n// path carries an efficiency penalty.\n//\n// A suffix-maximum pre-pass computes the best future discharge price at each\n// position in O(n), so the per-slot test is O(1).\n//\n// When no future discharge slot exists (suffix max == 0) the battery route yields\n// nothing and direct export is always preferred.\n//\n// Skips the pass entirely when the DP already fills the battery — no benefit then.\n// ═══════════════════════════════════════════════════════════════════════════════\n\nfunction applySolarBalanceFill(schedule, startSocWatt) {\n    const HOUSE_LOAD_W   = G(\"solar_min_surplus_w\") || 800;\n    const bIsQuarterData = schedule.length > 24;\n    const blockMult      = bIsQuarterData ? 0.25 : 1.0;\n\n    const batt_max          = G(\"batt_capacity\") * G(\"max_soc\") / 100;\n    const batt_min          = F(\"batt_min_charged\");\n    const dischargeEff      = G(\"batt_discharge_efficiency\") || 0.930;\n    const calcChargeRate    = G(\"batt_charge_rate\") * blockMult;\n    const calcDischargeRate = G(\"batt_discharge_rate\") * blockMult;\n\n    // Note: the former early-exit (\"skip entirely when DP fills battery\") was removed.\n    // It caused two bugs:\n    //  1. It fired whenever overnight charging hit 100%, which is almost every joint run.\n    //  2. It returned `schedule` with battery_capacity_percentage values from the DP\n    //     simulation — BEFORE applyNoChargeAfterLastDischarge removed the trailing charge\n    //     slots. The displayed end-of-day SOC was therefore inflated (stale).\n    //  3. It blocked legitimate solarbalance promotions in afternoon slots that had\n    //     available capacity (after morning discharges brought the battery below max).\n    // The loop below naturally skips solarbalance when availCap == 0, so no early exit\n    // is needed. battery_capacity_percentage is always recomputed from the updated\n    // hour_type sequence, giving a correct SOC trajectory regardless.\n\n    const n = schedule.length;\n\n    // Pre-compute suffix maximum of discharge slot prices.\n    // bestFutureDischargePrice[i] = highest hour_price among discharge slots\n    // at indices i+1 … n-1.  Value is 0.0 when no discharge slot follows index i.\n    const bestFutureDischargePrice = new Float64Array(n).fill(0.0);\n    for (let i = n - 2; i >= 0; i--) {\n        bestFutureDischargePrice[i] = bestFutureDischargePrice[i + 1];\n        if (schedule[i + 1].hour_type === 'discharge') {\n            bestFutureDischargePrice[i] = Math.max(\n                bestFutureDischargePrice[i],\n                schedule[i + 1].hour_price\n            );\n        }\n    }\n\n    const result    = JSON.parse(JSON.stringify(schedule));\n    let battLevel   = Math.min(batt_max, Math.max(batt_min, startSocWatt));\n    let earnedDelta = 0.0; // cumulative net gain (EUR) from solarbalance promotions\n\n    for (let i = 0; i < result.length; i++) {\n        const slot = result[i];\n\n        if (slot.hour_type === 'idle') {\n            const solarSurplus = Math.max(0, (slot.forecast || 0) - HOUSE_LOAD_W);\n            const availCap     = batt_max - battLevel;\n\n            if (solarSurplus > 0 && availCap > 0) {\n                const p_export    = slot.hour_price;\n                const p_discharge = bestFutureDischargePrice[i]; // 0 if no future discharge slot\n                const battYield   = p_discharge * dischargeEff;  // EUR/kWh after discharge loss\n\n                // Only capture solar when the battery route beats direct grid export.\n                // When p_discharge == 0 there are no future sell opportunities — export wins.\n                if (battYield > p_export) {\n                    const solarCharge = Math.min(solarSurplus * blockMult, availCap);\n                    slot.hour_type = 'solarbalance';\n                    slot.setpoint  = G(\"idle_rate\") || 110;\n                    battLevel     += solarCharge;\n                    // Incremental gain over exporting now:\n                    //   battery route:  solarCharge/1000 × battYield\n                    //   export now:     solarCharge/1000 × p_export\n                    //   delta:          solarCharge/1000 × (battYield − p_export)\n                    earnedDelta += (solarCharge / 1000) * (battYield - p_export);\n                }\n                // else: leave idle — solar exports to grid at p_export; no earnedDelta added\n            }\n        } else if (slot.hour_type === 'charge') {\n            const add = Math.min(calcChargeRate, batt_max - battLevel);\n            battLevel = Math.min(batt_max, battLevel + add);\n        } else if (slot.hour_type === 'discharge') {\n            const sub = Math.min(calcDischargeRate, battLevel - batt_min);\n            battLevel = Math.max(batt_min, battLevel - sub);\n        }\n\n        slot.battery_capacity_watt       = Math.round(battLevel);\n        slot.battery_capacity_percentage = parseFloat(((100.0 / batt_max) * battLevel).toFixed(2));\n        slot.earned_money                = Math.round((slot.earned_money + earnedDelta) * 10000) / 10000;\n    }\n\n    return result;\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — Validation\n// ═══════════════════════════════════════════════════════════════════════════════\n\n/** Validate incoming Tibber payload.\n *  allowFutureDays: 0 = today only, 1 = today or tomorrow, etc.\n */\nfunction sanityCheck(json, allowFutureDays) {\n    if (allowFutureDays === undefined) allowFutureDays = 0;\n    if (!json || json.status !== true) {\n        warn(\"sanityCheck failed: status != true\");\n        return false;\n    }\n    const jDate = new Date(json.datum + 'T00:00:00'); // no Z → parsed as local midnight\n    const today = new Date();\n    today.setHours(0, 0, 0, 0);\n    const maxDate = new Date(today);\n    maxDate.setDate(maxDate.getDate() + allowFutureDays + 1); // exclusive upper bound\n    if (jDate.getTime() < today.getTime() || jDate.getTime() >= maxDate.getTime()) {\n        warn(\"sanityCheck failed: datum \" + json.datum + \" out of range (allowFutureDays=\" + allowFutureDays + \")\");\n        return false;\n    }\n    if (!Array.isArray(json.data) || json.data.length < 24) {\n        warn(\"sanityCheck failed: data array too short (\" + (json.data ? json.data.length : 0) + \")\");\n        return false;\n    }\n    return true;\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// HELPERS — noChargeAfterLastDischarge\n// Removes charge slots that appear after the last discharge in a day-range.\n// Rationale: charging after you've finished selling is pointless — you'd be\n// buying expensive evening power just to top up, with no sale planned.\n// Applied per-day (not across combined today+tomorrow span).\n// ═══════════════════════════════════════════════════════════════════════════════\n\n/** In slots[start..end), find the last discharge and set any later charge → idle. */\nfunction applyNoChargeAfterLastDischarge(slots, start, end) {\n    let lastDischarge = -1;\n    for (let i = end - 1; i >= start; i--) {\n        if (slots[i].hour_type === \"discharge\") { lastDischarge = i; break; }\n    }\n    if (lastDischarge === -1) return;\n    for (let i = lastDischarge + 1; i < end; i++) {\n        if (slots[i].hour_type === \"charge\") {\n            slots[i].hour_type = \"idle\";\n            slots[i].setpoint  = G(\"idle_rate\") || 0;\n        }\n    }\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// CORE ALGORITHM — Forward DP\n//\n// State: k = number of charge steps above batt_min  (k=0 → battery at batt_min)\n// Step size: gcd(charge_rate, discharge_rate) Wh — prevents energy aliasing\n//   where two different paths reach the same SOC level with the same step\n// Profit: EUR, positive = earned money, negative = spent money\n//\n// For each slot i, for each reachable state k:\n//   IDLE:      newDp[k]    = max(newDp[k],    dp[k])\n//   CHARGE:    newDp[k+Δ]  = max(newDp[k+Δ],  dp[k] - cost_to_charge)\n//   DISCHARGE: newDp[k-Δ]  = max(newDp[k-Δ],  dp[k] + gain_from_discharge)\n//\n// After the forward pass: backtrack through btAction/btFrom arrays to recover\n// the optimal action sequence, then simulate forward to compute SOC and earnings.\n// ═══════════════════════════════════════════════════════════════════════════════\n\nfunction gcd(a, b) { while (b) { var t = b; b = a % b; a = t; } return a; }\n\n/**\n * @param {Array}   data                      - Array of slot objects (price/forecast input)\n * @param {number}  startSocWatt              - Battery energy at start of first slot (Wh)\n * @param {boolean} noChargeAfterLastDischarge - If true, strip trailing charge slots per-day\n *                                              Set false for joint data (handled externally)\n * @param {number}  startEarnedMoney          - Carry-over earned money from prior slots (EUR)\n * @returns {Array} Input array augmented with hour_type, setpoint, battery_capacity_watt,\n *                  battery_capacity_percentage, earned_money per slot\n */\nfunction calculate_charge_schema(data, startSocWatt, noChargeAfterLastDischarge, startEarnedMoney) {\n    if (noChargeAfterLastDischarge === undefined) noChargeAfterLastDischarge = true;\n    if (startEarnedMoney          === undefined) startEarnedMoney = 0.0;\n\n    const processedData = JSON.parse(JSON.stringify(data));\n    const n = processedData.length;\n\n    // Quarter-hour data has 96 slots/day; hourly has 24.\n    // blockMultiply converts power (W) to energy per slot (Wh): 0.25h for quarters, 1h for hourly.\n    const bIsQuarterData = (n > 24);\n    const blockMultiply  = bIsQuarterData ? 0.25 : 1.0;\n\n    // ── Battery parameters ───────────────────────────────────────────────────\n    const charge_efficiency    = G(\"batt_charge_efficiency\")    || 0.907;\n    const discharge_efficiency = G(\"batt_discharge_efficiency\") || 0.930;\n    const batt_min             = F(\"batt_min_charged\");\n    const batt_max             = G(\"batt_capacity\") * G(\"max_soc\") / 100;\n\n    // Energy added to battery per charge slot (Wh): charge_rate drawn from grid × eff\n    const calc_charge_rate = G(\"batt_charge_rate\") * blockMultiply;\n\n    // Energy removed from battery per discharge slot (Wh):\n    // The inverter exports max_discharge_setpoint W to the grid.\n    // Due to discharge efficiency losses the battery must supply more:\n    //   battery_drain = grid_export / discharge_efficiency\n    const calc_discharge_rate = G(\"batt_discharge_rate\") * blockMultiply;\n\n    const priceDiff = F(\"price_min_sell_difference\") || 0.02;\n\n    // ── DP discretisation ────────────────────────────────────────────────────\n    // Step size = gcd of charge and discharge rates → smallest common energy unit.\n    // Enforced minimum of 100 Wh: discharge_efficiency (0.930) makes the raw gcd=1 Wh,\n    // which creates ~41 000 DP levels and blocks the Node.js event loop for 30+ seconds.\n    // 100 Wh precision is sufficient (< 0.3 % of 46 kWh battery).\n    const MIN_STEP  = 100;\n    const calc_step = Math.max(MIN_STEP, gcd(Math.round(calc_charge_rate), Math.round(calc_discharge_rate)));\n    const maxLevel  = Math.ceil((batt_max - batt_min) / calc_step);\n\n    function socAtLevel(k) { return Math.min(batt_max, batt_min + k * calc_step); }\n\n    // Map startSocWatt to the nearest grid level (clamped to valid range)\n    const clampedStart = Math.min(batt_max, Math.max(batt_min, startSocWatt));\n    const startLevel   = Math.min(maxLevel, Math.max(0, Math.round((clampedStart - batt_min) / calc_step)));\n\n    // ── Forward DP ───────────────────────────────────────────────────────────\n    let dp = new Float64Array(maxLevel + 1).fill(-Infinity);\n    dp[startLevel] = 0.0;  // start with 0 profit at the actual SOC level\n\n    // btAction[slot * (maxLevel+1) + level] = best action to reach this state\n    // btFrom  [slot * (maxLevel+1) + level] = level we came from\n    const btAction = new Uint8Array(n * (maxLevel + 1));\n    const btFrom   = new Uint32Array(n * (maxLevel + 1));\n    const ACTION_IDLE = 0, ACTION_CHARGE = 1, ACTION_DISCHARGE = 2;\n\n    for (let i = 0; i < n; i++) {\n        const price = processedData[i].hour_price;\n        const newDp = new Float64Array(maxLevel + 1).fill(-Infinity);\n        const base  = i * (maxLevel + 1);\n\n        for (let k = 0; k <= maxLevel; k++) {\n            if (dp[k] === -Infinity) continue;\n            const soc = socAtLevel(k);\n\n            // IDLE: stay at level k\n            if (dp[k] > newDp[k]) {\n                newDp[k]          = dp[k];\n                btAction[base + k] = ACTION_IDLE;\n                btFrom[base + k]   = k;\n            }\n\n            // CHARGE: buy energy from grid, fill battery\n            if (soc < batt_max) {\n                const chargeEnergy = Math.min(calc_charge_rate, batt_max - soc);\n                const newK         = Math.min(maxLevel, Math.ceil((soc + chargeEnergy - batt_min) / calc_step));\n                // Cost: energy drawn from grid = chargeEnergy / charge_efficiency\n                const cost   = (chargeEnergy / charge_efficiency / 1000) * price;\n                const profit = dp[k] - cost;\n                if (profit > newDp[newK]) {\n                    newDp[newK]          = profit;\n                    btAction[base + newK] = ACTION_CHARGE;\n                    btFrom[base + newK]   = k;\n                }\n            }\n\n            // DISCHARGE: sell energy to grid.\n            // Require a FULL discharge step to be available (soc - batt_min >= calc_discharge_rate).\n            // Partial discharges (less than one full step) are excluded because they create a\n            // spurious charge→partial-discharge arbitrage cycle: charging earns more EUR per Wh\n            // than the partial discharge costs, even at uniform prices, due to the asymmetry\n            // between charge efficiency and discharge efficiency. Requiring a full step ensures\n            // the DP only discharges when there is genuinely enough energy for a complete action.\n            if (soc - batt_min >= calc_discharge_rate) {\n                const dischargeEnergy = calc_discharge_rate;\n                const newK            = Math.max(0, Math.floor((soc - dischargeEnergy - batt_min) / calc_step));\n                // Gain: energy delivered to grid = dischargeEnergy * discharge_efficiency\n                // Only sell if price exceeds priceDiff threshold (avoids near-zero arbitrage)\n                const gain   = (dischargeEnergy * discharge_efficiency / 1000) * (price - priceDiff);\n                const profit = dp[k] + gain;\n                if (profit > newDp[newK]) {\n                    newDp[newK]          = profit;\n                    btAction[base + newK] = ACTION_DISCHARGE;\n                    btFrom[base + newK]   = k;\n                }\n            }\n        }\n\n        dp = newDp;\n    }\n\n    // ── Find best end state ───────────────────────────────────────────────────\n    let bestProfit = -Infinity, bestEndLevel = 0;\n    for (let k = 0; k <= maxLevel; k++) {\n        if (dp[k] > bestProfit) { bestProfit = dp[k]; bestEndLevel = k; }\n    }\n\n    // ── Backward trace — recover action sequence ──────────────────────────────\n    const actionSeq = new Array(n);\n    let curLevel = bestEndLevel;\n    for (let i = n - 1; i >= 0; i--) {\n        const base = i * (maxLevel + 1);\n        const a = btAction[base + curLevel];\n        actionSeq[i] = (a === ACTION_CHARGE) ? \"charge\" : (a === ACTION_DISCHARGE) ? \"discharge\" : \"idle\";\n        curLevel = btFrom[base + curLevel];\n    }\n\n    processedData.forEach(function(item, i) { item.hour_type = actionSeq[i]; });\n\n    // ── Per-day noChargeAfterLastDischarge (if requested) ─────────────────────\n    if (noChargeAfterLastDischarge) {\n        applyNoChargeAfterLastDischarge(processedData, 0, n);\n    }\n\n    // ── Forward simulation — compute SOC trajectory and earnings ──────────────\n    let battery_capacity_watt = clampedStart;\n    let earned_money          = startEarnedMoney;\n\n    processedData.forEach(function(item) {\n        if (item.hour_type === \"charge\") {\n            const power_to_add = Math.min(calc_charge_rate, batt_max - battery_capacity_watt);\n            if (power_to_add > 0) {\n                battery_capacity_watt += power_to_add;\n                earned_money          -= (power_to_add / charge_efficiency / 1000) * item.hour_price;\n            }\n            item.setpoint = G(\"max_charge_setpoint\") || G(\"batt_charge_rate\");\n\n        } else if (item.hour_type === \"discharge\") {\n            const power_to_sub = Math.max(0, Math.min(calc_discharge_rate, battery_capacity_watt - batt_min));\n            if (power_to_sub > 0) {\n                battery_capacity_watt -= power_to_sub;\n                earned_money          += (power_to_sub * discharge_efficiency / 1000) * item.hour_price;\n                item.setpoint          = -(G(\"max_discharge_setpoint\"));\n            } else {\n                // Can't discharge (already at floor) → force idle\n                item.hour_type = \"idle\";\n                item.setpoint  = G(\"idle_rate\") || 0;\n            }\n\n        } else {\n            item.setpoint = G(\"idle_rate\") || 0;\n        }\n\n        item.battery_capacity_watt       = Math.round(battery_capacity_watt);\n        item.battery_capacity_percentage = parseFloat(((100.0 / batt_max) * battery_capacity_watt).toFixed(2));\n        item.earned_money                = parseFloat(earned_money.toFixed(4));\n    });\n\n    return processedData;\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// ENTRY POINTS\n// ═══════════════════════════════════════════════════════════════════════════════\n\n/**\n * Entry 1: Today-only calculation.\n * Called at 00:01 daily and on Node-RED startup (via inject once:true).\n * Runs a full single-day DP with the real current battery SOC.\n *\n * @param {object} json    - { datum, status, data[] } from Tibber/Combine node\n * @param {object} ctxRef  - In Node-RED: not needed (uses context directly).\n *                           In standalone: pass { scheme_today: null } to simulate.\n * @returns {object}       - { status, datum, data[] } for MQTT output\n */\nfunction runToday(json, ctxRef) {\n    if (!sanityCheck(json, 0)) return { status: false };\n\n    const startSoc = getStartSocWatt();\n    // In Node-RED skip slots that are already in the past; tests always start from 0.\n    const nowIdx   = STANDALONE ? 0 : currentSlotIdx();\n\n    // Run DP + post-passes only on current and future slots\n    const futureData   = json.data.slice(nowIdx);\n    const futureResult = calculate_charge_schema(futureData, startSoc, true, 0.0);\n    const futureFilled = applySolarBalanceFill(futureResult, startSoc);\n    const sbCount      = futureFilled.filter(function(s) { return s.hour_type === 'solarbalance'; }).length;\n    if (sbCount > 0) warn(\"solarbalance fill: \" + sbCount + \" slots added\");\n\n    // Past slots: force idle at current SOC (actual history is unknown here)\n    const batt_max  = G(\"batt_capacity\") * G(\"max_soc\") / 100;\n    const idle_rate = G(\"idle_rate\") || 0;\n    const pastSlots = json.data.slice(0, nowIdx).map(function(slot) {\n        return Object.assign({}, slot, {\n            hour_type:                   'idle',\n            setpoint:                    idle_rate,\n            battery_capacity_watt:       Math.round(startSoc),\n            battery_capacity_percentage: parseFloat(((100.0 / batt_max) * startSoc).toFixed(2)),\n            earned_money:                0\n        });\n    });\n\n    const todayFilled = pastSlots.concat(futureFilled);\n\n    // Store indexed scheme for fast lookup and cross-day re-optimization.\n    // Also write charge_scheme_today in array format for downstream consumers.\n    if (!STANDALONE) {\n        context.global.scheme_today       = buildSchemeObj(json.datum, todayFilled);\n        context.global.charge_scheme_today = { status: true, datum: json.datum, data: todayFilled };\n    } else if (ctxRef) {\n        ctxRef.scheme_today = buildSchemeObj(json.datum, todayFilled);\n    }\n\n    warn(\"Today done: \" + todayFilled.length + \" slots, startSOC=\" + Math.round(startSoc) + \"Wh, nowIdx=\" + nowIdx);\n    return { status: true, datum: json.datum, data: todayFilled };\n}\n\n/**\n * Entry 2: Joint today+tomorrow calculation.\n * Called at 14:01 / 15:01 daily and on Node-RED startup when time >= 14:01.\n * Reads remaining today slots from context.global.scheme_today, combines with\n * tomorrow data, and runs a single DP pass for cross-day optimization.\n *\n * Returns an array of two messages: [updatedTodayMsg, tomorrowMsg].\n * In Node-RED these are sent sequentially on the same output wire to MQTT.\n *\n * @param {object} tomorrowJson - { datum, status, data[] } for tomorrow\n * @param {object} ctxRef       - In standalone: { scheme_today: <indexed obj> }\n * @returns {Array|object}      - [todayMsg, tomorrowMsg] on success, or single fallback msg\n */\nfunction runTomorrow(tomorrowJson, ctxRef) {\n    if (!sanityCheck(tomorrowJson, 1)) return { status: false };\n\n    const todayScheme = STANDALONE\n        ? (ctxRef && ctxRef.scheme_today)\n        : context.global.scheme_today;\n\n    if (!todayScheme || todayScheme.status !== true) {\n        // No today scheme yet — optimize tomorrow standalone as a safe fallback\n        warn(\"No scheme_today, optimizing tomorrow standalone\");\n        const startSoc = getStartSocWatt();\n        const result   = calculate_charge_schema(tomorrowJson.data, startSoc, true, 0.0);\n        const filled  = applySolarBalanceFill(result, startSoc);\n        const sbCount = filled.filter(function(s) { return s.hour_type === 'solarbalance'; }).length;\n        if (sbCount > 0) warn(\"solarbalance fill: \" + sbCount + \" slots added\");\n        if (!STANDALONE) {\n            context.global.scheme_tomorrow       = buildSchemeObj(tomorrowJson.datum, filled);\n            context.global.charge_scheme_tomorrow = { status: true, datum: tomorrowJson.datum, data: filled };\n        } else if (ctxRef) {\n            ctxRef.scheme_tomorrow = buildSchemeObj(tomorrowJson.datum, filled);\n        }\n        return { status: true, datum: tomorrowJson.datum, data: filled };\n    }\n\n    const nowIdx    = currentSlotIdx();\n    const todayArr  = schemeObjToArray(todayScheme);\n\n    // Strip schedule fields from remaining today so DP can re-decide\n    const remainingToday = todayArr.slice(nowIdx).map(function(slot) {\n        return { datum: slot.datum, hour_price: slot.hour_price, level: slot.level, forecast: slot.forecast || 0 };\n    });\n    const nRemaining = remainingToday.length;\n    const nTomorrow  = tomorrowJson.data.length;\n\n    // Carry earned money from already-completed today slots\n    const prevSlot      = (nowIdx > 0) ? todayArr[nowIdx - 1] : null;\n    const startEarned   = prevSlot ? (prevSlot.earned_money || 0.0) : 0.0;\n    const startSoc      = getStartSocWatt();\n\n    // Single DP pass over remaining today + all tomorrow\n    // noChargeAfterLastDischarge=false here: we apply it per-day below\n    const combined       = remainingToday.concat(tomorrowJson.data);\n    const combinedResult = calculate_charge_schema(combined, startSoc, false, startEarned);\n\n    // Apply noChargeAfterLastDischarge independently per day\n    applyNoChargeAfterLastDischarge(combinedResult, 0, nRemaining);\n    applyNoChargeAfterLastDischarge(combinedResult, nRemaining, nRemaining + nTomorrow);\n\n    // Apply solarbalance fill across the combined span\n    const filledResult = applySolarBalanceFill(combinedResult, startSoc);\n    const sbCount = filledResult.filter(function(s) { return s.hour_type === 'solarbalance'; }).length;\n    if (sbCount > 0) warn(\"solarbalance fill: \" + sbCount + \" slots added\");\n\n    const updatedTodaySlots = filledResult.slice(0, nRemaining);\n    const tomorrowSlots     = filledResult.slice(nRemaining);\n\n    // Reset earned_money for tomorrow slots back to zero-based.\n    // The joint DP carries earned_money continuously from today's running total,\n    // but consumers (Forecast.html chart, BattPlanTxt) expect tomorrow to start at 0.\n    const earnedOffset = tomorrowSlots.length > 0 ? tomorrowSlots[0].earned_money : 0;\n    tomorrowSlots.forEach(function(slot) {\n        slot.earned_money = parseFloat((slot.earned_money - earnedOffset).toFixed(4));\n    });\n\n    // Persist updated schemes (indexed object for fast lookup) and\n    // charge_scheme_* (array format) for downstream consumers.\n    if (!STANDALONE) {\n        context.global.scheme_today    = updateSchemeObj(todayScheme, nowIdx, updatedTodaySlots);\n        context.global.scheme_tomorrow = buildSchemeObj(tomorrowJson.datum, tomorrowSlots);\n        context.global.charge_scheme_today = {\n            status: true,\n            datum:  todayScheme.datum,\n            data:   schemeObjToArray(context.global.scheme_today)\n        };\n        context.global.charge_scheme_tomorrow = {\n            status: true,\n            datum:  tomorrowJson.datum,\n            data:   tomorrowSlots\n        };\n    } else if (ctxRef) {\n        ctxRef.scheme_today    = updateSchemeObj(todayScheme, nowIdx, updatedTodaySlots);\n        ctxRef.scheme_tomorrow = buildSchemeObj(tomorrowJson.datum, tomorrowSlots);\n    }\n\n    const socSource = (GD(\"batt_soc\") != null) ? \"actual(\" + GD(\"batt_soc\") + \"%)\" : \"planned\";\n    warn(\"Joint done: remaining=\" + nRemaining + \" today + \" + nTomorrow + \" tomorrow, startSOC=\" + Math.round(startSoc) + \"Wh [\" + socSource + \"]\");\n\n    // Return two messages: updated today + full tomorrow\n    const todayMsg = {\n        topic:   \"scheme_today\",\n        payload: { status: true, datum: todayScheme.datum, data: schemeObjToArray(STANDALONE ? ctxRef.scheme_today : context.global.scheme_today) }\n    };\n    const tomorrowMsg = {\n        topic:   \"scheme_tomorrow\",\n        payload: { status: true, datum: tomorrowJson.datum, data: tomorrowSlots }\n    };\n    return [todayMsg, tomorrowMsg];\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// NODE-RED DISPATCH (entry point when running inside function node)\n// ── CUT HERE: everything above this line goes into the function node ──────────\n// ═══════════════════════════════════════════════════════════════════════════════\n\nif (!STANDALONE) {\n    // Node has 2 outputs:\n    //   Output 1 → tibber_data/scheme_today/state\n    //   Output 2 → tibber_data/scheme_tomorrow/state\n    //\n    // return [todayMsg, null]          → output 1 only (runToday)\n    // return [todayMsg, tomorrowMsg]   → both outputs (runTomorrow joint result)\n    // return [null, tomorrowMsg]       → output 2 only (runTomorrow fallback)\n\n    const topicRoot = 'tibber_data';\n\n    if (msg.topic.includes(\"scheme_today\")) {\n        const out = runToday(msg.payload);\n        if (!out.status) return null;\n        msg.payload = out;\n        msg.topic   = topicRoot + '/scheme_today/state';\n        msg.retain  = true;\n        return [msg, null];\n\n    } else if (msg.topic.includes(\"scheme_tomorrow\")) {\n        const out = runTomorrow(msg.payload);\n        if (!out) return null;\n        if (Array.isArray(out)) {\n            out[0].topic  = topicRoot + '/scheme_today/state';\n            out[0].retain = true;\n            out[1].topic  = topicRoot + '/scheme_tomorrow/state';\n            out[1].retain = true;\n            return out;  // [todayMsg, tomorrowMsg] → output 1 + output 2\n        }\n        // Fallback: no scheme_today available, tomorrow standalone\n        out.topic  = topicRoot + '/scheme_tomorrow/state';\n        out.retain = true;\n        return [null, out];\n\n    } else {\n        node.warn(\"OP9: unexpected topic: \" + msg.topic);\n        return null;\n    }\n}\n\n// ═══════════════════════════════════════════════════════════════════════════════\n// STANDALONE EXPORTS (used by runner.js)\n// ═══════════════════════════════════════════════════════════════════════════════\n\nif (STANDALONE) {\n    module.exports = {\n        runToday,\n        runTomorrow,\n        calculate_charge_schema,\n        buildSchemeObj,\n        schemeObjToArray,\n        updateSchemeObj,\n        currentSlotKey,\n        currentSlotIdx,\n        getStartSocWatt,\n        CONFIG,\n    };\n}\n",
         "outputs": 2,
         "timeout": 0,
         "noerr": 0,
@@ -3293,7 +2558,7 @@
         "z": "58fd4f3e316f9347",
         "g": "09b406b6262b403b",
         "name": "Schedule Solar Rerun",
-        "func": "// Schedule Solar Rerun\n// Triggered by OP9 output 0 (today-only reruns) and output 1 (joint today+tomorrow run).\n// Scans scheme_today for the first upcoming solarbalance slot, then schedules a precise\n// re-run at its start. The re-run uses stored price data — no Tibber re-fetch — so OP9\n// picks up the actual live battery SOC at trigger time.\n// Self-chains: each rerun produces a new scheme_today (output 0) -> this node -> next slot.\n\nconst MINS = [\"00\", \"15\", \"30\", \"45\"];\n\n// Cancel any timer pending from the previous OP9 run\nconst prevTimer = context.get('solarRerunTimer');\nif (prevTimer) {\n    clearTimeout(prevTimer);\n    context.set('solarRerunTimer', null);\n}\n\nconst scheme = context.global.scheme_today;\nif (!scheme || scheme.status === false) {\n    node.status({fill:\"grey\", shape:\"dot\", text:\"no scheme\"});\n    return null;\n}\n\nconst now        = new Date();\nconst currentIdx = now.getHours() * 4 + Math.floor(now.getMinutes() / 15);\n\nfor (let i = currentIdx + 1; i < 96; i++) {\n    const h   = Math.floor(i / 4);\n    const m   = i % 4;\n    const key = (\"0\" + h).slice(-2) + \":\" + MINS[m];\n    const slot = scheme[key];\n    if (slot && slot.hour_type === 'solarbalance') {\n        const slotTime = new Date();\n        slotTime.setHours(h, m * 15, 0, 0);\n        const msUntil = slotTime - now;\n        if (msUntil <= 0) continue;\n\n        const minUntil = Math.round(msUntil / 60000);\n        node.status({fill:\"blue\", shape:\"ring\", text:\"⟳ at \" + key + \" in \" + minUntil + \"min\"});\n\n        const timer = setTimeout(function() {\n            node.status({fill:\"green\", shape:\"dot\", text:\"⟳ triggered at \" + key});\n            node.send({payload: 1, topic: 'solar_rerun'});\n        }, msUntil);\n        context.set('solarRerunTimer', timer);\n        return null;\n    }\n}\n\nnode.status({fill:\"grey\", shape:\"dot\", text:\"no upcoming solarbalance\"});\nreturn null;",
+        "func": "// Schedule Solar Rerun\n// Triggered by OP9 output 0 (today-only reruns) and output 1 (joint today+tomorrow run).\n// Scans scheme_today for the first upcoming solarbalance slot and schedules a re-run at\n// its LAST MINUTE (14 min after slot start). This fires before the slot ends so the\n// battery mode setter picks up the recalculated plan for the next slot within 1 minute.\n// Self-chains: each rerun produces a new scheme_today (output 0) -> this node -> next slot.\n\nconst MINS        = [\"00\", \"15\", \"30\", \"45\"];\nconst LAST_MIN_MS = 14 * 60 * 1000;  // 14 min into a 15-min slot = last minute\n\n// Cancel any timer pending from the previous OP9 run\nconst prevTimer = context.get('solarRerunTimer');\nif (prevTimer) {\n    clearTimeout(prevTimer);\n    context.set('solarRerunTimer', null);\n}\n\nconst scheme = context.global.scheme_today;\nif (!scheme || scheme.status === false) {\n    node.status({fill:\"grey\", shape:\"dot\", text:\"no scheme\"});\n    return null;\n}\n\nconst now        = new Date();\nconst currentIdx = now.getHours() * 4 + Math.floor(now.getMinutes() / 15);\n\n// Scan from current slot: covers a solarbalance slot that is already running\n// (fires at its last minute if we're still within the first 14 min of it).\nfor (let i = currentIdx; i < 96; i++) {\n    const h   = Math.floor(i / 4);\n    const m   = i % 4;\n    const key = (\"0\" + h).slice(-2) + \":\" + MINS[m];\n    const slot = scheme[key];\n    if (slot && slot.hour_type === 'solarbalance') {\n        const slotStart = new Date();\n        slotStart.setHours(h, m * 15, 0, 0);\n        const msUntil = (slotStart - now) + LAST_MIN_MS;\n        if (msUntil <= 0) continue;  // last minute already passed, try next slot\n\n        const minUntil = Math.round(msUntil / 60000);\n        node.status({fill:\"blue\", shape:\"ring\", text:\"⟳ end of \" + key + \" in \" + minUntil + \"min\"});\n\n        const timer = setTimeout(function() {\n            node.status({fill:\"green\", shape:\"dot\", text:\"⟳ triggered end of \" + key});\n            node.send({payload: 1, topic: 'solar_rerun'});\n        }, msUntil);\n        context.set('solarRerunTimer', timer);\n        return null;\n    }\n}\n\nnode.status({fill:\"grey\", shape:\"dot\", text:\"no upcoming solarbalance\"});\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3301,7 +2566,7 @@
         "finalize": "",
         "libs": [],
         "x": 800,
-        "y": 540,
+        "y": 560,
         "wires": [
             [
                 "c4e8d2f1a9b70345"
@@ -3313,7 +2578,7 @@
         "type": "function",
         "z": "58fd4f3e316f9347",
         "g": "09b406b6262b403b",
-        "name": "reload scheme_toxxx",
+        "name": "Solar Rerun: Stored Data",
         "func": "// Solar Rerun: Stored Data\n// Triggered by the solarbalance timer (Schedule Solar Rerun).\n// If scheme_tomorrow exists (post-14:01), triggers the joint today+tomorrow DP so both\n// schemes are recalculated with the actual live battery SOC.\n// Before 14:01 (no tomorrow yet), falls back to today-only recalculation.\n// OP9's getStartSocWatt() reads context.global.data.batt_soc at trigger time.\n\nconst tomorrow = context.global.charge_scheme_tomorrow;\nconst today    = context.global.charge_scheme_today;\n\nif (tomorrow && tomorrow.status) {\n    msg.payload = tomorrow;\n    msg.topic   = \"scheme_tomorrow\";\n} else if (today && today.status) {\n    msg.payload = today;\n    msg.topic   = \"scheme_today\";\n} else {\n    node.warn(\"Solar rerun: no stored scheme available in context\");\n    return null;\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -3321,44 +2586,85 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1040,
-        "y": 540,
+        "x": 1030,
+        "y": 560,
         "wires": [
             [
-                "6193353a4b0e6e84"
+                "0f0dbc84b4e9db74"
             ]
         ]
     },
     {
-        "id": "6193353a4b0e6e84",
-        "type": "link out",
+        "id": "solar_mqtt_in",
+        "type": "mqtt in",
         "z": "58fd4f3e316f9347",
         "g": "09b406b6262b403b",
-        "name": "To OP",
-        "mode": "link",
-        "links": [
-            "b01608301674d1f0"
-        ],
-        "x": 1185,
-        "y": 540,
-        "wires": []
+        "name": "Solar Forecast",
+        "topic": "solar/forecast/lelystad",
+        "qos": "1",
+        "datatype": "json",
+        "broker": "ee1bb25c871ce5fc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 700,
+        "wires": [
+            [
+                "solar_cache_fn"
+            ]
+        ]
     },
     {
-        "id": "b01608301674d1f0",
+        "id": "solar_cache_fn",
+        "type": "function",
+        "z": "58fd4f3e316f9347",
+        "g": "09b406b6262b403b",
+        "name": "Cache Solar Forecast",
+        "func": "flow.set('solarForecast', msg.payload);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26c1933963e2228f",
         "type": "link in",
         "z": "58fd4f3e316f9347",
         "g": "09b406b6262b403b",
-        "name": "To OP",
+        "name": "to OP",
         "links": [
-            "6193353a4b0e6e84"
+            "0f0dbc84b4e9db74"
         ],
-        "x": 505,
-        "y": 540,
+        "x": 515,
+        "y": 460,
         "wires": [
             [
                 "ce010c9886711266"
             ]
         ]
+    },
+    {
+        "id": "0f0dbc84b4e9db74",
+        "type": "link out",
+        "z": "58fd4f3e316f9347",
+        "g": "09b406b6262b403b",
+        "name": "to OP",
+        "mode": "link",
+        "links": [
+            "26c1933963e2228f"
+        ],
+        "x": 1185,
+        "y": 560,
+        "wires": []
     },
     {
         "id": "c375361050518336",
@@ -3487,7 +2793,7 @@
         }
     },
     {
-        "id": "09c5356607aeea1e",
+        "id": "90ea90bbb7e52d4f",
         "type": "global-config",
         "env": [],
         "modules": {
