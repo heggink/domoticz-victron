@@ -1,0 +1,26 @@
+[
+    {
+        "id": "n_http_owm",
+        "type": "http request",
+        "z": "tab_wf",
+        "name": "OpenWeatherMap",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openweathermap.org/data/2.5/forecast?lat=52.5185&lon=5.4752&appid=${OWM_API_KEY}&units=metric",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "n_parse_owm"
+            ]
+        ]
+    }
+]
