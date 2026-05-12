@@ -308,6 +308,7 @@
         <span class="wf-hr-temp">{{s.temp_c | number:1}}&deg;</span>
         <span class="wf-hr-wind">{{s.wind_dir_label}} {{s.wind_kph | number:0}}</span>
         <span class="wf-hr-rain-badge" ng-if="rainPct(s) >= 10">{{rainPct(s)}}%</span>
+        <span class="wf-hr-rain-badge" ng-if="s.precip_mm > 0"><i class="fa fa-tint"></i> {{s.precip_mm | number:1}} mm</span>
         <span class="wf-hr-cloud" ng-if="s.cloud_pct !== null"><i class="fa fa-cloud"></i> {{s.cloud_pct|number:0}}%</span>
         <span class="wf-hr-solar-wrap" ng-if="s.solar_power_w > 0">
           <span class="wf-hr-solar-bar-bg">
@@ -335,6 +336,7 @@
         <span class="wf-hr-temp">{{s.temp_c | number:1}}&deg;</span>
         <span class="wf-hr-wind">{{s.wind_dir_label}} {{s.wind_kph | number:0}}</span>
         <span class="wf-hr-rain-badge" ng-if="rainPct(s) >= 10">{{rainPct(s)}}%</span>
+        <span class="wf-hr-rain-badge" ng-if="s.precip_mm > 0"><i class="fa fa-tint"></i> {{s.precip_mm | number:1}} mm</span>
         <span class="wf-hr-cloud" ng-if="s.cloud_pct !== null"><i class="fa fa-cloud"></i> {{s.cloud_pct|number:0}}%</span>
         <span class="wf-hr-solar-wrap" ng-if="s.solar_power_w > 0">
           <span class="wf-hr-solar-bar-bg">
@@ -618,7 +620,7 @@ app.controller('wfCtrl', function($scope, $element, $rootScope, $http, $interval
   // Renders directly via Highcharts API into a plain <div id="wf-chart">,
   // bypassing highcharts-ng entirely to avoid its re-render timing issues.
   function updateChart(slots, tomorrowMidMs) {
-    var tempData = [], solarData = [], rainData = [], windData = [];
+    var tempData = [], solarData = [], rainData = [], precipData = [], windData = [];
 
     slots.forEach(function(s) {
       var t = new Date(s.time).getTime();
@@ -626,6 +628,7 @@ app.controller('wfCtrl', function($scope, $element, $rootScope, $http, $interval
       if (s.solar_power_w !== null && s.solar_power_w !== undefined) solarData.push([t, Math.round(s.solar_power_w / 100) / 10]);
       var rp = (s.rain_prob !== null && s.rain_prob !== undefined) ? s.rain_prob : s.rain_majority;
       if (rp !== null && rp !== undefined) rainData.push([t, Math.round(rp * 100)]);
+      if (s.precip_mm !== null && s.precip_mm !== undefined) precipData.push([t, Math.round(s.precip_mm * 100) / 100]);
       if (s.wind_kph !== null && s.wind_kph !== undefined) windData.push([t, Math.round(s.wind_kph * 10) / 10]);
     });
 
@@ -669,7 +672,8 @@ app.controller('wfCtrl', function($scope, $element, $rootScope, $http, $interval
         { title: { text: null }, labels: { format: '{value}°',   style: { color: '#43A4D3', fontSize: '0.75em' } }, gridLineColor: 'rgba(255,255,255,0.06)' },
         { title: { text: null }, labels: { format: '{value} kW', style: { color: '#ff9800', fontSize: '0.75em' } }, min: 0, opposite: true, gridLineColor: 'transparent' },
         { title: { text: null }, labels: { enabled: false }, min: 0, max: 100, opposite: true, gridLineColor: 'transparent' },
-        { title: { text: null }, labels: { enabled: false }, min: 0,           opposite: true, gridLineColor: 'transparent' }
+        { title: { text: null }, labels: { enabled: false }, min: 0,           opposite: true, gridLineColor: 'transparent' },
+        { title: { text: null }, labels: { format: '{value} mm', style: { color: '#42a5f5', fontSize: '0.75em' } }, min: 0, opposite: true, gridLineColor: 'transparent' }
       ],
       plotOptions: {
         column: { pointPadding: 0, groupPadding: 0, borderWidth: 0 },
@@ -677,10 +681,11 @@ app.controller('wfCtrl', function($scope, $element, $rootScope, $http, $interval
         area:   { lineWidth: 1, marker: { enabled: false } }
       },
       series: [
-        { name: 'Temperature', type: 'spline', yAxis: 0, color: '#43A4D3',              data: tempData,  tooltip: { valueSuffix: ' °C',   valueDecimals: 1 }, zIndex: 3 },
-        { name: 'Solar Power', type: 'column', yAxis: 1, color: '#ff9800',              data: solarData, tooltip: { valueSuffix: ' kW',   valueDecimals: 2 }, zIndex: 2 },
-        { name: 'Rain Prob.',  type: 'area',   yAxis: 2, color: 'rgba(66,165,245,0.7)', data: rainData,  tooltip: { valueSuffix: '%',     valueDecimals: 0 }, fillColor: 'rgba(66,165,245,0.10)', zIndex: 1 },
-        { name: 'Wind',        type: 'spline', yAxis: 3, color: '#80cbc4',              data: windData,  tooltip: { valueSuffix: ' km/h', valueDecimals: 0 }, dashStyle: 'ShortDot', zIndex: 2 }
+        { name: 'Temperature', type: 'spline', yAxis: 0, color: '#43A4D3',              data: tempData,   tooltip: { valueSuffix: ' °C',   valueDecimals: 1 }, zIndex: 3 },
+        { name: 'Solar Power', type: 'column', yAxis: 1, color: '#ff9800',              data: solarData,  tooltip: { valueSuffix: ' kW',   valueDecimals: 2 }, zIndex: 2 },
+        { name: 'Rain Prob.',  type: 'area',   yAxis: 2, color: 'rgba(66,165,245,0.7)', data: rainData,   tooltip: { valueSuffix: '%',     valueDecimals: 0 }, fillColor: 'rgba(66,165,245,0.10)', zIndex: 1 },
+        { name: 'Wind',        type: 'spline', yAxis: 3, color: '#80cbc4',              data: windData,   tooltip: { valueSuffix: ' km/h', valueDecimals: 0 }, dashStyle: 'ShortDot', zIndex: 2 },
+        { name: 'Rain Rate',   type: 'column', yAxis: 4, color: 'rgba(30,136,229,0.75)', data: precipData, tooltip: { valueSuffix: ' mm',   valueDecimals: 1 }, zIndex: 1 }
       ]
     };
 
@@ -690,10 +695,11 @@ app.controller('wfCtrl', function($scope, $element, $rootScope, $http, $interval
       var container = document.getElementById('wf-chart');
       if (!container || typeof Highcharts === 'undefined') return;
       if (_wfChart) {
-        _wfChart.series[0].setData(tempData,  false);
-        _wfChart.series[1].setData(solarData, false);
-        _wfChart.series[2].setData(rainData,  false);
-        _wfChart.series[3].setData(windData,  false);
+        _wfChart.series[0].setData(tempData,   false);
+        _wfChart.series[1].setData(solarData,  false);
+        _wfChart.series[2].setData(rainData,   false);
+        _wfChart.series[3].setData(windData,   false);
+        _wfChart.series[4].setData(precipData, false);
         _wfChart.xAxis[0].update({ plotLines: plotLines }, true);
       } else {
         _wfChart = Highcharts.chart(container, config);
