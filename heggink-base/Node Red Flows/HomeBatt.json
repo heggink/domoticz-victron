@@ -2,7 +2,7 @@
     {
         "id": "8d3b29f48feb985c",
         "type": "tab",
-        "label": "HomeBattHE",
+        "label": "HomeBatt",
         "disabled": false,
         "info": "",
         "env": []
@@ -221,12 +221,15 @@
             "87ae15cf892b180a",
             "43cc388e6b01ecd9",
             "af6a7dc64becfea1",
-            "8c01f2d48ab51a94"
+            "8c01f2d48ab51a94",
+            "e993767c8dfd9cad",
+            "c964f0d93d5423b4",
+            "b9483e63280d6fc0"
         ],
         "x": 14,
         "y": 2399,
         "w": 1132,
-        "h": 642
+        "h": 682
     },
     {
         "id": "9f7e7bb0a86e90c8",
@@ -2277,7 +2280,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "Idle",
-        "func": "// This node handles idle requests\n\nlet data = context.global.data;\nlet idle_rate = context.global.idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nmsg.batt_mode = msg.payload // either Idle or IQ Smart Mode\n\nif (msg.payload == 'Idle') {\n    node.warn(\"Victron: Requesting idle at \"+idle_rate)\n    msg.payload = idle_rate;\n    msg.inform_domo = true\n    msg.domo_msg = \"Victron: Requesting Idle mode at \"+idle_rate;\n    return msg;\n}\nelse { // Smart Mode\n    // idle is requested, only switch to idle if not in idle already\n    if (ess_setpoint != idle_rate) {\n        node.warn(\"Victron: Requesting idle at \"+idle_rate)\n        msg.payload = idle_rate;\n        msg.inform_domo = true\n        msg.domo_msg = \"Victron: Smart Mode Idling at \"+idle_rate;\n        return msg;\n    }\n    else {\n        node.warn(\"Already in Idle so nothing to do\")\n    }\n}",
+        "func": "// This node handles idle requests\n\nlet data = context.global.data;\nlet idle_rate = context.global.idle_rate;\nlet ess_setpoint = data[\"ess_setpoint\"];\nmsg.batt_mode = msg.payload // either Idle or IQ Smart Mode\n\nif (msg.payload == 'Idle') {\n    node.warn(\"Victron: Requesting idle at \"+idle_rate)\n    msg.payload = idle_rate;\n    msg.inform_domo = true\n    msg.domo_msg = \"Victron: Requesting Idle mode at \"+idle_rate;\n    return msg;\n}\nelse { // Smart Mode\n    node.warn(\"Victron: Requesting idle at \"+idle_rate)\n    msg.payload = idle_rate;\n    msg.inform_domo = true\n    msg.domo_msg = \"Victron: Smart Mode Idling at \"+idle_rate;\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2438,8 +2441,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 925,
-        "y": 2600,
+        "x": 915,
+        "y": 2620,
         "wires": [],
         "l": false
     },
@@ -2852,7 +2855,7 @@
         "z": "8d3b29f48feb985c",
         "g": "09c2cef9562d2a46",
         "name": "IQ S-M",
-        "func": "// this node looks finds the entry in the schedule to determine wether to:\n// idle, charge, discharge, balance or solar-balance\n// it sets msg.payload such that the action nodes know we're in smart more\n\nmsg.payload = \"IQ Smart Mode\";\n\n// Globals\nlet data = context.global.data;\n\n// Locals\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\n//node.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\n//node.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\n\nif (context.global.scheme_today === 'undefined') {\n    txt = \"Victron has no scheme_today\";\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.smart_mode = 'idle';\n    msg.payload = 'Idle'\n    return msg;\n}\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.smart_mode = 'idle';\n    msg.payload = 'Idle'\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\nnode.warn(\"victron: IQ Mode New says: \"+batt_mode);\ncontext.global.data[\"smart_mode\"] = batt_mode;\nmsg.smart_mode = batt_mode;\nreturn msg;",
+        "func": "// this node looks finds the entry in the schedule to determine wether to:\n// idle, charge, discharge, balance or solar-balance\n// it sets msg.payload such that the action nodes know we're in smart more\n\nmsg.payload = \"IQ Smart Mode\";\n\n// Globals\nlet data = context.global.data;\n\n// Locals\nlet index_str = \"\"\nlet scheme = context.global.scheme_today;\nlet batt_mode = \"\";\n\n// Constants\nconst date = new Date();\nconst min = date.getMinutes();\nconst hour = date.getHours();\n\nlet y = date.getFullYear()\nlet month = date.getMonth()+1\nlet day = date.getDate()\nlet m = (\"0\" + month).slice(-2)\nlet d = (\"0\" + day).slice(-2)\nlet ymd = y+\"-\"+m+\"-\"+d;\n\nmsg.inform_domo = false;\n//node.warn(\"Date checking today \" + ymd + \" with \" + context.global.scheme_today.datum)\n//node.warn(\"Context data: \" + context.global.data[\"batt_mode\"])\n\nif (context.global.data[\"batt_mode\"] != \"IQ Smart Mode\") {\n    // not in IQ Smart mode so do nothing\n    return;\n}\n\nif (!context.global.scheme_today || context.global.scheme_today.status !== true) {\n    txt = \"Victron has no scheme_today\";\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.smart_mode = 'idle';\n    msg.payload = 'Idle'\n    return msg;\n}\nif (context.global.scheme_today.datum != ymd) {\n    // we don't have the right schedule so use idle instead\n    txt = \"Date mismatch, checking today \" + ymd + \" with \" + context.global.scheme_today.datum;\n    msg.inform_domo = true\n    msg.domo_msg = txt\n    node.warn(txt)\n    msg.smart_mode = 'idle';\n    msg.payload = 'Idle'\n    return msg;\n}\n\nlet minutes = 0;\nif (min < 15) {\n    //node.log(\"set minutes to 0\");\n    minutes = 0;\n}\nelse if (min < 30) {\n    //node.log(\"set minutes to 15\");\n    minutes = 15;\n}\nelse if (min < 45) {\n    //node.log(\"set minutes to 30\");\n    minutes = 30;\n}\nelse {\n    //node.log(\"set minutes to 45\");\n    minutes = 45;\n}\n// node.log(\"minutes set to \"+ minutes)\n\nif (hour < 10) {\n    index_str = \"0\"+hour;\n    if (minutes == 0) {\n        index_str += \":00\";\n    }\n    else {\n        index_str += \":\"+minutes;\n    }\n}\nelse {\n    if (minutes < 10) {\n        index_str = hour+\":0\"+minutes;\n    }\n    else {\n        index_str = hour+\":\"+minutes;\n    } \n}\n//node.warn(\"getting mode for \"+index_str)\n//node.warn(scheme)\nbatt_mode = scheme[index_str].hour_type;\nnode.warn(\"victron: IQ Mode New says: \"+batt_mode);\ncontext.global.data[\"smart_mode\"] = batt_mode;\nmsg.smart_mode = batt_mode;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -6634,6 +6637,75 @@
         ]
     },
     {
+        "id": "e993767c8dfd9cad",
+        "type": "link in",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "retrigger IQ S-M",
+        "links": [
+            "20e40b46ad51e8c5"
+        ],
+        "x": 165,
+        "y": 2840,
+        "wires": [
+            [
+                "eedb7eaeb1af5d15"
+            ]
+        ]
+    },
+    {
+        "id": "c964f0d93d5423b4",
+        "type": "inject",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "60s",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 3040,
+        "wires": [
+            [
+                "b9483e63280d6fc0"
+            ]
+        ]
+    },
+    {
+        "id": "b9483e63280d6fc0",
+        "type": "function",
+        "z": "8d3b29f48feb985c",
+        "g": "09c2cef9562d2a46",
+        "name": "Discharge Watchdog",
+        "func": "// New node: \"Discharge Watchdog\"\nconst data = context.global.data;\nconst idle_rate = context.global.idle_rate;\nconst ess_setpoint = data[\"ess_setpoint\"] || 0;\nconst batt_mode = data[\"batt_mode\"];\n\n// Skip if a discharge setpoint is intentionally active\nif (ess_setpoint < 0) return null;\n// Skip if mode is Off\nif (batt_mode === \"Off\") return null;\n\n// bms_watt: negative = discharging (verify sign convention on your BMS)\n// Alternative: use batt_discharged_w if bms_watt sign is inverted\nconst batt_w = data[\"bms_watt\"] || 0;\nconst DISCHARGE_THRESHOLD = -500; // W — below this is real discharge, not noise\n\nif (batt_w < DISCHARGE_THRESHOLD) {\n    const txt = \"Watchdog: discharge detected (\" + Math.round(batt_w) + \n                \"W) while setpoint is idle (\" + ess_setpoint + \n                \"W) in mode '\" + batt_mode + \"' — reissuing idle\";\n    node.warn(txt);\n    msg.payload = idle_rate;\n    msg.domo_msg = txt;\n    msg.inform_domo = true;\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 3040,
+        "wires": [
+            [
+                "d14625af14055f20",
+                "51c0cfb742f07a47"
+            ]
+        ]
+    },
+    {
         "id": "ee1bb25c871ce5fc",
         "type": "mqtt-broker",
         "name": "freenas",
@@ -6751,7 +6823,7 @@
         }
     },
     {
-        "id": "0c3dfa234523c808",
+        "id": "2eca85afe5e4ee79",
         "type": "global-config",
         "env": [],
         "modules": {
